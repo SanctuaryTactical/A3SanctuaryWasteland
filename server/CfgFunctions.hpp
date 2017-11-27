@@ -14,4 +14,5 @@ class ServerDir
 	class setupResupplyTruck {file = "server\functions\fn_setupResupplyTruck.sqf";};
 	class setupStoreNPC {file = "server\functions\setupStoreNPC.sqf";};
 	class takeOwnership {file = "server\functions\fn_takeOwnership.sqf";};
+	class setupOwnerTruck {file = "server\functions\setupOwnerTruck.sqf";}; //DMV
 };

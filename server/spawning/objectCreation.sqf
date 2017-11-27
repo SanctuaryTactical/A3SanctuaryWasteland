@@ -21,10 +21,22 @@ switch (true) do
 	{
 		_obj setVariable ["water", 50, true];
 	};
+	case (_objClass == "Land_WaterTank_F"):
+	{
+		_obj setVariable ["water", 500, true];
+	};
+	case (_objClass == "Land_CratesWooden_F"):
+	{
+		_obj setVariable ["water", 500, true];
+	};
 	case (_objClass == "Land_Sacks_goods_F"):
 	{
 		_obj setVariable ["food", 40, true];
 	};
+	case (_objClass == "Land_MobileScafolding_01_F"):
+	{
+		_obj enableSimulationGlobal false;
+	};	
 	case (_objClass isKindOf "ReammoBox_F"):
 	{
 		clearMagazineCargoGlobal _obj;
@@ -44,7 +56,9 @@ switch (true) do
 	};
 	default
 	{
-		_allowDamage = true;
+	
+		//_allowDamage = true;
+		_allowDamage = !({_obj isKindOf _x} count ["ReammoBox_F", "Land_ConcreteWall_01_l_4m_F", "Land_ConcreteWall_01_l_8m_F", "Land_ConcreteWall_01_l_gate_F", "Land_Sidewalk_01_8m_F","Land_Sidewalk_01_4m_F","Land_Sidewalk_01_narrow_4m_F","Land_Sidewalk_01_narrow_8m_F"] > 0);
 	};
 };
 
@@ -56,7 +70,10 @@ _adjustZ = switch (true) do
 {
 	case (_objClass == "Land_Scaffolding_F"):         { -3 };
 	case (_objClass == "Land_Canal_WallSmall_10m_F"): { 3 };
-	case (_objClass == "Land_Canal_Wall_Stairs_F"):   { 3 };
+	case (_objClass == "Land_Canal_Wall_Stairs_F"):   { 3 };	
+	case (_objClass == "Land_runway_edgelight"):   { 4 };
+	case (_objClass == "Land_runway_edgelight_blue_F"):   { 4 };
+	case (_objClass == "Land_Flush_Light_red_F"):   { 4 };
 	default                                           { 0 };
 };
 

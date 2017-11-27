@@ -35,14 +35,19 @@ briefing = 0; // if 0, skip Continue button
 
 // A3W UI color (default = sky blue)
 
-#define A3W_UICOLOR_R  0.25 // default = 0.25
-#define A3W_UICOLOR_G  0.51 // default = 0.51
-#define A3W_UICOLOR_B  0.96 // default = 0.96
+//The Scotsman - Custom UI Color
+//#define A3W_UICOLOR_R  0.25 // default = 0.25
+//#define A3W_UICOLOR_G  0.51 // default = 0.51
+//#define A3W_UICOLOR_B  0.96 // default = 0.96
+
+#define A3W_UICOLOR_R  0.36 // default = 0.25
+#define A3W_UICOLOR_G  0.42 // default = 0.51
+#define A3W_UICOLOR_B  0.39 // default = 0.96
 
 //Dialog includes
 
 #include "client\gui_base.hpp"
-#include "addons\R3F_ARTY_AND_LOG\desc_include.h"
+#include "addons\R3F_LOG\desc_include.h"
 #include "client\systems\ui_toolkit.hpp"
 #include "client\systems\common.hpp"
 #include "client\items\warchest\dialog.hpp"
@@ -71,6 +76,17 @@ briefing = 0; // if 0, skip Continue button
 #include "addons\parking\list_simple_menu.hpp"
 #include "addons\CHVD\dialog.hpp"
 
+#include "addons\BoS\dialog\BoS_mainMenu.hpp"
+#include "addons\Safe\dialog\Safe_mainMenu.hpp"
+#include "addons\Door\dialog\Door_mainMenu.hpp"
+#include "addons\vPin\dialog\vPin_mainMenu.hpp"
+#include "addons\AF_Keypad\AF_KP_defines.hpp"
+#include "addons\AF_Keypad\AF_KP_dialogs.hpp"
+
+#include "addons\UniformPainter\dialog\UniformPainter_mainMenu.hpp"
+#include "addons\VehiclePainter\dialog\VehiclePainter_mainMenu.hpp"
+
+
 class RscTitles
 {
 	#include "addons\proving_ground\PG_rsctitles.hpp"
@@ -80,6 +96,7 @@ class RscTitles
 	#include "client\systems\scoreboard\score_gui.hpp"
 	#include "client\systems\killFeed\killFeed_gui.hpp"
 	#include "addons\far_revive\revive_gui.hpp"
+	#include "addons\statusBar\statusBar.hpp"
 };
 
 class CfgFunctions
@@ -93,9 +110,26 @@ class CfgFunctions
 	#include "addons\CHVD\CfgFunctions.hpp"
 };
 
+
 class CfgNotifications
 {
 	#include "client\CfgNotifications.hpp"
+};
+
+class CfgMusic
+{
+	tracks[]={};
+
+	class FirstyIntro
+	{
+		name = "FirstyIntro";
+		sound[] = {"intro.ogg", db+10, 1.0};
+	};
+	class IntroText
+	{
+		name = "IntroText";
+		sound[] = {"text.ogg", db+10, 1.0};
+	};
 };
 
 class CfgRemoteExec // applies only to clients

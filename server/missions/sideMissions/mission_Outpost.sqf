@@ -47,6 +47,15 @@ _successExec =
 	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach _objects;
 	[_locationsArray, _missionLocation, _objects] call setLocationObjects;
 
+	for "_x" from 1 to 10 do
+	{
+		_cash = "Land_Money_F" createVehicle markerPos _marker;
+		_cash setPos ((markerPos _marker) vectorAdd ([[2 + random 2,0,0], random 360] call BIS_fnc_rotateVector2D));
+		_cash setDir random 360;
+		_cash setVariable["cmoney",10000,true];
+		_cash setVariable["owner","world",true];
+	};
+	
 	_successHintMessage = "The outpost has been captured, good work.";
 };
 

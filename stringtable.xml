@@ -60,7 +60,7 @@
 	</Package>
 	<Package name="Diary">
 		<Key ID="STR_WL_Diary_RulesContent">
-			<English>&lt;br/&gt;    1. Keep bad language to a minimum. If you have a problem with another player, take it to direct.&lt;br/&gt;    2. NO VOIP IN GLOBAL. Use the channels or Teamspeak!.&lt;br/&gt;    3. Team killing when you are in BLUFOR or OPFOR is forbidden and punishable. Play as Independent if you want to be free for all.&lt;br/&gt;    4. Revealing information about your (ex)team to other teams is lame and not appreciated&lt;br/&gt;    5. Do not exploit R3F or any other add-ons or you will be banned.&lt;br/&gt;    6. Using or spamming with loud\long custom sound commands will cause punishment up to permanent ban</English>
+			<English>&lt;br/&gt;  This server is under develoment and is experimental.  There are no guarantees to availability of content, stability or server up-time.  Server may be shutdown periodically for development or depolyment of new features at the admin's discretion.  &lt;br/&gt;1. Keep bad language to a minimum. If you have a problem with another player, take it to direct.&lt;br/&gt;    2. NO VOIP IN GLOBAL. Use the channels or Teamspeak!.&lt;br/&gt;    3. Team killing when you are in BLUFOR or OPFOR is forbidden and punishable. Play as Independent if you want to be free for all.&lt;br/&gt;    4. Revealing information about your (ex)team to other teams is lame and not appreciated&lt;br/&gt;    5. Do not exploit R3F or any other add-ons or you will be banned.&lt;br/&gt;    6. Using or spamming with loud\long custom sound commands will cause punishment up to permanent ban</English>
 		</Key>
 	</Package>
 	<Package name="ShopDescriptions">
@@ -97,6 +97,21 @@
 		<Key ID="STR_WL_ShopDescriptions_Warchest">
 			<English>A safe to store your team's money.</English>
 		</Key>
+		<Key ID="STR_WL_ShopDescriptions_LSD">
+            <English>A synthetic crystalline compound, lysergic acid diethylamide, that is a potent hallucinogenic drug.</English>
+        </Key>
+        <Key ID="STR_WL_ShopDescriptions_Marijuana">
+            <English>Often consumed for its psychoactive and physiological effects, which can include heightened mood or euphoria, relaxation, and an increase in appetite.</English>
+        </Key>
+        <Key ID="STR_WL_ShopDescriptions_Cocaine">
+            <English>An addictive drug derived from coca or prepared synthetically, used as an illegal stimulant and sometimes medicinally as a local anesthetic.</English>
+        </Key>
+        <Key ID="STR_WL_ShopDescriptions_Heroin">
+            <English>A highly addictive analgesic drug derived from morphine, often used illicitly as a narcotic producing euphoria.</English>
+        </Key>
+		<Key ID="STR_WL_ShopDescriptions_Pinlock">
+            <English>This programming tool is a once use only and non removable device to add a pincode to an owned vehicle. By using this your friends can also lock and unlock your vehicle!</English>
+        </Key>
 	</Package>
 	<Package name="Dialogs">
 		<Key ID="STR_WL_dialog_TeamkillText">

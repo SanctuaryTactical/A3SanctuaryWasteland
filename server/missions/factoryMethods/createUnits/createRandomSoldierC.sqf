@@ -13,6 +13,8 @@ _group = _this select 0;
 _position = _this select 1;
 _soldier = _group createUnit [_soldierTypes call BIS_fnc_selectRandom, _position, [], 0, "NONE"];
 _soldier addUniform "U_B_Ghilliesuit";
+_soldier addMagazine "HandGrenade";
+
 [_soldier, _weaponTypes call BIS_fnc_selectRandom, 3] call BIS_fnc_addWeapon;
 
 _soldier spawn refillPrimaryAmmo;

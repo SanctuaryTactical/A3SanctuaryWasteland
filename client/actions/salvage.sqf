@@ -66,12 +66,12 @@ switch (true) do
 	case (_vehClass isKindOf "Plane_Base_F"): // Planes (UAV_02 is not in Plane_Base_F)
 	{
 		_time = 30;
-		_money = 3000;
+		_money = 10000;
 	};
 	case (_vehClass isKindOf "Tank"): // Tanks & IFVs
 	{
 		_time = 30;
-		_money = 2000;
+		_money = 5000;
 	};
 	case (_vehClass isKindOf "Helicopter_Base_F" && !(_vehClass isKindOf "UAV_01_base_F")): // Helicopters (except UAV_01)
 	{
@@ -101,7 +101,7 @@ switch (true) do
 	case ({_vehClass isKindOf _x} count ["Quadbike_01_base_F", "Kart_01_Base_F", "Rubber_duck_base_F", "UAV_01_base_F"] > 0): // Quadbikes, karts, rubber boats, UAV_01
 	{
 		_time = 3;
-		_money = 50;
+		_money = 100;
 	};
 	default // Everything else
 	{

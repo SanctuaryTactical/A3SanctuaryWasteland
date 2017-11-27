@@ -44,6 +44,16 @@ for "_i" from 1 to _nbUnits do
 
 	switch (true) do
 	{
+		case (1):
+		{
+			_unit addUniform "U_B_CombatUniform_mcam_vest";
+			_unit addBackpack "B_Kitbag_mcamo";
+			_unit addWeapon "arifle_TRG20_F";
+			_unit addMagazine "Titan_AA";
+			_unit addWeapon "launch_B_Titan_F";
+			_unit addMagazine "Titan_AA";
+			_unit addMagazine "Titan_AA";
+		};
 		// Grenadier every 3 units, starting from #2
 		case ((_i + 4) % 3 == 0):
 		{

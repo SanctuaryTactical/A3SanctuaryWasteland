@@ -70,7 +70,7 @@ _header = _dialog displayCtrl respawn_Content_Text;
 
 if (cbChecked (_dialog displayCtrl respawn_Preload_Checkbox)) then
 {
-	_header ctrlSetStructuredText parseText "<t size='0.5'> <br/></t><t size='1.33'>Preloading spawn...</t>";
+	//_header ctrlSetStructuredText parseText "<t size='0.5'> <br/></t><t size='1.33'>Preloading spawn...</t>";
 };
 
 if (typeName spawnActionHandle == "SCRIPT") then

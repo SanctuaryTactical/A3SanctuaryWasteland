@@ -19,7 +19,7 @@ _weatherSavingOn = ["A3W_weatherSaving"] call isConfigOn;
 
 _savingMethod = call A3W_savingMethod;
 
-_isBox = { _this isKindOf "ReammoBox_F" };
+_isBox = { _this isKindOf "ReammoBox_F" || _this isKindOf "I_CargoNet_01_ammo_F" || _this isKindOf "O_CargoNet_01_ammo_F" };
 _isStaticWeapon = { _this isKindOf "StaticWeapon" };
 _isWarchest = { _this getVariable ["a3w_warchest", false] && {(_this getVariable ["side", sideUnknown]) in [WEST,EAST]} };
 _isBeacon = { _this getVariable ["a3w_spawnBeacon", false] };

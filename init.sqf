@@ -44,13 +44,14 @@ A3W_scriptThreads = [];
 [] execVM "storeConfig.sqf"; // Separated as its now v large
 [] execVM "briefing.sqf";
 
+
 if (!isDedicated) then
 {
 	[] spawn
 	{
 		if (hasInterface) then // Normal player
 		{
-			9999 cutText ["Welcome to A3Wasteland, please wait for your client to initialize", "BLACK", 0.01];
+			//9999 cutText ["Welcome to A3Wasteland, please wait for your client to initialize", "BLACK", 0.01];
 
 			waitUntil {!isNull player};
 			player setVariable ["playerSpawning", true, true];
@@ -87,16 +88,23 @@ if (isServer) then
 if (hasInterface || isServer) then
 {
 	//init 3rd Party Scripts
+	[] execVM "addons\scripts\intro.sqf";                 // Welcome intro by Firsty
 	[] execVM "addons\parking\functions.sqf";
 	[] execVM "addons\storage\functions.sqf";
 	[] execVM "addons\vactions\functions.sqf";
-	[] execVM "addons\R3F_ARTY_AND_LOG\init.sqf";
+	[] execVM "addons\R3F_LOG\init.sqf";
 	[] execVM "addons\proving_ground\init.sqf";
 	[] execVM "addons\JumpMF\init.sqf";
 	[] execVM "addons\outlw_magrepack\MagRepack_init.sqf";
 	[] execVM "addons\lsd_nvg\init.sqf";
 	[] execVM "addons\stickyCharges\init.sqf";
+	[] execVM "addons\APOC_Airdrop_Assistance\init.sqf";
+	[] execVM "addons\AF_Keypad\AF_KP_vars.sqf";          // Keypad for base locking
 	if (isNil "drn_DynamicWeather_MainThread") then { drn_DynamicWeather_MainThread = [] execVM "addons\scripts\DynamicWeatherEffects.sqf" };
+	waitUntil {!isnull player};
+	player setCustomAimCoef 0.15;
+	player enableStamina false;
+	player addEventHandler ["Respawn", {player enableStamina  false; player setCustomAimCoef 0.15;}];
 };
 
 // Remove line drawings from map
@@ -106,3 +114,5 @@ if (hasInterface || isServer) then
 	"thisTrigger setTriggerTimeout [30,30,30,false]",
 	"{if (markerShape _x == 'POLYLINE') then {deleteMarker _x}} forEach allMapMarkers"
 ];
+
+

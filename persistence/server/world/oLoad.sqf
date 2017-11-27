@@ -76,13 +76,16 @@ _exclObjectIDs = [];
 
 		if (_allowDamage > 0) then
 		{
-			_obj allowDamage true;
+			_obj allowDamage false;
 			_obj setDamage _damage;
-			_obj setVariable ["allowDamage", true, true];
+			//_obj setVariable ["allowDamage", true, true];
+			_obj setVariable ["allowDamage", false, true];
 		}
 		else
 		{
 			_obj setVariable ["allowDamage", false, true];
+			_obj allowDamage false;
+			_obj setDamage 0;
 		};
 
 		if (!isNil "_owner") then
@@ -99,6 +102,12 @@ _exclObjectIDs = [];
 				case "side": { _value = _value call _strToSide };
 				case "cmoney": { if (_value isEqualType "") then { _value = parseNumber _value } };
 				case "R3F_Side": { _value = _value call _strToSide };
+				case "lockDown": { _value }; // BASE LOCKER
+				case "Lights": { _value }; // BASE LOCKER
+				case "password": { _value }; // BASE LOCKER - SAFE - DOOR
+				case "lockedSafe": { _value }; // SAFE
+				case "A3W_inventoryLockR3F": { _value }; // SAFE
+				case "R3F_LOG_disabled": { _value }; // SAFE
 				case "ownerName":
 				{
 					switch (typeName _value) do

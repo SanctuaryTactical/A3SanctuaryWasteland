@@ -8,7 +8,8 @@
 
 client_firstSpawn = true;
 
-[] execVM "client\functions\welcomeMessage.sqf";
+//The Scotsman - Disabled default wasteland welcome message
+//[] execVM "client\functions\welcomeMessage.sqf";
 
 player addEventHandler ["Take",
 {

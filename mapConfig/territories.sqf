@@ -28,5 +28,23 @@
 	["TERRITORY_ARTINARKI_RUINS", "Artinarki Ruins", 500, "RUINS"],
 	["TERRITORY_MAGOS_TRANSMITTER", "Magos Transmitter", 500, "TRANSMITTER"],
 	["TERRITORY_PYRSOS_TRANSMITTER", "Pyrsos Transmitter", 500, "TRANSMITTER"],
-	["TERRITORY_MILITARY_RESEARCH", "Telos Military Base", 500, "MILITARY"]
+	["TERRITORY_MILITARY_RESEARCH", "Telos Military Base", 1000, "MILITARY"],
+	["TERRITORY_SE_POWERPLANT", "Sofia Power Plant", 500, "POWER"],
+	["TERRITORY_CHARKIA_CONTAINER_YARD", "Charkia Container Station", 1500, "MILITARY"],
+	["TERRITORY_ATHIRA_FACTORY", "Athira Factory", 1500, "POWER"],
+	["TERRITORY_MILITARY_HILL", "Military Hill", 1000, "MILITARY"],
+	["TERRITORY_STADIUM", "Stadium", 750, "MILITARY"],
+	["TERRITORY_OILRIG", "Oil Rig", 2500, "POWER"],
+	["TERRITORY_TRANSMITTER", "Transmitter", 500, "MILITARY"],
+	["TERRITORY_HOSPITAL", "Kavala Hospital", 500, "MILITARY"],
+	["TERRITORY_CARRIER", "Aircraft Carrier", 3000, "MILITARY"]
+	//["TERRITORY_RIGA", "Riga Mountain Top", 500, "MILITARY"],
+	//["TERRITORY_STRIGLIA_OUTPOST", "Striglia Outpost", 500, "MILITARY"],
+	//["TERRITORY_RESORT", "Seaside Resort", 500, "MILITARY"],
+	//["TERRITORY_KAVALAHOSPITAL", "Kavala Hospital", 1500, "MILITARY"],
+
+
+	
+	
+	
 ]

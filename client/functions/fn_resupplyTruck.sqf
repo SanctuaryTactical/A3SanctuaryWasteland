@@ -38,7 +38,8 @@ _resupplyThread = [_vehicle, _unit] spawn
 
 	scopeName "resupplyTruckThread";
 
-	_price = 1000; // price = 1000 for vehicles not found in vehicle store
+	//The Scotsman - Price for resupply for all non-owned vehicles
+	_price = 15000; // price = 1000 for vehicles not found in vehicle store
 
 	_variant = _vehicle getVariable ["A3W_vehicleVariant", ""];
 	if (_variant != "") then { _variant = "variant_" + _variant };
@@ -46,8 +47,10 @@ _resupplyThread = [_vehicle, _unit] spawn
 	{
 		if (_vehClass == _x select 1 && (_variant == "" || {_variant in _x})) exitWith
 		{
-			_price = _x select 2;
-			_price = round (_price / PRICE_RELATIONSHIP);
+			//_price = _x select 2;
+			//_price = round (_price / PRICE_RELATIONSHIP);
+			//The Scotsman - Set price to zero
+			_price = 0;
 		};
 	} forEach (call allVehStoreVehicles + call staticGunsArray);
 
@@ -183,6 +186,8 @@ _resupplyThread = [_vehicle, _unit] spawn
 
 		_vehicle engineOn false;
 
+		//The Scotsman - Disable message on resupply
+		/*
 		if (player getVariable ["cmoney",0] >= _price) then
 		{
 			_msg = format ["%1<br/><br/>%2", format ["It will cost you $%1 to resupply %2.", _price, _vehName], "Do you want to proceed?"];
@@ -192,7 +197,8 @@ _resupplyThread = [_vehicle, _unit] spawn
 				breakTo "resupplyTruckThread";
 			};
 		};
-
+		*/
+		
 		call _checkAbortConditions;
 		call _checkPlayerMoney;
 

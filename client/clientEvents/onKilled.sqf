@@ -50,6 +50,28 @@ if (_killer == _player) then
 	_killerTemp = objNull;
 };
 
+// GoT - create a R.I.P. marker (visible for the player only) to help locate it's body
+createBodyMarker = 
+{
+	deleteMarkerLocal "deadMarker";
+	_pos = getPos (vehicle player);
+	_dMarker = createMarkerLocal ["deadMarker", _pos];
+	_dMarker setMarkerShapeLocal "ICON";
+	_dMarker setMarkerAlphaLocal 1;
+	_dMarker setMarkerPosLocal _pos;
+	_dMarker setMarkerTextLocal "R.I.P.";
+	_dMarker setMarkerColorLocal "ColorEAST";
+	_dMarker setMarkerTypeLocal "waypoint";
+	_dMarker setMarkerSizeLocal [0.6,0.6];
+	sleep 1000;
+	deleteMarkerLocal _dMarker;
+};
+[] spawn createBodyMarker;
+
+[_player, _killer, _presumedKiller, _deathCause] remoteExecCall ["A3W_fnc_serverPlayerDied", 2];
+[0, _player, _killer, [_killer, _player] call A3W_fnc_isFriendly] call A3W_fnc_deathMessage;
+
+
 [_player, _killerTemp, _presumedKiller, _deathCause] remoteExecCall ["A3W_fnc_serverPlayerDied", 2];
 [_player, true] call A3W_fnc_killBroadcast;
 

@@ -1,8 +1,10 @@
 // ******************************************************************************************
-// * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
+// * This project is licensed under the GNU Affero GPL v3. Copyright © 2016 A3Wasteland.com *
 // ******************************************************************************************
 //	@file Name: CoastalConvoy_3.sqf
-//	@file Author: [GoT] JoSchaap, [404] Del1te, AgentRev
+//	@file Author: AgentRev
+
+// for Altis
 
 // starting positions for this route
 _starts =

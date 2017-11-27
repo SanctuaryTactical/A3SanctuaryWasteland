@@ -66,6 +66,42 @@ _code =
 
 ["take-food-sack", [_label, _code, [], 0, true, true, "", _condition]] call mf_player_actions_set;
 
+_label = "<img image='client\icons\cannedfood.paa'/> Take Canned Food";
+_condition = "{_x getVariable ['food', 0] >= 1} count nearestObjects [player, ['Land_CratesWooden_F'], 3] > 0 && !(MF_ITEMS_CANNED_FOOD call mf_inventory_is_full)";
+_code =
+{
+	_objs = nearestObjects [player, ["Land_CratesWooden_F"], 5];
+
+	if (count _objs > 0) then
+	{
+		//player playMove ([player, "AmovMstpDnon_AinvMstpDnon", "putdown"] call getFullMove);
+		player playActionNow "PutDown";
+
+		_obj = _objs select 0;
+		_obj setVariable ["food", (_obj getVariable ["food", 0]) - 1, true];
+		[MF_ITEMS_CANNED_FOOD, 1] call mf_inventory_add;
+
+		if (_obj getVariable "food" < 1) then
+		{
+			_obj spawn
+			{
+				_this setDamage 1;
+				sleep 5;
+				deleteVehicle _this;
+			};
+
+			["You have taken some food.\nCrates are now empty", 5] call mf_notify_client;
+		}
+		else
+		{
+			[format ["You have taken some food.\n(Food left: %1)", _obj getVariable "food"], 5] call mf_notify_client;
+		};
+	};
+};
+
+["take-food-crate", [_label, _code, [], 0, true, true, "", _condition]] call mf_player_actions_set;
+
+
 // Take Water from White water container
 
 _label = "<img image='client\icons\water.paa'/> Fill Water Bottle";
@@ -109,6 +145,50 @@ _code =
 };
 
 ["take-water-barrel", [_label, _code, [], 0, true, true, "", _condition]] call mf_player_actions_set;
+
+// Take Water from Water Tank
+
+_label = "<img image='client\icons\water.paa'/> Fill Water Bottle";
+_condition = "{_x getVariable ['water', 0] >= 1} count nearestObjects [player, ['Land_WaterTank_F'], 3] > 0 && !(MF_ITEMS_WATER call mf_inventory_is_full)";
+_code =
+{
+	_objs = nearestObjects [player, ["Land_WaterTank_F"], 5];
+
+	if (count _objs > 0) then
+	{
+		//player playMove ([player, "AmovMstpDnon_AinvMstpDnon", "putdown"] call getFullMove);
+		player playActionNow "PutDown";
+
+		_obj = _objs select 0;
+		_obj setVariable ["water", (_obj getVariable ["water", 0]) - 1, true];
+		[MF_ITEMS_WATER, 1] call mf_inventory_add;
+
+		if (_obj getVariable "water" < 1) then
+		{
+			_obj spawn
+			{
+				_pos = getPosATL _this;
+				_vecDir = vectorDir _this;
+				_vecUp = vectorUp _this;
+				deleteVehicle _this;
+
+				_obj = createVehicle ["Land_WaterTank_F", _pos, [], 0, "CAN_COLLIDE"];
+				_obj setVectorDirAndUp [_vecDir, _vecUp];
+				_obj setDamage 1;
+				sleep 5;
+				deleteVehicle _obj;
+			};
+
+			["You have filled a water bottle.\nBarrel is now empty", 5] call mf_notify_client;
+		}
+		else
+		{
+			[format ["You have filled a water bottle.\n(Water left: %1)", _obj getVariable "water"], 5] call mf_notify_client;
+		};
+	};
+};
+
+["take-water-tank", [_label, _code, [], 0, true, true, "", _condition]] call mf_player_actions_set;
 
 // Take Water from Well
 
