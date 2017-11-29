@@ -74,6 +74,15 @@ _exclObjectIDs = [];
 		_obj setVariable ["baseSaving_spawningTime", diag_tickTime];
 		_obj setVariable ["objectLocked", true, true]; // force lock
 
+		//The Scotsman - Restore resupply crate
+		if(_obj isKindOf "B_CargoNet_01_ammo_F") then {
+
+			_obj setVariable ["A3W_purchasedVehicle", true];
+			_obj setVariable ["A3W_resupplyTruck", true];
+
+			[_obj] remoteExecCall ["A3W_fnc_setupResupplyTruck", 0, _obj];
+		};
+
 		if (_allowDamage > 0) then
 		{
 			_obj allowDamage false;
@@ -177,6 +186,9 @@ _exclObjectIDs = [];
 						};
 					} forEach _backpacks;
 				};
+
+
+
 			};
 
 			if (!isNil "_turretMags" && _staticWeaponSavingOn && {_class call _isStaticWeapon}) then

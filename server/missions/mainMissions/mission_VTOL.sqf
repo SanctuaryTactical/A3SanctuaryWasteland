@@ -15,10 +15,8 @@ _setupVars =
 {
 	_vehicleClass =
 	[
-		"B_T_VTOL_01_infantry_F",
 		"B_T_VTOL_01_vehicle_F",
 		"B_T_VTOL_01_armed_F",
-		"O_T_VTOL_02_infantry_F",
 		"O_T_VTOL_02_vehicle_F"
 	] call BIS_fnc_selectRandom;
 
@@ -26,10 +24,10 @@ _setupVars =
 	_locationsArray = MissionSpawnMarkers;
 
 	_nbUnits = if (missionDifficultyHard) then { AI_GROUP_LARGE } else { AI_GROUP_MEDIUM };
-	
+
 	_reinforceChance = 0; // Chance of reinforcements being called
 	_minReinforceGroups = 1; //minimum number of paradrop groups that will respond to call
-	_maxReinforceGroups = 3; //maximum number of paradrop groups that will respond to call	
+	_maxReinforceGroups = 3; //maximum number of paradrop groups that will respond to call
 };
 
 _this call mission_VehicleCapture;

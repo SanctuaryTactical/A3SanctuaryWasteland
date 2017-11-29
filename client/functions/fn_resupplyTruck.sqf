@@ -91,7 +91,7 @@ _resupplyThread = [_vehicle, _unit] spawn
 			};
 
 			// Abort if no resupply vehicle in proximity
-			_checkCondition = {{alive _x && {_x getVariable ["A3W_resupplyTruck", false]}} count (_vehicle nearEntities ["AllVehicles", RESUPPLY_TRUCK_DISTANCE]) == 0};
+			_checkCondition = {{alive _x && {_x getVariable ["A3W_resupplyTruck", false]}} count (_vehicle nearEntities [["AllVehicles", "B_CargoNet_01_ammo_F"], RESUPPLY_TRUCK_DISTANCE]) == 0};
 			if (call _checkCondition) exitWith
 			{
 				_pauseText = "Move closer to a resupply vehicle.";
@@ -198,13 +198,13 @@ _resupplyThread = [_vehicle, _unit] spawn
 			};
 		};
 		*/
-		
+
 		call _checkAbortConditions;
 		call _checkPlayerMoney;
 
 		//start resupply here
 		player setVariable ["cmoney", (player getVariable ["cmoney",0]) - _price, true];
-		_text = format ["%1\n%2", format ["You paid $%1 to resupply %2.", _price, _vehName], "Please stand by..."];
+		_text = format ["%1\n%2", format ["Resupplying %2.", _price, _vehName], "Please stand by..."];
 		[_text, 10] call mf_notify_client;
 		[] spawn fn_savePlayerData;
 
@@ -313,7 +313,7 @@ _resupplyThread = [_vehicle, _unit] spawn
 		_repairSlice = if (count _hitPoints > 0) then { REPAIR_TIME_SLICE min (10 / (count _hitPoints)) } else { 0 }; // no longer than 10 seconds
 
 		{
-	
+
 			if (_dmgValues select _forEachIndex > 0.001) then
 			{
 				if (_checkDone) then

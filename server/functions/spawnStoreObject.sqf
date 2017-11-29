@@ -256,7 +256,7 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 				case ({_object isKindOf _x} count ["Land_CratesWooden_F"] > 0):
 				{
 					_object setVariable ["food", 500, true];
-				};				
+				};
 				// Add water to bought water barrels.
 				case ({_object isKindOf _x} count ["Land_BarrelWater_F"] > 0):
 				{
@@ -266,21 +266,25 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 				case ({_object isKindOf _x} count ["Land_WaterTank_F"] > 0):
 				{
 					_object setVariable ["water", 500, true];
-				};		
+				};
+				case ({_object isKindOf _x} count ["B_CargoNet_01_ammo_F"] > 0):
+				{
+					[_object] remoteExecCall ["A3W_fnc_setupResupplyTruck", 0, _object];
+				};
 				case ({_object isKindOf _x} count ["Land_MobileScafolding_01_F"] > 0):
 				{
 					_object enableSimulationGlobal false;
-				};	
-			
+				};
+
 				case ({_object isKindOf _x} count ["Land_CargoBox_V1_F"] > 0):
 				{
 					[_object, [["Land_Canal_Wall_Stairs_F", 2],["Land_BarGate_F", 2],["Land_Cargo_Patrol_V1_F", 2],["Land_HBarrier_3_F", 4],["Land_Canal_WallSmall_10m_F", 6],["Land_LampShabby_F", 10], ["Land_RampConcrete_F",1],["Land_Crash_barrier_F",4],["B_HMG_01_high_F",1]] ] execVM "addons\R3F_LOG\auto_load_in_vehicle.sqf";
-				};	
+				};
 				case ({_object isKindOf _x} count ["Land_Cargo20_yellow_F"] > 0):
 				{
 					[_object, ["Land_Cargo_Tower_V1_F", ["Land_Canal_Wall_Stairs_F", 4],["Land_BarGate_F", 2],["Land_Cargo_Patrol_V1_F", 2],["Land_HBarrierWall6_F", 4],["Land_Canal_WallSmall_10m_F", 10],["Land_LampShabby_F", 10], ["Land_RampConcreteHigh_F",2], ["Land_RampConcrete_F", 2],["Land_Crash_barrier_F",6],["B_HMG_01_high_F",2]] ] execVM "addons\R3F_LOG\auto_load_in_vehicle.sqf";
 				};
-				
+
 				case ({_object isKindOf _x} count ["Land_Cargo40_white_F"] > 0):
 				{
 					[_object, [["Land_Cargo_Tower_V1_F",2],["Land_GH_Platform_F",10],["Land_Canal_Wall_Stairs_F", 10],["Land_BarGate_F", 4],["Land_Cargo_Patrol_V1_F", 4],["Land_HBarrierWall6_F", 10],["Land_Canal_WallSmall_10m_F", 20],["Land_LampHalogen_F", 10], ["Land_RampConcreteHigh_F",4], ["Land_RampConcrete_F", 4],["Land_Crash_barrier_F",6],["B_GMG_01_F",2],["B_static_AA_F",2],["B_static_AT_F",2],["B_Quadbike_01_F",4],["C_Heli_light_01_digital_F",1]] ] execVM "addons\R3F_LOG\auto_load_in_vehicle.sqf";
@@ -299,7 +303,7 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 				{
 					_object setAmmoCargo 25;
 				};
-			
+
 				case ({_object isKindOf _x} count ["C_Van_01_fuel_F", "I_G_Van_01_fuel_F", "O_Heli_Transport_04_fuel_F"] > 0):
 				{
 					_object setFuelCargo 10;
@@ -334,7 +338,7 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 					_object allowDamage false; // No more fucking busted crates
 					_object setVariable ["allowDamage", false, true];
 					_object setVariable ["A3W_inventoryLockR3F", true, true];
-				
+
 					clearMagazineCargoGlobal _object;
 					clearWeaponCargoGlobal _object;
 					clearItemCargoGlobal _object;
@@ -349,7 +353,7 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 					_object allowDamage false; // No more fucking busted crates
 					_object setVariable ["allowDamage", false, true];
 					_object setVariable ["A3W_inventoryLockR3F", true, true];
-				
+
 					clearMagazineCargoGlobal _object;
 					clearWeaponCargoGlobal _object;
 					clearItemCargoGlobal _object;
@@ -358,10 +362,10 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 					_object addMagazineCargoGlobal ["Titan_AP", 5];
 					_object addWeaponCargoGlobal ["launch_I_Titan_short_F", 1];
 
-				};				
+				};
 
 			};
-						
+
 			clearBackpackCargoGlobal _object;
 
 			if (_skipSave) then

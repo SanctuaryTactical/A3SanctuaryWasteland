@@ -3,7 +3,7 @@
 	@file Name: statusBar.sqf
 	@file  EpochMod StatusBar Port for Wasteland by CRE4MPIE
 	@file Created: 21/4/2015
-	@notes: Added custom Icons and ported Wasteland info. Still 
+	@notes: Added custom Icons and ported Wasteland info. Still
 	needs to be cleaned up a bit.
 	@file Edit By: Vishpala
 */
@@ -42,18 +42,22 @@ ZGO_StatusEnabled = true;
 			_unit = _this select 0;
 			_damage = round ((1 - (damage player)) * 100);
 			//_damage = (round(_damage * 100));
-			_hunger = ceil (hungerLevel max 0);
-			_thirst = ceil (thirstLevel max 0);
+			//_hunger = ceil (hungerLevel max 0);
+			//_thirst = ceil (thirstLevel max 0);
 			_wallet = player getVariable ["cmoney",0] call fn_numbersText;
 			_respect = player getVariable ["bmoney",0] call fn_numbersText;
 			_serverFPS = round diag_fps;
+			_hunger = ceil (hungerLevel max 0);
+			_thirst = ceil (thirstLevel max 0);
 			_pos = getPosATL player;
 			_dir = round (getDir (vehicle player));
 			_grid = mapGridPosition  player; _xx = (format[_grid]) select  [0,3];
 			_yy = (format[_grid]) select  [3,3];
-			_time = (round(240-(serverTime)/60));  //edit the '240' value (60*4=240) to change the countdown timer if your server restarts are shorter or longer than 4 hour intervals
+			_time = (round(180-(serverTime)/60));  //edit the '240' value (60*4=240) to change the countdown timer if your server restarts are shorter or longer than 4 hour intervals
 			_hours = (floor(_time/60));
 			_minutes = (_time - (_hours * 60));
+
+
 
 			switch(_minutes) do
 			{
@@ -82,6 +86,8 @@ ZGO_StatusEnabled = true;
 			_colour10 		= parseText "#CC3B61"; //
 			_colour0 		= parseText "#C72650"; //Wasteland Red
 			_colourDead 	= parseText "#000000";
+			_colourGreen = "#009933";
+			_colourYellow = "#FF6600";
 
 			//Colour coding
 			//Damage
@@ -133,6 +139,12 @@ ZGO_StatusEnabled = true;
 				case(_thirst < 1) : {_colourThirst =  _colourDead;};
 			};
 
+			//Connection
+			_colourFPS = _colorDefault;
+			if(_serverFPS > 38) then{_colourFPS = _colourGreen;};
+			if((_serverFPS >= 20) && (_serverFPS <= 38)) then {_colourFPS = _colourYellow;};
+			if((_serverFPS >= 0) && (_serverFPS < 20)) then {_colourFPS = _colour0;};
+
 			//display the information
 			((uiNamespace getVariable "RscWastelandStatusBar")displayCtrl 55554) ctrlSetStructuredText
 			parseText
@@ -140,11 +152,11 @@ ZGO_StatusEnabled = true;
 			["
 				<t shadow='1' shadowColor='#000000' color='%9'><img size='1.6'  shadowColor='#000000' image='addons\statusbar\icons\players.paa' color='%9'/> %2</t>
 				<t shadow='1' shadowColor='#000000' color='%14'><img size='1.0'  shadowColor='#000000' image='addons\statusbar\icons\health.paa' color='%9'/> %3%1</t>
-				<t shadow='1' shadowColor='#000000' color='%9'><img size='1.0'  shadowColor='#000000' image='addons\statusbar\icons\money.paa' color='%9'/> %4</t>
 				<t shadow='1' shadowColor='#000000' color='%15'><img size='1.6'  shadowColor='#000000' image='addons\statusbar\icons\hunger.paa' color='%9'/> %5%1</t>
 				<t shadow='1' shadowColor='#000000' color='%16'><img size='1.6'  shadowColor='#000000' image='addons\statusbar\icons\thirst.paa' color='%9'/> %6%1</t>
+				<t shadow='1' shadowColor='#000000' color='%9'><img size='1.0'  shadowColor='#000000' image='addons\statusbar\icons\money.paa' color='%9'/> %4</t>
 				<t shadow='1' shadowColor='#000000' color='%9'><img size='1.0'  shadowColor='#000000' image='addons\statusbar\icons\atm.paa' color='%9'/> %8</t>
-				<t shadow='1' shadowColor='#000000' color='%9'>FPS: %7</t>
+				<t shadow='1' shadowColor='#000000' color='%9'>FPS: </t><t shadow='1' shadowColor'#000000' color='%17'>%7</t>
 				<t shadow='1' shadowColor='#000000' color='%9'><img size='1.0'  shadowColor='#000000' image='addons\statusbar\icons\compass.paa' color='%9'/> %11</t>
 				<t shadow='1' shadowColor='#000000' color='%9'><img size='1.6'  shadowColor='#000000' image='addons\statusbar\icons\restart.paa' color='%9'/>%12:%13</t>",
 
@@ -163,7 +175,8 @@ ZGO_StatusEnabled = true;
 						_minutes,
 						_colourDamage,
 						_colourHunger,
-						_colourThirst
+						_colourThirst,
+						_colourFPS
 			];
 		};
 	};

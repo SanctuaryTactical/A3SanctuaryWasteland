@@ -238,7 +238,7 @@ otherFirearms = compileFinal str
 	["GM6 Lynx Sniper", "srifle_GM6_LRPS_F", 1250],
 	["GM6 Lynx Sniper (G Hex)", "srifle_GM6_ghex_LRPS_F", 1500],
 	["ASP-1 Kir Rifle", "srifle_DMR_04_F", 2000],
-	
+
 	//Launchers
 	["RPG-42 Alamut", "launch_RPG32_F", 400],
 	["Titan MPRL Compact (Sand)", "launch_Titan_short_F", 500],
@@ -249,7 +249,7 @@ otherFirearms = compileFinal str
 	["Titan MPRL AA (Digi)", "launch_I_Titan_F", 600],
 	["Titan MPRL AA (Tropic)", "launch_B_Titan_tna_F", 600, "noDLC"],
 	["Titan MPRL AA (G Hex)", "launch_O_Titan_ghex_F", 600, "noDLC"]
-	
+
 ];
 
 allGunStoreFirearms = compileFinal str (call pistolArray + call smgArray + call rifleArray + call lmgArray + call launcherArray + call otherFirearms);
@@ -285,7 +285,8 @@ staticGunsArray = compileFinal str
 	["Mk6 Mortar", "O_Mortar_01_F", 12500],
 	["Mk6 Mortar", "I_Mortar_01_F", 12500],
 	["Anti-Air Convenience Kit", "I_CargoNet_01_ammo_F", 20000, "noDLC"],
-	["Anti-Tank Convenience Kit", "O_CargoNet_01_ammo_F", 20000, "noDLC"]
+	["Anti-Tank Convenience Kit", "O_CargoNet_01_ammo_F", 20000, "noDLC"],
+	["Resupply Palette", "B_CargoNet_01_ammo_F", 75000, "noDLC"]
 ];
 
 throwputArray = compileFinal str
@@ -998,7 +999,7 @@ otherGear = compileFinal str
 	["Racing Helmet (Fuel)", "H_RacingHelmet_1_F", 25, "hat"],
 	["Racing Helmet (Bluking)", "H_RacingHelmet_2_F", 25, "hat"],
 	["Racing Helmet (Redstone)", "H_RacingHelmet_3_F", 25, "hat"],
-	
+
 	//Uniforms
 	["Light Ghillie", "U_O_GhillieSuit", 200, "uni"],
 	["Light Ghillie", "U_I_GhillieSuit", 200, "uni"],
@@ -1090,7 +1091,7 @@ otherGear = compileFinal str
 	["Deck Crew Vest (Brown)", "V_DeckCrew_brown_F", -1, "vest", "noDLC"],
 	["Deck Crew Vest (Violet)", "V_DeckCrew_violet_F", -1, "vest", "noDLC"],
 	["Parachute", "B_Parachute", 200, "backpack"],
-	
+
 	// Backpacks
 	["Assault Pack (Black)", "B_AssaultPack_blk", 100, "backpack"],
 	["Assault Pack (MTP)", "B_AssaultPack_mcamo", 100, "backpack"],
@@ -1119,7 +1120,7 @@ otherGear = compileFinal str
 	["Bergen (Digital)", "B_Bergen_dgtl_F", 1000, "backpack", "noDLC"],
 	["Bergen (Hex)", "B_Bergen_hex_F", 1000, "backpack", "noDLC"],
 	["Bergen (MTP)", "B_Bergen_mcamo_F", 1000, "backpack", "noDLC"]
-	
+
 ];
 
 allStoreMagazines = compileFinal str (call ammoArray + call throwputArray + call genItemArray + call otherMagazines);
@@ -1171,7 +1172,7 @@ genObjectsArray = compileFinal str
 	["Concrete Military Wall", "Land_Mil_ConcreteWall_F", 400, "object"],
 	["Concrete Block", "BlockConcrete_F", 500, "object"],
 	["Concrete Panel (4M)", "Land_ConcreteWall_01_l_4m_F", 300, "object"],
-	["Concrete Panel (8M)", "Land_ConcreteWall_01_l_8m_F", 600, "object"],	
+	["Concrete Panel (8M)", "Land_ConcreteWall_01_l_8m_F", 600, "object"],
 	["Concrete Panel Low (4M)", "Land_ConcreteWall_01_m_4m_F", 250, "object"],
 	["Concrete Panel Low (8M)", "Land_ConcreteWall_01_m_8m_F", 500, "object"],
 	["Concrete Post", "Land_ConcreteWall_01_l_pole_F", 200, "object"],
@@ -1205,7 +1206,7 @@ genObjectsArray = compileFinal str
 	["Lamp (Small)", "Land_LampStreet_small_F", 250, "object"],
 	["Lamp (Halogen)","Land_LampHalogen_F", 500, "object"],
 	["Lamp (Airport)", "Land_LampAirport_F", 2000, "object"],
-	["Landing Platform (Extra Large)", "Land_AirstripPlatform_01_F", 100000, "object"],	
+	["Landing Platform (Extra Large)", "Land_AirstripPlatform_01_F", 100000, "object"],
 	["Military Wall (Big)", "Land_Mil_WallBig_4m_F", 600, "object"],
 	["Military Cargo Post", "Land_Cargo_Patrol_V1_F", 800, "object"],
 	["Military Cargo Tower", "Land_Cargo_Tower_V1_F", 10000, "object"],
@@ -1223,7 +1224,7 @@ genObjectsArray = compileFinal str
 	["Power Generator", "Land_PowerGenerator_F", 100, "object"],
 	["Recycle Bin", "Land_WheelieBin_01_F", 25, "object"],
 	["Scafolding (Mobile)", "Land_MobileScafolding_01_F", 250, "object"],
-	["Scaffolding (Tall)", "Land_Scaffolding_F", 250, "object"],	
+	["Scaffolding (Tall)", "Land_Scaffolding_F", 250, "object"],
 	["Shoot House Wall", "Land_Shoot_House_Wall_F", 150, "object"],
 	["Stairs", "Land_GH_Stairs_F", 2500, "object"],
 	["Stairs (Walk Over)", "Land_Walkover_01_F", 1000, "object"],
@@ -1375,7 +1376,7 @@ helicoptersArray = compileFinal str
 	["PO-30 Orca (DAGR)", "O_Heli_Light_02_dynamicLoadout_F", 40000, "vehicle", "variant_orcaDAGR"], // Armed Ka-60, add "HIDDEN" if you don't want it, but don't remove the line!
 	["WY-55 Hellcat (Armed)", "I_Heli_light_03_dynamicLoadout_F", 40000, "vehicle"], // Armed AW159
 	["AH-99 Blackfoot", "B_Heli_Attack_01_dynamicLoadout_F", 50000, "vehicle"], // RAH-66 with gunner
-	//["Mi-48 Kajman", "O_Heli_Attack_02_dynamicLoadout_F", 60000, "vehicle"], // Mi-28 with gunner 
+	//["Mi-48 Kajman", "O_Heli_Attack_02_dynamicLoadout_F", 60000, "vehicle"], // Mi-28 with gunner
 
 	["MQ-12 Falcon UAV", "B_T_UAV_03_F", 50000, "vehicle"] // Do NOT use "B_T_UAV_03_dynamicLoadout_F" (doesn't support ASRAAM pylons)
 ];
@@ -1451,7 +1452,7 @@ otherVehicles = compileFinal str
 	//Mission Only Vehicles
 	["Scorcher", "B_MBT_01_arty_F", 30000, "vehicle", "SKIPSAVE"],
 	["Sandstorm", "B_MBT_01_mlrs_F", 28000, "vehicle", "SKIPSAVE"],
-	
+
 	//Other Vehicles
 	["Prowler (Doorless)", "B_CTRG_LSV_01_light_F", 1500, "vehicle", "SKIPSAVE"],
 	["Prowler", "B_T_LSV_01_unarmed_F", 2000, "vehicle", "SKIPSAVE"],
@@ -1489,7 +1490,7 @@ otherVehicles = compileFinal str
 	["UH-80 Ghost Hawk", "B_Heli_Transport_01_F", 12500, "vehicle"], // UH-60 Stealth with 2 side miniguns
 	["AH-9 Pawnee (Gun-Only)", "B_Heli_Light_01_dynamicLoadout_F", 15000, "vehicle", "variant_pawneeGun"], // Armed AH-6 (no missiles)
 	["PO-30 Orca (DAR)", "O_Heli_Light_02_dynamicLoadout_F", 30000, "vehicle", "variant_orcaDAR"], // Armed Ka-60
-	["Mi-48 Kajman", "O_Heli_Attack_02_dynamicLoadout_F", 60000, "vehicle"], // Mi-28 with gunner 
+	["Mi-48 Kajman", "O_Heli_Attack_02_dynamicLoadout_F", 60000, "vehicle"], // Mi-28 with gunner
 	["V-44 X Blackfish (Infantry)", "B_T_VTOL_01_infantry_F", 10000, "vehicle"],
 	["V-44 X Blackfish (Gunship)", "B_T_VTOL_01_armed_F", 60000, "vehicle"],
 	["Y-32 Xi'an", "O_T_VTOL_02_infantry_dynamicLoadout_F", 60000, "vehicle"],

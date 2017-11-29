@@ -8,7 +8,7 @@ class EditorData
 	toggles=6;
 	class ItemIDProvider
 	{
-		nextID=1823;
+		nextID=1825;
 	};
 	class MarkerIDProvider
 	{
@@ -16,14 +16,14 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=295;
+		nextID=315;
 	};
 	class Camera
 	{
-		pos[]={18881.523,73.075905,21543.701};
-		dir[]={-0.095650688,-0.58692086,0.80406255};
-		up[]={-0.069331005,0.80964506,0.58281666};
-		aside[]={0.9930855,1.8336905e-006,0.11813451};
+		pos[]={18850.5,25,21473.5};
+		dir[]={0,-0.70710683,0.70710683};
+		up[]={0,0.70710677,0.70710677};
+		aside[]={0.99999994,0,-0};
 	};
 };
 binarizationWanted=0;
@@ -6093,12 +6093,12 @@ class Mission
 				class Item22
 				{
 					dataType="Marker";
-					position[]={18835,0,21582.5};
+					position[]={18840,0,21548};
 					name="Parking9";
 					type="Empty";
 					colorName="ColorBlack";
 					id=1801;
-					atlOffset=120.87347;
+					atlOffset=123.83757;
 				};
 				class Item23
 				{
@@ -6107,13 +6107,13 @@ class Mission
 					name="Parking9_spawn";
 					type="Empty";
 					colorName="ColorBlack";
-					angle=200.78296;
+					angle=200.78293;
 					id=1802;
 					atlOffset=126.60677;
 				};
 			};
 			id=415;
-			atlOffset=5.0223489;
+			atlOffset=4.5945826;
 		};
 		class Item258
 		{
