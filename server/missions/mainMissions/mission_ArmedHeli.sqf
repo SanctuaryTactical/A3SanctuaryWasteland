@@ -17,10 +17,15 @@ _setupVars =
 	[
 		["B_Heli_Light_01_dynamicLoadout_F", "pawneeNormal"],
 		"B_Heli_Transport_01_F",
+		"CUP_B_AH64D_DL_USA",
 		"B_Heli_Attack_01_dynamicLoadout_F",
 		["O_Heli_Light_02_dynamicLoadout_F", "orcaDAGR"],
 		"O_Heli_Attack_02_dynamicLoadout_F",
-		"I_Heli_light_03_dynamicLoadout_F"
+		"I_Heli_light_03_dynamicLoadout_F",
+		"CUP_B_UH1Y_Gunship_Dynamic_USMC",
+		"CUP_B_AH1Z_Dynamic_USMC",
+		"CUP_B_Mi35_Dynamic_CZ_Des",
+		"CUP_B_MH60L_DAP_4x_USN"
 	];
 
 	_missionType = "Armed Helicopter";

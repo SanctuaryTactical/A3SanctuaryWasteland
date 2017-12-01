@@ -137,6 +137,12 @@ _exclObjectIDs = [];
 			_obj setVariable [_var, _value, true];
 		} forEach _variables;
 
+		// Base locker lights
+		if (_obj getVariable ["lights",""] == "off") then
+		{
+			_obj setHit ["light_1_hit", 0.97];
+		};
+
 		clearWeaponCargoGlobal _obj;
 		clearMagazineCargoGlobal _obj;
 		clearItemCargoGlobal _obj;

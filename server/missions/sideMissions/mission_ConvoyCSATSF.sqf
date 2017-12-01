@@ -111,7 +111,7 @@ _setupObjects =
 	_missionPicture = getText (configFile >> "CfgVehicles" >> _veh1 >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> _veh1 >> "displayName");
 
-	_missionHintText = format ["A CSAT SF Team Driving a <t color='%2'>%1</t> transporting 2 weapon crates to an undisclosed location. Stop them!", _vehicleName, extraMissionColor];
+	_missionHintText = format ["A CSAT SF Team Driving a <t color='%2'>%1</t> transporting 2 weapon crates to an undisclosed location. Stop them!", _vehicleName, sideMissionColor];
 
 	_numWaypoints = count waypoints _aiGroup;
 };

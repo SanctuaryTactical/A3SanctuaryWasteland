@@ -17,7 +17,7 @@ MainMissions =
 	["mission_MBT", 1],
 	["mission_LightArmVeh", 1],
 	["mission_ArmedHeli", 1],
-	["mission_AbandonedJet", 0.5],
+	["mission_AbandonedJet", 0.75],
 	["mission_CivHeli", 1],
 	["mission_SupplyDrop", 1]
 ];
@@ -52,12 +52,12 @@ PrimaryMissions =
 AirMissions =
 [
 	["mission_Gunship", 1],
-    ["mission_HostileJet", 0.75],
-	["mission_HostileVTOL", 0.75],
+  ["mission_HostileJet", 1],
+	["mission_HostileVTOL", 1],
 	["mission_SmugglerPlane", 1],
-	["mission_HostileHelicopter", 0.5],
-	["mission_HostileHeliFormation", 0.5],
-	["mission_HostileJetFormation", 0.5]
+	["mission_HostileHelicopter", 1],
+	["mission_HostileHeliFormation",1],
+	["mission_HostileJetFormation", 1]
 ];
 
 MissionSpawnMarkers = (allMapMarkers select {["Mission_", _x] call fn_startsWith}) apply {[_x, false]};

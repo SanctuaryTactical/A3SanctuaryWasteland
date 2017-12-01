@@ -412,33 +412,33 @@ _failedExec = nil;
 
 // _vehicles are automatically deleted or unlocked in missionProcessor depending on the outcome
 
-	
-_moneyAmount = 50000;
+
+_moneyAmount = 40000;
 
 _successExec =
 {
-	
+
 	_box1 = "Box_East_Wps_F" createVehicle getMarkerPos _marker;
 	//[_box1,"mission_USLaunchers"] call fn_refillbox;
 	[_box1,"mission_USLaunchers"] call randomCrateLoadOut;
 	_box1 allowDamage false;
-	
+
 	_box2 = "Box_NATO_Wps_F" createVehicle getMarkerPos _marker;
 	//[_box2,"mission_USSpecial2"] call fn_refillbox;
 	[_box2,"mission_USSpecial2"] call randomCrateLoadOut;
 	_box2 allowDamage false;
-	
+
 	_box3 = "Box_NATO_Support_F" createVehicle getMarkerPos _marker;
 	//[_box3,"mission_Main_A3snipers"] call fn_refillbox;
 	[_box3,"mission_Main_A3snipers"] call randomCrateLoadOut;
 	_box3 allowDamage false;
-	
+
 	_box4 = "Box_East_Wps_F" createVehicle getMarkerPos _marker;
 	//[_box4,"mission_USLaunchers"] call fn_refillbox;
 	[_box4,"mission_USLaunchers"] call randomCrateLoadOut;
 	_box4 allowDamage false;
 
-	
+
 	for "_x" from 1 to 10 do
 	{
 		_cash = "Land_Money_F" createVehicle markerPos _marker;
@@ -447,7 +447,7 @@ _successExec =
 		_cash setVariable ["cmoney", _moneyAmount / 10, true];
 		_cash setVariable["owner","world",true];
 	};
-	
+
 	_successHintMessage = "The patrol has been stopped, the money, crates and vehicles are yours to take.";
 };
 

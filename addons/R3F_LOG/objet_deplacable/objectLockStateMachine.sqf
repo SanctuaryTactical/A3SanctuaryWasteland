@@ -61,13 +61,13 @@ switch (_lockState) do
 			_progress = _this select 0;
 			_object = _this select 1;
 			_failed = true;
-			
-			_reLockers = nearestObjects [player, ["Land_Device_assembled_F"], 150];
-			if (count _reLockers > 0) then { 
-				_reLocker = _reLockers select 0; 
+
+			_reLockers = nearestObjects [player, ["Land_Device_assembled_F"], 200];
+			if (count _reLockers > 0) then {
+				_reLocker = _reLockers select 0;
 				}else{
 				_reLocker = objNull;
-				}; 
+				};
 
 			switch (true) do
 			{
@@ -153,13 +153,13 @@ switch (_lockState) do
 			_object = _this select 1;
 			_failed = true;
 
-			_reLockers = nearestObjects [player, ["Land_Device_assembled_F"], 150];
-			if (count _reLockers > 0) then { 
-				_reLocker = _reLockers select 0; 
+			_reLockers = nearestObjects [player, ["Land_Device_assembled_F"], 200];
+			if (count _reLockers > 0) then {
+				_reLocker = _reLockers select 0;
 				}else{
 				_reLocker = objNull;
-			}; 
-			
+			};
+
 			switch (true) do
 			{
 				case (!alive player): {};

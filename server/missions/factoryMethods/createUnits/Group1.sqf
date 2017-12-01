@@ -57,6 +57,10 @@ _man3 addMagazine "10Rnd_762x51_Mag";
 _man3 addMagazine "10Rnd_762x51_Mag";
 _man3 addHeadgear "H_Booniehat_mcamo";
 _man3 addGoggles "G_Balaclava_blk";
+_man3 addMagazine "Titan_AA";
+_man3 addWeapon "launch_B_Titan_F";
+_man3 addMagazine "Titan_AA";
+_man3 addMagazine "Titan_AA";
 
 // Soldier4
 _man4 = _group createUnit ["C_man_polo_4_F", [_pos select 0, (_pos select 1) + 40, 0], [], 1, "Form"];

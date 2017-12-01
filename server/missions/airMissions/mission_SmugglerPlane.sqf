@@ -22,7 +22,8 @@ _setupObjects =
 	_planeChoices =
 	[
 		["I_C_Plane_Civil_01_F"],
-		["I_C_Heli_Light_01_civil_F"]
+		["I_C_Heli_Light_01_civil_F"],
+		["CUP_B_C130J_USMC"]
 	];
 
 	_convoyVeh = _planeChoices call BIS_fnc_selectRandom;

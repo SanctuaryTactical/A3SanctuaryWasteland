@@ -15,9 +15,12 @@ _setupVars =
 {
 	_vehicleClass =
 	[
-		"I_Plane_Fighter_03_CAS_F", 
+		"I_Plane_Fighter_03_CAS_F",
 		"B_Plane_CAS_01_F",
-		"O_Plane_CAS_02_F"
+		"O_Plane_CAS_02_F",
+		"CUP_B_AV8B_DYN_USMC",
+		"I_Plane_Fighter_04_F",
+		"O_Plane_Fighter_02_F"
 	] call BIS_fnc_selectRandom;
 
 	_missionType = "Abandoned Jet";
@@ -67,7 +70,7 @@ _setupObjects =
 
 	_vehDeterminer = if ("AEIMO" find (_vehicleName select [0,1]) != -1) then { "An" } else { "A" };
 
-	_missionHintText = format ["%1 <t color='%3'>%2</t> has been immobilized, go get it for your team!", _vehDeterminer, _vehicleName, mainMissionColor];	
+	_missionHintText = format ["%1 <t color='%3'>%2</t> has been immobilized, go get it for your team!", _vehDeterminer, _vehicleName, mainMissionColor];
 };
 
 _waitUntilMarkerPos = nil;

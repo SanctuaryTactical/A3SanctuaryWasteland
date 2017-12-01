@@ -23,21 +23,25 @@ _setupObjects =
 	[
 		["B_Plane_CAS_01_F"],
 		["O_Plane_CAS_02_F"],
-		["I_Plane_Fighter_03_CAS_F"]
+		["I_Plane_Fighter_03_CAS_F"],
+ 		["CUP_B_AV8B_DYN_USMC"],
+		["I_Plane_Fighter_04_F"],
+		["O_Plane_Fighter_02_F"]
+
 	];
 
 	_convoyVeh = _planeChoices call BIS_fnc_selectRandom;
-	
+
 	_veh1 = _convoyVeh select 0;
 
-	_createVehicle = 
+	_createVehicle =
 	{
 		private ["_type","_position","_direction","_vehicle","_soldier"];
-		
+
 		_type = _this select 0;
 		_position = _this select 1;
 		_direction = _this select 2;
-		
+
 
 		_vehicle = createVehicle [_type, _position, [], 0, "FLY"]; // Added to make it fly
 		_vehicle setVariable ["R3F_LOG_disabled", true, true];
@@ -48,29 +52,29 @@ _setupObjects =
 		_aiGroup addVehicle _vehicle;
 
 		// add pilot
-		_soldier = [_aiGroup, _position] call createRandomPilot; 
+		_soldier = [_aiGroup, _position] call createRandomPilot;
 		_soldier moveInDriver _vehicle;
 		// lock the vehicle untill the mission is finished and initialize cleanup on it
-		
+
 		[_vehicle, _aiGroup] spawn checkMissionVehicleLock;
 		_vehicle
 	};
-	
+
 	_aiGroup = createGroup CIVILIAN;
-	
+
 	_vehicles = [];
 	_vehicles set [0, [_veh1,[16000.0,2000.0,0], 14, _aiGroup] call _createVehicle]; // static value update when porting to different maps
-	
+
 	_leader = effectiveCommander (_vehicles select 0);
 	_aiGroup selectLeader _leader;
 	_leader setRank "LIEUTENANT";
-	
+
 	_aiGroup setCombatMode "RED";
 	_aiGroup setBehaviour "COMBAT";
 	_aiGroup setFormation "STAG COLUMN";
-	
+
 	_speedMode = if (missionDifficultyHard) then { "NORMAL" } else { "LIMITED" };
-	
+
 	// behaviour on waypoints
 	{
 		_waypoint = _aiGroup addWaypoint [markerPos (_x select 0), 0];
@@ -90,7 +94,7 @@ _setupObjects =
 
 	_numWaypoints = count waypoints _aiGroup;
 };
-	
+
 _waitUntilMarkerPos = {getPosATL _leader};
 _waitUntilExec = nil;
 _waitUntilCondition = {currentWaypoint _aiGroup >= _numWaypoints};
@@ -113,18 +117,18 @@ _successExec =
 		_cash setVariable ["owner", "world", true];
 	};
 
-	_Boxes1 = ["Box_IND_Wps_F","Box_East_Wps_F","Box_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Grenades_F","Box_East_WpsLaunch_F","Box_NATO_WpsLaunch_F","Box_East_WpsSpecial_F","Box_NATO_WpsSpecial_F"];    
+	_Boxes1 = ["Box_IND_Wps_F","Box_East_Wps_F","Box_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Grenades_F","Box_East_WpsLaunch_F","Box_NATO_WpsLaunch_F","Box_East_WpsSpecial_F","Box_NATO_WpsSpecial_F"];
 	_currBox1 = _Boxes1 call BIS_fnc_selectRandom;
 	_box1 = createVehicle [_currBox1, _lastPos, [], 2, "None"];
 	_box1 setDir random 360;
 	_box1 allowDamage false;
 
-	_Boxes2 = ["Box_IND_Wps_F","Box_East_Wps_F","Box_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Grenades_F","Box_East_WpsLaunch_F","Box_NATO_WpsLaunch_F","Box_East_WpsSpecial_F","Box_NATO_WpsSpecial_F"];    
+	_Boxes2 = ["Box_IND_Wps_F","Box_East_Wps_F","Box_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Grenades_F","Box_East_WpsLaunch_F","Box_NATO_WpsLaunch_F","Box_East_WpsSpecial_F","Box_NATO_WpsSpecial_F"];
 	_currBox2 = _Boxes2 call BIS_fnc_selectRandom;
 	_box2 = createVehicle [_currBox2, _lastPos, [], 2, "None"];
 	_box2 setDir random 360;
 	_box2 allowDamage false;
-	
+
 	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box1, _box2];
 
 	_successHintMessage = "The sky is clear again, the enemy patrol was taken out! Ammo crates and some money have fallen near the pilot.";

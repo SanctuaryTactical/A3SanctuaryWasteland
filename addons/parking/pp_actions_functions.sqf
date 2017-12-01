@@ -51,7 +51,7 @@ pp_setup_terminal = {
     }
     else // garage native to map, cannot attachTo so we use invisible dummy
     {
-      _dummy = createVehicle ["Sign_Sphere25cm_F", getPosATL _terminal, [], 0, ""];
+      _dummy = createVehicle ["Sign_Sphere25cm_F", getPosATL _terminal, [], 0, "NONE"];
       _dummy hideObjectGlobal true;
       _dummy allowDamage false;
       _dummy setPosWorld (getPosWorld _terminal vectorAdd [0,0,-0.1]); // vectorAdd to compensate for elevated shed floor
@@ -85,7 +85,7 @@ pp_create_terminal = {
   _pos = AGLtoASL (_garage modelToWorld _offset);
   _garage allowDamage false;
 
-  _terminal = createVehicle ["Land_CampingTable_small_F", ASLtoATL _pos, [], 0, ""];
+  _terminal = createVehicle ["Land_CampingTable_small_F", ASLtoATL _pos, [], 0, "NONE"];
   _terminal setPosASL _pos;
   _pos set [2, (_pos select 2) - (getPos _terminal select 2)];
   _terminal setPosASL _pos;

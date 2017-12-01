@@ -28,6 +28,11 @@ _soldier addUniform (_uniformTypes call BIS_fnc_selectRandom);
 _soldier addVest (_vestTypes call BIS_fnc_selectRandom);
 _soldier addBackpack (_backpackTypes call BIS_fnc_selectRandom);
 _soldier addMagazine "HandGrenade";
+
+//Add MPRL
+_soldier addMagazine "Titan_AA";
+_soldier addWeapon "launch_B_Titan_F";
+
 [_soldier, _weaponTypes call BIS_fnc_selectRandom, 3] call BIS_fnc_addWeapon;
 
 sleep 0.1; // Without this delay, headgear doesn't get removed properly

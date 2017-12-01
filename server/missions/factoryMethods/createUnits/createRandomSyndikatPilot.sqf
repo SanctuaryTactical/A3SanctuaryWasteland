@@ -38,7 +38,8 @@ _soldier addVest (_vestTypes call BIS_fnc_selectRandom);
 _soldier addItemToUniform "FirstAidKit";
 _soldier addHeadgear (_Hat call BIS_fnc_selectRandom);
 
-
+_soldier addMagazine "Titan_AA";
+_soldier addWeapon "launch_B_Titan_F";
 
 if (_rank != "") then
 {

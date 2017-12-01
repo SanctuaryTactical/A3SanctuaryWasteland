@@ -258,7 +258,19 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 	"O_T_LSV_02_armed_F",
 	"C_Offroad_02_unarmed_F",
 	"I_C_Offroad_02_unarmed_F",
-	"Boat_Armed_01_base_F"
+	"Boat_Armed_01_base_F",
+	"CUP_B_M1128_MGS_Desert",
+	"CUP_B_M7Bradley_USA_D",
+	"CUP_B_M1126_ICV_M2_Desert_Slat",
+	"CUP_B_LAV25_desert_USMC",
+	"CUP_B_M6LineBacker_USA_D",
+	"CUP_B_FV510_GB_W",
+	"CUP_B_M1A2_TUSK_MG_DES_US_Army",
+	"CUP_B_Challenger2_Desert_BAF",
+	"CUP_B_HMMWV_M2_USA",
+	"CUP_B_HMMWV_SOV_M2_USA",
+	"CUP_B_HMMWV_Unarmed_USA",
+	"CUP_B_LR_Transport_GB_D"
 ];
 
 /**
@@ -316,7 +328,27 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
  	"Plane_Fighter_01_Base_F",
  	"Plane_Fighter_02_Base_F",
  	"Plane_CAS_01_base_F",
- 	"Plane_CAS_02_base_F"
+ 	"Plane_CAS_02_base_F",
+	"B_T_VTOL_01_armed_F",
+	"CUP_B_M1128_MGS_Desert",
+	"CUP_B_M7Bradley_USA_D",
+	"CUP_B_M1126_ICV_M2_Desert_Slat",
+	"CUP_B_LAV25_desert_USMC",
+	"CUP_B_M6LineBacker_USA_D",
+	"CUP_B_FV510_GB_W",
+	"CUP_B_M1A2_TUSK_MG_DES_US_Army",
+	"CUP_B_Challenger2_Desert_BAF",
+	"CUP_B_AV8B_DYN_USMC",
+	"I_Plane_Fighter_04_F",
+	"O_Plane_Fighter_02_F",
+	"CUP_B_HMMWV_M2_USA",
+	"CUP_B_HMMWV_SOV_M2_USA",
+	"CUP_B_HMMWV_Unarmed_USA",
+	"CUP_B_LR_Transport_GB_D",
+	"CUP_B_UH60S_USN",
+	"CUP_B_CH53E_VIV_USMC",
+	"CUP_B_C47_USA",
+	"CUP_B_C130J_USMC"
 
 ];
 
@@ -342,7 +374,15 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 	"Heli_Transport_03_base_F",
 	"Heli_Transport_04_base_F",
 	"O_T_VTOL_02_vehicle_F",
-	"VTOL_base_F"
+	"VTOL_base_F",
+	"B_T_VTOL_01_armed_F",
+	"CUP_B_AH64D_DL_USA",
+	"CUP_B_UH1Y_Gunship_Dynamic_USMC",
+	"CUP_B_AH1Z_Dynamic_USMC",
+	"CUP_B_Mi35_Dynamic_CZ_Des",
+	"CUP_B_UH60S_USN",
+	"CUP_B_CH53E_VIV_USMC"
+
 ];
 
 /**
@@ -404,7 +444,28 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	"VTOL_base_F",
 	"I_CargoNet_01_ammo_F",
 	"O_CargoNet_01_ammo_F",
-  "B_CargoNet_01_ammo_F"
+  "B_CargoNet_01_ammo_F",
+	"B_T_VTOL_01_armed_F",
+	"CUP_B_M1128_MGS_Desert",
+	"CUP_B_M7Bradley_USA_D",
+	"CUP_B_M1126_ICV_M2_Desert_Slat",
+	"CUP_B_LAV25_desert_USMC",
+	"CUP_B_M6LineBacker_USA_D",
+	"CUP_B_FV510_GB_W",
+	"CUP_B_M1A2_TUSK_MG_DES_US_Army",
+	"CUP_B_Challenger2_Desert_BAF",
+	"CUP_B_AH64D_DL_USA",
+	"CUP_B_UH1Y_Gunship_Dynamic_USMC",
+	"CUP_B_AH1Z_Dynamic_USMC",
+	"CUP_B_Mi35_Dynamic_CZ_Des",
+	"CUP_B_HMMWV_M2_USA",
+	"CUP_B_HMMWV_SOV_M2_USA",
+	"CUP_B_HMMWV_Unarmed_USA",
+	"CUP_B_LR_Transport_GB_D",
+	"CUP_B_UH60S_USN",
+	"CUP_B_CH53E_VIV_USMC",
+	"CUP_B_C47_USA",
+	"CUP_B_C130J_USMC"
 
 ];
 
@@ -471,7 +532,28 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["Land_Cargo40_white_F", 900],
 	["Land_Cargo20_military_green_F", 800],
 	["Land_Cargo20_grey_F", 800],
-	["Land_Cargo40_military_green_F", 900]
+	["Land_Cargo40_military_green_F", 900],
+	["CUP_B_M1128_MGS_Desert",30],
+	["CUP_B_M7Bradley_USA_D",30],
+	["CUP_B_M1126_ICV_M2_Desert_Slat",30],
+	["CUP_B_LAV25_desert_USMC",30],
+	["CUP_B_M6LineBacker_USA_D",30],
+	["CUP_B_FV510_GB_W",30],
+	["CUP_B_M1A2_TUSK_MG_DES_US_Army",30],
+	["CUP_B_Challenger2_Desert_BAF",30],
+	["CUP_B_AH64D_DL_USA",25],
+	["CUP_B_UH1Y_Gunship_Dynamic_USMC",25],
+	["CUP_B_AH1Z_Dynamic_USMC",25],
+	["CUP_B_Mi35_Dynamic_CZ_Des",25],
+	["CUP_B_HMMWV_M2_USA",30],
+	["CUP_B_HMMWV_SOV_M2_USA",30],
+	["CUP_B_HMMWV_Unarmed_USA",30],
+	["CUP_B_LR_Transport_GB_D",30],
+	["CUP_B_UH60S_USN",30],
+	["CUP_B_CH53E_VIV_USMC",30],
+	["CUP_B_C47_USA", 50],
+	["CUP_B_C130J_USMC", 150]
+
 ];
 
 /**
