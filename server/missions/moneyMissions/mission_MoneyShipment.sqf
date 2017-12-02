@@ -33,12 +33,12 @@ _setupVars =
 					["O_Heli_Light_02_F", "I_Heli_light_03_F"] // Veh 3
 				],
 				[ // CSAT convoy
-					["O_MRAP_02_hmg_F", "O_MRAP_02_gmg_F"], // Veh 1
+					["CUP_B_FV510_GB_W", "O_MRAP_02_gmg_F"], // Veh 1
 					["O_MRAP_02_hmg_F", "O_MRAP_02_gmg_F"], // Veh 2
 					["O_Heli_Light_02_F", "I_Heli_light_03_F"] // Veh 3
 				],
 				[ // AAF convoy
-					["I_MRAP_03_hmg_F", "I_MRAP_03_gmg_F"], // Veh 1
+					["I_MRAP_03_hmg_F", "CUP_B_FV510_GB_W"], // Veh 1
 					["I_MRAP_03_hmg_F", "I_MRAP_03_gmg_F"], // Veh 2
 					["O_Heli_Light_02_F", "I_Heli_light_03_F"] // Veh 3
 				]
@@ -103,7 +103,7 @@ _setupVars =
 			60000, // Money
 			[
 				[ // NATO convoy
-					["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F", "B_APC_Tracked_01_AA_F", "B_MBT_01_cannon_F", "B_MBT_01_TUSK_F"], // Veh 1
+					["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F", "B_APC_Tracked_01_AA_F", "CUP_B_Challenger2_Desert_BAF", "B_MBT_01_TUSK_F"], // Veh 1
 					["B_APC_Tracked_01_AA_F", "B_MBT_01_cannon_F", "B_MBT_01_TUSK_F"], // Veh 2
 					["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F", "B_APC_Tracked_01_AA_F", "B_MBT_01_cannon_F", "B_MBT_01_TUSK_F"], // Veh 3
 					["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F", "B_APC_Tracked_01_AA_F", "B_MBT_01_cannon_F", "B_MBT_01_TUSK_F"], // Veh 4
@@ -124,7 +124,7 @@ _setupVars =
 					["I_APC_Wheeled_03_cannon_F", "I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"], // Veh 1
 					["I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"], // Veh 2
 					["I_APC_Wheeled_03_cannon_F", "I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"], // Veh 3
-					["I_APC_Wheeled_03_cannon_F", "I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"], // Veh 4
+					["I_APC_Wheeled_03_cannon_F", "I_APC_tracked_03_cannon_F", "CUP_B_Challenger2_Desert_BAF"], // Veh 4
 					["O_Heli_Light_02_F", "I_Heli_light_03_F"], // Veh 4
 					["O_Heli_Light_02_F", "I_Heli_light_03_F"], // Veh 5
 					["B_Heli_Attack_01_F", "O_Heli_Attack_02_F"] //Veh 6
