@@ -7,7 +7,7 @@
 if (!isServer) exitwith {};
 #include "airMissionDefines.sqf";
 
-private ["_planeChoices", "_convoyVeh", "_veh1", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_cash", "_boxes1", "_boxes2", "_boxes3", "_boxes4","_boxes5","_boxes6", "_boxes7", "_boxes8", "_boxes9", "_box1", "_box2", "_box3", "_box4", "_box5", "_box6", "_box7", "_box8", "_box9", "_currBox1", "_currBox2", "_currBox3"];
+private ["_planeChoices", "_heloChoices1", "_heloChoices2", "_convoyVeh", "_helo1", "_helo2", "_veh1", "_veh2", "_veh3", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_cash", "_boxes1", "_boxes2", "_boxes3", "_boxes4","_boxes5","_boxes6", "_boxes7", "_boxes8", "_boxes9", "_box1", "_box2", "_box3", "_box4", "_box5", "_box6", "_box7", "_box8", "_box9", "_currBox1", "_currBox2", "_currBox3"];
 
 _setupVars =
 {
@@ -25,10 +25,28 @@ _setupObjects =
 		["I_C_Heli_Light_01_civil_F"],
 		["CUP_B_C130J_USMC"]
 	];
+	_heloChoices1 =
+	[
+		[["B_Heli_Light_01_dynamicLoadout_F", "pawneeNormal"]],
+		[["O_Heli_Light_02_dynamicLoadout_F", "orcaDAGR"]],
+		["I_Heli_light_03_dynamicLoadout_F"]
+	];
+	_heloChoices2 =
+	[
+		"CUP_B_AH64D_DL_USA",
+		"CUP_B_UH1Y_Gunship_Dynamic_USMC",
+		"CUP_B_AH1Z_Dynamic_USMC",
+		"CUP_B_Mi35_Dynamic_CZ_Des",
+		"CUP_B_MH60L_DAP_4x_USN"
+	];
 
 	_convoyVeh = _planeChoices call BIS_fnc_selectRandom;
+	_helo1 = _heloChoices1 call BIS_fnc_selectRandom;
+	_helo2 = _heloChoices2 call BIS_fnc_selectRandom;
 
 	_veh1 = _convoyVeh select 0;
+	_veh2 = _helo1 select 0;
+	_veh3 = _helo2 select 0;
 
 	_createVehicle =
 	{
@@ -37,7 +55,6 @@ _setupObjects =
 		_type = _this select 0;
 		_position = _this select 1;
 		_direction = _this select 2;
-
 
 		_vehicle = createVehicle [_type, _position, [], 0, "FLY"]; // Added to make it fly
 		_vehicle setVehicleReportRemoteTargets true;
@@ -56,10 +73,9 @@ _setupObjects =
 		// add pilot
 		_soldier = [_aiGroup, _position] call createRandomSyndikatPilot;
 		_soldier moveInDriver _vehicle;
- _soldier triggerDynamicSimulation true;
+		_soldier triggerDynamicSimulation true;
+
 		// lock the vehicle untill the mission is finished and initialize cleanup on it
-
-
 		[_vehicle, _aiGroup] spawn checkMissionVehicleLock;
 		_vehicle
 	};
@@ -68,6 +84,8 @@ _setupObjects =
 
 	_vehicles = [];
 	_vehicles set [0, [_veh1,[14574.7,31859.3,0], 14, _aiGroup] call _createVehicle]; // static value update when porting to different maps
+	_vehicles set [1, [_veh2,[14574.7,31859.1,0], 14, _aiGroup] call _createVehicle];
+	_vehicles set [2, [_veh3,[14574.7,31859.5,0], 14, _aiGroup] call _createVehicle];
 
 	_leader = effectiveCommander (_vehicles select 0);
 	_aiGroup selectLeader _leader;
