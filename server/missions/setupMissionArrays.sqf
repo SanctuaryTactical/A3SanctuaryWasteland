@@ -68,8 +68,8 @@ if !(ForestMissionMarkers isEqualTo []) then
 {
 	SideMissions append
 	[
-		["mission_AirWreck", 3],
-		["mission_WepCache", 3]
+		["mission_AirWreck", 1],
+		["mission_WepCache", 1]
 	];
 };
 
