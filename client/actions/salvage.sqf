@@ -65,27 +65,27 @@ switch (true) do
 {
 	case (_vehClass isKindOf "Plane_Base_F"): // Planes (UAV_02 is not in Plane_Base_F)
 	{
-		_time = 30;
+		_time = 20;
 		_money = 10000;
 	};
 	case (_vehClass isKindOf "Tank"): // Tanks & IFVs
 	{
-		_time = 30;
+		_time = 20;
 		_money = 5000;
 	};
 	case (_vehClass isKindOf "Helicopter_Base_F" && !(_vehClass isKindOf "UAV_01_base_F")): // Helicopters (except UAV_01)
 	{
-		_time = 25;
+		_time = 20;
 		_money = 1750;
 	};
 	case (_vehClass isKindOf "Wheeled_APC_F"): // Wheeled APCs
 	{
-		_time = 20;
+		_time = 15;
 		_money = 1500;
 	};
 	case (_vehClass isKindOf "Truck_F" && !(_vehClass isKindOf "Van_01_base_F")): // Trucks (except Vans)
 	{
-		_time = 20;
+		_time = 15;
 		_money = 1000;
 	};
 	case ({_vehClass isKindOf _x} count ["MRAP_01_base_F", "MRAP_02_base_F", "MRAP_03_base_F", "UAV_02_base_F"] > 0): // MRAPs and UAV_02
