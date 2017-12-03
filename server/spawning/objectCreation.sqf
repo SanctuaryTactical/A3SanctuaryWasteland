@@ -11,7 +11,7 @@ _objPos = _this select 0;
 _objList = _this select 1;
 
 _objClass = _objList call BIS_fnc_selectRandom;
-_obj = createVehicle [_objClass, _objPos, [], 50, "None"];
+_obj = createVehicle [_objClass, _objPos, [], 50, "NONE"];
 
 _allowDamage = false;
 
@@ -36,7 +36,7 @@ switch (true) do
 	case (_objClass == "Land_MobileScafolding_01_F"):
 	{
 		_obj enableSimulationGlobal false;
-	};	
+	};
 	case (_objClass isKindOf "ReammoBox_F"):
 	{
 		clearMagazineCargoGlobal _obj;
@@ -56,7 +56,7 @@ switch (true) do
 	};
 	default
 	{
-	
+
 		//_allowDamage = true;
 		_allowDamage = !({_obj isKindOf _x} count ["ReammoBox_F", "Land_ConcreteWall_01_l_4m_F", "Land_ConcreteWall_01_l_8m_F", "Land_ConcreteWall_01_l_gate_F", "Land_Sidewalk_01_8m_F","Land_Sidewalk_01_4m_F","Land_Sidewalk_01_narrow_4m_F","Land_Sidewalk_01_narrow_8m_F"] > 0);
 	};
@@ -70,7 +70,7 @@ _adjustZ = switch (true) do
 {
 	case (_objClass == "Land_Scaffolding_F"):         { -3 };
 	case (_objClass == "Land_Canal_WallSmall_10m_F"): { 3 };
-	case (_objClass == "Land_Canal_Wall_Stairs_F"):   { 3 };	
+	case (_objClass == "Land_Canal_Wall_Stairs_F"):   { 3 };
 	case (_objClass == "Land_runway_edgelight"):   { 4 };
 	case (_objClass == "Land_runway_edgelight_blue_F"):   { 4 };
 	case (_objClass == "Land_Flush_Light_red_F"):   { 4 };

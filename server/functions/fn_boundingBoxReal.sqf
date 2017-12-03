@@ -346,7 +346,7 @@ if (isNil "_boundingBoxReal") then { boundingBoxReal _vehicle } else { _bounding
 		_class = _x select 0;
 		_kind = _x select 1;
 
-		_vehicle = createVehicle [_class, _pos, [], 0, "None"];
+		_vehicle = createVehicle [_class, _pos, [], 0, "NONE"];
 		_vehicle setDir _dir;
 		_vehicle enableSimulation false;
 

@@ -1,6 +1,6 @@
 /*
 	----------------------------------------------------------------------------------------------
-	
+
 	Copyright © 2016 soulkobk (soulkobk.blogspot.com)
 
 	This program is free software: you can redistribute it and/or modify
@@ -17,23 +17,23 @@
 	along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 	----------------------------------------------------------------------------------------------
-	
+
 	Name: randomCrateLoadOut.sqf
 	Version: 1.0.1
 	Author: soulkobk (soulkobk.blogspot.com)
 	Creation Date: 4:40 PM 07/10/2016
 	Modification Date: 2:20 PM 10/10/2016
-	
+
 	Description:
 	For use with A3Wasteland 1.3x mission (A3Wasteland.com). This script is a replacement mission
 	crate load-out script that will randomly select and place items in to mission crates.
-	
+
 	Place this script in the mission file, in path \server\functions\randomCrateLoadOut.sqf
-	and edit \server\functions\serverCompile.sqf and place...	
+	and edit \server\functions\serverCompile.sqf and place...
 	randomCrateLoadOut = [_path, "randomCrateLoadOut.sqf"] call mf_compile;
 	underneath the line...
 	_path = "server\functions";
-	
+
 	It will totally replace the A3Wasteland function 'fn_refillbox'. You will need to search and
 	replace the text/function in all your mission scripts in order to get this script to function.
 	See Example: below.
@@ -46,14 +46,14 @@
 	Parameter(s): <object> call randomCrateLoadOut;
 
 	Example: (missions)
-	_box1 = createVehicle ["Box_NATO_WpsSpecial_F", _missionPos, [], 5, "None"];
+	_box1 = createVehicle ["Box_NATO_WpsSpecial_F", _missionPos, [], 5, "NONE"];
 	_box1 setDir random 360;
 	// [_box1, "mission_USSpecial"] call fn_refillbox; // <- this line is now null
 	_box1 call randomCrateLoadOut; // new randomCrateLoadOut function call
-	
+
 	Example: (outposts)
 	["Box_FIA_Wps_F",[-5,4.801,0],90,{_this call randomCrateLoadOut;}]
-	
+
 	Change Log:
 	1.0.0 -	original base script.
 	1.0.1 -	description/config changes for a clearer understanding of how this script functions and
@@ -1032,7 +1032,7 @@ _vests =
 	"V_TacVest_khk", // Tactical Vest (Khaki)
 	"V_TacVest_oli" // Tactical Vest (Olive)
 ];
-	
+
 _weaponAccessories =
 [
 	"acc_flashlight", // Flashlight
@@ -1137,11 +1137,11 @@ _loadCrateWithWhat = "";
 for [{_i = 0},{_i < _overallLoopAmount},{_i = _i + 1}] do
 {
 	_loadCrateWithWhat = selectRandom _loadCrateWithWhatArray;
-	
+
 	#ifdef __DEBUG__
 		diag_log format ["%1 -> %2",(_i + 1),_loadCrateWithWhat];
 	#endif
-	
+
 	switch (_loadCrateWithWhat) do
 	{
 		case "_backPacks": {

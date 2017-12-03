@@ -23,7 +23,7 @@ _spawnPos = _this select 1;
 
 	if (count _finalPos == 0) then { _finalPos = _spawnPos };
 
-	_currHeli = createVehicle [_spawnType, _finalPos, [], 0, "None"];
+	_currHeli = createVehicle [_spawnType, _finalPos, [], 0, "NONE"];
 
 	_currHeli setPosATL [_finalPos select 0, _finalPos select 1, (_finalPos select 2) + 0.1];
 	_currHeli setDir random 360;
@@ -41,7 +41,7 @@ else
 {
 	//diag_log "Spawning heli wreck...";
 	_spawnType = staticHeliList call BIS_fnc_selectRandom;
-	_currHeli = createVehicle [_spawnType,_spawnPos,[], 50,"None"];
+	_currHeli = createVehicle [_spawnType,_spawnPos,[], 50,"NONE"];
 
 	_currHeli setpos [getpos _currHeli select 0,getpos _currHeli select 1,0];
 

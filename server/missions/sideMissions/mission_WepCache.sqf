@@ -22,11 +22,11 @@ _setupObjects =
 {
 	_missionPos = markerPos _missionLocation;
 
-	_box1 = createVehicle ["Box_NATO_Wps_F", _missionPos, [], 5, "None"];
+	_box1 = createVehicle ["Box_NATO_Wps_F", _missionPos, [], 5, "NONE"];
 	_box1 setDir random 360;
 	[_box1, "mission_USSpecial"] call fn_refillbox;
 
-	_box2 = createVehicle ["Box_East_Wps_F", _missionPos, [], 5, "None"];
+	_box2 = createVehicle ["Box_East_Wps_F", _missionPos, [], 5, "NONE"];
 	_box2 setDir random 360;
 	[_box2, "mission_USLaunchers"] call fn_refillbox;
 

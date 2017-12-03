@@ -17,7 +17,7 @@ private ["_pos", "_vehicle", "_hitPoint"];
 _pos = _markerPos;
 
 //Car Initialization
-_vehicle = createVehicle [_vehicleType, _pos, [], 0, "None"];
+_vehicle = createVehicle [_vehicleType, _pos, [], 0, "NONE"];
 
 _vehicle setPosATL [_pos select 0, _pos select 1, 1.5];
 _vehicle setDir random 360;

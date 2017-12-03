@@ -21,7 +21,7 @@ if (_boatType == "") then
 _pos = _markerPos;
 
 //Car Initialization
-_boat = createVehicle [_boatType, _pos, [], 0, "None"];
+_boat = createVehicle [_boatType, _pos, [], 0, "NONE"];
 
 _boat setPosASL [_pos select 0, _pos select 1, 0];
 _boat setDir random 360;

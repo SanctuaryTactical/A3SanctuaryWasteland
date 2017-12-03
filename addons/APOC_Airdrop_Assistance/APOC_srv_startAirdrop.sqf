@@ -80,7 +80,7 @@ _object = switch (_type) do {
 	case "vehicle":
 	{
 		_objectSpawnPos = [(_spos select 0), (_spos select 1), (_spos select 2) - 5];
-		_object = createVehicle [_selectionClass, _objectSpawnPos, [], 0, "None"];
+		_object = createVehicle [_selectionClass, _objectSpawnPos, [], 0, "NONE"];
 		diag_log format ["Apoc's Airdrop Assistance - Object Spawned at %1", position _object];
 		_object setVariable ["A3W_purchasedStoreObject", true];
 		_object setVariable ["A3W_purchasedVehicle", true, true];
@@ -98,7 +98,7 @@ _object = switch (_type) do {
 	case "supply":
 	{
 		_objectSpawnPos = [(_spos select 0), (_spos select 1), (_spos select 2) - 5];
-		_object = createVehicle ["B_supplyCrate_F", _objectSpawnPos, [], 0, "None"];
+		_object = createVehicle ["B_supplyCrate_F", _objectSpawnPos, [], 0, "NONE"];
 		_object setVariable ["A3W_purchasedStoreObject", true];
 		_object setVariable ["R3F_LOG_Disabled", false, true];
 		[_object, _selectionClass] call fn_refillbox;
@@ -109,7 +109,7 @@ _object = switch (_type) do {
 	case "picnic":  //Beware of Bears!
 	{
 		_objectSpawnPos = [(_spos select 0), (_spos select 1), (_spos select 2) - 5];
-		_object = createVehicle ["B_supplyCrate_F", _objectSpawnPos, [], 0, "None"];
+		_object = createVehicle ["B_supplyCrate_F", _objectSpawnPos, [], 0, "NONE"];
 		diag_log format ["Apoc's Airdrop Assistance - Object Spawned at %1", position _object];
 		_object setVariable ["A3W_purchasedStoreObject", true];
 		_object setVariable ["R3F_LOG_Disabled", false, true];
@@ -119,7 +119,7 @@ _object = switch (_type) do {
 	case "base":
 	{
 		_objectSpawnPos = [(_spos select 0), (_spos select 1), (_spos select 2) - 5];
-		_object = createVehicle ["Land_CargoBox_V1_F", _objectSpawnPos, [], 0, "None"];
+		_object = createVehicle ["Land_CargoBox_V1_F", _objectSpawnPos, [], 0, "NONE"];
 		_object AllowDamage false;
 		//diag_log format ["Apoc's Airdrop Assistance - Object Spawned at %1", position _object];
 		_object setVariable ["A3W_purchasedStoreObject", true];
@@ -135,7 +135,7 @@ _object = switch (_type) do {
 	case "base1":
 	{
 		_objectSpawnPos = [(_spos select 0), (_spos select 1), (_spos select 2) - 5];
-		_object = createVehicle ["Land_Cargo20_yellow_F", _objectSpawnPos, [], 0, "None"];
+		_object = createVehicle ["Land_Cargo20_yellow_F", _objectSpawnPos, [], 0, "NONE"];
 		_object AllowDamage false;
 		//diag_log format ["Apoc's Airdrop Assistance - Object Spawned at %1", position _object];
 		_object setVariable ["A3W_purchasedStoreObject", true];
@@ -151,7 +151,7 @@ _object = switch (_type) do {
 		case "base2":
 	{
 		_objectSpawnPos = [(_spos select 0), (_spos select 1), (_spos select 2) - 5];
-		_object = createVehicle ["Land_Cargo40_white_F", _objectSpawnPos, [], 0, "None"];
+		_object = createVehicle ["Land_Cargo40_white_F", _objectSpawnPos, [], 0, "NONE"];
 		_object AllowDamage false;
 		//diag_log format ["Apoc's Airdrop Assistance - Object Spawned at %1", position _object];
 		_object setVariable ["A3W_purchasedStoreObject", true];
@@ -166,7 +166,7 @@ _object = switch (_type) do {
 	};
 	default {
 		_objectSpawnPos = [(_spos select 0), (_spos select 1), (_spos select 2) - 5];
-		_object = createVehicle ["B_supplyCrate_F", _objectSpawnPos, [], 0, "None"];
+		_object = createVehicle ["B_supplyCrate_F", _objectSpawnPos, [], 0, "NONE"];
 		_object setVariable ["A3W_purchasedStoreObject", true];
 		_object setVariable ["R3F_LOG_Disabled", false, true];
 		[_object, "mission_USSpecial"] call fn_refillbox;
@@ -246,7 +246,7 @@ playSound3D ["a3\sounds_f\sfx\radio\ambient_radio22.wss",_player,false,getPosASL
 WaitUntil {(((position _object) select 2) < (_flyHeight-20))};
 		_heli fire "CMFlareLauncher";
 		_objectPosDrop = position _object;
-		_para = createVehicle ["B_Parachute_02_F", _objectPosDrop, [], 0, ""];
+		_para = createVehicle ["B_Parachute_02_F", _objectPosDrop, [], 0, "NONE"];
 		_object attachTo [_para,[0,0,-1.5]];
 
 		_smoke1= "SmokeShellGreen" createVehicle getPos _object;
@@ -255,7 +255,7 @@ WaitUntil {(((position _object) select 2) < (_flyHeight-20))};
 		_flare1 attachto [_object,[0,0,-0.5]];
 
 //Moved "Turn on damage for vehicles once they're in the chute" from here.
-		
+
 WaitUntil {((((position _object) select 2) < 1) || (isNil "_para"))};
 		detach _object;
 		_smoke2= "SmokeShellGreen" createVehicle getPos _object;
@@ -271,19 +271,16 @@ WaitUntil {((((position _object) select 2) < 1) || (isNil "_para"))};
 			deleteVehicle _object;
 			_object2 = switch (_selectionClass) do {
 				case "Land_Sacks_goods_F": {
-					_object2 = createVehicle [_selectionClass, _objectLandPos, [], 0, "None"];
+					_object2 = createVehicle [_selectionClass, _objectLandPos, [], 0, "NONE"];
 					_object2 setVariable ["food", 50, true];
 					_object2 setVariable ["R3F_LOG_Disabled", false, true];
 					_object2
 				}; //A very big picnic, no?
 				case "Land_BarrelWater_F": {
-					_object2 = createVehicle [_selectionClass, _objectLandPos, [], 0, "None"];
+					_object2 = createVehicle [_selectionClass, _objectLandPos, [], 0, "NONE"];
 					_object2 setVariable ["water",50, true];
 					_object2 setVariable ["R3F_LOG_Disabled", false, true];
 					_object2
 				};
 			};
 		};
-		
-		
-		

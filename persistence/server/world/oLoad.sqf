@@ -50,7 +50,7 @@ _exclObjectIDs = [];
 
 		{ if (typeName _x == "STRING") then { _pos set [_forEachIndex, parseNumber _x] } } forEach _pos;
 
-		_obj = createVehicle [_class, _pos, [], 0, "None"];
+		_obj = createVehicle [_class, _pos, [], 0, "NONE"];
 		_obj allowDamage false;
 		_obj hideObjectGlobal true;
 		_obj setPosWorld ATLtoASL _pos;

@@ -176,7 +176,7 @@ va_get_tag = {
 };
 
 va_get_owner_name = {
-  ARGVX4(0,_vehicle,objNull,"None");
+  ARGVX4(0,_vehicle,objNull,"NONE");
 
   def(_name);
   _name = _vehicle getVariable "ownerN";
@@ -196,7 +196,7 @@ va_get_owner_name = {
   _uid3 = _vehicle getVariable ["ownerUID", ""];
   _uid4 = _vehicle getVariable ["UID", ""];
 
-  if (_uid1 == "" && { _uid2 == "" && { _uid3 == "" && { _uid4 == ""}}}) exitWith {"None"};
+  if (_uid1 == "" && { _uid2 == "" && { _uid3 == "" && { _uid4 == ""}}}) exitWith {"NONE"};
 
   def(_uid);
   def(_player);

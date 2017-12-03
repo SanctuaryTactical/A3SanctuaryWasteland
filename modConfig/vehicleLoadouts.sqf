@@ -18,10 +18,20 @@ switch (true) do
 	// AH-9 Pawnee
 	case (_class isKindOf "B_Heli_Light_01_dynamicLoadout_F"):
 	{
+		//Works but removes guns, why?
+		/*_weapons =
+		[
+			["CMFlareLauncher", [-1]]
+		];
+		_mags =
+		[
+			["60Rnd_CMFlare_Chaff_Magazine", [-1]]
+		];*/
+
 		switch (_variant) do
 		{
 			case "pawneeGun": { _pylons = ["",""] };
-			default           { _pylons = ["PylonRack_12Rnd_missiles","PylonRack_12Rnd_missiles"] };
+			default {	_pylons = ["PylonRack_12Rnd_missiles","PylonRack_12Rnd_missiles"]	};
 		};
 	};
 
