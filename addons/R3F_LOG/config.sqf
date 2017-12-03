@@ -270,7 +270,9 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 	"CUP_B_HMMWV_M2_USA",
 	"CUP_B_HMMWV_SOV_M2_USA",
 	"CUP_B_HMMWV_Unarmed_USA",
-	"CUP_B_LR_Transport_GB_D"
+	"CUP_B_LR_Transport_GB_D",
+	"CUP_B_BDRM2_CZ_Des",
+	"CUP_B_T72_CZ"
 ];
 
 /**
@@ -348,7 +350,14 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"CUP_B_UH60S_USN",
 	"CUP_B_CH53E_VIV_USMC",
 	"CUP_B_C47_USA",
-	"CUP_B_C130J_USMC"
+	"CUP_B_C130J_USMC",
+	"CUP_B_L39_CZ",
+	"CUP_B_F35B_BAF",
+	"CUP_B_MH60L_DAP_4x_USN",
+	"CUP_B_BDRM2_CZ_Des",
+	"CUP_B_T72_CZ",
+	"O_Plane_CAS_02_dynamicLoadout_F",
+	"I_Plane_Fighter_03_dynamicLoadout_F"
 
 ];
 
@@ -381,8 +390,8 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 	"CUP_B_AH1Z_Dynamic_USMC",
 	"CUP_B_Mi35_Dynamic_CZ_Des",
 	"CUP_B_UH60S_USN",
-	"CUP_B_CH53E_VIV_USMC"
-
+	"CUP_B_CH53E_VIV_USMC",
+	"CUP_B_MH60L_DAP_4x_USN"
 ];
 
 /**
@@ -465,7 +474,14 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	"CUP_B_UH60S_USN",
 	"CUP_B_CH53E_VIV_USMC",
 	"CUP_B_C47_USA",
-	"CUP_B_C130J_USMC"
+	"CUP_B_C130J_USMC",
+	"CUP_B_L39_CZ",
+	"CUP_B_F35B_BAF",
+	"CUP_B_MH60L_DAP_4x_USN",
+	"CUP_B_BDRM2_CZ_Des",
+	"CUP_B_T72_CZ",
+	"O_Plane_CAS_02_dynamicLoadout_F",
+	"I_Plane_Fighter_03_dynamicLoadout_F"
 
 ];
 
@@ -550,9 +566,14 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["CUP_B_HMMWV_Unarmed_USA",30],
 	["CUP_B_LR_Transport_GB_D",30],
 	["CUP_B_UH60S_USN",30],
+	["CUP_B_MH60L_DAP_4x_USN", 30],
 	["CUP_B_CH53E_VIV_USMC",30],
 	["CUP_B_C47_USA", 50],
-	["CUP_B_C130J_USMC", 150]
+	["CUP_B_C130J_USMC", 150],
+	["CUP_B_L39_CZ", 20],
+	["CUP_B_F35B_BAF",20],
+	["CUP_B_BDRM2_CZ_Des", 30],
+	["CUP_B_T72_CZ",30]
 
 ];
 
