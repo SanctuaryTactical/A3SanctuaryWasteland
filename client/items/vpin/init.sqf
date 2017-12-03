@@ -12,6 +12,8 @@ private ["_path","_applypin"];
 _path = _this;
 
 _applypin = [_path, "applypin.sqf"] call mf_compile;
+_maxVehiclePins = ceil (["A3W_maxVehiclePins", 2] call getPublicVar);
+
 MF_ITEMS_PINLOCK = "pinlock";
 MF_ITEMS_PINLOCK_TYPE = "Land_SatellitePhone_F";
 MF_ITEMS_PINLOCK_ICON = "client\icons\keypad.paa";
@@ -20,7 +22,7 @@ mf_pinlock_nearest_vehicle = {
 	["LandVehicle", "Air", "Ship"] call mf_nearest_vehicle
 } call mf_compile;
 
-[MF_ITEMS_PINLOCK, "Vehicle Pinlock", _applypin, MF_ITEMS_PINLOCK_TYPE, MF_ITEMS_PINLOCK_ICON, 1] call mf_inventory_create;
+[MF_ITEMS_PINLOCK, "Vehicle Pinlock", _applypin, MF_ITEMS_PINLOCK_TYPE, MF_ITEMS_PINLOCK_ICON, _maxVehiclePins] call mf_inventory_create;
 
 mf_can_applypin = [_path, "can_applypin.sqf"] call mf_compile;
 

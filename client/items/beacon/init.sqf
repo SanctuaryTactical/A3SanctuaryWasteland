@@ -18,7 +18,9 @@ MF_ITEMS_SPAWN_BEACON_STEAL_DURATION = 120;
 MF_ITEMS_SPAWN_BEACON_DURATION = 15;
 _deploy = build("deploy.sqf");
 _icon = "client\icons\spawnbeacon.paa";
-[MF_ITEMS_SPAWN_BEACON, "Spawn Beacon", _deploy, "Land_Sleeping_bag_folded_F", _icon, 1] call mf_inventory_create;
+_maxInventory = ceil (["A3W_maxSpawnBeaconsInv", 1] call getPublicVar);
+
+[MF_ITEMS_SPAWN_BEACON, "Spawn Beacon", _deploy, "Land_Sleeping_bag_folded_F", _icon, _maxInventory] call mf_inventory_create;
 
 mf_items_spawn_beacon_nearest = {
 	_beacon = objNull;
