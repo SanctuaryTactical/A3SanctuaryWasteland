@@ -51,7 +51,7 @@ _setupVars =
 			[
 				[ // NATO convoy
 					["B_MRAP_01_hmg_F", "B_MRAP_01_gmg_F"], // Veh 1
-					["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F", "B_APC_Tracked_01_AA_F"], // Veh 2
+					["B_APC_Wheeled_01_cannon_F", "CUP_B_BDRM2_CZ_Des", "B_APC_Tracked_01_AA_F"], // Veh 2
 					["B_MRAP_01_hmg_F", "B_MRAP_01_gmg_F"], // Veh 3
 					["O_Heli_Light_02_F", "I_Heli_light_03_F"] // Veh 4
 				],
@@ -91,7 +91,7 @@ _setupVars =
 				[ // AAF convoy
 					["I_APC_Wheeled_03_cannon_F", "I_APC_tracked_03_cannon_F"], // Veh 1
 					["I_MBT_03_cannon_F"], // Veh 2
-					["I_APC_Wheeled_03_cannon_F", "I_APC_tracked_03_cannon_F"], // Veh 3
+					["I_APC_Wheeled_03_cannon_F", "CUP_B_BDRM2_CZ_Des"], // Veh 3
 					["O_Heli_Light_02_F", "I_Heli_light_03_F"], // Veh 4
 					["B_Heli_Attack_01_F", "O_Heli_Attack_02_F"] //Veh 5
 				]
@@ -158,7 +158,7 @@ _setupObjects =
 		_position = _this select 1;
 		_direction = _this select 2;
 
-		_vehicle = createVehicle [_type, _position, [], 0, "None"];
+		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
 		_vehicle setVariable ["R3F_LOG_disabled", true, true];
 		[_vehicle] call vehicleSetup;
 
@@ -247,7 +247,7 @@ _successExec =
 
 	for "_i" from 1 to 10 do
 	{
-		_cash = createVehicle ["Land_Money_F", _lastPos, [], 5, "None"];
+		_cash = createVehicle ["Land_Money_F", _lastPos, [], 5, "NONE"];
 		_cash setPos ([_lastPos, [[2 + random 3,0,0], random 360] call BIS_fnc_rotateVector2D] call BIS_fnc_vectorAdd);
 		_cash setDir random 360;
 		_cash setVariable ["cmoney", _moneyAmount / 10, true];

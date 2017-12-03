@@ -39,7 +39,7 @@ _setupObjects =
 		_position = _this select 1;
 		_direction = _this select 2;
 
-		_vehicle = createVehicle [_type, _position, [], 0, "None"];
+		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
 		_vehicle setVehicleReportRemoteTargets true;
 		_vehicle setVehicleReceiveRemoteTargets true;
 		_vehicle setVehicleRadar 1;
@@ -123,7 +123,7 @@ _setupObjects =
 	_missionPicture = getText (configFile >> "CfgVehicles" >> _veh1 >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> _veh1 >> "displayName");
 
-	_missionHintText = format ["A NATO SF Team Driving a <t color='%2'>%1</t> transporting 2 weapon crates to an undisclosed location. Stop them!!", _vehicleName, extraMissionColor];
+	_missionHintText = format ["A NATO SF Team Driving a <t color='%2'>%1</t> transporting 2 weapon crates to an undisclosed location. Stop them!!", _vehicleName, sideMissionColor];
 
 	_numWaypoints = count waypoints _aiGroup;
 };
@@ -142,14 +142,14 @@ _successExec =
 
 	_Boxes1 = ["Box_NATO_WpsLaunch_F", "Box_T_NATO_Wps_F"];
 	_currBox1 = _Boxes1 call BIS_fnc_selectRandom;
-	_box1 = createVehicle [_currBox1, _lastPos, [], 2, "None"];
+	_box1 = createVehicle [_currBox1, _lastPos, [], 2, "NONE"];
 	_box1 setDir random 360;
 	_box1 setVariable ["moveable", true, true];
 	_box1 allowDamage false;
 
 	_Boxes2 = ["Box_NATO_WpsLaunch_F", "Box_T_NATO_Wps_F"];
 	_currBox2 = _Boxes2 call BIS_fnc_selectRandom;
-	_box2 = createVehicle [_currBox2, _lastPos, [], 2, "None"];
+	_box2 = createVehicle [_currBox2, _lastPos, [], 2, "NONE"];
 	_box2 setDir random 360;
 	_box2 setVariable ["moveable", true, true];
 	_box2 allowDamage false;

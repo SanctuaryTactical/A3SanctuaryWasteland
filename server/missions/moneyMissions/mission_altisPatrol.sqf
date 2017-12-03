@@ -134,7 +134,7 @@ _drop_item =
 	_class = _item select 1;
 
 	private["_obj"];
-	_obj = createVehicle [_class, _pos, [], 5, "None"];
+	_obj = createVehicle [_class, _pos, [], 5, "NONE"];
 	_obj setPos ([_pos, [[2 + random 3,0,0], random 360] call BIS_fnc_rotateVector2D] call BIS_fnc_vectorAdd);
 	_obj setVariable ["mf_item_id", _id, true];
 };

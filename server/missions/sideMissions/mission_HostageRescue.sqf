@@ -41,13 +41,13 @@ _setupObjects =
 
 
 
-	_obj1 = createVehicle ["I_GMG_01_high_F", _missionPos,[], 10,"None"];
+	_obj1 = createVehicle ["I_GMG_01_high_F", _missionPos,[], 10,"NONE"];
 	_obj1 setPosATL [(_missionPos select 0) - 2, (_missionPos select 1) + 2, _missionPos select 2];
 
-	_obj3 = createVehicle ["I_HMG_01_high_F", _missionPos,[], 10,"None"];
+	_obj3 = createVehicle ["I_HMG_01_high_F", _missionPos,[], 10,"NONE"];
 	_obj3 setPosATL [(_missionPos select 0) - 2, (_missionPos select 1) - 2, _missionPos select 2];
 
-	_obj4 = createVehicle ["I_HMG_01_high_F", _missionPos,[], 10,"None"];
+	_obj4 = createVehicle ["I_HMG_01_high_F", _missionPos,[], 10,"NONE"];
 	_obj4 setPosATL [(_missionPos select 0) + 2, (_missionPos select 1) - 2, _missionPos select 2];
 
 
@@ -82,7 +82,7 @@ _successExec =
 
 	for "_x" from 1 to 5 do
 	{
-		_cash = createVehicle ["Land_Money_F", _lastPos, [], 5, "None"];
+		_cash = createVehicle ["Land_Money_F", _lastPos, [], 5, "NONE"];
 		_cash setPos ([_lastPos, [[2 + random 3,0,0], random 360] call BIS_fnc_rotateVector2D] call BIS_fnc_vectorAdd);
 		_cash setDir random 360;
 		_cash setVariable["cmoney",10000,true];

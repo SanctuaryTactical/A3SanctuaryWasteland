@@ -25,7 +25,9 @@ _setupObjects =
 	[
 		["I_G_Offroad_01_F","O_MBT_02_cannon_F","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_G_Offroad_01_F"],
 		["I_G_Offroad_01_F","O_MBT_02_cannon_F","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_G_Offroad_01_F"],
-		["I_G_Offroad_01_F","CUP_B_M1A2_TUSK_MG_DES_US_Army","I_MRAP_03_F","O_APC_Tracked_02_AA_F","CUP_B_Challenger2_Desert_BAF","CUP_B_M7Bradley_USA_D"]
+		["I_G_Offroad_01_F","CUP_B_M1A2_TUSK_MG_DES_US_Army","I_MRAP_03_F","O_APC_Tracked_02_AA_F","CUP_B_Challenger2_Desert_BAF","CUP_B_M7Bradley_USA_D"],
+		["I_G_Offroad_01_F","CUP_B_Challenger2_Desert_BAF","I_MRAP_03_F","O_APC_Tracked_02_AA_F","O_MBT_02_cannon_F","I_G_Offroad_01_F"],
+		["I_G_Offroad_01_F","CUP_B_T72_CZ","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_G_Offroad_01_F"]
 	] call BIS_fnc_selectRandom;
 
 	_veh1 = _convoyVeh select 0;
@@ -42,7 +44,7 @@ _setupObjects =
 		_position = _this select 1;
 		_direction = _this select 2;
 
-		_vehicle = createVehicle [_type, _position, [], 0, "None"];
+		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
 		[_vehicle] call vehicleSetup;
 
 		_vehicle setDir _direction;
@@ -70,7 +72,7 @@ _setupObjects =
 		_position = _this select 1;
 		_direction = _this select 2;
 
-		_vehicle = createVehicle [_type, _position, [], 0, "None"];
+		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
 		[_vehicle] call vehicleSetup;
 
 		_vehicle setDir _direction;
@@ -98,7 +100,7 @@ _setupObjects =
 		_position = _this select 1;
 		_direction = _this select 2;
 
-		_vehicle = createVehicle [_type, _position, [], 0, "None"];
+		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
 		[_vehicle] call vehicleSetup;
 
 		_vehicle setDir _direction;

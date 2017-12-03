@@ -47,7 +47,7 @@ _setupObjects =
 		_position = _this select 1;
 		_direction = _this select 2;
 
-		_vehicle = createVehicle [_type, _position, [], 0, "None"];
+		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
 		_vehicle setVariable ["R3F_LOG_disabled", true, true];
 		_vehicle setVariable ["A3W_skipAutoSave", true, true];
 		[_vehicle] call vehicleSetup;
@@ -130,11 +130,11 @@ _failedExec = nil;
 _successExec =
 {
 	// Mission completed
-	_box1 = createVehicle ["Box_NATO_Wps_F", _lastPos, [], 2, "None"];
+	_box1 = createVehicle ["Box_NATO_Wps_F", _lastPos, [], 2, "NONE"];
 	_box1 setDir random 360;
 	[_box1, "mission_USSpecial2"] call fn_refillbox;
 
-	_box2 = createVehicle ["Box_East_WpsSpecial_F", _lastPos, [], 2, "None"];
+	_box2 = createVehicle ["Box_East_WpsSpecial_F", _lastPos, [], 2, "NONE"];
 	_box2 setDir random 360;
 	[_box2, "mission_USLaunchers"] call fn_refillbox;
 

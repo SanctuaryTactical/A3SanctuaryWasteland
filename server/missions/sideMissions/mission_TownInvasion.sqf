@@ -35,24 +35,24 @@ _setupVars =
 _setupObjects =
 {
 	// spawn some crates in the middle of town (Town marker position)
-	_box1 = createVehicle ["Box_NATO_Wps_F", _missionPos, [], 5, "None"];
+	_box1 = createVehicle ["Box_NATO_Wps_F", _missionPos, [], 5, "NONE"];
 	_box1 setDir random 360;
 	//[_box1, "mission_USSpecial"] call fn_refillbox;
 	[_box1, "mission_USSpecial"] call randomCrateLoadOut;
 
-	_box2 = createVehicle ["Box_East_Wps_F", _missionPos, [], 5, "None"];
+	_box2 = createVehicle ["Box_East_Wps_F", _missionPos, [], 5, "NONE"];
 	_box2 setDir random 360;
 	//[_box2, "mission_USLaunchers"] call fn_refillbox;
 	[_box2, "mission_USLaunchers"] call randomCrateLoadOut;
 
 	// create some atmosphere around the crates 8)
-	_tent1 = createVehicle ["Land_cargo_addon02_V2_F", _missionPos, [], 3, "None"];
+	_tent1 = createVehicle ["Land_cargo_addon02_V2_F", _missionPos, [], 3, "NONE"];
 	_tent1 setDir random 360;
-	_chair1 = createVehicle ["Land_CampingChair_V1_F", _missionPos, [], 2, "None"];
+	_chair1 = createVehicle ["Land_CampingChair_V1_F", _missionPos, [], 2, "NONE"];
 	_chair1 setDir random 90;
-	_chair2 = createVehicle ["Land_CampingChair_V2_F", _missionPos, [], 2, "None"];
+	_chair2 = createVehicle ["Land_CampingChair_V2_F", _missionPos, [], 2, "NONE"];
 	_chair2 setDir random 180;
-	_cFire1	= createVehicle ["Campfire_burning_F", _missionPos, [], 2, "None"];
+	_cFire1	= createVehicle ["Campfire_burning_F", _missionPos, [], 2, "NONE"];
 
 
 	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach [_box1, _box2];

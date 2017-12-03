@@ -20,7 +20,10 @@ _setupVars =
 		"O_Plane_CAS_02_F",
 		"CUP_B_AV8B_DYN_USMC",
 		"I_Plane_Fighter_04_F",
-		"O_Plane_Fighter_02_F"
+		"O_Plane_Fighter_02_F",
+		"CUP_B_L39_CZ",
+		"CUP_B_F35B_BAF"
+
 	] call BIS_fnc_selectRandom;
 
 	_missionType = "Abandoned Jet";

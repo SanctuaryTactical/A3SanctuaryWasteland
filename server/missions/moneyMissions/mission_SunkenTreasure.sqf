@@ -22,7 +22,7 @@ _setupObjects =
 {
 	_missionPos = markerPos _missionLocation;
 
-	_box1 = createVehicle ["Box_NATO_Wps_F", _missionPos, [], 0, "None"];
+	_box1 = createVehicle ["Box_NATO_Wps_F", _missionPos, [], 0, "NONE"];
 	_box1 setVariable ["R3F_LOG_disabled", true, true];
 	_box1 setDir random 360;
 	[_box1, "mission_USSpecial"] call fn_refillbox;
@@ -31,7 +31,7 @@ _setupObjects =
 
 	for "_i" from 1 to 10 do
 	{
-		_cash = createVehicle ["Land_Money_F", _missionPos, [], 0, "None"];
+		_cash = createVehicle ["Land_Money_F", _missionPos, [], 0, "NONE"];
 		_cash setVariable ["owner", "mission", true];
 		//_cashPos = getPosATL _cash;
 		//_cashPos set [2, getTerrainHeightASL _cashPos + 1];

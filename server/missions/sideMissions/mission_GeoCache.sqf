@@ -13,7 +13,7 @@ private ["_geoPos", "_geoCache", "_randomBox", "_randomCase", "_box1", "_para"];
 
 _setupVars =
 {
-	_missionType = "GeoCache";
+	_missionType = "Q-'Rageous' Cache";
 	_locationsArray = MissionSpawnMarkers;
 };
 
