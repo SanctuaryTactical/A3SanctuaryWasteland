@@ -118,7 +118,7 @@ _successExec =
 	//Money
 	/*for "_i" from 1 to 10 do
 	{
-		_cash = createVehicle ["Land_Money_F", _lastPos, [], 5, "None"];
+		_cash = createVehicle ["Land_Money_F", _lastPos, [], 5, "NONE"];
 		_cash setPos ([_lastPos, [[2 + random 3,0,0], random 360] call BIS_fnc_rotateVector2D] call BIS_fnc_vectorAdd);
 		_cash setDir random 360;
 		_cash setVariable ["cmoney", 10000, true];
@@ -127,42 +127,48 @@ _successExec =
 
 	_Boxes1 = ["Box_NATO_Ammo_F","Box_T_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Equip_F","Box_NATO_Grenades_F","Box_T_NATO_WpsSpecial_F","Box_NATO_WpsLaunch_F"];
 	_currBox1 = _Boxes1 call BIS_fnc_selectRandom;
-	_box1 = createVehicle [_currBox1, _lastPos, [], 2, "None"];
+	_box1 = createVehicle [_currBox1, _lastPos, [], 2, "NONE"];
 	_box1 setDir random 360;
 	_box1 setVariable ["moveable", true, true];
 	_box1 allowDamage false;
 
 	_Boxes2 = ["Box_NATO_Ammo_F","Box_T_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Equip_F","Box_NATO_Grenades_F","Box_T_NATO_WpsSpecial_F","Box_NATO_WpsLaunch_F"];
 	_currBox2 = _Boxes2 call BIS_fnc_selectRandom;
-	_box2 = createVehicle [_currBox2, _lastPos, [], 2, "None"];
+	_box2 = createVehicle [_currBox2, _lastPos, [], 2, "NONE"];
 	_box2 setDir random 360;
 	_box2 setVariable ["moveable", true, true];
 	_box2 allowDamage false;
 
 	_Boxes3 = ["Box_NATO_Ammo_F","Box_T_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Equip_F","Box_NATO_Grenades_F","Box_T_NATO_WpsSpecial_F","Box_NATO_WpsLaunch_F"];
 	_currBox3 = _Boxes3 call BIS_fnc_selectRandom;
-	_box3 = createVehicle [_currBox3, _lastPos, [], 2, "None"];
+	_box3 = createVehicle [_currBox3, _lastPos, [], 2, "NONE"];
 	_box3 setDir random 360;
 	_box3 setVariable ["moveable", true, true];
 	_box3 allowDamage false;
 
+	//Scotsman - Pop Smoke
+	_smoke1= "SmokeShellGreen" createVehicle getPos _box3;
+	_smoke1 attachto [_box3,[0,0,-0.5]];
+	_flare1= "F_40mm_Green" createVehicle getPos _box3;
+	_flare1 attachto [_box3,[0,0,-0.5]];
+
 	_Boxes4 = ["Box_NATO_Ammo_F","Box_T_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Equip_F","Box_NATO_Grenades_F","Box_T_NATO_WpsSpecial_F","Box_NATO_WpsLaunch_F"];
 	_currBox4 = _Boxes4 call BIS_fnc_selectRandom;
-	_box4 = createVehicle [_currBox4, _lastPos, [], 2, "None"];
+	_box4 = createVehicle [_currBox4, _lastPos, [], 2, "NONE"];
 	_box4 setDir random 360;
 	_box4 setVariable ["moveable", true, true];
 	_box4 allowDamage false;
 
 	_Boxes5 = ["Box_NATO_Ammo_F","Box_T_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Equip_F","Box_NATO_Grenades_F","Box_T_NATO_WpsSpecial_F","Box_NATO_WpsLaunch_F"];
 	_currBox5 = _Boxes5 call BIS_fnc_selectRandom;
-	_box5 = createVehicle [_currBox5, _lastPos, [], 2, "None"];
+	_box5 = createVehicle [_currBox5, _lastPos, [], 2, "NONE"];
 	_box5 setDir random 360;
 	_box5 setVariable ["moveable", true, true];
 	_box5 allowDamage false;
 
 	_Boxes6 = ["Box_NATO_Ammo_F","Box_T_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Equip_F","Box_NATO_Grenades_F","Box_T_NATO_WpsSpecial_F","Box_NATO_WpsLaunch_F"];
 	_currBox6 = _Boxes6 call BIS_fnc_selectRandom;
-	_box6 = createVehicle [_currBox6, _lastPos, [], 2, "None"];
+	_box6 = createVehicle [_currBox6, _lastPos, [], 2, "NONE"];
 	_box6 setDir random 360;
 	_box6 setVariable ["moveable", true, true];
 	_box6 allowDamage false;

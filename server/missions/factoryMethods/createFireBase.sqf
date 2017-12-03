@@ -34,7 +34,7 @@ _objs = [];
 	if (count _relPos == 2) then { _relPos set [2, 0] };
 
 	_finalPos = _pos vectorAdd ([_relPos, -(_dir)] call BIS_fnc_rotateVector2D);
-	_obj = createVehicle [_class, _finalPos, [], 0, "None"];
+	_obj = createVehicle [_class, _finalPos, [], 0, "NONE"];
 	_obj setDir (_dir + _relDir);
 	_obj setPos _finalPos;
 	_obj setPosATL _finalPos;

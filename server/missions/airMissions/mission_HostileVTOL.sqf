@@ -115,7 +115,7 @@ _successExec =
 	//Money
 	/*for "_i" from 1 to 10 do
 	{
-		_cash = createVehicle ["Land_Money_F", _lastPos, [], 5, "None"];
+		_cash = createVehicle ["Land_Money_F", _lastPos, [], 5, "NONE"];
 		_cash setPos ([_lastPos, [[2 + random 3,0,0], random 360] call BIS_fnc_rotateVector2D] call BIS_fnc_vectorAdd);
 		_cash setDir random 360;
 		_cash setVariable ["cmoney", 10000, true];
@@ -124,7 +124,7 @@ _successExec =
 
 	_Boxes1 = ["Box_T_East_Ammo_F", "Box_T_East_Wps_F", "Box_East_AmmoOrd_F", "Box_CSAT_Equip_F", "Box_CSAT_Uniforms_F", "Box_East_WpsLaunch_F", "Box_T_East_WpsSpecial_F", "Box_East_Support_F", "Box_East_AmmoVeh_F"];
 	_currBox1 = _Boxes1 call BIS_fnc_selectRandom;
-	_box1 = createVehicle [_currBox1, _lastPos, [], 2, "None"];
+	_box1 = createVehicle [_currBox1, _lastPos, [], 2, "NONE"];
 	_box1 setDir random 360;
 	if (_box1 isKindOf "Box_East_AmmoVeh_F") then
 	{
@@ -136,7 +136,7 @@ _successExec =
 
 	_Boxes2 = ["Box_T_East_Ammo_F", "Box_T_East_Wps_F", "Box_East_AmmoOrd_F", "Box_CSAT_Equip_F", "Box_CSAT_Uniforms_F", "Box_East_WpsLaunch_F", "Box_T_East_WpsSpecial_F", "Box_East_Support_F", "Box_East_AmmoVeh_F"];
 	_currBox2 = _Boxes2 call BIS_fnc_selectRandom;
-	_box2 = createVehicle [_currBox2, _lastPos, [], 2, "None"];
+	_box2 = createVehicle [_currBox2, _lastPos, [], 2, "NONE"];
 	_box2 setDir random 360;
 	if (_box2 isKindOf "Box_East_AmmoVeh_F") then
 	{
@@ -148,7 +148,7 @@ _successExec =
 
 	_Boxes3 = ["Box_T_East_Ammo_F", "Box_T_East_Wps_F", "Box_East_AmmoOrd_F", "Box_CSAT_Equip_F", "Box_CSAT_Uniforms_F", "Box_East_WpsLaunch_F", "Box_T_East_WpsSpecial_F", "Box_East_Support_F", "Box_East_AmmoVeh_F"];
 	_currBox3 = _Boxes3 call BIS_fnc_selectRandom;
-	_box3 = createVehicle [_currBox3, _lastPos, [], 2, "None"];
+	_box3 = createVehicle [_currBox3, _lastPos, [], 2, "NONE"];
 	_box3  setDir random 360;
 	if (_box3 isKindOf "Box_East_AmmoVeh_F") then
 	{
@@ -158,9 +158,15 @@ _successExec =
 	_box3 setVariable ["moveable", true, true];
 	_box3 allowDamage false;
 
+	//Scotsman - Pop Smoke
+	_smoke1= "SmokeShellGreen" createVehicle getPos _box3;
+	_smoke1 attachto [_box3,[0,0,-0.5]];
+	_flare1= "F_40mm_Green" createVehicle getPos _box3;
+	_flare1 attachto [_box3,[0,0,-0.5]];
+
 	_Boxes4 = ["Box_T_East_Ammo_F", "Box_T_East_Wps_F", "Box_East_AmmoOrd_F", "Box_CSAT_Equip_F", "Box_CSAT_Uniforms_F", "Box_East_WpsLaunch_F", "Box_T_East_WpsSpecial_F", "Box_East_Support_F", "Box_East_AmmoVeh_F"];
 	_currBox4 = _Boxes4 call BIS_fnc_selectRandom;
-	_box4 = createVehicle [_currBox4, _lastPos, [], 2, "None"];
+	_box4 = createVehicle [_currBox4, _lastPos, [], 2, "NONE"];
 	_box4 setDir random 360;
 	if (_box4 isKindOf "Box_East_AmmoVeh_F") then
 	{
@@ -172,7 +178,7 @@ _successExec =
 
 	_Boxes5 = ["Box_T_East_Ammo_F", "Box_T_East_Wps_F", "Box_East_AmmoOrd_F", "Box_CSAT_Equip_F", "Box_CSAT_Uniforms_F", "Box_East_WpsLaunch_F", "Box_T_East_WpsSpecial_F", "Box_East_Support_F", "Box_East_AmmoVeh_F"];
 	_currBox5 = _Boxes5 call BIS_fnc_selectRandom;
-	_box5 = createVehicle [_currBox5, _lastPos, [], 2, "None"];
+	_box5 = createVehicle [_currBox5, _lastPos, [], 2, "NONE"];
 	_box5 setDir random 360;
 	if (_box5 isKindOf "Box_East_AmmoVeh_F") then
 	{
@@ -184,9 +190,9 @@ _successExec =
 
 	_Boxes6 = ["Box_T_East_Ammo_F", "Box_T_East_Wps_F", "Box_East_AmmoOrd_F", "Box_CSAT_Equip_F", "Box_CSAT_Uniforms_F", "Box_East_WpsLaunch_F", "Box_T_East_WpsSpecial_F", "Box_East_Support_F", "Box_East_AmmoVeh_F"];
 	_currBox6 = _Boxes6 call BIS_fnc_selectRandom;
-	_box6 = createVehicle [_currBox6, _lastPos, [], 2, "None"];
+	_box6 = createVehicle [_currBox6, _lastPos, [], 2, "NONE"];
 	_box6 setDir random 360;
-	if (_bo61 isKindOf "Box_East_AmmoVeh_F") then
+	if (_box6 isKindOf "Box_East_AmmoVeh_F") then
 	{
 		_box6 setammocargo 0;
 		[_box6] remoteExecCall ["GOM_fnc_addAircraftLoadout", 0, _box6];
@@ -196,7 +202,7 @@ _successExec =
 
 	_Boxes7 = ["Box_T_East_Ammo_F", "Box_T_East_Wps_F", "Box_East_AmmoOrd_F", "Box_CSAT_Equip_F", "Box_CSAT_Uniforms_F", "Box_East_WpsLaunch_F", "Box_T_East_WpsSpecial_F", "Box_East_Support_F", "Box_East_AmmoVeh_F"];
 	_currBox7 = _Boxes7 call BIS_fnc_selectRandom;
-	_box7 = createVehicle [_currBox7, _lastPos, [], 2, "None"];
+	_box7 = createVehicle [_currBox7, _lastPos, [], 2, "NONE"];
 	_box7 setDir random 360;
 	if (_box7 isKindOf "Box_East_AmmoVeh_F") then
 	{
@@ -208,7 +214,7 @@ _successExec =
 
 	_Boxes8 = ["Box_T_East_Ammo_F", "Box_T_East_Wps_F", "Box_East_AmmoOrd_F", "Box_CSAT_Equip_F", "Box_CSAT_Uniforms_F", "Box_East_WpsLaunch_F", "Box_T_East_WpsSpecial_F", "Box_East_Support_F", "Box_East_AmmoVeh_F"];
 	_currBox8 = _Boxes8 call BIS_fnc_selectRandom;
-	_box8 = createVehicle [_currBox8, _lastPos, [], 2, "None"];
+	_box8 = createVehicle [_currBox8, _lastPos, [], 2, "NONE"];
 	_box8 setDir random 360;
 	if (_box8 isKindOf "Box_East_AmmoVeh_F") then
 	{
@@ -220,7 +226,7 @@ _successExec =
 
 	_Boxes9 = ["Box_T_East_Ammo_F", "Box_T_East_Wps_F", "Box_East_AmmoOrd_F", "Box_CSAT_Equip_F", "Box_CSAT_Uniforms_F", "Box_East_WpsLaunch_F", "Box_T_East_WpsSpecial_F", "Box_East_Support_F", "Box_East_AmmoVeh_F"];
 	_currBox9 = _Boxes9 call BIS_fnc_selectRandom;
-	_box9 = createVehicle [_currBox9, _lastPos, [], 2, "None"];
+	_box9 = createVehicle [_currBox9, _lastPos, [], 2, "NONE"];
 	_box9 setDir random 360;
 	if (_box9 isKindOf "Box_East_AmmoVeh_F") then
 	{

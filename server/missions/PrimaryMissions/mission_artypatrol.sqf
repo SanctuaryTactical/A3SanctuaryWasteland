@@ -55,7 +55,7 @@ _setupObjects =
 		_position = _this select 1;
 		_direction = _this select 2;
 
-		_vehicle = createVehicle [_type, _position, [], 0, "None"];
+		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
 		_vehicle setVehicleReportRemoteTargets true;
 		_vehicle setVehicleReceiveRemoteTargets true;
 		_vehicle setVehicleRadar 1;
@@ -119,7 +119,7 @@ _setupObjects =
 		_position = _this select 1;
 		_direction = _this select 2;
 
-		_vehicle = createVehicle [_type, _position, [], 0, "None"];
+		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
 		_vehicle setVehicleReportRemoteTargets true;
 		_vehicle setVehicleReceiveRemoteTargets true;
 		_vehicle setVehicleRadar 1;
@@ -149,7 +149,7 @@ _setupObjects =
 		_position = _this select 1;
 		_direction = _this select 2;
 
-		_vehicle = createVehicle [_type, _position, [], 0, "None"];
+		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
 		_vehicle setVehicleReportRemoteTargets true;
 		_vehicle setVehicleReceiveRemoteTargets true;
 		_vehicle setVehicleRadar 1;
@@ -209,7 +209,7 @@ _setupObjects =
 		_position = _this select 1;
 		_direction = _this select 2;
 
-		_vehicle = createVehicle [_type, _position, [], 0, "None"];
+		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
 		_vehicle setVehicleReportRemoteTargets true;
 		_vehicle setVehicleReceiveRemoteTargets true;
 		_vehicle setVehicleRadar 1;
@@ -239,7 +239,7 @@ _setupObjects =
 		_position = _this select 1;
 		_direction = _this select 2;
 
-		_vehicle = createVehicle [_type, _position, [], 0, "None"];
+		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
 		_vehicle setVehicleReportRemoteTargets true;
 		_vehicle setVehicleReceiveRemoteTargets true;
 		_vehicle setVehicleRadar 1;
@@ -296,7 +296,7 @@ _setupObjects =
 		_position = _this select 1;
 		_direction = _this select 2;
 
-		_vehicle = createVehicle [_type, _position, [], 0, "None"];
+		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
 		_vehicle setVehicleReportRemoteTargets true;
 		_vehicle setVehicleReceiveRemoteTargets true;
 		_vehicle setVehicleRadar 1;
@@ -325,7 +325,7 @@ _setupObjects =
 		_position = _this select 1;
 		_direction = _this select 2;
 
-		_vehicle = createVehicle [_type, _position, [], 0, "None"];
+		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
 		_vehicle setVehicleReportRemoteTargets true;
 		_vehicle setVehicleReceiveRemoteTargets true;
 		_vehicle setVehicleRadar 1;

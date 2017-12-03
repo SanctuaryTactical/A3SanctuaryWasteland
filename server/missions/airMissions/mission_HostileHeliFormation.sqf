@@ -160,17 +160,23 @@ _successExec =
 {
 	// Mission completed
 
-	_box1 = createVehicle ["Box_NATO_Wps_F", _lastPos, [], 5, "None"];
+	_box1 = createVehicle ["Box_NATO_Wps_F", _lastPos, [], 5, "NONE"];
 	_box1 setDir random 360;
 	[_box1, "mission_USSpecial"] call fn_refillbox;
 
-	_box2 = createVehicle ["Box_East_Wps_F", _lastPos, [], 5, "None"];
+	_box2 = createVehicle ["Box_East_Wps_F", _lastPos, [], 5, "NONE"];
 	_box2 setDir random 360;
 	[_box2, "mission_USLaunchers"] call fn_refillbox;
 
-	_box3 = createVehicle ["Box_IND_WpsSpecial_F", _lastPos, [], 5, "None"];
+	_box3 = createVehicle ["Box_IND_WpsSpecial_F", _lastPos, [], 5, "NONE"];
 	_box3 setDir random 360;
 	[_box3, "mission_Main_A3snipers"] call fn_refillbox;
+
+	//Scotsman - Pop Smoke
+	_smoke1= "SmokeShellGreen" createVehicle getPos _box3;
+	_smoke1 attachto [_box3,[0,0,-0.5]];
+	_flare1= "F_40mm_Green" createVehicle getPos _box3;
+	_flare1 attachto [_box3,[0,0,-0.5]];
 
 	_successHintMessage = "The sky is clear again, the enemy patrol was taken out! Ammo crates have fallen near the wreck.";
 };

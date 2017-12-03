@@ -28,7 +28,8 @@ _setupVars =
 		"O_APC_Tracked_02_AA_F",
 		"CUP_B_M1126_ICV_M2_Desert_Slat",
 		"CUP_B_LAV25_desert_USMC",
-		"CUP_B_FV510_GB_W"
+		"CUP_B_FV510_GB_W",
+		"CUP_B_BDRM2_CZ_Des"
 	] call BIS_fnc_selectRandom;
 
 	_missionType = switch (true) do

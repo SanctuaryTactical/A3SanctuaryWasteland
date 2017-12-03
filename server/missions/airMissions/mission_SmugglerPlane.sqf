@@ -23,21 +23,23 @@ _setupObjects =
 	[
 		["I_C_Plane_Civil_01_F"],
 		["I_C_Heli_Light_01_civil_F"],
-		["CUP_B_C130J_USMC"]
+		["CUP_B_C47_USA"]
 	];
 	_heloChoices1 =
 	[
-		[["B_Heli_Light_01_dynamicLoadout_F", "pawneeNormal"]],
-		[["O_Heli_Light_02_dynamicLoadout_F", "orcaDAGR"]],
-		["I_Heli_light_03_dynamicLoadout_F"]
+		["CUP_B_AH64D_DL_USA"],
+		["CUP_B_UH1Y_Gunship_Dynamic_USMC"],
+		["CUP_B_AH1Z_Dynamic_USMC"],
+		["CUP_B_Mi35_Dynamic_CZ_Des"],
+		["CUP_B_MH60L_DAP_4x_USN"]
 	];
 	_heloChoices2 =
 	[
-		"CUP_B_AH64D_DL_USA",
-		"CUP_B_UH1Y_Gunship_Dynamic_USMC",
-		"CUP_B_AH1Z_Dynamic_USMC",
-		"CUP_B_Mi35_Dynamic_CZ_Des",
-		"CUP_B_MH60L_DAP_4x_USN"
+		["CUP_B_AH64D_DL_USA"],
+		["CUP_B_UH1Y_Gunship_Dynamic_USMC"],
+		["CUP_B_AH1Z_Dynamic_USMC"],
+		["CUP_B_Mi35_Dynamic_CZ_Des"],
+		["CUP_B_MH60L_DAP_4x_USN"]
 	];
 
 	_convoyVeh = _planeChoices call BIS_fnc_selectRandom;
@@ -83,9 +85,9 @@ _setupObjects =
 	_aiGroup = createGroup CIVILIAN;
 
 	_vehicles = [];
-	_vehicles set [0, [_veh1,[14574.7,31859.3,0], 14, _aiGroup] call _createVehicle]; // static value update when porting to different maps
-	_vehicles set [1, [_veh2,[14574.7,31859.1,0], 14, _aiGroup] call _createVehicle];
-	_vehicles set [2, [_veh3,[14574.7,31859.5,0], 14, _aiGroup] call _createVehicle];
+	_vehicles set [0, [_veh1,[14574.7,21400.3,0], 14, _aiGroup] call _createVehicle]; // static value update when porting to different maps
+	_vehicles set [1, [_veh2,[14574.8,21401.5,0], 14, _aiGroup] call _createVehicle];
+	_vehicles set [2, [_veh3,[14574.9,21402.0,0], 14, _aiGroup] call _createVehicle];
 
 	_leader = effectiveCommander (_vehicles select 0);
 	_aiGroup selectLeader _leader;
@@ -132,7 +134,7 @@ _successExec =
 	//Money
 	for "_i" from 1 to 10 do
 	{
-		_cash = createVehicle ["Land_Money_F", _lastPos, [], 5, "None"];
+		_cash = createVehicle ["Land_Money_F", _lastPos, [], 5, "NONE"];
 		_cash setPos ([_lastPos, [[2 + random 3,0,0], random 360] call BIS_fnc_rotateVector2D] call BIS_fnc_vectorAdd);
 		_cash setDir random 360;
 		_cash setVariable ["cmoney", 2500, true];
@@ -142,24 +144,30 @@ _successExec =
 
 	_Boxes1 = ["Box_Syndicate_WpsLaunch_F","Box_Syndicate_Wps_F","","Box_NATO_Equip_F"];
 	_currBox1 = _Boxes1 call BIS_fnc_selectRandom;
-	_box1 = createVehicle [_currBox1, _lastPos, [], 2, "None"];
+	_box1 = createVehicle [_currBox1, _lastPos, [], 2, "NONE"];
 	_box1 setDir random 360;
 	_box1 setVariable ["moveable", true, true];
 	_box1 allowDamage false;
 
 	_Boxes2 = ["Box_Syndicate_WpsLaunch_F","Box_Syndicate_Wps_F","","Box_NATO_Equip_F"];
 	_currBox2 = _Boxes2 call BIS_fnc_selectRandom;
-	_box2 = createVehicle [_currBox2, _lastPos, [], 2, "None"];
+	_box2 = createVehicle [_currBox2, _lastPos, [], 2, "NONE"];
 	_box2 setDir random 360;
 	_box2 setVariable ["moveable", true, true];
 	_box2 allowDamage false;
 
 	_Boxes3 = ["Box_Syndicate_WpsLaunch_F","Box_Syndicate_Wps_F","","Box_NATO_Equip_F"];
 	_currBox3 = _Boxes1 call BIS_fnc_selectRandom;
-	_box3 = createVehicle [_currBox3, _lastPos, [], 2, "None"];
+	_box3 = createVehicle [_currBox3, _lastPos, [], 2, "NONE"];
 	_box3 setDir random 360;
 	_box3 setVariable ["moveable", true, true];
 	_box3 allowDamage false;
+
+	//Scotsman - Pop Smoke
+	_smoke1= "SmokeShellGreen" createVehicle getPos _box3;
+	_smoke1 attachto [_box3,[0,0,-0.5]];
+	_flare1= "F_40mm_Green" createVehicle getPos _box3;
+	_flare1 attachto [_box3,[0,0,-0.5]];
 
 	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box1, _box2];
 
