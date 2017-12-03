@@ -47,6 +47,7 @@ rifleArray = compileFinal str
 	// Marksman Rifles
 	["MXM Rifle (Black)", "arifle_MXM_Black_F", 300],
 	["Mk18 ABR Rifle", "srifle_EBR_F", 450],
+	["M-16 Assault Rifle", "CUP_arifle_M16A4_Base", 500],
 
 	// DLC
 	["CMR-76 Rifle", "srifle_DMR_07_blk_F", 400],
@@ -242,6 +243,7 @@ ammoArray = compileFinal str
 	["5.56mm 150Rnd Mag", "150Rnd_556x45_Drum_Mag_F", 100],
 	["5.56mm 150Rnd Tracer (Red) Mag", "150Rnd_556x45_Drum_Mag_Tracer_F", 75],
 	["5.56mm 200Rnd Box", "200Rnd_556x45_Box_F", 125],
+	["5.56mm 30Rnd Mag", "CUP_30Rnd_556x45_Stanag", 50],
 	["5.56mm 200Rnd Tracer (Yellow) Box", "200Rnd_556x45_Box_Tracer_F", 100],
 	["5.56mm 200Rnd Tracer (Red) Box", "200Rnd_556x45_Box_Tracer_Red_F", 100],
 	["5.8mm 30Rnd Mag", "30Rnd_580x42_Mag_F", 20],
@@ -973,7 +975,6 @@ boatsArray = compileFinal str
 	["RHIB", "I_C_Boat_Transport_02_F", 1250, "boat", "SKIPSAVE"],
 	["Speedboat Minigun (NATO)", "B_Boat_Armed_01_minigun_F", 4000, "boat", "SKIPSAVE"],
 	["SDV Submarine (AAF)", "I_SDV_01_F", 1000, "submarine", "SKIPSAVE"]
-	//["Frigate", "CUP_B_Frigate_ANZAC", 0, "vehicle"]
 ];
 
 otherVehicles = compileFinal str
@@ -1072,22 +1073,26 @@ otherVehicles = compileFinal str
 	["LAV-25 API", "CUP_B_LAV25_desert_USMC", 40000, "vehicle"],
 	["Linebacker AA", "CUP_B_M6LineBacker_USA_D", 45000, "vehicle"],
 	["MW88 Warrior", "CUP_B_FV510_GB_W", 45000, "vehicle"],
+	["BDRM", "CUP_B_BDRM2_CZ_Des", 45000, "vehicle"],
 
 	//CUP tanks
 	["M1A2 Abrams", "CUP_B_M1A2_TUSK_MG_DES_US_Army", 65000, "vehicle"],
 	["Challenger", "CUP_B_Challenger2_Desert_BAF", 70000, "vehicle"],
+	["T-72", "CUP_B_T72_CZ", 65000, "vehicle"],
 
 	//CUP Helos
 	["AH-64 Apache", "CUP_B_AH64D_DL_USA", 75000, "vehicle"],
 	["UH-1 Venom", "CUP_B_UH1Y_Gunship_Dynamic_USMC", 75000, "vehicle"],
 	["AH-1 Cobra", "CUP_B_AH1Z_Dynamic_USMC", 75000, "vehicle"],
 	["Mi-35 Hind", "CUP_B_Mi35_Dynamic_CZ_Des", 85000, "vehicle"],
+	["Kighthawk", "CUP_B_MH60L_DAP_4x_USN", 85000, "vehicle"],
 
 	//CUP Jets
 	["Harrier Jump Jet", "CUP_B_AV8B_DYN_USMC", 80000, "vehicle"],
 	["A-149 Gryphon", "I_Plane_Fighter_04_F", 50000, "vehicle"],
-	["To-201 Shikra", "O_Plane_Fighter_02_F", 75000, "vehicle"]
-
+	["To-201 Shikra", "O_Plane_Fighter_02_F", 75000, "vehicle"],
+	["L-39", "CUP_B_L39_CZ", 65000, "vehicle"],
+	["F-35 Lightning", "CUP_B_F35B_BAF", 75000, "vehicle"]
 ];
 
 //allVehStoreVehicles = compileFinal str (call landArray + call armoredArray + call tanksArray + call helicoptersArray + call planesArray + call boatsArray);
