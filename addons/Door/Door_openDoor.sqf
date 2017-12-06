@@ -12,9 +12,11 @@ _doors = (nearestObjects [player, ["Land_Bunker_01_blocks_3_F","Land_Bunker_01_b
 if (!isNil "_doors") then
 {
 	{ [[netId _x, true], "A3W_fnc_hideObjectGlobal", _x] call A3W_fnc_MP } forEach _doors;
+	cursorTarget setObjectTextureGlobal [0, "pics\Signs\keypadon.paa"];
+	playMusic "PinLock";
 	hint "Your door is opened";
-} 
-else 
+}
+else
 {
 	hint "No locked door found";
 };
