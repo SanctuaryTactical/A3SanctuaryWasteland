@@ -243,9 +243,16 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 			//Controls Object Default content/code
 			switch(true) do
 			{
-				case ({_object isKindOf _x} count ["Land_Noticeboard_F", "Land_Device_assembled_F", "Box_NATO_AmmoVeh_F"] > 0):
+
+				case ({_object isKindOf _x} count ["Land_Noticeboard_F"] > 0):
 				{
 					_object setVariable ["password", "0000", true];
+					_object setObjectTextureGlobal [0, "pics\Signs\keypad.paa"];
+				};
+				case ({_object isKindOf _x} count ["Land_Device_assembled_F", "Box_NATO_AmmoVeh_F"] > 0):
+				{
+						_object setVariable ["password", "0000", true];
+
 				};
 				// Add food to bought food sacks.
 				case ({_object isKindOf _x} count ["Land_Sacks_goods_F"] > 0):

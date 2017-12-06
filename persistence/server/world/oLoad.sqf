@@ -137,6 +137,14 @@ _exclObjectIDs = [];
 			_obj setVariable [_var, _value, true];
 		} forEach _variables;
 
+		//keypad
+		if( _obj isKindOf "Land_Noticeboard_F" ) then {
+
+				//_obj setObjectTexture [0, "pics\signs\keypad.paa"];
+				_obj setObjectTextureGlobal [0, "pics\Signs\keypad.paa"];
+
+		};
+
 		// Base locker lights
 		if (_obj getVariable ["lights",""] == "off") then
 		{
