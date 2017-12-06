@@ -16,29 +16,28 @@ class playerSettings {
 			idc = -1;
 			colorText[] = {1, 1, 1, 1};
 			//colorBackground[] = {0,0,0,0.6};
-			colorBackground[] = {.132,.147,.135,.8};
+			colorBackground[] = {0,0,0,0.6};
 			moving = true;
 			x = 0.0; y = 0.1;
 			w = .745; h = 0.65;
 		};
-
 		class TopBar: IGUIBack
 		{
 			idc = -1;
 			colorText[] = {1, 1, 1, 1};
-			colorBackground[] = {A3W_UICOLOR_R, A3W_UICOLOR_G, A3W_UICOLOR_B, 0.8};
+			colorBackground[] = {A3W_UICOLOR_R, A3W_UICOLOR_G, A3W_UICOLOR_B};
 			x = 0;
 			y = 0.1;
 			w = 0.745;
 			h = 0.05;
 		};
-		
+
 		class serverLogo : w_RscPicture {
 			idc = -1;
 			text = "mapconfig\1ST.paa";
 			x = 0.225; y = 0.20;
 			w = 0.32 / (4/3); h = 0.32;
-		};	
+		};
 
 		class MainTitle : w_RscText {
 			idc = -1;

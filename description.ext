@@ -40,9 +40,9 @@ briefing = 0; // if 0, skip Continue button
 //#define A3W_UICOLOR_G  0.51 // default = 0.51
 //#define A3W_UICOLOR_B  0.96 // default = 0.96
 
-#define A3W_UICOLOR_R  0.36 // default = 0.25
-#define A3W_UICOLOR_G  0.42 // default = 0.51
-#define A3W_UICOLOR_B  0.39 // default = 0.96
+#define A3W_UICOLOR_R  0.23 // default = 0.25
+#define A3W_UICOLOR_G  0.20 // default = 0.51
+#define A3W_UICOLOR_B  0.18 // default = 0.96
 
 //Dialog includes
 
@@ -129,6 +129,11 @@ class CfgMusic
 	{
 		name = "IntroText";
 		sound[] = {"text.ogg", db+10, 1.0};
+	};
+	class PinLock
+	{
+		name = "PinLock";
+		sound[] = {"pics\lock.ogg", db+10, 1.0};
 	};
 };
 
