@@ -23,7 +23,7 @@ _setupVars =
 	_townName = _locArray select 2;
 
 	//randomize amount of units
-	_nbUnits = _nbUnits + round(random (_nbUnits*0.5));
+	_nbUnits = _nbUnits + round(random (_nbUnits*0.5)) + 5;
 	// reduce radius for larger towns. for example to avoid endless hide and seek in kavala ;)
 	_buildingRadius = if (_buildingRadius > 201) then {(_buildingRadius*0.5)} else {_buildingRadius};
 	// 25% change on AI not going on rooftops
@@ -84,6 +84,16 @@ _successExec =
 
 	_successHintMessage = format ["Nice work!<br/><br/><t color='%1'>%2</t><br/>is a safe place again!<br/>Their belongings are now yours to take!", sideMissionColor, _townName];
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _cFire1];
+
+	for "_x" from 1 to 10 do
+	{
+		_cash = "Land_Money_F" createVehicle markerPos _missionPos;
+		_cash setPos ((markerPos _missionPos) vectorAdd ([[2 + random 2,0,0], random 360] call BIS_fnc_rotateVector2D));
+		_cash setDir random 360;
+		_cash setVariable["cmoney",3000,true];
+		_cash setVariable["owner","world",true];
+	};
+
 };
 
 _this call sideMissionProcessor;
