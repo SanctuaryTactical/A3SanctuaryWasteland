@@ -19,19 +19,22 @@ switch (true) do
 	case (_class isKindOf "B_Heli_Light_01_dynamicLoadout_F"):
 	{
 		//Works but removes guns, why?
-		/*_weapons =
+		_weapons =
 		[
-			["CMFlareLauncher", [-1]]
+			["CMFlareLauncher", [-1]],
+			["M134_minigun", [-1]]
+
 		];
 		_mags =
 		[
-			["60Rnd_CMFlare_Chaff_Magazine", [-1]]
-		];*/
+			["60Rnd_CMFlare_Chaff_Magazine", [-1]],
+			["5000Rnd_762x51_Belt", [-1]]
+		];
 
 		switch (_variant) do
 		{
 			case "pawneeGun": { _pylons = ["",""] };
-			default {	_pylons = ["PylonRack_12Rnd_missiles","PylonRack_12Rnd_missiles"]	};
+			default {	_pylons = ["PylonRack_12Rnd_missiles","PylonRack_12Rnd_missiles", "PylonWeapon_5000Rnd_762x51_belt", "PylonWeapon_5000Rnd_762x51_belt"]	};
 		};
 	};
 
