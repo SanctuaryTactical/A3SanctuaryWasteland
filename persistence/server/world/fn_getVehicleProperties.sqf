@@ -13,6 +13,7 @@ _class = typeOf _veh;
 _purchasedVehicle = _veh getVariable ["A3W_purchasedVehicle", false];
 _missionVehicle = (_veh getVariable ["A3W_missionVehicle", false] && !(_veh getVariable ["R3F_LOG_disabled", false]));
 
+
 _pos = ASLtoATL getPosWorld _veh;
 { _pos set [_forEachIndex, _x call fn_numToStr] } forEach _pos;
 _dir = [vectorDir _veh, vectorUp _veh];
@@ -42,6 +43,13 @@ switch (true) do
 		_variables pushBack ["A3W_missionVehicle", true];
 	};
 };
+
+// Save vPin by LouD
+{ _variables pushBack [_x select 0, _veh getVariable _x] } forEach
+[
+	["vPin", false],
+	["password", ""]
+];
 
 private _variant = _veh getVariable ["A3W_vehicleVariant", ""];
 
