@@ -357,7 +357,8 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"CUP_B_BDRM2_CZ_Des",
 	"CUP_B_T72_CZ",
 	"O_Plane_CAS_02_dynamicLoadout_F",
-	"I_Plane_Fighter_03_dynamicLoadout_F"
+	"I_Plane_Fighter_03_dynamicLoadout_F",
+	"CUP_B_AH6M_USA"
 
 ];
 
@@ -391,7 +392,8 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 	"CUP_B_Mi35_Dynamic_CZ_Des",
 	"CUP_B_UH60S_USN",
 	"CUP_B_CH53E_VIV_USMC",
-	"CUP_B_MH60L_DAP_4x_USN"
+	"CUP_B_MH60L_DAP_4x_USN",
+	"CUP_B_AH6M_USA"
 ];
 
 /**
@@ -481,7 +483,8 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	"CUP_B_BDRM2_CZ_Des",
 	"CUP_B_T72_CZ",
 	"O_Plane_CAS_02_dynamicLoadout_F",
-	"I_Plane_Fighter_03_dynamicLoadout_F"
+	"I_Plane_Fighter_03_dynamicLoadout_F",
+	"CUP_B_AH6M_USA"
 
 ];
 
@@ -532,6 +535,7 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["Boat_Transport_02_base_F", 15],
 	["Boat_Armed_01_base_F", 16],
 	["Heli_Light_01_base_F", 16],
+	["CUP_B_AH6M_USA", 16],
 	["Heli_Light_02_base_F", 16],
 	["Heli_light_03_base_F", 16],
 	["Heli_Transport_01_base_F", 75],

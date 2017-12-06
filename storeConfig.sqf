@@ -803,8 +803,6 @@ genObjectsArray = compileFinal str
 	["Canal Wall (Small)", "Land_Canal_WallSmall_10m_F", 500, "object"],
 	["Canal Wall (Large)", "Land_Canal_Wall_10m_F", 1000, "object"],
 	["Canal Stairs", "Land_Canal_Wall_Stairs_F", 1000, "object"],
-	["Cargo Container (Green)", "Land_Cargo20_military_green_F", 5000, "object"],
-	["Cargo Container (Large)", "Land_Cargo40_military_green_F", 8000, "object"],
 	["Concrete Barrier", "Land_CncBarrier_F", 200, "object"],
 	["Concrete Barrier (Medium)", "Land_CncBarrierMedium_F", 350, "object"],
 	["Concrete Barrier (Long)", "Land_CncBarrierMedium4_F", 500, "object"],
@@ -940,6 +938,7 @@ helicoptersArray = compileFinal str
 	["Mi-290 Taru (Transport)", "O_Heli_Transport_04_covered_F", 10000, "vehicle"],
 	["CH-67 Huron (Unarmed)", "B_Heli_Transport_03_unarmed_F", 10000, "vehicle"], // CH-47
 	["AH-9 Pawnee", "B_Heli_Light_01_dynamicLoadout_F", 35000, "vehicle", "variant_pawneeNormal"], // Armed AH-6
+	["AH-6 Littlebird", "CUP_B_AH6M_USA", 40000, "vehicle"],
 	["PO-30 Orca (DAGR)", "O_Heli_Light_02_dynamicLoadout_F", 40000, "vehicle", "variant_orcaDAGR"], // Armed Ka-60, add "HIDDEN" if you don't want it, but don't remove the line!
 	["WY-55 Hellcat (Armed)", "I_Heli_light_03_dynamicLoadout_F", 40000, "vehicle"], // Armed AW159
 	["AH-99 Blackfoot", "B_Heli_Attack_01_dynamicLoadout_F", 50000, "vehicle"], // RAH-66 with gunner
@@ -989,7 +988,7 @@ otherVehicles = compileFinal str
 	["Qilin", "O_T_LSV_02_unarmed_F", 2000, "vehicle", "SKIPSAVE"],
 	["Hunter", "B_MRAP_01_F", 4000, "vehicle", "SKIPSAVE"],
 	["Ifrit", "O_MRAP_02_F", 4000, "vehicle", "SKIPSAVE"],
-	["Strider", "I_MRAP_03_F", 4000, "vehicle", "SKIPSAVE"],
+	["Strider", "I_MRAP_03_F", 8000, "vehicle", "SKIPSAVE"],
 	["AMV-7 Marshall", "B_APC_Wheeled_01_cannon_F", 27500, "vehicle"],
 	["AFV-4 Gorgon", "I_APC_Wheeled_03_cannon_F", 30000, "vehicle"],
 	["FV-720 Mora", "I_APC_tracked_03_cannon_F", 37500, "vehicle"],
