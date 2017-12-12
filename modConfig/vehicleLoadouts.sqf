@@ -15,6 +15,28 @@
 
 switch (true) do
 {
+
+	case( _class isKindOf "CUP_B_MH60L_DAP_2x_US" ):
+	{
+
+		_pylons = ["","CUP_PylonPod_2000Rnd_TE5_Red_Tracer_762x51_M134A_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M",""];
+		
+	};
+
+	case( _class isKindOf "CUP_B_MH60L_DAP_4x_USN" ):
+	{
+
+ 		_pylons =  ["CUP_PylonPod_2000Rnd_TE5_Red_Tracer_762x51_M134A_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M","CUP_PylonPod_2000Rnd_TE5_Red_Tracer_762x51_M134A_M"];
+
+	};
+
+	case( _class isKindOf "CUP_B_AH6M_USA" ):
+	{
+
+		_pylons = ["PylonRack_12Rnd_missiles","PylonRack_12Rnd_missiles"];
+
+	};
+
 	// AH-9 Pawnee
 	case (_class isKindOf "B_Heli_Light_01_dynamicLoadout_F"):
 	{
