@@ -100,7 +100,10 @@ if (hasInterface || isServer) then
 	[] execVM "addons\stickyCharges\init.sqf";
 	[] execVM "addons\APOC_Airdrop_Assistance\init.sqf";
 	[] execVM "addons\AF_Keypad\AF_KP_vars.sqf";          // Keypad for base locking
+	[] execVM "1st\init.sqf";
+
 	if (isNil "drn_DynamicWeather_MainThread") then { drn_DynamicWeather_MainThread = [] execVM "addons\scripts\DynamicWeatherEffects.sqf" };
+
 	waitUntil {!isnull player};
 	player setCustomAimCoef 0.15;
 	player enableStamina false;
@@ -110,9 +113,7 @@ if (hasInterface || isServer) then
 // Remove line drawings from map
 (createTrigger ["EmptyDetector", [0,0,0], false]) setTriggerStatements
 [
-	"!triggerActivated thisTrigger", 
+	"!triggerActivated thisTrigger",
 	"thisTrigger setTriggerTimeout [30,30,30,false]",
 	"{if (markerShape _x == 'POLYLINE') then {deleteMarker _x}} forEach allMapMarkers"
 ];
-
-
