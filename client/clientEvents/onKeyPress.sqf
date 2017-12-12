@@ -55,7 +55,7 @@ switch (true) do
 			["You've taken out your earplugs.", 5] call mf_notify_client;
 		};
 	};
-	
+
 	// Holster - unholster weapon (H key)
 	//The Scotsman - AutoHolster
 	case (_key == 35):
@@ -73,12 +73,20 @@ switch (true) do
 			};
 		};
 	};
-	
-	
-		// Key 0
-		//The Scotsman - Autorun
-		case (_key == 11): 
-		{
+
+	//Stop Autorun ('W') (Walk)
+	case( _key == 17 ):
+	{
+
+		if (isNil "AR_active") then {AR_active = false;};
+		if (AR_active) exitWith {AR_active = false; _handled = true;};
+
+	};
+
+	// Key 0
+	//The Scotsman - Autorun
+	case (_key == 11):
+	{
 			if (isNil "AR_active") then {AR_active = false;};
 			if (AR_active) exitWith {AR_active = false; _handled = true;};
 
@@ -120,13 +128,7 @@ switch (true) do
 
 			_handled = true;
 		};
-	
-	
-	
-	
-	
-	
-	
+
 };
 
 // ********** Action keys **********
