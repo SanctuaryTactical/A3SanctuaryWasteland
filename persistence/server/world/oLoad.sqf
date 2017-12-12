@@ -140,8 +140,7 @@ _exclObjectIDs = [];
 		//keypad
 		if( _obj isKindOf "Land_Noticeboard_F" ) then {
 
-				//_obj setObjectTexture [0, "pics\signs\keypad.paa"];
-				_obj setObjectTextureGlobal [0, "pics\Signs\keypad.paa"];
+				_obj setObjectTextureGlobal [0, "media\keypad.paa"];
 
 		};
 

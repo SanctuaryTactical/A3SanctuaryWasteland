@@ -247,7 +247,7 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 				case ({_object isKindOf _x} count ["Land_Noticeboard_F"] > 0):
 				{
 					_object setVariable ["password", "0000", true];
-					_object setObjectTextureGlobal [0, "pics\Signs\keypad.paa"];
+					_object setObjectTextureGlobal [0, "media\keypad.paa"];
 				};
 				case ({_object isKindOf _x} count ["Land_Device_assembled_F", "Box_NATO_AmmoVeh_F"] > 0):
 				{
@@ -341,34 +341,11 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 				};
 				case ({_object isKindOf _x} count ["I_CargoNet_01_ammo_F"] > 0):
 				{
-					_object setAmmoCargo 10;
-					_object allowDamage false; // No more fucking busted crates
-					_object setVariable ["allowDamage", false, true];
-					_object setVariable ["A3W_inventoryLockR3F", true, true];
-
-					clearMagazineCargoGlobal _object;
-					clearWeaponCargoGlobal _object;
-					clearItemCargoGlobal _object;
-
-					_object addMagazineCargoGlobal ["Titan_AA", 30];
-					_object addWeaponCargoGlobal ["launch_B_Titan_F", 1];
-
+					[_object, "AA"] call STCreateConvenienceKit;
 				};
 				case ({_object isKindOf _x} count ["O_CargoNet_01_ammo_F"] > 0):
 				{
-					_object setAmmoCargo 10;
-					_object allowDamage false; // No more fucking busted crates
-					_object setVariable ["allowDamage", false, true];
-					_object setVariable ["A3W_inventoryLockR3F", true, true];
-
-					clearMagazineCargoGlobal _object;
-					clearWeaponCargoGlobal _object;
-					clearItemCargoGlobal _object;
-
-					_object addMagazineCargoGlobal ["Titan_AT", 28];
-					_object addMagazineCargoGlobal ["Titan_AP", 5];
-					_object addWeaponCargoGlobal ["launch_I_Titan_short_F", 1];
-
+					[_object, "AT"] call STCreateConvenienceKit;
 				};
 
 			};

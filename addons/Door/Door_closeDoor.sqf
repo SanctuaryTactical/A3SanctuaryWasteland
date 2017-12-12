@@ -6,13 +6,23 @@
 //	@file Author: LouD / Cael817 for original script
 //	@file Description: Door script
 
-private ["_doors"];
+private ["_doors", "_keypads"];
 _doors = (nearestObjects [player, ["Land_Bunker_01_blocks_3_F","Land_Bunker_01_blocks_1_F"], 10]);
 
 if (!isNil "_doors") then
 {
 	{ [[netId _x, false], "A3W_fnc_hideObjectGlobal", _x] call A3W_fnc_MP } forEach _doors;
-	cursorTarget setObjectTextureGlobal [0, "pics\Signs\keypad.paa"];
+
+	_keypads = (nearestObjects [player, ["Land_Noticeboard_F"], 10]);
+
+	if( !isNil "_keypads" ) then {
+
+		{
+			_x setObjectTextureGlobal [0, "media\keypad.paa"];
+		} forEach _keypads;
+
+	};
+
 	playMusic "PinLock";
 	hint "Your door is closed";
 
