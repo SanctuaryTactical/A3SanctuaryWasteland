@@ -34,15 +34,18 @@ _price 			= (_selectionArray select _selectionNumber) select 2;
 
 /////// Let's spawn us  an AI helo to carry the cargo /////////////////////////////////////////////////
 
- _heliType = "B_Heli_Transport_03_unarmed_F";
- _center = createCenter civilian;
-_grp = createGroup civilian;
-if(isNil("_grp2"))then{_grp2 = createGroup civilian;}else{_grp2 = _grp2;};
-_flyHeight = 350;
-_dropSpot = [(position _player select 0),(position _player select 1),_flyHeight];
-_flyHeight = 200;  //Distance from ground that heli will fly at
-_heliStartDistance = 2000;
-_spos=[(_dropSpot select 0) - (sin _heliDirection) * _heliStartDistance, (_dropSpot select 1) - (cos _heliDirection) * _heliStartDistance, (_flyHeight+200)];
+	//TODO: I'd like this to be a C130
+	_heliType = "B_Heli_Transport_03_unarmed_F";
+	_center = createCenter civilian;
+	_grp = createGroup civilian;
+
+	if(isNil("_grp2"))then{_grp2 = createGroup civilian;}else{_grp2 = _grp2;};
+
+	_flyHeight = 350;
+	_dropSpot = [(position _player select 0),(position _player select 1),_flyHeight];
+	_flyHeight = 200;  //Distance from ground that heli will fly at
+	_heliStartDistance = 2000;
+	_spos=[(_dropSpot select 0) - (sin _heliDirection) * _heliStartDistance, (_dropSpot select 1) - (cos _heliDirection) * _heliStartDistance, (_flyHeight+200)];
 
 diag_log format ["AAA - Heli Spawned at %1", _spos];
 _heli = createVehicle [_heliType, _spos, [], 0, "FLY"];
