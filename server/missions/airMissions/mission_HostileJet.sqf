@@ -28,8 +28,10 @@ _setupObjects =
 		["I_Plane_Fighter_04_F"],
 		["O_Plane_Fighter_02_F"],
 		["CUP_B_L39_CZ"],
-		["CUP_B_F35B_BAF"]
-
+		["CUP_B_F35B_BAF"],
+		["CUP_B_A10_DYN_USA"],
+		["CUP_O_SU34_RU"],
+		["CUP_O_Su25_Dyn_RU"]
 	];
 
 	_convoyVeh = _planeChoices call BIS_fnc_selectRandom;
@@ -131,15 +133,18 @@ _successExec =
 	_box2 setDir random 360;
 	_box2 allowDamage false;
 
-	//Scotsman - Pop Smoke
-	_smoke1= "SmokeShellGreen" createVehicle getPos _box2;
-	_smoke1 attachto [_box2,[0,0,-0.5]];
-	_flare1= "F_40mm_Green" createVehicle getPos _box2;
-	_flare1 attachto [_box2,[0,0,-0.5]];
-
 	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box1, _box2];
 
 	_successHintMessage = "The sky is clear again, the enemy patrol was taken out! Ammo crates and some money have fallen near the pilot.";
+
+	[_box2] spawn STPopCrateSmoke;
+
+	/*//Scotsman - Pop Smoke
+	_smoke1= "SmokeShellGreen" createVehicle getPos _box2;
+	_smoke1 attachto [_box2,[0,0,-0.5]];
+	_flare1= "F_40mm_Green" createVehicle getPos _box2;
+	_flare1 attachto [_box2,[0,0,-0.5]];*/
+
 };
 
 _this call airMissionProcessor;

@@ -29,7 +29,8 @@ _setupVars =
 		"CUP_B_M1126_ICV_M2_Desert_Slat",
 		"CUP_B_LAV25_desert_USMC",
 		"CUP_B_FV510_GB_W",
-		"CUP_B_BDRM2_CZ_Des"
+		"CUP_B_BDRM2_CZ_Des",
+		"CUP_I_BTR60_UN"
 	] call BIS_fnc_selectRandom;
 
 	_missionType = switch (true) do

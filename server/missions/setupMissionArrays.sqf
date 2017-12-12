@@ -18,24 +18,18 @@ MainMissions =
 	["mission_LightArmVeh", 1],
 	["mission_ArmedHeli", 1],
 	["mission_AbandonedJet", 0.75],
-	["mission_CivHeli", 1],
-	["mission_SupplyDrop", 1]
+	["mission_CivHeli", 1]
 ];
 
 SideMissions =
 [
 	["mission_MiniConvoy", 1],
 	["mission_SunkenSupplies", 1],
-	["mission_TownInvasion", 1],
-	["mission_Outpost", 1],
 	["mission_Truck", 1],
-	["mission_HostageRescue", 1],
-	["mission_Smugglers", 1],
 	["mission_ConvoyCSATSF", 1],
 	["mission_ConvoyNATOSF", 1],
-	["mission_Roadblock", 1],
 	["mission_GeoCache",1],
-	["mission_Sniper", 1]
+	["mission_SupplyDrop", 1]
 ];
 
 MoneyMissions =
@@ -57,7 +51,17 @@ AirMissions =
 	["mission_SmugglerPlane", 1],
 	["mission_HostileHelicopter", 1],
 	["mission_HostileHeliFormation",1],
-	["mission_HostileJetFormation", 1]
+	["mission_HostileJetFormation", 1],
+	["mission_CargoContainer", 1]
+];
+AssaultMissions =
+[
+	["mission_Roadblock", 1],
+	["mission_Sniper", 1],
+	["mission_Outpost", 1],
+	["mission_Smugglers", 1],
+	["mission_TownInvasion", 1],
+	["mission_HostageRescue", 1]
 ];
 
 MissionSpawnMarkers = (allMapMarkers select {["Mission_", _x] call fn_startsWith}) apply {[_x, false]};
@@ -85,6 +89,7 @@ MoneyMissions = [MoneyMissions, [["A3W_underWaterMissions", ["mission_SunkenTrea
 { _x set [2, false] } forEach MoneyMissions;
 { _x set [2, false] } forEach PrimaryMissions;
 { _x set [2, false] } forEach AirMissions;
+{ _x set [2, false] } forEach AssaultMissions;
 
 MissionSpawnMarkers = [];
 SunkenMissionMarkers = [];

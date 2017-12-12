@@ -5,7 +5,7 @@
 //	@file Author: JoSchaap, AgentRev, LouD
 
 if (!isServer) exitwith {};
-#include "sideMissionDefines.sqf";
+#include "assaultMissionDefines.sqf";
 
 private [ "_box1", "_barGate", "_bunker1","_bunker2","_obj1","_obj2"];
 
@@ -36,7 +36,7 @@ _setupObjects =
 	_aiGroup = createGroup CIVILIAN;
 	[_aiGroup,_missionPos,12,15] spawn createCustomGroup3;
 
-	_missionHintText = format ["Enemies have set up an illegal roadblock and are stopping all vehicles! They need to be stopped!", sideMissionColor];
+	_missionHintText = format ["Enemies have set up an illegal roadblock and are stopping all vehicles! They need to be stopped!", assaultMissionColor];
 };
 
 _waitUntilMarkerPos = nil;
@@ -76,4 +76,4 @@ _successExec =
 	_successHintMessage = format ["The roadblock has been dismantled."];
 };
 
-_this call sideMissionProcessor;
+_this call assaultMissionProcessor;

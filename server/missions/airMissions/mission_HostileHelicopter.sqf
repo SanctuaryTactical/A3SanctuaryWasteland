@@ -159,18 +159,23 @@ _successExec =
 		_box1 setDir random 360;
 		[_box1, "mission_USSpecial"] call fn_refillbox;
 
-		//Scotsman - Pop Smoke
-		_smoke1= "SmokeShellGreen" createVehicle getPos _box1;
-		_smoke1 attachto [_box1,[0,0,-0.5]];
-		_flare1= "F_40mm_Green" createVehicle getPos _box1;
-		_flare1 attachto [_box1,[0,0,-0.5]];
-
 		_box2 = createVehicle ["Box_East_Wps_F", (getPosATL _veh) vectorAdd ([[_veh call fn_vehSafeDistance, 0, 0], random 360] call BIS_fnc_rotateVector2D), [], 5, "NONE"];
 		_box2 setDir random 360;
 		[_box2, "mission_USLaunchers"] call fn_refillbox;
+
+		[_box2] spawn STPopCrateSmoke;
+
+		//Scotsman - Pop Smoke
+		/*_smoke1= "SmokeShellGreen" createVehicle getPos _box2;
+		_smoke1 attachto [_box2,[0,0,-0.5]];
+		_flare1= "F_40mm_Green" createVehicle getPos _box2;
+		_flare1 attachto [_box2,[0,0,-0.5]];*/
+
+
 	};
 
 	_successHintMessage = "The sky is clear again, the enemy patrol was taken out! Ammo crates have fallen near the wreck.";
+
 };
 
 _this call airMissionProcessor;

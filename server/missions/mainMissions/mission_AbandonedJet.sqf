@@ -22,7 +22,10 @@ _setupVars =
 		"I_Plane_Fighter_04_F",
 		"O_Plane_Fighter_02_F",
 		"CUP_B_L39_CZ",
-		"CUP_B_F35B_BAF"
+		"CUP_B_F35B_BAF",
+		"CUP_B_A10_DYN_USA",
+		"CUP_O_SU34_RU",
+		"CUP_O_Su25_Dyn_RU"
 
 	] call BIS_fnc_selectRandom;
 

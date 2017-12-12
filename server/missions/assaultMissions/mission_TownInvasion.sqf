@@ -7,9 +7,9 @@
 
 if (!isServer) exitwith {};
 
-#include "sideMissionDefines.sqf"
+#include "assaultMissionDefines.sqf"
 
-private ["_nbUnits", "_box1", "_box2", "_townName", "_missionPos", "_buildingRadius", "_putOnRoof", "_fillEvenly", "_tent1", "_chair1", "_chair2", "_cFire1"];
+private ["_nbUnits", "_box1", "_box2", "_townName", "_missionPos", "_buildingRadius", "_putOnRoof", "_fillEvenly", "_tent1", "_chair1", "_chair2", "_cFire1", "_cash"];
 
 _setupVars =
 {
@@ -64,7 +64,7 @@ _setupObjects =
 	// move them into buildings
 	[_aiGroup, _missionPos, _buildingRadius, _fillEvenly, _putOnRoof] call moveIntoBuildings;
 
-	_missionHintText = format ["Hostiles have taken over <br/><t size='1.25' color='%1'>%2</t><br/><br/>There seem to be <t color='%1'>%3 enemies</t> hiding inside or on top of buildings. Get rid of them all, and take their supplies!<br/>Watch out for those windows!", sideMissionColor, _townName, _nbUnits];
+	_missionHintText = format ["Hostiles have taken over <br/><t size='1.25' color='%1'>%2</t><br/><br/>There seem to be <t color='%1'>%3 enemies</t> hiding inside or on top of buildings. Get rid of them all, and take their supplies!<br/>Watch out for those windows!", assaultMissionColor, _townName, _nbUnits];
 };
 
 _waitUntilMarkerPos = nil;
@@ -82,13 +82,13 @@ _successExec =
 	// Mission completed
 	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box1, _box2];
 
-	_successHintMessage = format ["Nice work!<br/><br/><t color='%1'>%2</t><br/>is a safe place again!<br/>Their belongings are now yours to take!", sideMissionColor, _townName];
+	_successHintMessage = format ["Nice work!<br/><br/><t color='%1'>%2</t><br/>is a safe place again!<br/>Their belongings are now yours to take!", assaultMissionColor, _townName];
 	{ deleteVehicle _x } forEach [_tent1, _chair1, _chair2, _cFire1];
 
 	for "_x" from 1 to 10 do
 	{
-		_cash = "Land_Money_F" createVehicle markerPos _missionPos;
-		_cash setPos ((markerPos _missionPos) vectorAdd ([[2 + random 2,0,0], random 360] call BIS_fnc_rotateVector2D));
+		_cash = "Land_Money_F" createVehicle getMarkerPos _marker;
+		_cash setPos ((markerPos _marker) vectorAdd ([[2 + random 2,0,0], random 360] call BIS_fnc_rotateVector2D));
 		_cash setDir random 360;
 		_cash setVariable["cmoney",3000,true];
 		_cash setVariable["owner","world",true];
@@ -96,4 +96,4 @@ _successExec =
 
 };
 
-_this call sideMissionProcessor;
+_this call assaultMissionProcessor;

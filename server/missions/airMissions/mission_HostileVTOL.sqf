@@ -158,12 +158,6 @@ _successExec =
 	_box3 setVariable ["moveable", true, true];
 	_box3 allowDamage false;
 
-	//Scotsman - Pop Smoke
-	_smoke1= "SmokeShellGreen" createVehicle getPos _box3;
-	_smoke1 attachto [_box3,[0,0,-0.5]];
-	_flare1= "F_40mm_Green" createVehicle getPos _box3;
-	_flare1 attachto [_box3,[0,0,-0.5]];
-
 	_Boxes4 = ["Box_T_East_Ammo_F", "Box_T_East_Wps_F", "Box_East_AmmoOrd_F", "Box_CSAT_Equip_F", "Box_CSAT_Uniforms_F", "Box_East_WpsLaunch_F", "Box_T_East_WpsSpecial_F", "Box_East_Support_F", "Box_East_AmmoVeh_F"];
 	_currBox4 = _Boxes4 call BIS_fnc_selectRandom;
 	_box4 = createVehicle [_currBox4, _lastPos, [], 2, "NONE"];
@@ -235,6 +229,9 @@ _successExec =
 	};
 	_box9 setVariable ["moveable", true, true];
 	_box9 allowDamage false;
+
+	[_box1] spawn STPopCrateSmoke;
+
 	_successHintMessage = "The sky is clear again, the enemy supply drop was taken out! Cargo has fallen near the wreck, go find it!.";
 };
 

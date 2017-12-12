@@ -5,7 +5,7 @@
 //	@file Author: JoSchaap, AgentRev, GriffinZS, RickB, soulkobk
 
 if (!isServer) exitwith {};
-#include "sideMissionDefines.sqf";
+#include "assaultMissionDefines.sqf";
 
 private ["_positions", "_camonet", "_hostage", "_obj1", "_obj3", "_obj4", "_vehicleName", "_chair", "_cash"];
 
@@ -58,7 +58,7 @@ _setupObjects =
 	_aiGroup setBehaviour "COMBAT";
 
 	_vehicleName = "Hostage";
-	_missionHintText = format ["<br/>Mercenary soldiers have captured a merchant and claim ransom. <br/> Free the merchant, he will pay for this", _vehicleName, sideMissionColor];
+	_missionHintText = format ["<br/>Mercenary soldiers have captured a merchant and claim ransom. <br/> Free the merchant, he will pay for this", _vehicleName, assaultMissionColor];
 };
 
 _waitUntilMarkerPos = nil;
@@ -93,4 +93,4 @@ _successExec =
 	_successHintMessage = format ["Well done! The mercenary soldiers are dead and the merchant alive. He pays for this."];
 };
 
-_this call sideMissionProcessor;
+_this call assaultMissionProcessor;

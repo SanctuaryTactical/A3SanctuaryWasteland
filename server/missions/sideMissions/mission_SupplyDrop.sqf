@@ -5,7 +5,7 @@
 //	@file Author: JoSchaap, AgentRev, LouD
 
 if (!isServer) exitwith {};
-#include "mainMissionDefines.sqf";
+#include "sideMissionDefines.sqf";
 
 private ["_planeChoices", "_convoyVeh", "_veh1", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_cash", "_boxes1", "_boxes2", "_boxes3", "_boxes4","_boxes5","_boxes6", "_boxes7", "_boxes8", "_boxes9", "_box1", "_box2", "_box3", "_box4", "_box5", "_box6", "_box7", "_box8", "_box9", "_currBox1", "_currBox2", "_currBox3", "_currBox4", "_currBox5", "_currBox6", "_currBox7", "_currBox8", "_currBox9"];
 
@@ -92,7 +92,7 @@ _setupObjects =
 
 	_missionPicture = getText (configFile >> "CfgVehicles" >> _veh1 >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> _veh1 >> "displayName");
-	_missionHintText = format ["A <t color='%2'>%1</t> is patrolling the island. Shoot it down and kill the pilot to recover the money and weapons!", _vehicleName, mainMissionColor];
+	_missionHintText = format ["A <t color='%2'>%1</t> is patrolling the island. Shoot it down and kill the pilot to recover the money and weapons!", _vehicleName, sideMissionColor];
 
 	_numWaypoints = count waypoints _aiGroup;
 };
@@ -215,4 +215,4 @@ _successExec =
 	_box9 setVariable ["moveable", true, true];
 	_box9 allowDamage false;
 
-_this call mainMissionProcessor;
+_this call sideMissionProcessor;

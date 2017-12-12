@@ -272,7 +272,19 @@ R3F_LOG_CFG_can_tow = R3F_LOG_CFG_can_tow +
 	"CUP_B_HMMWV_Unarmed_USA",
 	"CUP_B_LR_Transport_GB_D",
 	"CUP_B_BDRM2_CZ_Des",
-	"CUP_B_T72_CZ"
+	"CUP_B_T72_CZ",
+	"CUP_B_M1A1_DES_US_Army",
+	"CUP_B_M1165_GMV_USA",
+	"CUP_I_BTR60_UN",
+	"CUP_O_UAZ_Open_RU",
+	"CUP_O_TT650_CHDKZ",
+	"CUP_O_UAZ_Unarmed_SLA",
+	"CUP_O_Volha_SLA",
+	"CUP_O_SUV_TKA",
+	"CUP_C_Golf4_random_Civ",
+	"CUP_C_Octavia_Civ",
+	"CUP_C_Ikarus_Chernarus",
+	"CUP_I_SUV_Armored_ION"
 ];
 
 /**
@@ -317,7 +329,7 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
  	"Heli_Light_02_base_F",
  	"Heli_light_03_base_F",
  	"Heli_Attack_01_base_F",
-    "B_Heli_Light_01_F",
+  "B_Heli_Light_01_F",
 	"I_C_Offroad_02_unarmed_F",
  	"Tank_F",
  	"Heli_Attack_02_base_F",
@@ -358,8 +370,27 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"CUP_B_T72_CZ",
 	"O_Plane_CAS_02_dynamicLoadout_F",
 	"I_Plane_Fighter_03_dynamicLoadout_F",
-	"CUP_B_AH6M_USA"
-
+	"CUP_B_AH6M_USA",
+	"CUP_B_A10_DYN_USA",
+	"CUP_B_M1A1_DES_US_Army",
+	"CUP_B_M1165_GMV_USA",
+	"CUP_B_MH60L_DAP_2x_US",
+	"CUP_I_BTR60_UN",
+	"CUP_O_Ka52_Blk_RU",
+	"CUP_O_MI6T_RU",
+	"CUP_I_MH6M_ION",
+	"CUP_O_SU34_RU",
+	"CUP_O_Su25_Dyn_RU",
+	"CUP_C_Fishing_Boat_Chernarus",
+	"CUP_O_UAZ_Open_RU",
+	"CUP_O_TT650_CHDKZ",
+	"CUP_O_UAZ_Unarmed_SLA",
+	"CUP_O_Volha_SLA",
+	"CUP_O_SUV_TKA",
+	"CUP_C_Golf4_random_Civ",
+	"CUP_C_Octavia_Civ",
+	"CUP_C_Ikarus_Chernarus",
+	"CUP_I_SUV_Armored_ION"
 ];
 
 
@@ -393,7 +424,11 @@ R3F_LOG_CFG_can_lift = R3F_LOG_CFG_can_lift +
 	"CUP_B_UH60S_USN",
 	"CUP_B_CH53E_VIV_USMC",
 	"CUP_B_MH60L_DAP_4x_USN",
-	"CUP_B_AH6M_USA"
+	"CUP_B_AH6M_USA",
+	"CUP_B_MH60L_DAP_2x_US",
+	"CUP_O_Ka52_Blk_RU",
+	"CUP_O_MI6T_RU",
+	"CUP_I_MH6M_ION"
 ];
 
 /**
@@ -484,8 +519,27 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	"CUP_B_T72_CZ",
 	"O_Plane_CAS_02_dynamicLoadout_F",
 	"I_Plane_Fighter_03_dynamicLoadout_F",
-	"CUP_B_AH6M_USA"
-
+	"CUP_B_AH6M_USA",
+	"CUP_B_A10_DYN_USA",
+	"CUP_B_M1A1_DES_US_Army",
+	"CUP_B_M1165_GMV_USA",
+	"CUP_B_MH60L_DAP_2x_US",
+	"CUP_I_BTR60_UN",
+	"CUP_O_Ka52_Blk_RU",
+	"CUP_O_MI6T_RU",
+	"CUP_I_MH6M_ION",
+	"CUP_O_SU34_RU",
+	"CUP_O_Su25_Dyn_RU",
+	"CUP_O_UAZ_Open_RU",
+	"CUP_O_TT650_CHDKZ",
+	"CUP_O_UAZ_Unarmed_SLA",
+	"CUP_O_Volha_SLA",
+	"CUP_O_SUV_TKA",
+	"CUP_C_Golf4_random_Civ",
+	"CUP_C_Octavia_Civ",
+	"CUP_C_Ikarus_Chernarus",
+	"CUP_I_SUV_Armored_ION",
+	"CUP_C_Fishing_Boat_Chernarus"
 ];
 
 
@@ -577,8 +631,27 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	["CUP_B_L39_CZ", 20],
 	["CUP_B_F35B_BAF",20],
 	["CUP_B_BDRM2_CZ_Des", 30],
-	["CUP_B_T72_CZ",30]
-
+	["CUP_B_T72_CZ",30],
+	["CUP_B_A10_DYN_USA", 25],
+	["CUP_B_M1A1_DES_US_Army", 30],
+	["CUP_B_M1165_GMV_USA", 30],
+	["CUP_B_MH60L_DAP_2x_US", 30],
+	["CUP_I_BTR60_UN", 35],
+	["CUP_O_Ka52_Blk_RU",25],
+	["CUP_O_MI6T_RU", 35],
+	["CUP_I_MH6M_ION",25],
+	["CUP_O_SU34_RU",20],
+	["CUP_O_Su25_Dyn_RU",20],
+	["CUP_O_UAZ_Open_RU",35],
+	["CUP_O_TT650_CHDKZ",10],
+	["CUP_O_UAZ_Unarmed_SLA",35],
+	["CUP_O_Volha_SLA",20],
+	["CUP_O_SUV_TKA",40],
+	["CUP_C_Golf4_random_Civ",20],
+	["CUP_C_Octavia_Civ", 20],
+	["CUP_C_Ikarus_Chernarus",60],
+	["CUP_I_SUV_Armored_ION",40],
+	["CUP_C_Fishing_Boat_Chernarus", 35]
 ];
 
 /**
@@ -615,6 +688,8 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
  	["Land_BagFence_Short_F", 2],
  	["Land_BarGate_F", 3],
  	["Land_Canal_WallSmall_10m_F", 4],
+	["Land_Canal_Wall_D_right_F", 4],
+	["Land_Canal_Wall_D_left_F", 4],
  	["Land_Canal_Wall_Stairs_F", 3],
  	["Land_CargoBox_V1_F", 10],
  	["Land_Cargo_Patrol_V1_F", 7],
@@ -753,6 +828,8 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
  	"Land_BarGate_F",
  	"Land_Canal_WallSmall_10m_F",
  	"Land_Canal_Wall_Stairs_F",
+	"Land_Canal_Wall_D_right_F",
+	"Land_Canal_Wall_D_left_F",
  	"Land_CargoBox_V1_F",
  	"Land_Cargo_Patrol_V1_F",
  	"Land_Cargo_Tower_V1_F",

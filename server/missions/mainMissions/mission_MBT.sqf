@@ -20,7 +20,8 @@ _setupVars =
 		"O_MBT_02_cannon_F",
 		"I_MBT_03_cannon_F",
 		"CUP_B_M1A2_TUSK_MG_DES_US_Army",
-		"CUP_B_Challenger2_Desert_BAF"
+		"CUP_B_Challenger2_Desert_BAF",
+		"CUP_B_M1A1_DES_US_Army"
 	] call BIS_fnc_selectRandom;
 
 	_missionType = "Main Battle Tank";

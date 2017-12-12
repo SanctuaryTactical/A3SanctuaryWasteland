@@ -7,7 +7,7 @@
 //	@file Created: 08/12/2012 15:19
 
 if (!isServer) exitwith {};
-#include "sideMissionDefines.sqf";
+#include "assaultMissionDefines.sqf";
 
 private ["_nbUnits", "_outpost", "_objects"];
 
@@ -28,7 +28,7 @@ _setupObjects =
 	_aiGroup = createGroup CIVILIAN;
 	[_aiGroup, _missionPos, _nbUnits, 5] call createCustomGroup;
 
-	_missionHintText = format ["An armed <t color='%1'>outpost</t> containing weapon crates has been spotted near the marker, go capture it!", sideMissionColor]
+	_missionHintText = format ["An armed <t color='%1'>outpost</t> containing weapon crates has been spotted near the marker, go capture it!", assaultMissionColor]
 };
 
 _waitUntilMarkerPos = nil;
@@ -55,8 +55,8 @@ _successExec =
 		_cash setVariable["cmoney",10000,true];
 		_cash setVariable["owner","world",true];
 	};
-	
+
 	_successHintMessage = "The outpost has been captured, good work.";
 };
 
-_this call sideMissionProcessor;
+_this call assaultMissionProcessor;

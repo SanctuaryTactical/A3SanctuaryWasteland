@@ -1,17 +1,17 @@
 // ******************************************************************************************
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
 // ******************************************************************************************
-//	@file Name: mission_HostileJet.sqf
-//	@file Author: JoSchaap, AgentRev, LouD
+//	@file Name: mission_cargoContainer.sqf
+//	@file Author: The Scotsman
 
 if (!isServer) exitwith {};
 #include "airMissionDefines.sqf";
 
-private ["_planeChoices", "_heloChoices1", "_heloChoices2", "_convoyVeh", "_helo1", "_helo2", "_veh1", "_veh2", "_veh3", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_cash", "_boxes1", "_boxes2", "_boxes3", "_boxes4","_boxes5","_boxes6", "_boxes7", "_boxes8", "_boxes9", "_box1", "_box2", "_box3", "_box4", "_box5", "_box6", "_box7", "_box8", "_box9", "_currBox1", "_currBox2", "_currBox3"];
+private ["_heloChoices1", "_heloChoices2",  "_helo1", "_helo2", "_veh1", "_veh2", "_veh3", "_createVehicle", "_pos1", "_pos2", "_pos3", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_cash", "_boxes1", "_boxes2", "_boxes3", "_boxes4","_boxes5","_boxes6", "_boxes7", "_boxes8", "_boxes9", "_box1", "_box2", "_box3", "_box4", "_box5", "_box6", "_box7", "_box8", "_box9", "_currBox1", "_currBox2", "_currBox3"];
 
 _setupVars =
 {
-	_missionType = "Smuggler";
+	_missionType = "Cargo Container";
 	_locationsArray = nil; // locations are generated on the fly from towns
 };
 
@@ -19,12 +19,6 @@ _setupObjects =
 {
 	_missionPos = markerPos (((call cityList) call BIS_fnc_selectRandom) select 0);
 
-	_planeChoices =
-	[
-		["I_C_Plane_Civil_01_F"],
-		["I_C_Heli_Light_01_civil_F"],
-		["CUP_B_C47_USA"]
-	];
 	_heloChoices1 =
 	[
 		["CUP_B_AH64D_DL_USA"],
@@ -42,11 +36,10 @@ _setupObjects =
 		["CUP_B_MH60L_DAP_4x_USN"]
 	];
 
-	_convoyVeh = _planeChoices call BIS_fnc_selectRandom;
 	_helo1 = _heloChoices1 call BIS_fnc_selectRandom;
 	_helo2 = _heloChoices2 call BIS_fnc_selectRandom;
 
-	_veh1 = _convoyVeh select 0;
+	_veh1 = "CUP_B_C130J_Cargo_USMC";
 	_veh2 = _helo1 select 0;
 	_veh3 = _helo2 select 0;
 
@@ -77,9 +70,7 @@ _setupObjects =
 		_soldier moveInDriver _vehicle;
 		_soldier triggerDynamicSimulation true;
 
-		if( _type isKindOf "I_C_Plane_Civil_01_F" && _type isKindOf "I_C_Heli_Light_01_civil_F" && _type isKindOf "CUP_B_C47_USA") then {
-
-
+		if( _type isKindOf "CUP_B_C130J_Cargo_USMC" ) then {
 
 		} else {
 
@@ -96,11 +87,16 @@ _setupObjects =
 
 	_aiGroup = createGroup CIVILIAN;
 
+	/*_vehicles = [];
+	_vehicles set [0, [_veh1,[12349,24149,0], 14, _aiGroup] call _createVehicle]; // static value update when porting to different maps
+	_vehicles set [1, [_veh2,[12410,24158.5,0], 14, _aiGroup] call _createVehicle];
+	_vehicles set [2, [_veh3,[12279.5,24147,0], 14, _aiGroup] call _createVehicle];*/
+
 	_vehicles =
 	[
-		[_veh1, _missionPos vectorAdd ([[random 50, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0] call _createVehicle,
-		[_veh2, _missionPos vectorAdd ([[random 250, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0] call _createVehicle,
-		[_veh3, _missionPos vectorAdd ([[random 350, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0] call _createVehicle
+		[_veh1, _missionPos vectorAdd ([[random 50, 0, 0], random 100] call BIS_fnc_rotateVector2D), 0] call _createVehicle,
+		[_veh2, _missionPos vectorAdd ([[random 500, 0, 0], random 400] call BIS_fnc_rotateVector2D), 0] call _createVehicle,
+		[_veh3, _missionPos vectorAdd ([[random 700, 0, 0], random 600] call BIS_fnc_rotateVector2D), 0] call _createVehicle
 	];
 
 	_aiGroup setCombatMode "RED";
@@ -128,7 +124,7 @@ _setupObjects =
 
 	_missionPicture = getText (configFile >> "CfgVehicles" >> _veh1 >> "picture");
 	_vehicleName = getText (configFile >> "CfgVehicles" >> _veh1 >> "displayName");
-	_missionHintText = format ["A <t color='%2'>%1</t> is transporting stolen weapons and cash. Shoot it down and kill the pilot to recover the money and weapons!", _vehicleName, airMissionColor];
+	_missionHintText = format ["A <t color='%2'>%1</t> and it's armed escort are transporting a payroll and a large cargo container. Shoot it down and kill the pilot to recover container and the money!", _vehicleName, airMissionColor];
 
 	_numWaypoints = count waypoints _aiGroup;
 };
@@ -143,50 +139,34 @@ _failedExec = nil;
 
 _successExec =
 {
+
+  //Money
+  for "_i" from 1 to 10 do
+  {
+    _cash = createVehicle ["Land_Money_F", _lastPos, [], 5, "NONE"];
+    _cash setPos ([_lastPos, [[2 + random 3,0,0], random 360] call BIS_fnc_rotateVector2D] call BIS_fnc_vectorAdd);
+    _cash setDir random 360;
+    _cash setVariable ["cmoney", 5000, true];
+    _cash setVariable ["owner", "world", true];
+  };
+
 	// Mission completed
-
-	//Money
-	for "_i" from 1 to 10 do
-	{
-		_cash = createVehicle ["Land_Money_F", _lastPos, [], 5, "NONE"];
-		_cash setPos ([_lastPos, [[2 + random 3,0,0], random 360] call BIS_fnc_rotateVector2D] call BIS_fnc_vectorAdd);
-		_cash setDir random 360;
-		_cash setVariable ["cmoney", 2500, true];
-		_cash setVariable ["owner", "world", true];
-	};
-
-	_Boxes1 = ["Box_Syndicate_WpsLaunch_F","Box_Syndicate_Wps_F","","Box_NATO_Equip_F"];
-	_currBox1 = _Boxes1 call BIS_fnc_selectRandom;
-	_box1 = createVehicle [_currBox1, _lastPos, [], 2, "NONE"];
-	_box1 setDir random 360;
-	_box1 setVariable ["moveable", true, true];
-	_box1 allowDamage false;
-
-	_Boxes2 = ["Box_Syndicate_WpsLaunch_F","Box_Syndicate_Wps_F","","Box_NATO_Equip_F"];
-	_currBox2 = _Boxes2 call BIS_fnc_selectRandom;
-	_box2 = createVehicle [_currBox2, _lastPos, [], 2, "NONE"];
-	_box2 setDir random 360;
-	_box2 setVariable ["moveable", true, true];
-	_box2 allowDamage false;
-
-	_Boxes3 = ["Box_Syndicate_WpsLaunch_F","Box_Syndicate_Wps_F","","Box_NATO_Equip_F"];
-	_currBox3 = _Boxes1 call BIS_fnc_selectRandom;
-	_box3 = createVehicle [_currBox3, _lastPos, [], 2, "NONE"];
+	_box3 = createVehicle ["Land_Cargo20_military_green_F", _lastPos, [], 2, "NONE"];
 	_box3 setDir random 360;
 	_box3 setVariable ["moveable", true, true];
 	_box3 allowDamage false;
 
-	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box1, _box2];
+	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box3];
 
-	_successHintMessage = "The smuggler was taken out! Ammo crates and money have fallen near the pilot.";
+	_successHintMessage = "The transport was stopped! The cargo container and payroll has been dropped.";
 
-	[_box1] spawn STPopCrateSmoke;
+	[_box3] spawn STPopCrateSmoke;
 
-	/*//Scotsman - Pop Smoke
-	_smoke1= "SmokeShellGreen" createVehicle getPos _box2;
-	_smoke1 attachto [_box2,[0,0,-0.5]];
-	_flare1= "F_40mm_Green" createVehicle getPos _box2;
-	_flare1 attachto [_box2,[0,0,-0.5]];*/
+	//Scotsman - Pop Smoke
+	//_smoke1= "SmokeShellGreen" createVehicle getPos _box3;
+	//_smoke1 attachto [_box3,[0,0,-0.5]];
+	//_flare1= "F_40mm_Green" createVehicle getPos _box3;
+	//_flare1 attachto [_box3,[0,0,-0.5]];
 
 };
 

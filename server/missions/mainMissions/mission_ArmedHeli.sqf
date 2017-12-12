@@ -25,7 +25,10 @@ _setupVars =
 		"CUP_B_UH1Y_Gunship_Dynamic_USMC",
 		"CUP_B_AH1Z_Dynamic_USMC",
 		"CUP_B_Mi35_Dynamic_CZ_Des",
-		"CUP_B_MH60L_DAP_4x_USN"
+		"CUP_B_MH60L_DAP_4x_USN",
+		"CUP_B_AH6M_USA",
+		"CUP_O_Ka52_Blk_RU",
+		"CUP_O_MI6T_RU"
 	];
 
 	_missionType = "Armed Helicopter";

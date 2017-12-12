@@ -5,7 +5,7 @@
 //	@file Author: JoSchaap, AgentRev, LouD
 
 if (!isServer) exitwith {};
-#include "sideMissionDefines.sqf";
+#include "assaultMissionDefines.sqf";
 
 private ["_positions", "_boxes1", "_currBox1", "_box1", "_box2"];
 
@@ -25,7 +25,7 @@ _setupObjects =
 	_aiGroup setCombatMode "RED";
 	_aiGroup setBehaviour "COMBAT";
 
-	_missionHintText = format ["A Sniper Nest has been spotted. Head to the marked area and Take them out! Be careful they are fully armed and dangerous!", sideMissionColor];
+	_missionHintText = format ["A Sniper Nest has been spotted. Head to the marked area and Take them out! Be careful they are fully armed and dangerous!", assaultMissionColor];
 };
 
 _waitUntilMarkerPos = nil;
@@ -62,4 +62,4 @@ _successExec =
 	_successHintMessage = format ["The snipers are dead! Well Done!"];
 };
 
-_this call sideMissionProcessor;
+_this call assaultMissionProcessor;

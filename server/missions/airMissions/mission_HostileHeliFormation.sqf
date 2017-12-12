@@ -23,7 +23,8 @@ _setupObjects =
 	[
 		["B_Heli_Transport_01_F", ["B_Heli_Light_01_dynamicLoadout_F", "pawneeNormal"]],
 		["B_Heli_Transport_01_camo_F", ["O_Heli_Light_02_dynamicLoadout_F", "orcaDAGR"]],
-		["B_Heli_Transport_01_F", "I_Heli_light_03_dynamicLoadout_F"]
+		["B_Heli_Transport_01_F", "I_Heli_light_03_dynamicLoadout_F"],
+		["CUP_B_AH6M_USA", "CUP_B_AH6M_USA"]
 	];
 
 	if (missionDifficultyHard) then
@@ -172,13 +173,16 @@ _successExec =
 	_box3 setDir random 360;
 	[_box3, "mission_Main_A3snipers"] call fn_refillbox;
 
-	//Scotsman - Pop Smoke
-	_smoke1= "SmokeShellGreen" createVehicle getPos _box3;
-	_smoke1 attachto [_box3,[0,0,-0.5]];
-	_flare1= "F_40mm_Green" createVehicle getPos _box3;
-	_flare1 attachto [_box3,[0,0,-0.5]];
-
 	_successHintMessage = "The sky is clear again, the enemy patrol was taken out! Ammo crates have fallen near the wreck.";
+
+	[_box3] spawn STPopCrateSmoke;
+
+	/*//Scotsman - Pop Smoke
+	_smoke1= "SmokeShellGreen" createVehicle getPos _box2;
+	_smoke1 attachto [_box2,[0,0,-0.5]];
+	_flare1= "F_40mm_Green" createVehicle getPos _box2;
+	_flare1 attachto [_box2,[0,0,-0.5]];*/
+
 };
 
 _this call airMissionProcessor;

@@ -24,10 +24,11 @@ _setupObjects =
 	_convoyVeh =
 	[
 		["I_G_Offroad_01_F","O_MBT_02_cannon_F","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_G_Offroad_01_F"],
-		["I_G_Offroad_01_F","O_MBT_02_cannon_F","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_G_Offroad_01_F"],
+		["I_G_Offroad_01_F","O_MBT_02_cannon_F","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F"],
 		["I_G_Offroad_01_F","CUP_B_M1A2_TUSK_MG_DES_US_Army","I_MRAP_03_F","O_APC_Tracked_02_AA_F","CUP_B_Challenger2_Desert_BAF","CUP_B_M7Bradley_USA_D"],
-		["I_G_Offroad_01_F","CUP_B_Challenger2_Desert_BAF","I_MRAP_03_F","O_APC_Tracked_02_AA_F","O_MBT_02_cannon_F","I_G_Offroad_01_F"],
-		["I_G_Offroad_01_F","CUP_B_T72_CZ","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_G_Offroad_01_F"]
+		["O_APC_Tracked_02_AA_F","CUP_B_Challenger2_Desert_BAF","I_MRAP_03_F","O_APC_Tracked_02_AA_F","O_MBT_02_cannon_F","I_G_Offroad_01_F"],
+		["I_G_Offroad_01_F","CUP_B_T72_CZ","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_G_Offroad_01_F"],
+		["O_APC_Tracked_02_AA_F","CUP_B_M1A1_DES_US_Army","I_MRAP_03_F","O_APC_Tracked_02_AA_F","CUP_B_M1A1_DES_US_Army","I_MRAP_03_F"]
 	] call BIS_fnc_selectRandom;
 
 	_veh1 = _convoyVeh select 0;
@@ -135,7 +136,7 @@ _setupObjects =
 	_aiGroup selectLeader _leader;
 	_leader setRank "LIEUTENANT";
 
-	_aiGroup setCombatMode "YELLOW"; // units will defend themselves
+	_aiGroup setCombatMode "RED"; // units will defend themselves
 	_aiGroup setBehaviour "SAFE"; // units feel safe until they spot an enemy or get into contact
 	_aiGroup setFormation "STAG COLUMN";
 
@@ -143,13 +144,15 @@ _setupObjects =
 	_aiGroup setSpeedMode _speedMode;
 
 	{
+
 		_waypoint = _aiGroup addWaypoint [_x, 0];
 		_waypoint setWaypointType "MOVE";
 		_waypoint setWaypointCompletionRadius 50;
-		_waypoint setWaypointCombatMode "GREEN";
+		_waypoint setWaypointCombatMode "RED";
 		_waypoint setWaypointBehaviour "SAFE"; // safe is the best behaviour to make AI follow roads, as soon as they spot an enemy or go into combat they WILL leave the road for cover though!
 		_waypoint setWaypointFormation "FILE";
 		_waypoint setWaypointSpeed _speedMode;
+
 	} forEach _waypoints;
 
 	_missionPos = getPosATL leader _aiGroup;
@@ -160,8 +163,8 @@ _setupObjects =
 	_vehicleName3 = getText (configFile >> "CfgVehicles" >> _veh5 >> "displayName");
 
 	_missionHintText = format ["A convoy containing at least a <t color='%4'>%1</t>, a <t color='%4'>%2</t> and a <t color='%4'>%3</t> is patrolling a high value location! Stop the patrol and capture the goods and money!", _vehicleName, _vehicleName2, _vehicleName3, moneyMissionColor];
-
 	_numWaypoints = count waypoints _aiGroup;
+
 };
 
 _waitUntilMarkerPos = {getPosATL _leader};
@@ -172,9 +175,8 @@ _failedExec = nil;
 
 // _vehicles are automatically deleted or unlocked in missionProcessor depending on the outcome
 
-_successExec =
-{
-	// Mission completed
+
+_successExec = {
 
 	for "_x" from 1 to 10 do
 	{
@@ -185,24 +187,23 @@ _successExec =
 		_cash setVariable["owner","world",true];
 	};
 
+	// Mission completed
 	_box1 = "Box_East_Wps_F" createVehicle getMarkerPos _marker;
-    //[_box1,"mission_USLaunchers"] call fn_refillbox;
-    [_box1,"mission_USLaunchers"] call randomCrateLoadOut;
 	_box1 allowDamage false;
+  [_box1,"mission_USLaunchers"] call randomCrateLoadOut;
 
 	_box2 = "Box_NATO_Wps_F" createVehicle getMarkerPos _marker;
-    //[_box2,"mission_USSpecial2"] call fn_refillbox;
-    [_box2,"mission_USSpecial2"] call randomCrateLoadOut;
-	_box2 allowDamage false;
+  _box2 allowDamage false;
+	[_box2,"mission_USSpecial2"] call randomCrateLoadOut;
 
 	_box3 = "Box_NATO_Support_F" createVehicle getMarkerPos _marker;
-    //[_box3,"mission_Main_A3snipers"] call fn_refillbox;
-    [_box3,"mission_Main_A3snipers"] call randomCrateLoadOut;
 	_box3 allowDamage false;
+	[_box3,"mission_Main_A3snipers"] call randomCrateLoadOut;
 
 	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box1, _box2, _box3];
 
 	_successHintMessage = "The patrol has been stopped, the money, crates and vehicles are yours to take.";
+
 };
 
 _this call moneyMissionProcessor;
