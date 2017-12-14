@@ -39,12 +39,12 @@ if (!isNil "_uid") then
 				};
 				case 3: //Lock Down Base
 				{
-					closeDialog 0;					
+					closeDialog 0;
 					execVM "addons\BoS\BoS_lockDown.sqf";
 				};
 				case 4: //Release Lock Down
 				{
-					closeDialog 0;					
+					closeDialog 0;
 					execVM "addons\BoS\BoS_releaseLockDown.sqf";
 				};
 				case 5: //Turn off all lights
@@ -59,9 +59,15 @@ if (!isNil "_uid") then
 				};
 				case 7: //Change Password
 				{
-					closeDialog 0;					
+					closeDialog 0;
 					execVM "addons\Bos\password_change.sqf";
-				};					
+				};
+				case 8: //Secure Doors
+				{
+					closeDialog 0;
+					execVM "addons\Bos\BoS_closeAllDoors.sqf";
+					hint "All doors have been secured";
+				};
 			};
 		};
 	};

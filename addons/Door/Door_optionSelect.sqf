@@ -27,19 +27,25 @@ if (!isNil "_uid") then
 			{
 				case 0: //Lock Door
 				{
-					closeDialog 0;					
+					closeDialog 0;
 					execVM "addons\Door\Door_openDoor.sqf";
 				};
 				case 1: //Unlock Door
 				{
-					closeDialog 0;					
+					closeDialog 0;
 					execVM "addons\Door\Door_closeDoor.sqf";
 				};
 				case 2: //Change Password
 				{
-					closeDialog 0;					
+					closeDialog 0;
 					execVM "addons\Door\password_change.sqf";
-				};					
+				};
+				case 3: //Secure All Doors
+				{
+					closeDialog 0;
+					execVM "addons\BoS\BoS_closeAllDoors.sqf";
+					hint "All doors have been secured";
+				};
 			};
 		};
 	};

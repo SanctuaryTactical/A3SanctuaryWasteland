@@ -17,11 +17,12 @@ if (!isNil "_uid") then {
 	_displayDoor = uiNamespace getVariable "Door_Menu";
 	_Door_select = _displayDoor displayCtrl Door_Menu_option;
 
-	_panelOptions = 
+	_panelOptions =
 	[
 		"Open Door",
 		"Close Door",
-		"Change PIN"
+		"Change PIN",
+		"Secure All Doors"
 	];
 
 	{

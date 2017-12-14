@@ -35,11 +35,7 @@ briefing = 0; // if 0, skip Continue button
 
 // A3W UI color (default = sky blue)
 
-//The Scotsman - Custom UI Color
-//#define A3W_UICOLOR_R  0.25 // default = 0.25
-//#define A3W_UICOLOR_G  0.51 // default = 0.51
-//#define A3W_UICOLOR_B  0.96 // default = 0.96
-
+//The Scotsman - Custom UI Color (Grey)
 #define A3W_UICOLOR_R  0.23 // default = 0.25
 #define A3W_UICOLOR_G  0.20 // default = 0.51
 #define A3W_UICOLOR_B  0.18 // default = 0.96
@@ -129,6 +125,11 @@ class CfgMusic
 	{
 		name = "PinLock";
 		sound[] = {"media\lock.ogg", db+10, 1.0};
+	};
+	class SecureDoors
+	{
+		name = "SecureDoors";
+		sound[] = {"media\secure.ogg", db+10, 1.0};
 	};
 };
 
