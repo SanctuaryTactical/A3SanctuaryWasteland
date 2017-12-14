@@ -675,6 +675,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
  	["ReammoBox_F", 3],
  	["Kart_01_Base_F", 5],
  	["Quadbike_01_base_F", 6],
+	["CUP_O_TT650_CHDKZ", 6],
  	["Rubber_duck_base_F", 10],
  	["UAV_01_base_F", 2],
  	["Land_PierLadder_F", 3],
@@ -805,6 +806,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 [
 	// e.g. : "MyMovableObjectClassName1", "MyMovableObjectClassName2"
 
+	"CUP_O_TT650_CHDKZ",
 	"I_CargoNet_01_ammo_F",
 	"O_CargoNet_01_ammo_F",
   "B_CargoNet_01_ammo_F",

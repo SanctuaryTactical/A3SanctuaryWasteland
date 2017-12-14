@@ -952,10 +952,7 @@ helicoptersArray = compileFinal str
 	["MQ-12 Falcon UAV", "B_T_UAV_03_F", 50000, "vehicle"], // Do NOT use "B_T_UAV_03_dynamicLoadout_F" (doesn't support ASRAAM pylons)
 	["SH-60 Seahawk", "CUP_B_UH60S_USN", 40000, "vehicle"],
 	["MH-60 Blackhawk", "CUP_B_MH60L_DAP_2x_US", 60000, "vehicle"],
-	["CH-53 Super Stalion", "CUP_B_CH53E_VIV_USMC", 65000, "vehicle"],
-	["KA-52", "CUP_O_Ka52_Blk_RU",75000, "vehicle"],
-	["Mi-6T Hook", "CUP_O_MI6T_RU", 30000, "vehicle"]
-
+	["CH-53 Super Stalion", "CUP_B_CH53E_VIV_USMC", 65000, "vehicle"]
 ];
 
 planesArray = compileFinal str
