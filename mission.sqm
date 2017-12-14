@@ -1,29 +1,29 @@
 version=53;
 class EditorData
 {
-	moveGridStep=0.5;
+	moveGridStep=0.125;
 	angleGridStep=0.2617994;
 	scaleGridStep=0.1;
 	autoGroupingDist=10;
 	toggles=6;
 	class ItemIDProvider
 	{
-		nextID=2052;
+		nextID=2055;
 	};
 	class MarkerIDProvider
 	{
-		nextID=192;
+		nextID=193;
 	};
 	class LayerIndexProvider
 	{
-		nextID=385;
+		nextID=405;
 	};
 	class Camera
 	{
-		pos[]={14928.038,63.057785,16361.278};
-		dir[]={-0.10695013,-0.32723877,0.93888646};
-		up[]={-0.037037402,0.94493544,0.32514116};
-		aside[]={0.99358582,1.8633e-007,0.11318137};
+		pos[]={14070.93,39.375469,18916.258};
+		dir[]={0.85834348,-0.43952122,-0.26490486};
+		up[]={0.42000085,0.89821029,-0.12962319};
+		aside[]={-0.29491371,-5.5055716e-007,-0.95557797};
 	};
 };
 binarizationWanted=0;
@@ -325,7 +325,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=1450;
+		items=1449;
 		class Item0
 		{
 			dataType="Group";
@@ -4944,7 +4944,7 @@ class Mission
 			fillName="DiagGrid";
 			a=125;
 			b=140;
-			angle=9.4329958;
+			angle=9.4329948;
 			id=351;
 			atlOffset=-0.0003156662;
 		};
@@ -6113,13 +6113,13 @@ class Mission
 					name="Parking3_spawn";
 					type="Empty";
 					colorName="ColorBlack";
-					angle=172.21498;
+					angle=172.21497;
 					id=1931;
 					atlOffset=-0.00027275085;
 				};
 			};
 			id=415;
-			atlOffset=-9.6187592;
+			atlOffset=-9.400692;
 		};
 		class Item258
 		{
@@ -6734,10 +6734,11 @@ class Mission
 									dataType="Object";
 									class PositionInfo
 									{
-										position[]={14091.613,26.67981,18920.697};
-										angles[]={0,2.0947092,0};
+										position[]={14091.625,26.271528,18920.75};
+										angles[]={0,2.0979655,0};
 									};
 									side="Empty";
+									flags=4;
 									class Attributes
 									{
 										skill=0.60000002;
@@ -6746,15 +6747,14 @@ class Mission
 									};
 									id=1654;
 									type="Land_CashDesk_F";
-									atlOffset=0.4090004;
 								};
 								class Item3
 								{
 									dataType="Object";
 									class PositionInfo
 									{
-										position[]={14091.104,26.877062,18921.121};
-										angles[]={0,2.0968099,0};
+										position[]={14090.75,26.633694,18921.25};
+										angles[]={0,2.0963368,0};
 									};
 									side="Empty";
 									flags=4;
@@ -6765,7 +6765,6 @@ class Mission
 									};
 									id=1655;
 									type="Land_CncBarrier_stripes_F";
-									atlOffset=0.23339653;
 								};
 								class Item4
 								{
@@ -6847,7 +6846,7 @@ class Mission
 									dataType="Object";
 									class PositionInfo
 									{
-										position[]={14092.664,27.482265,18920.24};
+										position[]={14092.75,27.476442,18920.5};
 										angles[]={0,2.096808,0};
 									};
 									side="Empty";
@@ -6860,49 +6859,48 @@ class Mission
 									};
 									id=1660;
 									type="Land_TouristShelter_01_F";
-									atlOffset=0.012834549;
 								};
 								class Item9
 								{
 									dataType="Object";
 									class PositionInfo
 									{
-										position[]={14094.5,27.5,18919};
-										angles[]={0,2.1058488,0};
+										position[]={14094.5,27.500364,18919};
+										angles[]={0,2.1058445,0};
 									};
 									side="Empty";
 									class Attributes
 									{
 										skill=0.60000002;
-										init="this SetObjectTexture [0,""media\dmv4.paa""]; this attachTo [DMVStand_2,[0,1.565,.1]]; ";
+										init="call{this SetObjectTexture [1,""media\dmv4.paa""]; this attachTo [DMVStand_3,[0,1.565,.1]]; }";
 										name="DMVSign_2_3";
 									};
 									id=1661;
 									type="UserTexture1m_F";
-									atlOffset=1.0906353;
+									atlOffset=1.0909996;
 								};
 								class Item10
 								{
 									dataType="Object";
 									class PositionInfo
 									{
-										position[]={14094.979,27.311016,18920.168};
-										angles[]={0,0.52241659,0};
+										position[]={14092.875,27.250362,18923.375};
+										angles[]={0,0.52241194,0};
 									};
 									side="Empty";
 									class Attributes
 									{
 										skill=0.60000002;
-										init="this SetObjectTexture [0,""media\dmv5.paa""];this attachto [DMVStand_2,[-2.69,-1.11,.09]]; this setdir -90; ";
+										init="call{this SetObjectTexture [0,""media\dmv5.paa""];this attachto [DMVStand_3,[-2.69,-1.11,.09]]; this setdir -90; }";
 										name="DMVSign_2_4";
 									};
 									id=1662;
 									type="UserTexture1m_F";
-									atlOffset=0.86251831;
+									atlOffset=0.90299988;
 								};
 							};
 							id=1754;
-							atlOffset=0.68299484;
+							atlOffset=0.70308495;
 						};
 						class Item3
 						{
@@ -7634,7 +7632,7 @@ class Mission
 						};
 					};
 					id=1747;
-					atlOffset=6.1355162;
+					atlOffset=6.1312847;
 				};
 				class Item1
 				{
@@ -7705,7 +7703,7 @@ class Mission
 				};
 			};
 			id=432;
-			atlOffset=1.7017269;
+			atlOffset=1.6997566;
 		};
 		class Item259
 		{
@@ -8475,7 +8473,7 @@ class Mission
 				angles[]={0,1.077322,0};
 			};
 			side="Empty";
-			flags=5;
+			flags=1;
 			class Attributes
 			{
 				init="call{this addAction["""",""addons\scripts\HALO.sqf""];}";
@@ -8483,7 +8481,7 @@ class Mission
 			};
 			id=465;
 			type="Land_PhoneBooth_01_F";
-			atlOffset=8.392334e-005;
+			atlOffset=0.33799934;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -33249,7 +33247,7 @@ class Mission
 			fillName="DiagGrid";
 			a=125;
 			b=60;
-			angle=339.99988;
+			angle=339.99982;
 			id=1838;
 			atlOffset=7.1332812;
 		};
@@ -33278,7 +33276,7 @@ class Mission
 			fillName="DiagGrid";
 			a=50;
 			b=50;
-			angle=339.99991;
+			angle=339.99985;
 			id=1840;
 			atlOffset=12.852005;
 		};
@@ -33333,14 +33331,6 @@ class Mission
 			id=1929;
 			type="Land_i_Shed_Ind_F";
 			atlOffset=0.49999046;
-		};
-		class Item1449
-		{
-			dataType="Marker";
-			position[]={20788.275,36.016056,6770.3594};
-			name="marker_191";
-			type="loc_Church";
-			id=1932;
 		};
 	};
 };
