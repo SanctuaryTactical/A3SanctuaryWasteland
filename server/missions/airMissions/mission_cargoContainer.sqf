@@ -66,7 +66,7 @@ _setupObjects =
 		_aiGroup addVehicle _vehicle;
 
 		// add pilot
-		_soldier = [_aiGroup, _position] call createRandomSyndikatPilot;
+		_soldier = [_aiGroup, _position] call createRandomPilot;
 		_soldier moveInDriver _vehicle;
 		_soldier triggerDynamicSimulation true;
 
@@ -75,7 +75,7 @@ _setupObjects =
 		} else {
 
 			// these choppers need 1 gunner
-			_soldier = [_aiGroup, _position] call createRandomSyndikatPilot;
+			_soldier = [_aiGroup, _position] call createRandomPilot;
 			_soldier moveInGunner _vehicle;
 
 		};
@@ -86,11 +86,6 @@ _setupObjects =
 	};
 
 	_aiGroup = createGroup CIVILIAN;
-
-	/*_vehicles = [];
-	_vehicles set [0, [_veh1,[12349,24149,0], 14, _aiGroup] call _createVehicle]; // static value update when porting to different maps
-	_vehicles set [1, [_veh2,[12410,24158.5,0], 14, _aiGroup] call _createVehicle];
-	_vehicles set [2, [_veh3,[12279.5,24147,0], 14, _aiGroup] call _createVehicle];*/
 
 	_vehicles =
 	[
@@ -158,15 +153,9 @@ _successExec =
 
 	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box3];
 
-	_successHintMessage = "The transport was stopped! The cargo container and payroll has been dropped.";
-
 	[_box3] spawn STPopCrateSmoke;
 
-	//Scotsman - Pop Smoke
-	//_smoke1= "SmokeShellGreen" createVehicle getPos _box3;
-	//_smoke1 attachto [_box3,[0,0,-0.5]];
-	//_flare1= "F_40mm_Green" createVehicle getPos _box3;
-	//_flare1 attachto [_box3,[0,0,-0.5]];
+	_successHintMessage = "The transport was stopped! The cargo container and payroll has been dropped.";
 
 };
 
