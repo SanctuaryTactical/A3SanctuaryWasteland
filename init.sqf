@@ -38,7 +38,7 @@ if (isNull player) then { X_JIP = true };
 A3W_scriptThreads = [];
 
 [DEBUG] call compile preprocessFileLineNumbers "globalCompile.sqf";
-[DEBUG] call compile preprocessFileLineNumbers "oo_hasmap.sqf";
+[DEBUG] call compile preprocessFileLineNumbers "hashmap\oo_hashmap.sqf";
 
 //init Wasteland Core
 [] execVM "config.sqf";

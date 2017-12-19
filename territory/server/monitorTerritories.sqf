@@ -68,12 +68,21 @@ if(!isServer) exitWith {};
 // 3 = Time in seconds during which the area has been held
 // 3 = Time in seconds during which the area has been occupied by enemies
 currentTerritoryDetails = [];
+territoryCategories = ["new", []] call OO_HASHMAP;
 
 {
 	_markerName = _x select 0;
+	_category = _x select 3;
+	_payrollvalue = _x select 4;
+
+ ["put", [_markerName, [_category,_payrollvalue]]] call territoryCategories;
+
 	//diag_log format ["Adding %1 to lastCapturePointDetails", _markerName];
 	currentTerritoryDetails pushBack [_markerName, [], sideUnknown, 0, 0];
+
 } forEach (["config_territory_markers", []] call getPublicVar);
+
+//["TERRITORY_SW_AIRFIELD", "AAC Airfield", 1000, "AIRFIELD", 200],
 
 A3W_currentTerritoryOwners = [];
 
