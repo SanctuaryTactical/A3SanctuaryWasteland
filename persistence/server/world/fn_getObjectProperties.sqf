@@ -33,6 +33,10 @@ switch (true) do
 	{
 		_variables pushBack ["water", _obj getVariable ["water", 500]];
 	};
+	case (_obj isKindOf "Land_DataTerminal_01_F"):
+	{
+		_variables pushBack ["keypads", _obj getVariable ["keypads", 75]];
+	};
 	case (_obj isKindOf "Land_CratesWooden_F"):
 	{
 		_variables pushBack ["food", _obj getVariable ["food", 500]];

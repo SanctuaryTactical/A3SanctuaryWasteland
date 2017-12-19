@@ -775,6 +775,7 @@ genObjectsArray = compileFinal str
 [
 	["Camo Net", "CamoNet_INDP_open_F", 200, "object", "HIDDEN"], // unlisted, only for object saving
 	["Cargo Container", "Land_Cargo20_military_green_F", 10000, "object", "HIDDEN"], //Unlisted.  Reward from Cargo Container Mission
+	["Vehicle Pin Generating Station", "Land_DataTerminal_01_F", 150000, "object"],
 	["Base Door (Vehicle)", "Land_Bunker_01_blocks_3_F", 50000, "object"],
 	["Base Door (Man)", "Land_Bunker_01_blocks_1_F", 12000, "object"],
 	["Base Door key (PIN: 0000) (beta)", "Land_Noticeboard_F", 10000, "object"],  // LouD

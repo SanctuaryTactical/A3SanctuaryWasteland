@@ -796,7 +796,8 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["Land_Bunker_01_blocks_3_F", 8],
 	["Land_Bunker_01_blocks_1_F", 4],
 	["ContainmentArea_01_forest_F", 25],
-	["RoadCone_F", 2]
+	["RoadCone_F", 2],
+	["Land_DataTerminal_01_F", 25]
 ];
 
 /****** MOVABLE-BY-PLAYER OBJECTS / OBJETS DEPLACABLES PAR LE JOUEUR ******/
@@ -942,5 +943,6 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Land_FireEscape_01_tall_F",
 	"Land_Hangar_F",
 	"ContainmentArea_01_forest_F",
-	"RoadCone_F"
+	"RoadCone_F",
+	"Land_DataTerminal_01_F"
 ];

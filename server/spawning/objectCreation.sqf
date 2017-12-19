@@ -25,6 +25,10 @@ switch (true) do
 	{
 		_obj setVariable ["water", 500, true];
 	};
+	case ( _objClass == "Land_DataTerminal_01_F"):
+	{
+		_obj setVariable ["keypads", 75, true];
+	};
 	case (_objClass == "Land_CratesWooden_F"):
 	{
 		_obj setVariable ["water", 500, true];
