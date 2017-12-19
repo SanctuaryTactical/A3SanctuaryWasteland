@@ -3,5 +3,8 @@
 // ******************************************************************************************
 //	@file Name: init.sqf
 //	@file Author: AgentRev
-
 // you can put custom map-specific code in here, like scripted buildings and such
+
+if (!isServer) exitWith {};
+
+diag_log "[1ST] Sanctuary Tactical - Initializing Map Config";
