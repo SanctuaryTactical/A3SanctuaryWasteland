@@ -7,7 +7,7 @@
 //	@file Description: Door script
 
 private ["_doors", "_keypads"];
-_doors = (nearestObjects [player, ["Land_Bunker_01_blocks_3_F","Land_Bunker_01_blocks_1_F"], 10]);
+_doors = (nearestObjects [player, ["Land_Bunker_01_blocks_3_F","Land_Bunker_01_blocks_1_F", "ContainmentArea_01_forest_F"], 10]);
 
 if (!isNil "_doors") then
 {

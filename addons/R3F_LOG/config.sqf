@@ -390,7 +390,8 @@ R3F_LOG_CFG_can_be_towed = R3F_LOG_CFG_can_be_towed +
 	"CUP_C_Golf4_random_Civ",
 	"CUP_C_Octavia_Civ",
 	"CUP_C_Ikarus_Chernarus",
-	"CUP_I_SUV_Armored_ION"
+	"CUP_I_SUV_Armored_ION",
+	"CUP_B_UH1Y_Gunship_Dynamic_USMC"
 ];
 
 
@@ -793,7 +794,9 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["Land_ConcreteWall_01_m_4m_F", 4],
 	["Land_ConcreteWall_01_m_8m_F", 8],
 	["Land_Bunker_01_blocks_3_F", 8],
-	["Land_Bunker_01_blocks_1_F", 4]
+	["Land_Bunker_01_blocks_1_F", 4],
+	["ContainmentArea_01_forest_F", 25],
+	["RoadCone_F", 2]
 ];
 
 /****** MOVABLE-BY-PLAYER OBJECTS / OBJETS DEPLACABLES PAR LE JOUEUR ******/
@@ -937,5 +940,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Land_Bunker_01_blocks_3_F",
 	"Land_Bunker_01_blocks_1_F",
 	"Land_FireEscape_01_tall_F",
-	"Land_Hangar_F"
+	"Land_Hangar_F",
+	"ContainmentArea_01_forest_F",
+	"RoadCone_F"
 ];

@@ -775,9 +775,10 @@ genObjectsArray = compileFinal str
 [
 	["Camo Net", "CamoNet_INDP_open_F", 200, "object", "HIDDEN"], // unlisted, only for object saving
 	["Cargo Container", "Land_Cargo20_military_green_F", 10000, "object", "HIDDEN"], //Unlisted.  Reward from Cargo Container Mission
-	["Base Door (Vehicle)", "Land_Bunker_01_blocks_3_F", 15000, "object"],
+	["Base Door (Vehicle)", "Land_Bunker_01_blocks_3_F", 50000, "object"],
 	["Base Door (Man)", "Land_Bunker_01_blocks_1_F", 12000, "object"],
-	["Base door key (PIN: 0000) (beta)", "Land_Noticeboard_F", 10000, "object"],  // LouD
+	["Base Door key (PIN: 0000) (beta)", "Land_Noticeboard_F", 10000, "object"],  // LouD
+	["Base Roof (Retractable)", "ContainmentArea_01_forest_F", 75000, "object"],
 	["Base locker (PIN: 0000)", "Land_Device_assembled_F", 50000, "object"],  //Cael817, SNAFU,Used for base operations <-- Destroyable
 	["Building (Aircraft Hangar)", "Land_Hangar_F", 100000, "object"],
 	["Safe (PIN: 0000)", "Box_NATO_AmmoVeh_F", 50000, "ammocrate"],
@@ -865,6 +866,7 @@ genObjectsArray = compileFinal str
 	["Platform (Hotel)", "Land_GH_Platform_F", 250, "object"],
 	["Power Generator", "Land_PowerGenerator_F", 100, "object"],
 	["Recycle Bin", "Land_WheelieBin_01_F", 25, "object"],
+	["Road Cone", "RoadCone_F", 25, "object"],
 	["Scafolding (Mobile)", "Land_MobileScafolding_01_F", 250, "object"],
 	["Scaffolding (Tall)", "Land_Scaffolding_F", 250, "object"],
 	["Shoot House Wall", "Land_Shoot_House_Wall_F", 150, "object"],
