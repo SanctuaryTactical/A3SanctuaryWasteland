@@ -77,46 +77,28 @@ player addEventHandler ["WeaponAssembled",
 			(crew _obj) joinSilent createGroup _playerSide;
 		};
 
-		if (_obj isKindOf "StaticWeapon") then
-		{
-			[_obj, _player] call fn_forceSaveObject;
-		}
-		else
-		{
-			[_obj, _player] call A3W_fnc_takeOwnership;
-		};
-
 		if (!alive getConnectedUAV _player) then
 		{
 			_player connectTerminalToUAV _obj;
 		};
 
-		if (["_Designator_", _objClass] call fn_findString != -1) then
-		{
-			_obj setAutonomous false; // disable autonomous mode by default on static designators so they stay on target after releasing controls
-		};
-
-		if (isNil {_obj getVariable "A3W_handleDamageEH"}) then
-		{
-			_obj setVariable ["A3W_handleDamageEH", _obj addEventHandler ["HandleDamage", vehicleHandleDamage]];
-		};
-
-		{
-			[_x, ["UAV","",""]] remoteExec ["A3W_fnc_setName", 0, _x]; 
-		} forEach crew _obj;
+		[_obj, _playerSide, true] call fn_createCrewUAV;
+		[_obj, _player, false] call A3W_fnc_takeOwnership;
 	};
 }];
 
 player addEventHandler ["InventoryOpened",
 {
 	_obj = _this select 1;
-	if (!simulationEnabled _obj) then { _obj enableSimulation true };
-	_obj setVariable ["inventoryIsOpen", true];
+	_blocked = false;
 
 	if !(_obj isKindOf "Man") then
 	{
-		if (locked _obj > 1 || (_obj getVariable ["A3W_inventoryLockR3F", false] && _obj getVariable ["R3F_LOG_disabled", false])) then
+		if ((locked _obj > 1 && _obj getVariable ["ownerUID","0"] != getPlayerUID player) ||
+		    (_obj getVariable ["A3W_inventoryLockR3F", false] && _obj getVariable ["R3F_LOG_disabled", false])) then
 		{
+			playSound "FD_CP_Not_Clear_F";
+
 			if (_obj isKindOf "AllVehicles") then
 			{
 				["This vehicle is locked.", 5] call mf_notify_client;
@@ -126,9 +108,17 @@ player addEventHandler ["InventoryOpened",
 				["This object is locked.", 5] call mf_notify_client;
 			};
 
-			true
+			_blocked = true;
 		};
 	};
+
+	if (!_blocked) then
+	{
+		if (!simulationEnabled _obj) then { _obj enableSimulation true };
+		_obj setVariable ["inventoryIsOpen", true];
+	};
+
+	_blocked
 }];
 
 player addEventHandler ["InventoryClosed",

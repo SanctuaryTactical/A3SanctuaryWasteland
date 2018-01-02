@@ -36,11 +36,11 @@ while {true} do
 {
 	if (_territoryCapped) then
 	{
-		sleep _timeInterval;
+		SLEEP_REALTIME(_timeInterval);
 	}
 	else
 	{
-		sleep 60;
+		SLEEP_REALTIME(60);
 	};
 
 	//[team, territory_count, strategic_count, military_count, airfield_count, power_count, other_count, transmitter_count, _payroll]

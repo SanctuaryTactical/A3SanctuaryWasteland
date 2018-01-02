@@ -69,6 +69,16 @@ switch (true) do
 
 };
 
+if (unitIsUAV _obj) then
+{
+	if (side _obj in [BLUFOR,OPFOR,INDEPENDENT]) then
+	{
+		_variables pushBack ["uavSide", str side _obj];
+	};
+
+	_variables pushBack ["uavAuto", isAutonomous _obj];
+};
+
 _owner = _obj getVariable ["ownerUID", ""];
 
 _r3fSide = _obj getVariable "R3F_Side";
@@ -115,10 +125,16 @@ _backpacks = [];
 if (_class call fn_hasInventory) then
 {
 	// Save weapons & ammo
-	_weapons = (getWeaponCargo _obj) call cargoToPairs;
-	_magazines = (getMagazineCargo _obj) call cargoToPairs;
-	_items = (getItemCargo _obj) call cargoToPairs;
-	_backpacks = (getBackpackCargo _obj) call cargoToPairs;
+	//_weapons = (getWeaponCargo _obj) call cargoToPairs;
+	//_magazines = (getMagazineCargo _obj) call cargoToPairs;
+	//_items = (getItemCargo _obj) call cargoToPairs;
+	//_backpacks = (getBackpackCargo _obj) call cargoToPairs;
+
+	private _cargo = _obj call fn_containerCargoToPairs;
+	_weapons = _cargo select 0;
+	_magazines = _cargo select 1;
+	_items = _cargo select 2;
+	_backpacks = _cargo select 3;
 };
 
 _turretMags = [];

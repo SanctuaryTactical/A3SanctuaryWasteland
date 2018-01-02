@@ -6,43 +6,26 @@
 //	@file Author: LouD / Cael817 for original script
 //	@file Description: Door script
 
-private ["_doors", "_roofs", "_door", "_keypads"];
+private ["_doors", "_door", "_keypad", "_keypads"];
 
-_doors = (nearestObjects [player, ["Land_Bunker_01_blocks_3_F","Land_Bunker_01_blocks_1_F"], 10]);
+_keypads = (nearestObjects [player, ["Land_Noticeboard_F"], 10]);
 
-if ( count _doors > 0 ) then {
+if ( count _keypads > 0 ) then {
 
-	{ [[netId _x, true], "A3W_fnc_hideObjectGlobal", _x] call A3W_fnc_MP } forEach _doors;
+	_keypad = _keypads select 0;
+	_doors = (nearestObjects [_keypad, ["Land_Bunker_01_blocks_3_F", "Land_Bunker_01_blocks_1_F"], 10]);
 
-	_keypads = (nearestObjects [player, ["Land_Noticeboard_F"], 10]);
+	if( count _doors > 0 ) then {
 
-	if( !isNil "_keypads" ) then {
+		//Open Door_optionSelect
+		{ [[netId _x, true], "A3W_fnc_hideObjectGlobal", _x] call A3W_fnc_MP } forEach _doors;
 
-		{
-			_x setObjectTextureGlobal [0, "media\keypadon.paa"];
-		} forEach _keypads;
+		_door = _doors select 0;
 
-	};
+		playSound3d [MISSION_ROOT + "media\lock.ogg", _door, true, getPosASL _door, 1];
 
-	_door = _doors select 0;
-	playSound3d [MISSION_ROOT + "media\lock.ogg", _door, true, getPosASL _door, 1];
-
-	hint "Your door has been opened";
-
-} else {
-
-	_roofs = (nearestObjects [player, ["ContainmentArea_01_forest_F"], 40]);
-
-	if( count _roofs > 0 ) then {
-
-		{
-			[[netId _x, true], "A3W_fnc_hideObjectGlobal", _x] call A3W_fnc_MP;
-		} forEach _roofs;
-
-		_door = _roofs select 0;
-		playSound3d [MISSION_ROOT + "media\hiss.ogg", _door, true, getPosASL _door, 1];
-
-		_keypads = (nearestObjects [player, ["Land_Noticeboard_F"], 10]);
+		//Switch Keypad Display
+		_keypads = (nearestObjects [_door, ["Land_Noticeboard_F"], 10]);
 
 		if( !isNil "_keypads" ) then {
 
@@ -52,11 +35,12 @@ if ( count _doors > 0 ) then {
 
 		};
 
-		hint "Roof panels now open";
+		hint "Your door has been opened";
 
 	} else {
 
-		hint "No doors or roof panels were found";
+		hint "No Doors Found";
+		playSound3d [MISSION_ROOT + "media\error.ogg", _roof, true, getPosASL _roof, 1];
 
 	};
 

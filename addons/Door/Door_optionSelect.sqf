@@ -35,12 +35,26 @@ if (!isNil "_uid") then
 					closeDialog 0;
 					execVM "addons\Door\Door_closeDoor.sqf";
 				};
-				case 2: //Change Password
+				case 2: {
+
+					//Open Roof
+					closeDialog 0;
+					execVM "addons\Door\Door_openRoof.sqf";
+
+				};
+				case 3: {
+
+					//Close Roof
+					closeDialog 0;
+					execVM "addons\Door\Door_closeRoof.sqf";
+
+				};
+				case 4: //Change Password
 				{
 					closeDialog 0;
 					execVM "addons\Door\password_change.sqf";
 				};
-				case 3: //Secure All Doors
+				case 5: //Secure All Doors
 				{
 					closeDialog 0;
 					execVM "addons\BoS\BoS_closeAllDoors.sqf";

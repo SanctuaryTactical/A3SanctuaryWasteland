@@ -21,8 +21,10 @@ if (!isNil "_uid") then {
 	[
 		"Open Door",
 		"Close Door",
+		"Open Roof",
+		"Close Roof",
 		"Change PIN",
-		"Secure All Doors"
+		"Close All"
 	];
 
 	{

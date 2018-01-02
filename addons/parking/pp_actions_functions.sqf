@@ -61,7 +61,7 @@ pp_setup_terminal = {
     };
 
     def(_laptop);
-    _laptop = createSimpleObject ["Land_Laptop_unfolded_F", getPosASL _terminal]; //createVehicle ["Land_Laptop_unfolded_F", getPosASL _terminal, [], 0, ""];
+    _laptop = createSimpleObject ["Land_Laptop_unfolded_F", getPosASL _terminal]; //createVehicle ["Land_Laptop_unfolded_F", getPosASL _terminal, [], 0, "NONE"];
     _laptop allowDamage false;
     _laptop attachTo [_terminal, [0,-0.1,0.55]];
     _laptop setVariable ["R3F_LOG_disabled", true, true]; //don't allow players to move the laptop

@@ -65,11 +65,16 @@ if (_resupplyTruck) then
 	_variables pushBack ["A3W_resupplyTruck", true];
 };
 
-private _isUav = (round getNumber (configFile >> "CfgVehicles" >> _class >> "isUav") > 0);
+private _isUav = unitIsUAV _veh;
 
-if (_isUav && side _veh in [BLUFOR,OPFOR,INDEPENDENT]) then
+if (_isUav) then
 {
-	_variables pushBack ["uavSide", str side _veh];
+	if (side _veh in [BLUFOR,OPFOR,INDEPENDENT]) then
+	{
+		_variables pushBack ["uavSide", str side _veh];
+	};
+
+	_variables pushBack ["uavAuto", isAutonomous _veh];
 };
 
 _owner = _veh getVariable ["ownerUID", ""];
@@ -130,10 +135,16 @@ _backpacks = [];
 if (_class call fn_hasInventory) then
 {
 	// Save weapons & ammo
-	_weapons = (getWeaponCargo _veh) call cargoToPairs;
-	_magazines = _veh call fn_magazineAmmoCargo;
-	_items = (getItemCargo _veh) call cargoToPairs;
-	_backpacks = (getBackpackCargo _veh) call cargoToPairs;
+	//_weapons = (getWeaponCargo _veh) call cargoToPairs;
+	//_magazines = _veh call fn_magazineAmmoCargo;
+	//_items = (getItemCargo _veh) call cargoToPairs;
+	//_backpacks = (getBackpackCargo _veh) call cargoToPairs;
+
+	private _cargo = _veh call fn_containerCargoToPairs;
+	_weapons = _cargo select 0;
+	_magazines = _cargo select 1;
+	_items = _cargo select 2;
+	_backpacks = _cargo select 3;
 };
 
 // _turretMags is deprecated, leave empty
