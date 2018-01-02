@@ -6,7 +6,7 @@ ps_cities_whitelist = [];
 ps_box_models = ["Land_PaperBox_open_full_F", "Land_Pallet_MilBoxes_F", "Land_PaperBox_open_empty_F", "Land_PaperBox_closed_F"];
 
 //whether or not to show map markers for private storage boxes
-ps_markers_enabled = true; 
+ps_markers_enabled = true;
 
 //shape, type, color, size, text (for map markers, if enabled)
 ps_markers_properties = ["ICON", "mil_dot", "ColorUNKNOWN", [1,1], "Storage"];
@@ -19,4 +19,5 @@ ps_markers_properties = ["ICON", "mil_dot", "ColorUNKNOWN", [1,1], "Storage"];
  * Supply140, Supply150, Supply160, Supply170, Supply180, Supply190, Supply200, Supply210, Supply220, Supply230, Supply240
  * Supply250, Supply300, Supply350, Supply380, Supply400, Supply420, Supply440, Supply450, Supply480, Supply500
  */
-ps_container_class = "Supply500";
+//ps_container_class = "Supply500";
+ps_container_class = "Land_MetalCase_01_medium_F";
