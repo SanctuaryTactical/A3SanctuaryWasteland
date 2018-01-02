@@ -131,6 +131,11 @@ class CfgMusic
 		name = "SecureDoors";
 		sound[] = {"media\secure.ogg", db+10, 1.0};
 	};
+	class CarBeep
+	{
+		name = "CarBeep";
+		sound[] = {"media\carbeep.ogg", db+10, 1.0};
+	};
 };
 
 class CfgRemoteExec // applies only to clients
