@@ -149,7 +149,7 @@ while {true} do
 
 		};
 
-		_message =  format ["Your team received a <t color='%6'>$%1</t> bonus for holding <t color='%6'>%2</t> territor%3 during the past %4 minutes.%5", [_money] call fn_numbersText, _count, if (_count == 1) then { "y" } else { "ies" }, ceil (_timeInterval / 60), _bonus, _color];
+		_message =  format ["Your team received a $%1 bonus for holding %2 territor%3 during the past %4 minutes.%5", [_money] call fn_numbersText, _count, if (_count == 1) then { "y" } else { "ies" }, ceil (_timeInterval / 60), _bonus, _color];
 
 		[[_message, _money, true], "A3W_fnc_territoryActivityHandler", _team, false] call A3W_fnc_MP;
 
