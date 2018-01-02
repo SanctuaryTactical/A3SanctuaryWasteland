@@ -117,11 +117,11 @@ switch (_boxType) do
 			["wep", ["Laserdesignator", "Laserdesignator_02", "Laserdesignator_03"], 1, 1],
 			["wep", ["launch_RPG32_F", "launch_NLAW_F", "launch_Titan_short_F"], RANDOM_BETWEEN(2,5), RANDOM_BETWEEN(1,2)],
 			["wep", "launch_Titan_F", RANDOM_BETWEEN(1,2), RANDOM_BETWEEN(1,2)],
-			["mag","Titan_AA",  RANDOM_BETWEEN(2,8)],
-			["mag","Titan_AP", RANDOM_BETWEEN(1,4)],
-			["mag","Titan_AT", RANDOM_BETWEEN(1,6)],
-			["mag","RPG32_F", RANDOM_BETWEEN(1,6)],
-			["mag","RPG32_HE_F", RANDOM_BETWEEN(1,6)],
+			["mag","Titan_AA",  RANDOM_BETWEEN(5,12)],
+			["mag","Titan_AP", RANDOM_BETWEEN(5,8)],
+			["mag","Titan_AT", RANDOM_BETWEEN(5,14)],
+			["mag","RPG32_F", RANDOM_BETWEEN(3,8)],
+			["mag","RPG32_HE_F", RANDOM_BETWEEN(3,6)],
 			["mag","RPG7_F", RANDOM_BETWEEN(1,6)]
 		];
 	};
