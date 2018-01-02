@@ -204,7 +204,9 @@ else
 private _turretWeapons = _veh call fn_removeTurretWeapons;
 private _pylons = [];
 
-if (!isNil "_turretMags3") then
+
+
+if (!isNil "_turretMags3" && (typeName _turretMags3 == "ARRAY")) then
 {
 	private _magsAdded = [];
 	private "_magPathStr";
