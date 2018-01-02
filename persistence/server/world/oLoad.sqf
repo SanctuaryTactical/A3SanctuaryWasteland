@@ -144,6 +144,15 @@ _exclObjectIDs = [];
 
 		};
 
+		if( _obj isKindOf "ContainmentArea_01_forest_F") then {
+			_object setVectorUp [0,0,-1];
+		};
+
+		if( _obj isKindOf "Land_NetFence_01_m_4m_F" || _obj isKindOf "Land_NetFence_01_m_8m_F") then {
+			_object setVectorDirAndUp [[0,.25,.75],[0,-.25,.75]];
+		};
+
+
 		// Base locker lights
 		if (_obj getVariable ["lights",""] == "off") then
 		{
