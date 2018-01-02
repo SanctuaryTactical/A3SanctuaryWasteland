@@ -15,7 +15,6 @@ _setupVars =
 {
 	_vehicleClass =
 	[
-		"CUP_B_T72_CZ",
 		"B_MBT_01_cannon_F",
 		"O_MBT_02_cannon_F",
 		"I_MBT_03_cannon_F",

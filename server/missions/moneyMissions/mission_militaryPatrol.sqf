@@ -24,10 +24,10 @@ _setupObjects =
 	_convoyVeh =
 	[
 		["I_G_Offroad_01_F","O_MBT_02_cannon_F","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_G_Offroad_01_F"],
-		["I_G_Offroad_01_F","O_MBT_02_cannon_F","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F"],
+		["I_G_Offroad_01_F","CUP_B_M1A1_DES_US_Army","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F"],
 		["I_G_Offroad_01_F","CUP_B_M1A2_TUSK_MG_DES_US_Army","I_MRAP_03_F","O_APC_Tracked_02_AA_F","CUP_B_Challenger2_Desert_BAF","CUP_B_M7Bradley_USA_D"],
 		["O_APC_Tracked_02_AA_F","CUP_B_Challenger2_Desert_BAF","I_MRAP_03_F","O_APC_Tracked_02_AA_F","O_MBT_02_cannon_F","I_G_Offroad_01_F"],
-		["I_G_Offroad_01_F","CUP_B_T72_CZ","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_G_Offroad_01_F"],
+		["I_G_Offroad_01_F","CUP_B_M1A1_DES_US_Army","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_G_Offroad_01_F"],
 		["O_APC_Tracked_02_AA_F","CUP_B_M1A1_DES_US_Army","I_MRAP_03_F","O_APC_Tracked_02_AA_F","CUP_B_M1A1_DES_US_Army","I_MRAP_03_F"]
 	] call BIS_fnc_selectRandom;
 
@@ -136,7 +136,7 @@ _setupObjects =
 	_aiGroup selectLeader _leader;
 	_leader setRank "LIEUTENANT";
 
-	_aiGroup setCombatMode "RED"; // units will defend themselves
+	_aiGroup setCombatMode "YELLOW"; // units will defend themselves
 	_aiGroup setBehaviour "SAFE"; // units feel safe until they spot an enemy or get into contact
 	_aiGroup setFormation "STAG COLUMN";
 
@@ -148,7 +148,7 @@ _setupObjects =
 		_waypoint = _aiGroup addWaypoint [_x, 0];
 		_waypoint setWaypointType "MOVE";
 		_waypoint setWaypointCompletionRadius 50;
-		_waypoint setWaypointCombatMode "RED";
+		_waypoint setWaypointCombatMode "YELLOW";
 		_waypoint setWaypointBehaviour "SAFE"; // safe is the best behaviour to make AI follow roads, as soon as they spot an enemy or go into combat they WILL leave the road for cover though!
 		_waypoint setWaypointFormation "FILE";
 		_waypoint setWaypointSpeed _speedMode;
