@@ -15,15 +15,17 @@ if (!isNil "_uid") then {
 	_BoS_select = _displayBoS displayCtrl BoS_Menu_option;
 
 	_panelOptions = [
-				"Show objects owned by you",
-				"Show Base Border",
-				"Repair Locker",
-				"Lock Down Base",
-				"Release Lock Down",
-				"Lights OFF",
-				"Lights ON",
-				"Change PIN",
-				"Secure All Doors"
+		"Show objects owned by you",
+		"Show Base Border",
+		"Repair Locker",
+		"Lock Down Base",
+		"Release Lock Down",
+		"Lights OFF",
+		"Lights ON",
+		"Open All Doors",
+		"Secure All Doors",
+		"Remote Auto-Lock Vehicles",
+		"Change PIN"
 	];
 
 	{

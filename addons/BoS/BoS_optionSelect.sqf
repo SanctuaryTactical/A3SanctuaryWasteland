@@ -57,16 +57,27 @@ if (!isNil "_uid") then
 					closeDialog 0;
 					execVM "addons\BoS\BoS_lightsOn.sqf";
 				};
-				case 7: //Change Password
+				case 7: //Open Doors
 				{
 					closeDialog 0;
-					execVM "addons\Bos\password_change.sqf";
+					execVM "addons\Bos\BoS_OpenAllDoors.sqf";
+					hint "All doors have been Opened, Stay Alert!";
 				};
 				case 8: //Secure Doors
 				{
 					closeDialog 0;
 					execVM "addons\Bos\BoS_closeAllDoors.sqf";
 					hint "All doors have been secured";
+				};
+				case 9: //Lock All Vehicles
+				{
+					closeDialog 0;
+					execVM "addons\BoS\BoS_LockAllVehicles.sqf";
+				};
+				case 10: //Change Password
+				{
+					closeDialog 0;
+					execVM "addons\Bos\password_change.sqf";
 				};
 			};
 		};
