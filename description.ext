@@ -29,7 +29,7 @@ overviewText = "Wasteland is a harsh survival sandbox where two teams and indepe
 overviewTextLocked = "Wasteland is a harsh survival sandbox where two teams and independent players fight for survival.";
 overviewPicture = "media\Loading.jpg";
 loadScreen = "media\Loading.jpg";
-briefing = 0; // if 0, skip Continue button
+briefing = 1; // if 0, skip Continue button
 
 #include "debugFlag.hpp"
 
@@ -81,7 +81,6 @@ briefing = 0; // if 0, skip Continue button
 
 #include "addons\UniformPainter\dialog\UniformPainter_mainMenu.hpp"
 #include "addons\VehiclePainter\dialog\VehiclePainter_mainMenu.hpp"
-
 
 class RscTitles
 {
