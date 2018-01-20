@@ -34,13 +34,10 @@ _territoryCapped = false;
 
 while {true} do
 {
-	if (_territoryCapped) then
-	{
-		SLEEP_REALTIME(_timeInterval);
-	}
-	else
-	{
-		SLEEP_REALTIME(60);
+	if (_territoryCapped) then {
+		sleep _timeInterval;
+	} else {
+		sleep 60;
 	};
 
 	//[team, territory_count, strategic_count, military_count, airfield_count, power_count, other_count, transmitter_count, _payroll]
@@ -140,16 +137,14 @@ while {true} do
 			if( count _owned > 0 ) then { _owned = _owned + ", Other"; } else { _owned = "Other"; };
 		};
 
-		_color = [_team] call BIS_fnc_sideColor;
-
 		if( _multiplier > 0 ) then {
 
 			_money = _money + (_money * _multiplier);
-			_bonus = format["<br/>Another <t color='%3'>%1%4</t> bonus was applied for holding all of the territories in (%2)", [(_multiplier * 100)] call fn_numbersText, _owned, _color, "%"];
+			_bonus = format["<br/>Another %1%3 bonus was applied for holding all of the territories in (%2)", [(_multiplier * 100)] call fn_numbersText, _owned, "%"];
 
 		};
 
-		_message =  format ["Your team received a $%1 bonus for holding %2 territor%3 during the past %4 minutes.%5", [_money] call fn_numbersText, _count, if (_count == 1) then { "y" } else { "ies" }, ceil (_timeInterval / 60), _bonus, _color];
+		_message =  format ["Your team received a $%1 bonus for holding %2 territor%3 during the past %4 minutes.%5", [_money] call fn_numbersText, _count, if (_count == 1) then { "y" } else { "ies" }, ceil (_timeInterval / 60), _bonus];
 
 		[[_message, _money, true], "A3W_fnc_territoryActivityHandler", _team, false] call A3W_fnc_MP;
 
