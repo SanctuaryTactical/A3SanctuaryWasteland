@@ -27,21 +27,14 @@ if( count _keypads > 0 ) then {
 
 		hint "Roof panels are now open";
 
-    //Switch Display on KeyPad
-    _keypads = (nearestObjects [_roof, ["Land_Noticeboard_F"], 40]);
-
-    if( !isNil "_keypads" ) then {
-
-      {
-        _x setObjectTextureGlobal [0, "media\keypadon.paa"];
-      } forEach _keypads;
-
-    };
+    {
+      _x setObjectTextureGlobal [0, "media\keypadon.paa"];
+    } forEach _keypads;
 
   } else {
 
     hint "No Roof Panels Found";
-    playSound3d [MISSION_ROOT + "media\error.ogg", _roof, true, getPosASL _roof, 1];
+    playSound3d [MISSION_ROOT + "media\error.ogg", _keypad, true, getPosASL _keypad, 1];
 
   };
 

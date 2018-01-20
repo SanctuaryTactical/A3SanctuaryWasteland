@@ -27,7 +27,7 @@ mf_pinlock_nearest_vehicle = {
 mf_can_applypin = [_path, "can_applypin.sqf"] call mf_compile;
 
 private ["_label1", "_execute1", "_condition1", "_action1"];
-_label1 = format["<img image='%1'/> Apply Vehicle Pinlock", MF_ITEMS_PINLOCK_ICON];
+_label1 = format["<img image='%1'/> Install Vehicle Pinlock", MF_ITEMS_PINLOCK_ICON];
 _execute1 = {MF_ITEMS_PINLOCK call mf_inventory_use};
 _condition1 = "[] call mf_can_applypin == ''";
 _action1 = [_label1, _execute1, [], 1, false, false, "", _condition1];

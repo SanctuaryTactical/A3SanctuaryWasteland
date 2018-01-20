@@ -24,23 +24,16 @@ if ( count _keypads > 0 ) then {
 
 		playSound3d [MISSION_ROOT + "media\lock.ogg", _door, true, getPosASL _door, 1];
 
-		//Switch Keypad Display
-		_keypads = (nearestObjects [_door, ["Land_Noticeboard_F"], 10]);
-
-		if( !isNil "_keypads" ) then {
-
-			{
-				_x setObjectTextureGlobal [0, "media\keypad.paa"];
-			} forEach _keypads;
-
-		};
+		{
+			_x setObjectTextureGlobal [0, "media\keypad.paa"];
+		} forEach _keypads;
 
 		hint "Your door has been closed";
 
 	} else {
 
 		hint "No Doors Found";
-		playSound3d [MISSION_ROOT + "media\error.ogg", _roof, true, getPosASL _roof, 1];
+		playSound3d [MISSION_ROOT + "media\error.ogg", _keypad, true, getPosASL _keypad, 1];
 
 	};
 
