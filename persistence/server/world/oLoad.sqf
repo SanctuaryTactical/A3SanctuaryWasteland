@@ -23,7 +23,7 @@ _objects = call compile preprocessFileLineNumbers format ["%1\getObjects.sqf", _
 _exclObjectIDs = [];
 
 {
-	private ["_allowed", "_obj", "_objectID", "_class", "_pos", "_dir", "_locked", "_damage", "_allowDamage", "_owner", "_variables", "_weapons", "_magazines", "_items", "_backpacks", "_turretMags", "_ammoCargo", "_fuelCargo", "_repairCargo", "_hoursAlive", "_valid"];
+	private ["_allowed", "_obj", "_cargo", "_objectID", "_class", "_pos", "_dir", "_locked", "_damage", "_allowDamage", "_owner", "_variables", "_weapons", "_magazines", "_items", "_backpacks", "_turretMags", "_ammoCargo", "_fuelCargo", "_repairCargo", "_hoursAlive", "_valid"];
 
 	{ (_x select 1) call compile format ["%1 = _this", _x select 0]	} forEach _x;
 
@@ -82,6 +82,15 @@ _exclObjectIDs = [];
 			_obj setVariable ["A3W_resupplyTruck", true];
 
 			[_obj] remoteExecCall ["A3W_fnc_setupResupplyTruck", 0, _obj];
+		};
+
+		if( _obj isKindOf "Land_Cargo20_military_green_F" ) then {
+
+			_cargo = "ContainerSupply" createVehicle [0,0,0];
+			_cargo attachTo [_obj];
+			//_cargo hideObject true;
+
+
 		};
 
 		if (_allowDamage > 0) then
@@ -160,13 +169,8 @@ _exclObjectIDs = [];
 		};
 
 		if( _obj isKindOf "ContainmentArea_01_forest_F") then {
-			_object setVectorUp [0,0,-1];
+			_obj setVectorUp [0,0,-1];
 		};
-
-		if( _obj isKindOf "Land_NetFence_01_m_4m_F" || _obj isKindOf "Land_NetFence_01_m_8m_F") then {
-			_object setVectorDirAndUp [[0,.25,.75],[0,-.25,.75]];
-		};
-
 
 		// Base locker lights
 		if (_obj getVariable ["lights",""] == "off") then

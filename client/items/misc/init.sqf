@@ -7,6 +7,9 @@
 //@file Created: 21/7/2013 16:00
 //@file Description: Initialize Miscellaneous Items
 //@file Argument: the path of the directory holding this file
+
+#include "..\..\..\STConstants.h"
+
 _path = _this;
 
 MF_ITEMS_REPAIR_KIT_RANGE = 5;
@@ -44,3 +47,27 @@ _action1 = [_label1, _execute1, [], 1, false, false, "", _condition1];
 ["repairkit-use", _action1] call mf_player_actions_set;
 
 mf_verify_money_input = [_path, "verify_money_input.sqf"] call mf_compile;
+
+//Repair Kit From Truck
+_label1 = "<img image='client\icons\repair.paa'/> Get Repair Kit";
+_condition1 = "{_x getVariable ['kits', 0] >= 1} count nearestObjects [player, ['rhsusf_M977A4_REPAIR_BKIT_M2_usarmy_d'], 3] > 0 && !(MF_ITEMS_REPAIR_KIT call mf_inventory_is_full)";
+_action1 = {
+
+	_objs = nearestObjects [player, [ST_M977REPAIR], 5];
+
+	if (count _objs > 0) then
+	{
+		//player playMove ([player, "AmovMstpDnon_AinvMstpDnon", "putdown"] call getFullMove);
+		player playActionNow "PutDown";
+
+		_obj = _objs select 0;
+
+		_obj setVariable ["kits", (_obj getVariable ["kits", 0]) - 1, true];
+		[MF_ITEMS_REPAIR_KIT, 1] call mf_inventory_add;
+
+		[format ["Repair Kits left: %1)", _obj getVariable "kits"], 5] call mf_notify_client;
+
+	};
+};
+
+["repair-kit-get", [_label1, _action1, [], 0, true, true, "", _condition1]] call mf_player_actions_set;
