@@ -122,6 +122,8 @@ va_unflip_action_available = {
 
 va_unflip_action = {
 
+  if !(["Are you REALLY REALLY sure you want to unflip?", "Confirm", true, true] call BIS_fnc_guiMessage) exitWith {};
+
   if (isSCRIPT(va_unflip_action_script) && {not(scriptDone va_unflip_action_script)}) exitWith {
     player groupChat format["Vehicle unflip action is already in progress, please wait"];
   };
@@ -445,17 +447,6 @@ va_outside_add_actions = {
     [_player, _vehicle] call va_outside_owner_add_actions;
   };
 
-  //Add unfliping action
-  _action_id = _player addaction [format["<img image='addons\vactions\icons\flip.paa'/> Unflip %1", _display_name], {_this call va_unflip_action;}, [_player, _vehicle],10,false,false,"",
-  format["([objectFromNetId %1] call va_unflip_action_available)",str(netId _vehicle)]];
-  va_outside_actions = va_outside_actions + [_action_id];
-
-
-  //Add view vehicle information action
-  _action_id = player addaction [format["<img image='addons\vactions\icons\info.paa'/> %1 info", _display_name], {_this call va_information_action;}, [_player, _vehicle],0,false,false,"",
-  format["([objectFromNetId %1, objectFromNetId %2] call va_information_action_available)", str(netId _player), str(netId _vehicle)]];
-  va_outside_actions = va_outside_actions + [_action_id];
-
   //Add vehicle lock action
   _action_id = player addaction [format["<img image='addons\vactions\icons\lock.paa'/> Lock %1", _display_name], {_this call va_lock_action;}, [_player, _vehicle],0,false,false,"",
   format["([objectFromNetId %1, objectFromNetId %2] call va_lock_action_available)", str(netId _player), str(netId _vehicle)]];
@@ -465,6 +456,17 @@ va_outside_add_actions = {
   _action_id = player addaction [format["<img image='addons\vactions\icons\key.paa'/> Unlock %1", _display_name], {_this call va_unlock_action;}, [_player, _vehicle],999,true,false,"",
   format["([objectFromNetId %1, objectFromNetId %2] call va_unlock_action_available)", str(netId _player), str(netId _vehicle)]];
   va_outside_actions = va_outside_actions + [_action_id];
+
+  //Add view vehicle information action
+  _action_id = player addaction [format["<img image='addons\vactions\icons\info.paa'/> %1 info", _display_name], {_this call va_information_action;}, [_player, _vehicle],0,false,false,"",
+  format["([objectFromNetId %1, objectFromNetId %2] call va_information_action_available)", str(netId _player), str(netId _vehicle)]];
+  va_outside_actions = va_outside_actions + [_action_id];
+
+  //Add unfliping action
+  _action_id = _player addaction [format["<img image='addons\vactions\icons\flip.paa'/> Unflip %1", _display_name], {_this call va_unflip_action;}, [_player, _vehicle],10,false,false,"",
+  format["([objectFromNetId %1] call va_unflip_action_available)",str(netId _vehicle)]];
+  va_outside_actions = va_outside_actions + [_action_id];
+
 };
 
 va_inside_actions = OR(va_inside_actions,[]);

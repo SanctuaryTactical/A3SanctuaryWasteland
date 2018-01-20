@@ -94,8 +94,10 @@ player addEventHandler ["InventoryOpened",
 
 	if !(_obj isKindOf "Man") then
 	{
-		if ((locked _obj > 1 && _obj getVariable ["ownerUID","0"] != getPlayerUID player) ||
-		    (_obj getVariable ["A3W_inventoryLockR3F", false] && _obj getVariable ["R3F_LOG_disabled", false])) then
+		if (locked _obj > 1 || (_obj getVariable ["A3W_inventoryLockR3F", false] && _obj getVariable ["R3F_LOG_disabled", false])) then
+
+		//if ((locked _obj > 1 && _obj getVariable ["ownerUID","0"] != getPlayerUID player) ||
+		   // (_obj getVariable ["A3W_inventoryLockR3F", false] && _obj getVariable ["R3F_LOG_disabled", false])) then
 		{
 			playSound "FD_CP_Not_Clear_F";
 

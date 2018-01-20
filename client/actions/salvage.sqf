@@ -8,7 +8,7 @@
 
 // Salvaging of vehicle wrecks
 
-#define GET_ONE_TENTH_PRICE(PRICE) ((ceil (((PRICE) / 10) / 5)) * 5)
+#define GET_ONE_TENTH_PRICE(PRICE) ((ceil (((PRICE) / 20) / 5)) * 5)
 
 // Check if mutex lock is active.
 if (mutexScriptInProgress) exitWith

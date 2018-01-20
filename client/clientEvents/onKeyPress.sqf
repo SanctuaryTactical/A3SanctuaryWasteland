@@ -176,7 +176,8 @@ if (!_handled && _key in actionKeys "GetOut") then
 		{
 			[] spawn
 			{
-				if !(["Are you sure you want to eject?", "Confirm", true, true] call BIS_fnc_guiMessage) exitWith {};
+				//The Scotsman - Disabled on request
+				//if !(["Are you sure you want to eject?", "Confirm", true, true] call BIS_fnc_guiMessage) exitWith {};
 				[[], fn_emergencyEject] execFSM "call.fsm";
 			};
 

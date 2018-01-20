@@ -6,6 +6,7 @@
 //	@file Created: 31/12/2013 22:12
 
 #define CONTAINER_SELL_PRICE 50 // price for the crate itself (do not price higher than "Empty Ammo Crate" from general store)
+#define CARGO_CONTAINER_SELL_PRICE 20000
 
 #include "sellIncludesStart.sqf";
 
@@ -34,10 +35,16 @@ storeSellingHandle = _this spawn
 	_objClass = typeOf _crate;
 	_objName = getText (configFile >> "CfgVehicles" >> _objClass >> "displayName");
 
+	_container_sell_price = CONTAINER_SELL_PRICE;
+
+	if( _crate isKindOf "Land_Cargo20_military_green_F") then {
+		_container_sell_price = CARGO_CONTAINER_SELL_PRICE;
+	};
+
 	// Include crate in item list if it's to be deleted
 	if (_deleteObject) then
 	{
-		_allCrateItems = [[_objClass, 1, _objName, CONTAINER_SELL_PRICE]] + _allCrateItems;
+		_allCrateItems = [[_objClass, 1, _objName, _container_sell_price]] + _allCrateItems;
 	};
 
 	if (count _allCrateItems == 0) exitWith
