@@ -222,7 +222,7 @@ if (!isNil "_turretMags3" && (typeName _turretMags3 == "ARRAY")) then
 	{
 		_x params ["_mag", "_path", "_ammoCoef"];
 
-		if (_mag == "" || _mag select [0,5] == "Pylon" || _mag select [0,9] == "CUP_Pylon" ) then // pylon stuff
+		if (_mag == "" || _mag select [0,5] == "Pylon" || _mag select [0,3] == "rhs" || _mag select [0,3] == "RHS" ) then // pylon stuff
 		{
 			_pylons pushBack _x;
 		}
