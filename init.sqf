@@ -40,24 +40,22 @@ A3W_scriptThreads = [];
 [DEBUG] call compile preprocessFileLineNumbers "globalCompile.sqf";
 [DEBUG] call compile preprocessFileLineNumbers "hashmap\oo_hashmap.sqf";
 
-
-
-_locations = [[14605.4,16714.5,0],[14625.8,16770,0],[14617.9,16851.6,0],[14522.4,16759.5,0],[14535.8,16793.1,0],[14545.4,16803.3,0],[14556.4,16813.8,0],[14566,16824.1,0],[14578.9,16836.8,0],[14589.9,16847.3,0],[14600.3,16857.6,0],[14623.1,16856.3,0],[14537.6,16774.8,0]];
+_locations = [[14577.5,16725,0], [14605.4,16714.5,0],[14625.8,16770,0],[14617.9,16851.6,0],[14522.4,16759.5,0],[14535.8,16793.1,0],[14545.4,16803.3,0],[14556.4,16813.8,0],[14566,16824.1,0],[14578.9,16836.8,0],[14589.9,16847.3,0],[14600.3,16857.6,0],[14623.1,16856.3,0],[14537.6,16774.8,0]];
 _radius=16;
 
 {
-	_terrainobjects=nearestTerrainObjects [_x,[],_radius]; 
-	
+	_terrainobjects=nearestTerrainObjects [_x,[],_radius];
+
 	{hideObjectGlobal _x} foreach _terrainobjects;
 
 }foreach _locations;
 
+[] execVM "1st\STConstants.sqf";
 
 //init Wasteland Core
 [] execVM "config.sqf";
 [] execVM "storeConfig.sqf"; // Separated as its now v large
 [] execVM "briefing.sqf";
-
 
 if (!isDedicated) then
 {
@@ -101,6 +99,7 @@ if (isServer) then
 
 if (hasInterface || isServer) then
 {
+
 	//init 3rd Party Scripts
 	[] execVM "addons\scripts\intro.sqf";                 // Welcome intro by Firsty
 	[] execVM "addons\parking\functions.sqf";
@@ -114,6 +113,7 @@ if (hasInterface || isServer) then
 	[] execVM "addons\stickyCharges\init.sqf";
 	[] execVM "addons\APOC_Airdrop_Assistance\init.sqf";
 	[] execVM "addons\AF_Keypad\AF_KP_vars.sqf";          // Keypad for base locking
+	//Load Sanctuary Tactical
 	[] execVM "1st\init.sqf";
 
 	if (isNil "drn_DynamicWeather_MainThread") then { drn_DynamicWeather_MainThread = [] execVM "addons\scripts\DynamicWeatherEffects.sqf" };
