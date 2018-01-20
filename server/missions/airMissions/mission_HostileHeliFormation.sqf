@@ -24,7 +24,10 @@ _setupObjects =
 		["B_Heli_Transport_01_F", ["B_Heli_Light_01_dynamicLoadout_F", "pawneeNormal"]],
 		["B_Heli_Transport_01_camo_F", ["O_Heli_Light_02_dynamicLoadout_F", "orcaDAGR"]],
 		["B_Heli_Transport_01_F", "I_Heli_light_03_dynamicLoadout_F"],
-		["CUP_B_AH6M_USA", "CUP_B_AH6M_USA"]
+		[ST_APACHE, ST_APACHE],
+		[ST_COBRA, ST_COBRA],
+		[ST_APACHE, ST_BLACKHAWK],
+		[ST_VENOM2, ST_BLACKHAWK2X]
 	];
 
 	if (missionDifficultyHard) then

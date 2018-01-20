@@ -29,17 +29,17 @@ _setupVars =
 			[
 				[ // NATO convoy
 					["B_MRAP_01_hmg_F", "B_MRAP_01_gmg_F"], // Veh 1
-					["B_MRAP_01_hmg_F", "B_MRAP_01_gmg_F"], // Veh 2
+					["B_MRAP_01_hmg_F", ST_M113A1], // Veh 2
 					["O_Heli_Light_02_F", "I_Heli_light_03_F"] // Veh 3
 				],
 				[ // CSAT convoy
-					["CUP_B_FV510_GB_W", "O_MRAP_02_gmg_F"], // Veh 1
-					["O_MRAP_02_hmg_F", "O_MRAP_02_gmg_F"], // Veh 2
+					[ST_M113A1, "O_MRAP_02_gmg_F"], // Veh 1
+					[ST_BRADLEY, "O_MRAP_02_gmg_F"], // Veh 2
 					["O_Heli_Light_02_F", "I_Heli_light_03_F"] // Veh 3
 				],
 				[ // AAF convoy
-					["I_MRAP_03_hmg_F", "CUP_B_FV510_GB_W"], // Veh 1
-					["I_MRAP_03_hmg_F", "I_MRAP_03_gmg_F"], // Veh 2
+					["I_MRAP_03_hmg_F", ST_M113A1], // Veh 1
+					["I_MRAP_03_hmg_F", ST_BRADLEY], // Veh 2
 					["O_Heli_Light_02_F", "I_Heli_light_03_F"] // Veh 3
 				]
 			]
@@ -51,7 +51,7 @@ _setupVars =
 			[
 				[ // NATO convoy
 					["B_MRAP_01_hmg_F", "B_MRAP_01_gmg_F"], // Veh 1
-					["B_APC_Wheeled_01_cannon_F", "CUP_B_BDRM2_CZ_Des", "B_APC_Tracked_01_AA_F"], // Veh 2
+					["B_APC_Wheeled_01_cannon_F", ST_M113A1, "B_APC_Tracked_01_AA_F"], // Veh 2
 					["B_MRAP_01_hmg_F", "B_MRAP_01_gmg_F"], // Veh 3
 					["O_Heli_Light_02_F", "I_Heli_light_03_F"] // Veh 4
 				],
@@ -65,7 +65,7 @@ _setupVars =
 					["I_MRAP_03_hmg_F", "I_MRAP_03_gmg_F"], // Veh 1
 					["I_APC_Wheeled_03_cannon_F", "I_APC_tracked_03_cannon_F"], // Veh 2
 					["I_MRAP_03_hmg_F", "I_MRAP_03_gmg_F"], // Veh 3
-					["CUP_B_AH6M_USA", "CUP_B_AH6M_USA"] // Veh 4
+					[ST_LITTLE_BIRD, ST_LITTLE_BIRD] // Veh 4
 				]
 			]
 		],
@@ -76,58 +76,59 @@ _setupVars =
 			[
 				[ // NATO convoy
 					["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F", "B_APC_Tracked_01_AA_F"], // Veh 1
-					["B_MBT_01_cannon_F", "CUP_B_M1A1_DES_US_Army"], // Veh 2
+					["B_MBT_01_cannon_F", ST_ABRAMSM1], // Veh 2
 					["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F", "B_APC_Tracked_01_AA_F"], // Veh 3
-					["O_Heli_Light_02_F", "CUP_B_AH6M_USA"], // Veh 4
-					["B_Heli_Attack_01_F", "O_Heli_Attack_02_F"] //Veh 5
+					["O_Heli_Light_02_F", ST_LITTLE_BIRD], // Veh 4
+					["B_Heli_Attack_01_F", ST_LITTLE_BIRD] //Veh 5
 				],
 				[ // CSAT convoy
 					["O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_cannon_F", "O_APC_Tracked_02_AA_F"], // Veh 1
 					["O_MBT_02_cannon_F"], // Veh 2
 					["O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_cannon_F", "O_APC_Tracked_02_AA_F"], // Veh 3
-					["CUP_B_AH6M_USA", "CUP_B_AH6M_USA"], // Veh 4
+					[ST_LITTLE_BIRD, ST_LITTLE_BIRD], // Veh 4
 					["B_Heli_Attack_01_F", "O_Heli_Attack_02_F"] //Veh 5
 				],
 				[ // AAF convoy
 					["I_APC_Wheeled_03_cannon_F", "I_APC_tracked_03_cannon_F"], // Veh 1
-					["CUP_B_M1A1_DES_US_Army"], // Veh 2
-					["I_APC_Wheeled_03_cannon_F", "CUP_B_BDRM2_CZ_Des"], // Veh 3
+					["O_MBT_02_cannon_F"], // Veh 2
+					["I_APC_Wheeled_03_cannon_F", ST_M113A2], // Veh 3
 					["O_Heli_Light_02_F", "I_Heli_light_03_F"], // Veh 4
-					["B_Heli_Attack_01_F", "O_Heli_Attack_02_F"] //Veh 5
+					[ST_LITTLE_BIRD, "O_Heli_Attack_02_F"] //Veh 5
 				]
 			]
 		],
+
 		// Extreme
 		[
 			"Heavy Money Shipment", // Marker text
 			80000, // Money
 			[
 				[ // NATO convoy
-					["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F", "B_APC_Tracked_01_AA_F", "CUP_B_Challenger2_Desert_BAF", "B_MBT_01_TUSK_F"], // Veh 1
+					["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F", "B_APC_Tracked_01_AA_F", ST_ABRAMSM2_TUSK, "B_MBT_01_TUSK_F"], // Veh 1
 					["B_APC_Tracked_01_AA_F", "B_MBT_01_cannon_F", "B_MBT_01_TUSK_F"], // Veh 2
-					["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F", "B_APC_Tracked_01_AA_F", "B_MBT_01_cannon_F", "CUP_B_M1A1_DES_US_Army"], // Veh 3
-					["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F", "B_APC_Tracked_01_AA_F", "B_MBT_01_cannon_F", "CUP_B_M1A1_DES_US_Army"], // Veh 4
+					["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F", ST_BRADLEY, "B_MBT_01_cannon_F", ST_ABRAMSM1], // Veh 3
+					["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F", "B_APC_Tracked_01_AA_F", "B_MBT_01_cannon_F", "O_MBT_02_cannon_F"], // Veh 4
 					["O_Heli_Light_02_F", "I_Heli_light_03_F"], // Veh 4
-					["CUP_B_AH6M_USA", "CUP_B_AH6M_USA"], // Veh 5
-					["B_Heli_Attack_01_F", "O_Heli_Attack_02_F"] //Veh 6
+					[ST_LITTLE_BIRD, ST_LITTLE_BIRD], // Veh 5
+					[ST_LITTLE_BIRD, "O_Heli_Attack_02_F"] //Veh 6
 				],
 				[ // CSAT convoy
-					["O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_cannon_F", "O_APC_Tracked_02_AA_F", "O_MBT_02_cannon_F"], // Veh 1
+					["O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_cannon_F", "O_APC_Tracked_02_AA_F", ST_ABRAMSM1], // Veh 1
 					["O_APC_Tracked_02_AA_F", "O_MBT_02_cannon_F"], // Veh 2
-					["O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_cannon_F", "O_APC_Tracked_02_AA_F", "CUP_B_M1A1_DES_US_Army"], // Veh 3
+					["O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_cannon_F", "O_APC_Tracked_02_AA_F", ST_ABRAMSM1], // Veh 3
 					["O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_cannon_F", "O_APC_Tracked_02_AA_F", "O_MBT_02_cannon_F"], // Veh 4
 					["O_Heli_Light_02_F", "I_Heli_light_03_F"], // Veh 4
 					["O_Heli_Light_02_F", "I_Heli_light_03_F"], // Veh 5
-					["B_Heli_Attack_01_F", "O_Heli_Attack_02_F"] //Veh 6
+					[ST_APACHE, "O_Heli_Attack_02_F"] //Veh 6
 				],
 				[ // AAF convoy
 					["I_APC_Wheeled_03_cannon_F", "I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"], // Veh 1
 					["I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"], // Veh 2
-					["I_APC_Wheeled_03_cannon_F", "I_APC_tracked_03_cannon_F", "CUP_B_M1A1_DES_US_Army"], // Veh 3
-					["I_APC_Wheeled_03_cannon_F", "I_APC_tracked_03_cannon_F", "CUP_B_M1A1_DES_US_Army"], // Veh 4
+					["I_APC_Wheeled_03_cannon_F", ST_BRADLEY, "O_MBT_02_cannon_F"], // Veh 3
+					["I_APC_Wheeled_03_cannon_F", "I_APC_tracked_03_cannon_F", ST_ABRAMSM2_TUSK], // Veh 4
 					["O_Heli_Light_02_F", "I_Heli_light_03_F"], // Veh 4
-					["O_Heli_Light_02_F", "CUP_B_AH6M_USA"], // Veh 5
-					["B_Heli_Attack_01_F", "O_Heli_Attack_02_F"] //Veh 6
+					["O_Heli_Light_02_F", ST_LITTLE_BIRD], // Veh 5
+					["B_Heli_Attack_01_F", ST_LITTLE_BIRD] //Veh 6
 				]
 			]
 		]

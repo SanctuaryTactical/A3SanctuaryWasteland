@@ -18,15 +18,10 @@ _setupVars =
 		"I_Plane_Fighter_03_CAS_F",
 		"B_Plane_CAS_01_F",
 		"O_Plane_CAS_02_F",
-		"CUP_B_AV8B_DYN_USMC",
 		"I_Plane_Fighter_04_F",
 		"O_Plane_Fighter_02_F",
-		"CUP_B_L39_CZ",
-		"CUP_B_F35B_BAF",
-		"CUP_B_A10_DYN_USA",
-		"CUP_O_SU34_RU",
-		"CUP_O_Su25_Dyn_RU"
-
+		ST_A10,
+		ST_F22
 	] call BIS_fnc_selectRandom;
 
 	_missionType = "Abandoned Jet";
@@ -39,6 +34,8 @@ _setupObjects =
 
 	// Class, Position, Fuel, Ammo, Damage, Special
 	_vehicle = [_vehicleClass, _missionPos] call createMissionVehicle;
+
+	[_vehicle] call vehicleSetup;
 
 	// Remove AGM missiles for balance
 	switch (true) do

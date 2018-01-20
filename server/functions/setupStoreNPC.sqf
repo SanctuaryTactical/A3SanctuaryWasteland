@@ -7,8 +7,8 @@
 //	@file Created: 12/10/2013 12:36
 //	@file Args:
 
-#define STORE_ACTION_CONDITION "(player distance _target < 3)"
-#define SELL_CRATE_CONDITION "(!isNil 'R3F_LOG_joueur_deplace_objet' && {R3F_LOG_joueur_deplace_objet isKindOf 'ReammoBox_F'})"
+#define STORE_ACTION_CONDITION "(player distance _target < 4)"
+#define SELL_CRATE_CONDITION "(!isNil 'R3F_LOG_joueur_deplace_objet' && {(R3F_LOG_joueur_deplace_objet isKindOf 'ReammoBox_F') || (R3F_LOG_joueur_deplace_objet isKindOf 'Land_Cargo20_military_green_F') })"
 #define SELL_CONTENTS_CONDITION "(!isNil 'R3F_LOG_joueur_deplace_objet' && {{R3F_LOG_joueur_deplace_objet isKindOf _x} count ['ReammoBox_F','AllVehicles'] > 0})"
 #define SELL_VEH_CONTENTS_CONDITION "{!isNull objectFromNetId (player getVariable ['lastVehicleRidden', ''])}"
 #define SELL_BIN_CONDITION "(cursorTarget == _target)"
@@ -122,7 +122,7 @@ if (isServer) then
 			_deskDirMod = _x select 2;
 
 			if (_npcPos < 0) then { _npcPos = 1e9 }; // fix for buildingPos Arma 3 v1.55 change
-			
+
 			if (_deskDirMod isEqualType []) then
 			{
 				if (_deskDirMod isEqualTo []) then

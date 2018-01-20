@@ -4,6 +4,8 @@
 //	@file Name: vehicleSpawnClasses.sqf
 //	@file Author: AgentRev
 
+#include "..\STConstants.h"
+
 A3W_smallVehicles =
 [
 	"C_Quadbike_01_F",
@@ -17,19 +19,13 @@ civilianVehicles =
 	"C_Hatchback_01_sport_F",
 	"C_SUV_01_F",
 	"C_Offroad_01_F",
-	["C_Van_01_box_F", "C_Van_01_transport_F"],
-	"CUP_O_UAZ_Open_RU",
-	"CUP_O_TT650_CHDKZ",
-	"CUP_O_SUV_TKA",
-	"CUP_C_Golf4_random_Civ",
-	"CUP_C_Octavia_Civ",
-	"CUP_C_Ikarus_Chernarus"
+	["C_Van_01_box_F", "C_Van_01_transport_F"]
 ];
 
 //Light Military Vehicle List - Random Spawns
 lightMilitaryVehicles =
 [
-	["I_G_Offroad_01_F", "I_G_Offroad_01_armed_F", "CUP_B_LR_Transport_GB_D", "CUP_B_HMMWV_Unarmed_USA"]
+	["I_G_Offroad_01_F", "I_G_Offroad_01_armed_F", ST_HUMVEE_UNARMED, ST_HUMVEE_OPEN2D]
 ];
 
 //Medium Military Vehicle List - Random Spawns
@@ -37,9 +33,7 @@ mediumMilitaryVehicles =
 [
 	"B_MRAP_01_F",
 	"O_MRAP_02_F",
-	"I_MRAP_03_F",
-	"CUP_B_HMMWV_Unarmed_USA",
-	"CUP_I_SUV_Armored_ION"
+	"I_MRAP_03_F"
 ];
 
 //Water Vehicles - Random Spawns
@@ -67,7 +61,8 @@ staticHeliList =
 	"B_Heli_Light_01_F",
 	"O_Heli_Light_02_unarmed_F",
 	"I_Heli_light_03_unarmed_F",
-	"CUP_I_MH6M_ION"
+	ST_LITTLE_BIRD_UNARMED,
+	ST_VENOM_UNARMED
 	// don't put cargo helicopters here, it doesn't make sense to find them in towns; they spawn in the CivHeli mission
 ];
 

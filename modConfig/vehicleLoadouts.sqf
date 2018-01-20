@@ -13,30 +13,28 @@
 	Note: You can use any pylon type you want in the script, even if not shown in the editor, it should normally work! e.g. "PylonRack_12Rnd_missiles" for "B_Plane_Fighter_01_F"
 */
 
+#include "..\STConstants.h"
+
 switch (true) do
 {
 
-	case( _class isKindOf "CUP_B_MH60L_DAP_2x_US" ):
+	case( _class isKindOf ST_BLACKHAWK4X ):
 	{
-
-		_pylons = ["","CUP_PylonPod_2000Rnd_TE5_Red_Tracer_762x51_M134A_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M",""];
-		
+		_plyons = ["rhs_mag_DAGR_16","rhs_mag_M229_19","rhs_mag_M229_19","rhs_mag_DAGR_16"];
+	};
+	case( _class isKindOf ST_BLACKHAWK2X ):
+	{
+		_pylons = ["rhs_mag_DAGR_16","rhs_mag_DAGR_16"];
+	};
+	case( _class isKindOf ST_LITTLE_BIRD ):
+	{
+		_pylons = ["rhs_mag_M151_19","rhs_mag_m134_pylon_3000","rhs_mag_m134_pylon_3000","rhs_mag_M151_19"];
 	};
 
-	case( _class isKindOf "CUP_B_MH60L_DAP_4x_USN" ):
+	case( _class isKindOf ST_BLACKHAWK2XB ):
 	{
-
- 		_pylons =  ["CUP_PylonPod_2000Rnd_TE5_Red_Tracer_762x51_M134A_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M","CUP_PylonPod_19Rnd_Rocket_FFAR_M","CUP_PylonPod_2000Rnd_TE5_Red_Tracer_762x51_M134A_M"];
-
+		_pylons = ["rhs_mag_m134_pylon_3000", "rhs_mag_M151_19"];
 	};
-
-	case( _class isKindOf "CUP_B_AH6M_USA" ):
-	{
-
-		_pylons = ["PylonRack_12Rnd_missiles","PylonRack_12Rnd_missiles"];
-
-	};
-
 	// AH-9 Pawnee
 	case (_class isKindOf "B_Heli_Light_01_dynamicLoadout_F"):
 	{

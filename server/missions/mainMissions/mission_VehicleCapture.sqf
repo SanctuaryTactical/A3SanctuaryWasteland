@@ -20,6 +20,8 @@ _setupObjects =
 	// Class, Position, Fuel, Ammo, Damage, Special
 	_vehicle = [_vehicleClass, _missionPos] call createMissionVehicle;
 
+	[_vehicle] call vehicleSetup;
+
 	if (_vehicleClass isEqualType []) then
 	{
 		_variant = _vehicleClass param [1,"",[""]];

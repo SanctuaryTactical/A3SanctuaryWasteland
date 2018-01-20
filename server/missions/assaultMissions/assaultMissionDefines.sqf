@@ -10,13 +10,15 @@
 // Fail Mission Color = #FF1717 - Light red
 // Success Mission Color = #17FF41 - Light green
 
+#include "..\..\..\STConstants.h"
+
 #define assaultMissionColor "#E86E0C"
 #define failMissionColor "#E89F0C"
 #define successMissionColor "#17FF41"
 #define subTextColor "#FFFFFF"
 
-#define AI_GROUP_SMALL 15
-#define AI_GROUP_MEDIUM 20
-#define AI_GROUP_LARGE 30
+#define AI_GROUP_SMALL 12
+#define AI_GROUP_MEDIUM 18
+#define AI_GROUP_LARGE 24
 
 #define missionDifficultyHard (["A3W_missionsDifficulty", 0] call getPublicVar >= 1)

@@ -10,7 +10,7 @@
 if (!isServer) exitwith {};
 #include "mainMissionDefines.sqf"
 
-private ["_vehChoices", "_convoyVeh", "_veh1", "_veh2", "_veh3", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_vehicleName2", "_numWaypoints", "_box1", "_box2", "_box3"];
+private ["_vehChoices", "_heliChoices", "_boat", "_heli", "_veh1", "_veh2", "_veh3", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_vehicleName2", "_numWaypoints", "_box1", "_box2", "_box3"];
 
 _setupVars =
 {
@@ -23,25 +23,33 @@ _setupObjects =
 	private ["_starts", "_startDirs", "_waypoints"];
 	call compile preprocessFileLineNumbers format ["mapConfig\convoys\%1.sqf", _missionLocation];
 
+	_heliChoices = [
+		"B_Heli_Attack_01_dynamicLoadout_F",
+		"O_Heli_Attack_02_dynamicLoadout_F",
+		"B_Heli_Attack_01_dynamicLoadout_F",
+		"O_Heli_Attack_02_dynamicLoadout_F",
+		ST_BLACKHAWK2XB,
+		ST_BLACKHAWK2X,
+		ST_BLACKHAWK4X,
+		ST_APACHE,
+		ST_APACHE_NORADAR,
+		ST_VENOM1,
+		ST_VENOM2,
+		ST_COBRA];
+
 	_vehChoices =
 	[
-		["B_Boat_Armed_01_minigun_F", "B_Heli_Transport_01_F"],
-		["O_Boat_Armed_01_hmg_F", ["O_Heli_Light_02_dynamicLoadout_F", "orcaDAGR"]],
-		["I_Boat_Armed_01_minigun_F", "I_Heli_light_03_dynamicLoadout_F"]
+		"B_Boat_Armed_01_minigun_F",
+		"O_Boat_Armed_01_hmg_F",
+		"I_Boat_Armed_01_minigun_F"
 	];
 
-	if (missionDifficultyHard) then
-	{
-		(_vehChoices select 0) set [1, "B_Heli_Attack_01_dynamicLoadout_F"];
-		(_vehChoices select 1) set [1, "O_Heli_Attack_02_dynamicLoadout_F"];
-		(_vehChoices select 2) set [1, "O_Heli_Attack_02_dynamicLoadout_F"];
-	};
+	_boat = _vehChoices call BIS_fnc_selectRandom;
+	_heli = _heliChoices call BIS_fnc_selectRandom;
 
-	_convoyVeh = _vehChoices call BIS_fnc_selectRandom;
-
-	_veh1 = _convoyVeh select 0;
-	_veh2 = _convoyVeh select 1;
-	_veh3 = _convoyVeh select 0;
+	_veh1 = _boat;
+	_veh2 = _heli;
+	_veh3 = _boat;
 
 	_createVehicle =
 	{

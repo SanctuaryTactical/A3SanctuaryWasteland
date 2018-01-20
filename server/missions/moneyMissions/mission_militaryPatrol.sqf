@@ -24,11 +24,13 @@ _setupObjects =
 	_convoyVeh =
 	[
 		["I_G_Offroad_01_F","O_MBT_02_cannon_F","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_G_Offroad_01_F"],
-		["I_G_Offroad_01_F","CUP_B_M1A1_DES_US_Army","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F"],
-		["I_G_Offroad_01_F","CUP_B_M1A2_TUSK_MG_DES_US_Army","I_MRAP_03_F","O_APC_Tracked_02_AA_F","CUP_B_Challenger2_Desert_BAF","CUP_B_M7Bradley_USA_D"],
-		["O_APC_Tracked_02_AA_F","CUP_B_Challenger2_Desert_BAF","I_MRAP_03_F","O_APC_Tracked_02_AA_F","O_MBT_02_cannon_F","I_G_Offroad_01_F"],
-		["I_G_Offroad_01_F","CUP_B_M1A1_DES_US_Army","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_G_Offroad_01_F"],
-		["O_APC_Tracked_02_AA_F","CUP_B_M1A1_DES_US_Army","I_MRAP_03_F","O_APC_Tracked_02_AA_F","CUP_B_M1A1_DES_US_Army","I_MRAP_03_F"]
+		["I_G_Offroad_01_F",ST_ABRAMSM1,"I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F"],
+		["I_G_Offroad_01_F","O_MBT_02_cannon_F","I_MRAP_03_F","O_APC_Tracked_02_AA_F","O_MBT_02_cannon_F", ST_BRADLEY0],
+		["O_APC_Tracked_02_AA_F","O_MBT_02_cannon_F","I_MRAP_03_F","O_APC_Tracked_02_AA_F","O_MBT_02_cannon_F","I_G_Offroad_01_F"],
+		["I_G_Offroad_01_F","O_MBT_02_cannon_F","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_G_Offroad_01_F"],
+		["O_APC_Tracked_02_AA_F","O_MBT_02_cannon_F","I_MRAP_03_F","O_APC_Tracked_02_AA_F",ST_ABRAMSM2_TUSK,"I_MRAP_03_F"],
+		["O_APC_Tracked_02_AA_F","O_MBT_02_cannon_F","I_MRAP_03_F","O_APC_Tracked_02_AA_F","O_MBT_02_cannon_F","I_G_Offroad_01_F"],
+		["I_G_Offroad_01_F","O_MBT_02_cannon_F","I_MRAP_03_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_G_Offroad_01_F"]
 	] call BIS_fnc_selectRandom;
 
 	_veh1 = _convoyVeh select 0;

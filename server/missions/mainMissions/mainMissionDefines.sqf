@@ -10,6 +10,8 @@
 // Fail Mission Color = #FF1717 - Light red
 // Success Mission Color = #17FF41 - Light green
 
+#include "..\..\..\STConstants.h"
+
 #define mainMissionColor "#52bf90"
 #define failMissionColor "#FF1717"
 #define successMissionColor "#17FF41"

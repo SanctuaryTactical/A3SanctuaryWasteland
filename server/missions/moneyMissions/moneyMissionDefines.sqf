@@ -6,13 +6,15 @@
 //	@file Author: His_Shadow
 //	@file Created: 07/09/2013 15:19
 
+#include "..\..\..\STConstants.h"
+
 #define moneyMissionColor "#00DE00"
 #define failMissionColor "#FF1717"
 #define successMissionColor "#17FF41"
 #define subTextColor "#FFFFFF"
 
 #define AI_GROUP_SMALL 10
-#define AI_GROUP_MEDIUM 20
-#define AI_GROUP_LARGE 30
+#define AI_GROUP_MEDIUM 15
+#define AI_GROUP_LARGE 22
 
 #define missionDifficultyHard (["A3W_missionsDifficulty", 0] call getPublicVar >= 1)

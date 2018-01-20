@@ -4,6 +4,7 @@
 //Credits: Some methods taken from Cre4mpie's airdrop scripts, props for the idea!
 //Starts off much the same as the client start.  This is to find information from config arrays
 
+#include "..\..\STConstants.h"
 
 private ["_type","_selection","_player","_heliDirection"]; //Variables coming from command menu and client side APOC_cli_startAirdrop
 _type = _this select 0;
@@ -35,7 +36,8 @@ _price 			= (_selectionArray select _selectionNumber) select 2;
 /////// Let's spawn us  an AI helo to carry the cargo /////////////////////////////////////////////////
 
 	//TODO: I'd like this to be a C130
-	_heliType = "B_Heli_Transport_03_unarmed_F";
+	//_heliType = "B_Heli_Transport_03_unarmed_F";
+	_heliType = ST_C130;
 	_center = createCenter civilian;
 	_grp = createGroup civilian;
 

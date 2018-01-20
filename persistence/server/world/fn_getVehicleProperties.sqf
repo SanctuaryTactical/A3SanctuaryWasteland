@@ -51,6 +51,14 @@ switch (true) do
 	["password", ""]
 ];
 
+private _kits = _veh getVariable ["kits", -1];
+
+if( _kits > 0 ) then {
+
+	_variables pushBack ["kits", _kits];
+
+};
+
 private _variant = _veh getVariable ["A3W_vehicleVariant", ""];
 
 if (_variant != "") then

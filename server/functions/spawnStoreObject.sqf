@@ -220,6 +220,7 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 					_object setPosATL [_safePos select 0, _safePos select 1, 0.05];
 				};
 
+				_object engineOn false; // Lets already turn the engine one to see if it fixes exploding vehicles.
 				_object setVelocity [0,0,0.01];
 				// _object spawn cleanVehicleWreck;
 				_object setVariable ["A3W_purchasedVehicle", true, true];
@@ -315,7 +316,10 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 				{
 					_object setAmmoCargo 10;
 				};
-
+				case (_object isKindOf "rhsusf_M977A4_REPAIR_BKIT_M2_usarmy_d"):
+				{
+						_object setVariable ["kits", 75, true];
+				};
 				case ({_object isKindOf _x} count ["B_Truck_01_ammo_F", "O_Truck_02_Ammo_F", "O_Truck_03_ammo_F", "I_Truck_02_ammo_F"] > 0):
 				{
 					_object setAmmoCargo 25;

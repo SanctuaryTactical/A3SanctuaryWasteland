@@ -7,6 +7,8 @@
 # @@Create Date: 2013-09-16 20:40:58
 #*********************************************************/
 
+#include "STConstants.h"
+
 // This tracks which store owner the client is interacting with
 currentOwnerName = "";
 
@@ -25,99 +27,14 @@ pistolArray = compileFinal str
 
 smgArray = compileFinal str
 [
-	["Sting SMG", "SMG_02_F", 125],
+	["Sting SMG", "SMG_02_F", 125]
 
-	// CUP SMG's
-	["PP-19 Bizon", "CUP_smg_bizon", 140],
-	["PP-19 Bizon Silenced", "CUP_smg_bizon_snds", 150],
-	["Scorpion EVO", "CUP_smg_EVO", 100],
-	["Scorpion EVO Flashlight", "CUP_smg_EVO_MRad_Flashlight", 110],
-	["Scorpion EVO Flashlight Silenced", "CUP_smg_EVO_MRad_Flashlight_Snds", 120],
-	["MP5A5", "CUP_smg_MP5A5", 120],
-	["MP5 SD6 (james bond)", "CUP_smg_MP5SD6", 300],
-
-	// CUP Shotguns
-	["AA-12", "CUP_sgun_AA12", 500],
-	["M1014", "CUP_sgun_M1014", 100],
-	["Saiga12K", "CUP_sgun_Saiga12K", 200]
 ];
 
 rifleArray = compileFinal str
 [
 	// Underwater Gun
 	["SDAR Underwater Rifle", "arifle_SDAR_F", 100],
-
-	//CUP
-	["CZ 805 A1", "CUP_arifle_CZ805_A1", 250],
-	["CZ 805 A1 ACO", "CUP_arifle_CZ805_A1_Aco_Laser", 260],
-	["CZ 805 A1 Holosight", "CUP_arifle_CZ805_A1_Holo_Laser", 280],
-	["CZ 805 A1 MRCO", "CUP_arifle_CZ805_A1_MRCO_Laser", 290],
-	["CZ 805 A1 ZD-Dot", "CUP_arifle_CZ805_A1_ZDDot_Laser", 270],
-	["CZ 805 A1 GL", "CUP_arifle_CZ805_GL", 300],
-	["CZ 805 A1 GL ZD-Dot", "CUP_arifle_CZ805_GL_ZDDot_Laser", 320],
-	["CZ 805 A1 GL Hamr", "CUP_arifle_CZ805_GL_Hamr_Laser", 340],
-	["CZ 805 A2", "CUP_arifle_CZ805_A2", 270],
-	["CZ 805 A2 ACO", "CUP_arifle_CZ805_A2_Aco_Laser", 280],
-	["CZ 805 A2 Holosight", "CUP_arifle_CZ805_A2_Holo_Laser", 300],
-	["CZ 805 A2 MRCO", "CUP_arifle_CZ805_A2_MRCO_Laser", 310],
-	["CZ 805 A2 ZD-Dot Silenced", "CUP_arifle_CZ805_A2_ZDDot_Flashlight_Snds", 320],
-	["CZ 805 B", "CUP_arifle_CZ805_B", 300],
-	["CZ 805 B GL", "CUP_arifle_CZ805_B_GL", 350],
-	["CZ 805 B GL Acog", "CUP_arifle_CZ805B_GL_ACOG_Laser", 380],
-
-	["FN FAL", "CUP_arifle_FNFAL", 400],
-	["FN FAL (Railed)", "CUP_arifle_FNFAL_railed", 420],
-	["FN FAL ANPVS4 (Railed)", "CUP_arifle_FNFAL_ANPVS4", 450],
-
-	["G36A", "CUP_arifle_G36A", 150],
-	["G36A (desert)", "CUP_arifle_G36A_camo", 160],
-	["G36K", "CUP_arifle_G36K", 170],
-	["G36K (desert)", "CUP_arifle_G36K_camo", 180],
-	["G36C", "CUP_arifle_G36C", 160],
-	["G36C (desert)", "CUP_arifle_G36C_camo", 180],
-	["G36C Holosight Silenced", "CUP_arifle_G36C_holo_snds", 190],
-	["G36C Holosight Silenced (desert)", "CUP_arifle_G36C_camo_holo_snds", 200],
-	["MG36", "CUP_arifle_MG36", 210],
-	["MG36 (desert)", "CUP_arifle_MG36_camo", 220],
-
-	["L85A2", "CUP_arifle_L85A2", 250],
-	["L85A2 Holosight", "CUP_arifle_L85A2_Holo_laser", 270],
-	["L85A2 SUSAT", "CUP_arifle_L85A2_SUSAT_Laser", 280],
-	["L85A2 CWS", "CUP_arifle_L85A2_CWS_Laser", 300],
-	["L85A2 Acog", "CUP_arifle_L85A2_ACOG_Laser", 280],
-	["L85A2 UGL", "CUP_arifle_L85A2_GL", 320],
-	["L85A2 UGL Holosight", "CUP_arifle_L85A2_GL_Holo_laser", 340],
-	["L85A2 UGL SUSAT", "CUP_arifle_L85A2_GL_SUSAT_Laser", 350],
-	["L85A2 UGL Acog", "CUP_arifle_L85A2_GL_ACOG_Laser", 350],
-	["L86A2 LSW", "CUP_arifle_L86A2", 320],
-	["L86A2 LSW Acog", "CUP_arifle_L86A2_ACOG", 350],
-
-	["M16A2", "CUP_arifle_M16A2", 250],
-	["M16A2 GL", "CUP_arifle_M16A2_GL", 300],
-	["M16A4", "CUP_arifle_M16A4_Base", 250],
-	["M16A4 M68-CCO", "CUP_arifle_M16A4_Aim_Laser", 280],
-	["M16A4 Acog", "CUP_arifle_M16A4_ACOG_Laser", 280],
-	["M16A4 GL", "CUP_arifle_M16A4GL", 300],
-	["M16A4 GL M68-CCO", "CUP_arifle_M16A4_GL", 300],
-	["M16A4 GL Acog", "CUP_arifle_M16A4_GL_ACOG_Laser", 300],
-
-	["M4A1 (black)", "CUP_arifle_M4A1_black", 250],
-	["M4A1 (desert)", "CUP_arifle_M4A1_desert", 250],
-	["M4A1 (camo)", "CUP_arifle_M4A1_camo", 250],
-	["M4A1 M68-CCO (black)", "CUP_arifle_M4A1_Aim", 270],
-	["M4A1 M68-CCO (camo)", "CUP_arifle_M4A1_camo_Aim", 270],
-	["M4A1 Acog", "CUP_arifle_M4A1", 270],
-	["M4A1 M68-CCO Silenced (camo)", "CUP_arifle_M4A1_camo_AIM_snds", 300],
-	["M4A1 GL (black)", "CUP_arifle_M4A1_BUIS_GL", 300],
-	["M4A1 GL (woodland)", "CUP_arifle_M4A1_BUIS_camo_GL", 300],
-	["M4A1 GL (desert)", "CUP_arifle_M4A1_BUIS_desert_GL", 300],
-	["M4A1 GL Holosight (black)", "CUP_arifle_M4A1_GL_Holo_Flashlight", 320],
-	["M4A1 GL Acog (black)", "CUP_arifle_M4A1_GL_ACOG_Flashlight", 320],
-	["M4A1 GL Holosight (woodland)", "CUP_arifle_M4A1_camo_GL_Holo_Flashlight", 320],
-	["M4A1 GL Holosight Silenced (woodland)", "CUP_arifle_M4A1_camo_GL_Holo_Flashlight_Snds", 330],
-	["M4A3 M68-CCO (desert)", "CUP_arifle_M4A3_desert_Aim_Flashlight", 300],
-	["M4A3 GL Acog (desert)", "CUP_arifle_M4A3_desert_GL_ACOG_Laser", 320],
-	["M4A1 GL Acog (desert)", "CUP_arifle_M4A3_desert_GL_ACOG_Laser", 320],
 
 	// Assault Rifles
 	["Mk20 Carbine (Camo)", "arifle_Mk20C_F", 150],
@@ -130,6 +47,9 @@ rifleArray = compileFinal str
 	["CAR-95 Rifle (G Hex)", "arifle_CTAR_ghex_F", 200],
 	["Type 115 Rifle", "arifle_ARX_blk_F", 300],
 	["AKS-74U Carbine", "arifle_AKS_F", 150],
+	["M-16 M4", "rhs_weap_m16a4", 500],
+	["M4", "rhs_weap_m4", 500],
+	["MP7", "rhsusf_acc_rotex_mp7", 500],
 
 	// Marksman Rifles
 	["MXM Rifle (Black)", "arifle_MXM_Black_F", 300],
@@ -169,27 +89,7 @@ lmgArray = compileFinal str
 	["SPMG MMG (MTP)", "MMG_02_camo_F", 750],
 	["SPMG MMG (Black)", "MMG_02_black_F", 750],
 	["Navid MMG (Tan)", "MMG_01_tan_F", 1000],
-	["Navid MMG (Hex)", "MMG_01_hex_F", 1000],
-
-	// CUP LMG's
-	["L7A2", "CUP_lmg_L7A2", 600],
-	["L110A1", "CUP_lmg_L110A1", 400],
-	["L110A1 CompM4", "CUP_lmg_L110A1_Aim_Laser", 420],
-	["M60E4", "CUP_lmg_M60A4", 700],
-	["M240", "CUP_lmg_M240", 600],
-	["M240 Eclan", "CUP_lmg_M240_ElcanM143", 650],
-	["M249", "CUP_lmg_M249_para", 400],
-	["M249 Eclan", "CUP_lmg_M249_ElcanM145_Laser", 420],
-	["M249 AN/PAS (Thermal)", "CUP_lmg_M249_ANPAS13c2_Laser", 1000],
-	["M249 (Big)", "CUP_lmg_M249", 450],
-	["Mk48 Mod 0 (desert)", "CUP_lmg_Mk48_des", 700],
-	["Mk48 Mod 0 (woodland)", "CUP_lmg_Mk48_wdl", 700],
-	["Mk48 Mod 0 M68-CCO (desert)", "CUP_lmg_Mk48_des_Aim_Laser", 750],
-	["Mk48 Mod 0 M68-CCO (woodland)", "CUP_lmg_Mk48_wdl_Aim_Laser", 750],
-	["PKM", "CUP_lmg_PKM", 750],
-	["PKP Pecheneg", "CUP_lmg_Pecheneg", 750],
-	["PKP Pecheneg Scope", "CUP_lmg_Pecheneg_PScope", 800],
-	["UK59", "CUP_lmg_UK59", 800]
+	["Navid MMG (Hex)", "MMG_01_hex_F", 1000]
 ];
 
 launcherArray = compileFinal str
@@ -198,28 +98,7 @@ launcherArray = compileFinal str
 	["RPG-42 Alamut (G Hex)", "launch_RPG32_ghex_F", 400, "noDLC"],
 	["PCML", "launch_NLAW_F", 600],
 	["Titan MPRL Compact (Olive)", "launch_I_Titan_short_F", 500],
-	["Titan MPRL AA (Sand)", "launch_Titan_F", 600],
-
-	// CUP Launchers
-	["Igla 9K38", "CUP_launch_Igla", 700],
-	["FIM-92 Stinger", "CUP_launch_FIM92Stinger", 800],
-	["Strela-2 9K32", "CUP_launch_9K32Strela", 700],
-	["FGM-148 Javelin", "CUP_launch_Javelin", 900],
-	["M47 Dragon", "CUP_launch_M47", 900],
-	["M136 AT-4 Launcher", "CUP_launch_M136", 500],
-	["M3 MAAWS", "CUP_launch_MAAWS", 500],
-	["M3 MAAWS Scope", "CUP_launch_MAAWS_Scope", 550],
-	["Metis Launcher", "CUP_launch_Metis", 500],
-	["NLAW", "CUP_launch_NLAW", 600],
-	["RPG-7V", "CUP_launch_RPG7V", 500],
-	["RPG 18", "CUP_launch_RPG18", 500],
-	["Mk153 Mod 0 SMAW", "CUP_launch_Mk153Mod0", 600],
-	["Mk153 Mod 0 SMAW Optics", "CUP_launch_Mk153Mod0_SMAWOptics", 650],
-
-	// CUP GrenadeLaunchers
-	["M32", "CUP_glaunch_M32", 600],
-	["M79 (China Lake)", "CUP_glaunch_M79", 300],
-	["Mk13 EGLM", "CUP_glaunch_Mk13", 300]
+	["Titan MPRL AA (Sand)", "launch_Titan_F", 600]
 
 ];
 
@@ -351,136 +230,6 @@ throwputArray = compileFinal str
 //Text name, classname, buy cost
 ammoArray = compileFinal str
 [
-	// CUP Ammo
-	[".45 ACP 7Rnd Mag", "CUP_7Rnd_45ACP_1911", 5],
-	["9x19 10Rnd Mag", "CUP_10Rnd_9x19_Compact", 5],
-	["9x19 17Rnd Mag", "CUP_17Rnd_9x19_glock17", 10],
-	["9x19 15Rnd Mag", "CUP_15Rnd_9x19_M9", 10],
-	["9x18 8Rnd Mag", "CUP_8Rnd_9x18_Makarov_M", 2],
-	["9x18 8Rnd Mag (SD)", "CUP_8Rnd_9x18_MakarovSD_M", 3],
-	["9x19 30Rnd Mag", "CUP_30Rnd_9x19_UZI", 15],
-	["9x19 18Rnd Mag", "CUP_18Rnd_9x19_Phantom", 10],
-	[".45 ACP 6Rnd Mag (1 hit)", "CUP_6Rnd_45ACP_M", 20],
-	["7.65x17 20Rnd Ball Mag", "CUP_20Rnd_B_765x17_Ball_M", 10],
-
-	["9x19 64Rnd Bizon Mag", "CUP_64Rnd_9x19_Bizon_M", 30],
-	["9x19 64Rnd Bizon Mag (Green)", "CUP_64Rnd_Green_Tracer_9x19_Bizon_M", 35],
-	["9x19 64Rnd Bizon Mag (Red)", "CUP_64Rnd_Red_Tracer_9x19_Bizon_M", 35],
-	["9x19 64Rnd Bizon Mag (White)", "CUP_64Rnd_White_Tracer_9x19_Bizon_M", 35],
-	["9x19 64Rnd Bizon Mag (Yellow)", "CUP_64Rnd_Yellow_Tracer_9x19_Bizon_M", 35],
-	["9x19 30Rnd Evo Mag", "CUP_30Rnd_9x19_EVO", 20],
-	["9x19 30Rnd MP5 Mag", "CUP_30Rnd_9x19_MP5", 20],
-
-	["AA12 20Rnd Pellets", "CUP_20Rnd_B_AA12_Pellets", 80],
-	["AA12 20Rnd Slugs", "CUP_20Rnd_B_AA12_74Slug", 80],
-	["AA12 20Rnd HE", "CUP_20Rnd_B_AA12_HE", 500],
-	["Beneli 8Rnd Slugs", "CUP_8Rnd_B_Beneli_74Slug", 20],
-	["Saiga 8Rnd Slugs", "CUP_8Rnd_B_Saiga12_74Slug_M", 30],
-
-	["5.45x39 30Rnd", "CUP_30Rnd_545x39_AK_M", 40],
-	["5.45x39 30Rnd (Green)", "CUP_30Rnd_TE1_Green_Tracer_545x39_AK_M", 45],
-	["5.45x39 30Rnd (Red)", "CUP_30Rnd_TE1_Red_Tracer_545x39_AK_M", 45],
-	["5.45x39 30Rnd (White)", "CUP_30Rnd_TE1_White_Tracer_545x39_AK_M", 45],
-	["5.45x39 30Rnd (Yellow)", "CUP_30Rnd_TE1_Yellow_Tracer_545x39_AK_M", 45],
-	["7.62x39 30Rnd", "CUP_30Rnd_762x39_AK47_M", 60],
-	["5.45x39 75Rnd (Green)", "CUP_75Rnd_TE4_LRT4_Green_Tracer_545x39_RPK_M", 100],
-	["12.7x99 5Rnd", "CUP_5Rnd_127x99_as50_M", 50],
-	["8.6x70 5Rnd", "CUP_5Rnd_86x70_L115A1", 30],
-	["7.62x51 10Rnd Tracer", "CUP_10Rnd_762x51_CZ750_Tracer", 20],
-	["7.62x51 10Rnd", "CUP_10Rnd_762x51_CZ750", 20],
-	["5.56x45 30Rnd STANAG", "CUP_30Rnd_556x45_Stanag", 20],
-	["5.56x45 30Rnd", "CUP_30Rnd_556x45_G36", 20],
-	["5.56x45 30Rnd (Red)", "CUP_30Rnd_TE1_Red_Tracer_556x45_G36", 25],
-	["5.56x45 30Rnd (Green)", "CUP_30Rnd_TE1_Green_Tracer_556x45_G36", 25],
-	["5.56x45 30Rnd (Yellow)", "CUP_30Rnd_TE1_Yellow_Tracer_556x45_G36", 25],
-	["5.56x45 100Rnd", "CUP_100Rnd_556x45_BetaCMag", 60],
-	["5.56x45 100Rnd (Red)", "CUP_100Rnd_TE1_Red_Tracer_556x45_BetaCMag", 65],
-	["5.56x45 100Rnd (Green)", "CUP_100Rnd_TE1_Green_Tracer_556x45_BetaCMag", 65],
-	["5.56x45 100Rnd (Yellow)", "CUP_100Rnd_TE1_Yellow_Tracer_556x45_BetaCMag", 65],
-	["5.56x45 20Rnd STANAG", "CUP_20Rnd_556x45_Stanag", 15],
-	["7.62x51 20Rnd", "CUP_20Rnd_762x51_CZ805B", 30],
-	["7.62x51 20Rnd (Yellow)", "CUP_20Rnd_TE1_Yellow_Tracer_762x51_CZ805B", 35],
-	["7.62x51 20Rnd (Red)", "CUP_20Rnd_TE1_Red_Tracer_762x51_CZ805B", 35],
-	["7.62x51 20Rnd (Green)", "CUP_20Rnd_TE1_Green_Tracer_762x51_CZ805B", 35],
-	["7.62x51 20Rnd (White)", "CUP_20Rnd_TE1_White_Tracer_762x51_CZ805B", 35],
-	["7.62x51 20Rnd", "CUP_20Rnd_762x51_DMR", 35],
-	["7.62x51 20Rnd (Yellow)", "CUP_20Rnd_TE1_Yellow_Tracer_762x51_DMR", 35],
-	["7.62x51 20Rnd (Red)", "CUP_20Rnd_TE1_Red_Tracer_762x51_DMR", 35],
-	["7.62x51 20Rnd (Green)", "CUP_20Rnd_TE1_Green_Tracer_762x51_DMR", 35],
-	["7.62x51 20Rnd (White)", "CUP_20Rnd_TE1_White_Tracer_762x51_DMR", 35],
-	["7.62x51 20Rnd", "CUP_20Rnd_762x51_FNFAL_M", 25],
-	["HE 6Rnd", "CUP_6Rnd_HE_M203", 100],
-	["Flare 6Rnd (White)", "CUP_6Rnd_FlareWhite_M203", 60],
-	["Flare 6Rnd (Green)", "CUP_6Rnd_FlareGreen_M203", 60],
-	["Flare 6Rnd (Red)", "CUP_6Rnd_FlareRed_M203", 60],
-	["Flare 6Rnd (Yellow)", "CUP_6Rnd_FlareYellow_M203", 60],
-	["Smoke 6Rnd (White)", "CUP_6Rnd_Smoke_M203", 60],
-	["Smoke 6Rnd (Red)", "CUP_6Rnd_SmokeRed_M203", 60],
-	["Smoke 6Rnd (Green)", "CUP_6Rnd_SmokeGreen_M203", 60],
-	["Smoke 6Rnd (Yellow)", "CUP_6Rnd_SmokeYellow_M203", 60],
-	["HE", "CUP_1Rnd_HE_M203", 20],
-	["HEDP", "CUP_1Rnd_HEDP_M203", 20],
-	["Flare (White)", "CUP_FlareWhite_M203", 10],
-	["Flare (Green)", "CUP_FlareGreen_M203", 10],
-	["Flare (Red)", "CUP_FlareRed_M203", 10],
-	["Flare (Yellow)", "CUP_FlareYellow_M203", 10],
-	["Smoke (White)", "CUP_1Rnd_Smoke_M203", 10],
-	["Smoke (Red)", "CUP_1Rnd_SmokeRed_M203", 10],
-	["Smoke (Green)", "CUP_1Rnd_SmokeGreen_M203", 10],
-	["Smoke (Yellow)", "CUP_1Rnd_SmokeYellow_M203", 10],
-	["5.6x15 5Rnd", "CUP_5x_22_LR_17_HMR_M", 5],
-	["12.7x108 5Rnd", "CUP_5Rnd_127x108_KSVK_M", 50],
-	["7.62x51 100Rnd (White)", "CUP_100Rnd_TE4_LRT4_White_Tracer_762x51_Belt_M", 100],
-	["7.62x51 100Rnd (Red)", "CUP_100Rnd_TE4_LRT4_Red_Tracer_762x51_Belt_M", 100],
-	["5.56x45 200Rnd (Red)", "CUP_200Rnd_TE4_Red_Tracer_556x45_M249", 100],
-	["5.56x45 200Rnd (Yellow)", "CUP_200Rnd_TE4_Yellow_Tracer_556x45_M249", 100],
-	["5.56x45 200Rnd (Red)", "CUP_200Rnd_TE1_Red_Tracer_556x45_M249", 100],
-	["5.56x45 100Rnd (Green)", "CUP_100Rnd_TE4_Green_Tracer_556x45_M249", 50],
-	["5.56x45 100Rnd (Red)", "CUP_100Rnd_TE4_Red_Tracer_556x45_M249", 50],
-	["5.56x45 100Rnd (Yellow)", "CUP_100Rnd_TE4_Yellow_Tracer_556x45_M249", 50],
-	["5.56x45 200Rnd (Green)", "CUP_200Rnd_TE4_Green_Tracer_556x45_L110A1", 100],
-	["5.56x45 200Rnd (Red)", "CUP_200Rnd_TE4_Red_Tracer_556x45_L110A1", 100],
-	["5.56x45 200Rnd (Yellow)", "CUP_200Rnd_TE4_Yellow_Tracer_556x45_L110A1", 100],
-	[".303 10Rnd", "CUP_10x_303_M", 1],
-	["7.62x51 5Rnd", "CUP_5Rnd_762x51_M24", 10],
-	["12.7x99 10Rnd", "CUP_10Rnd_127x99_m107", 100],
-	["7.62x51 20Rnd", "CUP_20Rnd_762x51_B_M110", 30],
-	["7.62x51 20Rnd (Yellow)", "CUP_20Rnd_TE1_Yellow_Tracer_762x51_M110", 35],
-	["7.62x51 20Rnd (Red)", "CUP_20Rnd_TE1_Red_Tracer_762x51_M110", 35],
-	["7.62x51 20Rnd (Green)", "CUP_20Rnd_TE1_Green_Tracer_762x51_M110", 35],
-	["7.62x51 20Rnd (White)", "CUP_20Rnd_TE1_White_Tracer_762x51_M110", 35],
-	["7.62x54 100Rnd (Green)", "CUP_100Rnd_TE4_LRT4_762x54_PK_Tracer_Green_M", 100],
-	["7.62x39 30Rnd (Green)", "CUP_30Rnd_Sa58_M_TracerG", 30],
-	["7.62x39 30Rnd (Red)", "CUP_30Rnd_Sa58_M_TracerR", 30],
-	["7.62x39 30Rnd (Yellow)", "CUP_30Rnd_Sa58_M_TracerY", 30],
-	["7.62x39 30Rnd", "CUP_30Rnd_Sa58_M", 30],
-	["7.62x51 20Rnd", "CUP_20Rnd_762x51_B_SCAR", 30],
-	["7.62x51 20Rnd (Yellow)", "CUP_20Rnd_TE1_Yellow_Tracer_762x51_SCAR", 30],
-	["7.62x51 20Rnd (Red)", "CUP_20Rnd_TE1_Red_Tracer_762x51_SCAR", 30],
-	["7.62x51 20Rnd (Green)", "CUP_20Rnd_TE1_Green_Tracer_762x51_SCAR", 30],
-	["7.62x51 20Rnd (White)", "CUP_20Rnd_TE1_White_Tracer_762x51_SCAR", 30],
-	["7.62x54 10Rnd", "CUP_10Rnd_762x54_SVD_M", 20],
-	["7.62x54 50Rnd (Red)", "CUP_50Rnd_UK59_762x54R_Tracer", 80],
-	["9x39 10Rnd", "CUP_10Rnd_9x39_SP5_VSS_M", 5],
-	["9x39 20Rnd", "CUP_20Rnd_9x39_SP5_VSS_M", 10],
-
-	["Strela Missile", "CUP_Strela_2_M", 400],
-	["Stinger Missile", "CUP_Stinger_M", 400],
-	["Igla Missile", "CUP_Igla_M", 400],
-	["HEAA Missile", "CUP_SMAW_HEAA_M", 300],
-	["HEDP Missile", "CUP_SMAW_HEDP_M", 300],
-	["PG7V Missile", "CUP_PG7V_M", 300],
-	["PG7VL Missile", "CUP_PG7VL_M", 300],
-	["PG7VR Missile", "CUP_PG7VR_M", 300],
-	["OG7 Missile", "CUP_OG7_M", 300],
-	["RPG18 Missile", "CUP_RPG18_M", 300],
-	["Dik Torpedo", "CUP_M136_M", 100],
-	["MAAWS HEAT", "CUP_MAAWS_HEAT_M", 300],
-	["MAAWS HEDP", "CUP_MAAWS_HEDP_M", 300],
-	["AT13 Missile", "CUP_AT13_M", 300],
-	["NLAW Missile", "CUP_NLAW_M", 300],
-	["Dragon Missile", "CUP_Dragon_EP1_M", 400],
-	["Javelin Missile", "CUP_Javelin_M", 400],
 	["9mm 10Rnd Mag", "10Rnd_9x21_Mag", 5],
 	["9mm 16Rnd Mag", "16Rnd_9x21_Mag", 10],
 	["9mm 30Rnd Mag", "30Rnd_9x21_Mag", 15],
@@ -501,7 +250,6 @@ ammoArray = compileFinal str
 	["5.56mm 150Rnd Mag", "150Rnd_556x45_Drum_Mag_F", 100],
 	["5.56mm 150Rnd Tracer (Red) Mag", "150Rnd_556x45_Drum_Mag_Tracer_F", 75],
 	["5.56mm 200Rnd Box", "200Rnd_556x45_Box_F", 125],
-	["5.56mm 30Rnd Mag", "CUP_30Rnd_556x45_Stanag", 50],
 	["5.56mm 200Rnd Tracer (Yellow) Box", "200Rnd_556x45_Box_Tracer_F", 100],
 	["5.56mm 200Rnd Tracer (Red) Box", "200Rnd_556x45_Box_Tracer_Red_F", 100],
 	["5.8mm 30Rnd Mag", "30Rnd_580x42_Mag_F", 20],
@@ -673,7 +421,9 @@ headArray = compileFinal str
 
 uniformArray = compileFinal str
 [
-	["Wetsuit", "U_B_Wetsuit", 200, "uni"],
+	["Wetsuit", "U_B_Wetsuit", 200,	"uni"],
+	["Wetsuit",	"U_I_Wetsuit", 200,	"uni"],
+	["Wetsuit",	"U_O_Wetsuit", 200, "uni"],
 	["Light Ghillie", "U_B_GhillieSuit", 200, "uni"],
 	["Light Ghillie (Jungle)", "U_B_T_Sniper_F", 200, "uni"],
 	["Full Ghillie (Arid)", "U_B_FullGhillie_ard", 2000, "uni"],
@@ -1032,13 +782,13 @@ allStoreGear = compileFinal str (call headArray + call uniformArray + call vestA
 genObjectsArray = compileFinal str
 [
 	["Camo Net", "CamoNet_INDP_open_F", 500, "object", "HIDDEN"], // unlisted, only for object saving
-	["Cargo Container", "Land_Cargo20_military_green_F", 75000, "object", "HIDDEN"], //Unlisted.  Reward from Cargo Container Mission
+	["Cargo Container", "Land_Cargo20_military_green_F", 20000, "object", "HIDDEN"], //Unlisted.  Reward from Cargo Container Mission
 	["Vehicle Pin Generating Station", "Land_DataTerminal_01_F", 150000, "object"],
 	["Base Door (Vehicle)", "Land_Bunker_01_blocks_3_F", 50000, "object"],
 	["Base Door (Man)", "Land_Bunker_01_blocks_1_F", 20000, "object"],
 	["Base Door key (PIN: 0000) (beta)", "Land_Noticeboard_F", 15000, "object"],  // LouD
 	["Base Roof (Retractable)", "ContainmentArea_01_forest_F", 75000, "object"],
-	["Base locker (PIN: 0000)", "Land_Device_assembled_F", 150000, "object"],  //Cael817, SNAFU,Used for base operations <-- Destroyable
+	["Base locker (PIN: 0000)", "Land_Device_assembled_F", 100000, "object"],  //Cael817, SNAFU,Used for base operations <-- Destroyable
 	["Building (Aircraft Hangar)", "Land_Hangar_F", 100000, "object"],
 	["Safe (PIN: 0000)", "Box_NATO_AmmoVeh_F", 50000, "ammocrate"],
 	["Supplies (Food Sacks)", "Land_Sacks_goods_F", 5000, "object"], // Added on player request
@@ -1154,7 +904,9 @@ genObjectsArray = compileFinal str
 	["Toilet Box", "Land_ToiletBox_F", 25, "object"],
 	["Tool Trolly", "Land_ToolTrolley_01_F", 250, "object"],
 	["Tool Cart", "Land_ToolTrolley_02_F", 250, "object"],
-	["Workbench", "Land_Workbench_01_F", 500, "object"]
+	["Workbench", "Land_Workbench_01_F", 500, "object"],
+	["Hangar (Large Left)", "Land_Airport_02_hangar_left_F", 0, "object", "HIDDEN"],
+	["Light (Flood)", "Land_FloodLight_F", 0, "object", "HIDDEN"]
 
 ];
 
@@ -1179,16 +931,16 @@ landArray = compileFinal str
 	["UGV Stomper (AAF)", "I_UGV_01_F", 15000, "vehicle"],
 	["UGV Saif (CSAT)", "O_UGV_01_F", 15000, "vehicle"],
 	["UGV Saif RCWS (CSAT)", "O_UGV_01_rcws_F", 15000, "vehicle"],
-	["Humvee Unarmed", "CUP_B_HMMWV_Unarmed_USA", 10000, "vehicle"],
-	["Land Rover", "CUP_B_LR_Transport_GB_D", 9000, "vehicle"],
 
-	//other
-	["UAZ Open", "CUP_O_UAZ_Open_RU", 1500, "vehicle", "HIDDEN"],
-	["Motorcycle", "CUP_O_TT650_CHDKZ", 1000, "vehicle", "HIDDEN"],
-	["SUV", "CUP_O_SUV_TKA", 25000, "vehicle", "HIDDEN"],
-	["Golf", "CUP_C_Golf4_random_Civ", 12000, "vehicle", "HIDDEN"],
-	["Octavia", "CUP_C_Octavia_Civ", 16000, "vehicle", "HIDDEN"],
-	["Ikarus", "CUP_C_Ikarus_Chernarus", 15000, "vehicle", "HIDDEN"]
+	//RHS
+	["Humvee Unarmed", ST_HUMVEE_UNARMED, 10000, "vehicle"],
+	["Humvee Half Open",ST_HUMVEE_HALF, 11000, "vehicle"],
+	["Humvee Open (2 Door)", ST_HUMVEE_OPEN2D, 11000, "vehicle"],
+	["Humvee Open (4 Door)", ST_HUMVEE_OPEN4D, 11000, "vehicle"],
+	["M10 Covered", ST_M10_COVERED, 25000, "vehicle"],
+	["M977 (Repair)", ST_M977REPAIR, 75000, "vehicle"],
+	["Quad MRZR", ST_QUADMRZR, 10000, "vehicle"],
+	["RG33", ST_RG33_UNARMED, 15000, "vehicle", "HIDDEN"]
 ];
 
 armoredArray = compileFinal str
@@ -1202,65 +954,81 @@ armoredArray = compileFinal str
 	["Strider HMG", "I_MRAP_03_hmg_F", 15000, "vehicle"],
 	["Strider GMG", "I_MRAP_03_gmg_F", 17500, "vehicle"],
 	["MSE-3 Marid", "O_APC_Wheeled_02_rcws_F", 25000, "vehicle"],
-	["Humvee MG", "CUP_B_HMMWV_M2_USA", 15000, "vehicle"],
-	["Humvee Open (MG2)", "CUP_B_HMMWV_SOV_M2_USA", 15000, "vehicle"],
-	["Humvee Assault", "CUP_B_M1165_GMV_USA", 20000, "vehicle"],
-	["BTR-60", "CUP_I_BTR60_UN", 22000, "vehicle"],
-	["Armed SUV", "CUP_I_SUV_Armored_ION", 20000, "vehicle"],
-	//CUP Armored
-	["APC MGS Cannon", "CUP_B_M1128_MGS_Desert", 35000, "vehicle", "HIDDEN"],
-	["M7 Bradley", "CUP_B_M7Bradley_USA_D", 40000, "vehicle", "HIDDEN"],
-	["APC MG", "CUP_B_M1126_ICV_M2_Desert_Slat", 40000, "vehicle", "HIDDEN"],
-	["LAV-25 API", "CUP_B_LAV25_desert_USMC", 40000, "vehicle", "HIDDEN"],
-	["Linebacker AA", "CUP_B_M6LineBacker_USA_D", 45000, "vehicle", "HIDDEN"],
-	["MW88 Warrior", "CUP_B_FV510_GB_W", 45000, "vehicle", "HIDDEN"],
-	["BDRM", "CUP_B_BDRM2_CZ_Des", 45000, "vehicle", "HIDDEN"]
+
+	//RHS
+	["Humvee Armed (M2)", ST_HUMVEE_ARMED1, 15000, "vehicle"],
+	["Humvee Armed (MK19)", ST_HUMVEE_ARMED2, 18000, "vehicle"],
+	["RG33 Armed", ST_RG33MG, 20000, "vehicle"],
+	["M108", ST_FLATBED_ARMED, 15000, "vehicle"],
+
+	["Bradley", ST_BRADLEY, 45000, "vehicle", "HIDDEN"],
+	["Bradley 0", ST_BRADLEY0, 50000, "vehicle", "HIDDEN"],
+	["Bradley 1", ST_BRADLEY1, 55000, "vehicle", "HIDDEN"],
+	["Bradley 2", ST_BRADLEY2, 60000, "vehicle", "HIDDEN"],
+	["LineBacker", ST_LINEBACKER, 65000, "vehicle", "HIDDEN"],
+	["M113 Resupply", ST_M113_RESUPPLY, 150000, "vehicle", "HIDDEN"],
+	["M113 1", ST_M113A1, 50000, "vehicle", "HIDDEN"],
+	["M113 2", ST_M113A2, 55000, "vehicle", "HIDDEN"],
+	["M113 3", ST_M113A3, 60000, "vehicle", "HIDDEN"],
+	["M113 Unarmed", ST_M113_UNARMED, 45000, "vehicle", "HIDDEN"],
+	["M1117", ST_M1117, 45000, "vehicle", "HIDDEN"],
+	["M117 Crows", ST_M1220_CROWS, 50000, "vehicle", "HIDDEN"]
 ];
 
 tanksArray = compileFinal str
 [
 //Mission Only Vehicles
-	["Scorcher", "B_MBT_01_arty_F", 150000, "vehicle", "HIDDEN"],
-	["Sandstorm", "B_MBT_01_mlrs_F", 150000, "vehicle", "HIDDEN"],
 	["CRV-6e Bobcat (Resupply)", "B_APC_Tracked_01_CRV_F", 70000, "vehicle"],
 	["IFV-6c Panther", "B_APC_Tracked_01_rcws_F", 35000, "vehicle"],
 	["ZSU-39 Tigris AA", "O_APC_Tracked_02_AA_F", 45000, "vehicle"],
 	["M2A4 Slammer HMG", "B_MBT_01_TUSK_F", 50000, "vehicle"], // Commander gun variant
 	["T-100 Varsuk", "O_MBT_02_cannon_F", 60000, "vehicle"],
 	["MBT-52 Kuma", "I_MBT_03_cannon_F", 70000, "vehicle"],
-	//CUP tanks
-	["M1A2 Abrams (Tusk)", "CUP_B_M1A2_TUSK_MG_DES_US_Army", 65000, "vehicle", "HIDDEN"],
-	["Challenger", "CUP_B_Challenger2_Desert_BAF", 55000, "vehicle", "HIDDEN"],
-	["M1A1 Abrams", "CUP_B_M1A1_DES_US_Army", 85000, "vehicle", "HIDDEN"]
+
+	["Scorcher", "B_MBT_01_arty_F", 120000, "vehicle", "HIDDEN"],
+	["Sandstorm", "B_MBT_01_mlrs_F", 120000, "vehicle", "HIDDEN"],
+
+	//RHS
+	["M1A1", ST_ABRAMSM1, 80000, "vehicle", "HIDDEN"],
+	["M1A2", ST_ABRAMSM2, 100000, "vehicle", "HIDDEN"],
+	["M1A1TUSK", ST_ABRAMSM1_TUSK, 85000, "vehicle", "HIDDEN"],
+	["M1A2TUSK", ST_ABRAMSM2_TUSK, 100000, "vehicle", "HIDDEN"],
+	["M109 Howitzer", ST_HOWITZER, 140000, "vehicle", "HIDDEN"]
 ];
 
 helicoptersArray = compileFinal str
 [
 	["Hexacopter Demining UAV", "C_IDAP_UAV_06_antimine_F", (call genItemArray) select {_x select 1 == "C_IDAP_UAV_06_antimine_backpack_F"} select 0 select 2, "vehicle", "HIDDEN"], // for resupply price
 	["MH-9 Hummingbird", "B_Heli_Light_01_F", 10000, "vehicle"], // MH-6
-	["Littlbird Bench", "CUP_I_MH6M_ION", 10000, "vehicle"],
+
+
 	["CH-49 Mohawk", "I_Heli_Transport_02_F", 25000, "vehicle"], // AW101
 	["Mi-290 Taru (Resupply)", "O_Heli_Transport_04_ammo_F", 100000, "vehicle"],
 	["Mi-290 Taru (Transport)", "O_Heli_Transport_04_covered_F", 25000, "vehicle"],
 	["CH-67 Huron (Unarmed)", "B_Heli_Transport_03_unarmed_F", 25000, "vehicle"], // CH-47
 	["AH-9 Pawnee", "B_Heli_Light_01_dynamicLoadout_F", 40000, "vehicle", "variant_pawneeNormal"], // Armed AH-6
-	["AH-6 Littlebird", "CUP_B_AH6M_USA", 50000, "vehicle"],
 	["PO-30 Orca (DAGR)", "O_Heli_Light_02_dynamicLoadout_F", 50000, "vehicle", "variant_orcaDAGR"], // Armed Ka-60, add "HIDDEN" if you don't want it, but don't remove the line!
 	["WY-55 Hellcat (Armed)", "I_Heli_light_03_dynamicLoadout_F", 50000, "vehicle"], // Armed AW159
 	["AH-99 Blackfoot", "B_Heli_Attack_01_dynamicLoadout_F", 70000, "vehicle"], // RAH-66 with gunner
 	["MQ-12 Falcon UAV", "B_T_UAV_03_F", 100000, "vehicle"], // Do NOT use "B_T_UAV_03_dynamicLoadout_F" (doesn't support ASRAAM pylons)
-	["SH-60 Seahawk", "CUP_B_UH60S_USN", 50000, "vehicle"],
-	["MH-60 Blackhawk", "CUP_B_MH60L_DAP_2x_US", 100000, "vehicle"],
-	["CH-53 Super Stalion", "CUP_B_CH53E_VIV_USMC", 25000, "vehicle"],
+
+	["Little Bird (Unarmed)", ST_LITTLE_BIRD_UNARMED, 15000, "vehicle"],
+	["Little Bird (Armed)", ST_LITTLE_BIRD, 50000, "vehicle"],
+	["Blackhawk", ST_BLACKHAWK2XB, 100000, "vehicle"],
+	["Venom (Unarmed)", ST_VENOM_UNARMED, 60000, "vehicle"],
+	["Super Stalion (Unarmed)", ST_SUPER_STALION, 65000, "vehicle"],
+
 	["Mi-48 Kajman", "O_Heli_Attack_02_dynamicLoadout_F", 60000, "vehicle", "HIDDEN"], // Mi-28 with gunner
-	//CUP Helos
-	["AH-64 Apache", "CUP_B_AH64D_DL_USA", 150000, "vehicle","HIDDEN"],
-	["UH-1 Venom", "CUP_B_UH1Y_Gunship_Dynamic_USMC", 85000, "vehicle","HIDDEN"],
-	["AH-1 Cobra", "CUP_B_AH1Z_Dynamic_USMC", 95000, "vehicle","HIDDEN"],
-	["Mi-35 Hind", "CUP_B_Mi35_Dynamic_CZ_Des", 90000, "vehicle","HIDDEN"],
-	["Kighthawk", "CUP_B_MH60L_DAP_4x_USN", 125000, "vehicle","HIDDEN"],
-	["Ka52", "CUP_O_Ka52_Blk_RU", 100000, "vehicle","HIDDEN"],
-	["Mi6T", "CUP_O_MI6T_RU", 80000, "vehicle","HIDDEN"]
+
+	//RHS (HIDDEN)
+	["Blackhawk 2 pylons", ST_BLACKHAWK2X, 120000, "vehicle", "HIDDEN"],
+	["Blackhawk 4 pylon", ST_BLACKHAWK4X, 140000, "vehicle", "HIDDEN"],
+	["Apache", ST_APACHE, 140000, "vehicle", "HIDDEN"],
+	["Apache (No Radar)", ST_APACHE_NORADAR, 120000, "vehicle", "HIDDEN"],
+	["Venom", ST_VENOM1, 85000, "vehicle", "HIDDEN"],
+	["Venom (missile)", ST_VENOM2, 95000, "vehicle", "HIDDEN"],
+	["Cobra", ST_COBRA, 110000, "vehicle", "HIDDEN"]
+
 ];
 
 planesArray = compileFinal str
@@ -1268,10 +1036,7 @@ planesArray = compileFinal str
 	["A-143 Buzzard CAS", "I_Plane_Fighter_03_dynamicLoadout_F", 80000, "vehicle", "variant_buzzardCAS"],
 	["F/A-181 Black Wasp", "B_Plane_Fighter_01_F", 100000, "vehicle"],
 	["A-164 Wipeout CAS", "B_Plane_CAS_01_dynamicLoadout_F", 90000, "vehicle"],
-	["A-10 Thunderbolt", "CUP_B_A10_DYN_USA", 95000, "vehicle"],
 	["To-199 Neophron CAS", "O_Plane_CAS_02_dynamicLoadout_F", 95000, "vehicle"],
-	["Classic C-47", "CUP_B_C47_USA", 15000, "vehicle"],
-	["C130 Transport", "CUP_B_C130J_USMC", 125000, "vehicle"],
 	["KH-3A Fenghuang Missile UAV", "O_T_UAV_04_CAS_F", 80000, "vehicle"],
 	["K40 Ababil-3 Missile UAV", "I_UAV_02_dynamicLoadout_F", 80000, "vehicle", "variant_greyhawkMissile"],
 	["MQ4A Greyhawk Bomber UAV", "B_UAV_02_dynamicLoadout_F", 80000, "vehicle", "variant_greyhawkBomber"], // Bomber UAVs are a lot harder to use, hence why they are cheaper than Missile ones
@@ -1279,15 +1044,14 @@ planesArray = compileFinal str
 	["UCAV Sentinel Missile", "B_UAV_05_F", 80000, "vehicle", "variant_sentinelMissile"],
 	["UCAV Sentinel Bomber", "B_UAV_05_F", 80000, "vehicle", "variant_sentinelBomber"],
 	["UCAV Sentinel Cluster", "B_UAV_05_F", 80000, "vehicle", "variant_sentinelCluster"],
-	["MQ-9 Reaper", "CUP_B_USMC_DYN_MQ9", 80000, "vehicle"],
-	//CUP Jets
-	["Harrier Jump Jet", "CUP_B_AV8B_DYN_USMC", 90000, "vehicle", "HIDDEN"],
+
+	//RHS
+	["A-10 Thunderbolt", ST_A10, 100000, "vehicle", "HIDDEN"],
+	["F22 Lightning", ST_F22, 110000, "vehicle", "HIDDEN"],
+	["C130 Transport", ST_C130, 120000, "vehicle"],
+
 	["A-149 Gryphon", "I_Plane_Fighter_04_F", 65000, "vehicle", "HIDDEN"],
-	["To-201 Shikra", "O_Plane_Fighter_02_F", 85000, "vehicle", "HIDDEN"],
-	["L-39", "CUP_B_L39_CZ", 75000, "vehicle", "HIDDEN"],
-	["F-35 Lightning", "CUP_B_F35B_BAF", 95000, "vehicle", "HIDDEN"],
-	["Su-34", "CUP_O_SU34_RU", 85000, "vehicle", "HIDDEN"],
-	["Su-25T", "CUP_O_Su25_Dyn_RU", 90000, "vehicle", "HIDDEN"]
+	["To-201 Shikra", "O_Plane_Fighter_02_F", 85000, "vehicle", "HIDDEN"]
 ];
 
 boatsArray = compileFinal str
@@ -1298,8 +1062,8 @@ boatsArray = compileFinal str
 	["Motorboat", "C_Boat_Civil_01_F", 20000, "boat"],
 	["RHIB", "I_C_Boat_Transport_02_F", 10000, "boat"],
 	["Speedboat Minigun (NATO)", "B_Boat_Armed_01_minigun_F", 15000, "boat"],
-	["SDV Submarine (AAF)", "I_SDV_01_F", 15000, "submarine"],
-	["Fishing Boat", "CUP_C_Fishing_Boat_Chernarus", 25000, "boat"]
+	["SDV Submarine (AAF)", "I_SDV_01_F", 15000, "submarine"]
+	//["MKV", ST_ATTACK_BOAT, 250000, "boat"]
 ];
 
 otherVehicles = compileFinal str

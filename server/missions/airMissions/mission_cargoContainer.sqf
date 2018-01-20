@@ -21,25 +21,31 @@ _setupObjects =
 
 	_heloChoices1 =
 	[
-		["CUP_B_AH64D_DL_USA"],
-		["CUP_B_UH1Y_Gunship_Dynamic_USMC"],
-		["CUP_B_AH1Z_Dynamic_USMC"],
-		["CUP_B_Mi35_Dynamic_CZ_Des"],
-		["CUP_B_MH60L_DAP_4x_USN"]
+		[ST_APACHE],
+		[ST_APACHE_NORADAR],
+		[ST_VENOM1],
+		[ST_VENOM2],
+		[ST_COBRA],
+		[ST_BLACKHAWK],
+		[ST_BLACKHAWK2X],
+		[ST_BLACKHAWK4X]
 	];
 	_heloChoices2 =
 	[
-		["CUP_B_AH64D_DL_USA"],
-		["CUP_B_UH1Y_Gunship_Dynamic_USMC"],
-		["CUP_B_AH1Z_Dynamic_USMC"],
-		["CUP_B_Mi35_Dynamic_CZ_Des"],
-		["CUP_B_MH60L_DAP_4x_USN"]
+		[ST_APACHE],
+		[ST_APACHE_NORADAR],
+		[ST_VENOM1],
+		[ST_VENOM2],
+		[ST_COBRA],
+		[ST_BLACKHAWK],
+		[ST_BLACKHAWK2X],
+		[ST_BLACKHAWK4X]
 	];
 
 	_helo1 = _heloChoices1 call BIS_fnc_selectRandom;
 	_helo2 = _heloChoices2 call BIS_fnc_selectRandom;
 
-	_veh1 = "CUP_B_C130J_Cargo_USMC";
+	_veh1 = ST_C130;
 	_veh2 = _helo1 select 0;
 	_veh3 = _helo2 select 0;
 
@@ -70,7 +76,7 @@ _setupObjects =
 		_soldier moveInDriver _vehicle;
 		_soldier triggerDynamicSimulation true;
 
-		if( _type isKindOf "CUP_B_C130J_Cargo_USMC" ) then {
+		if( _type isKindOf ST_C130 ) then {
 
 		} else {
 
@@ -79,6 +85,8 @@ _setupObjects =
 			_soldier moveInGunner _vehicle;
 
 		};
+
+		[_vehicle] call vehicleSetup;
 
 		// lock the vehicle untill the mission is finished and initialize cleanup on it
 		[_vehicle, _aiGroup] spawn checkMissionVehicleLock;
@@ -150,6 +158,10 @@ _successExec =
 	_box3 setDir random 360;
 	_box3 setVariable ["moveable", true, true];
 	_box3 allowDamage false;
+	_box3 setAmmoCargo 100;
+
+	_cargo = "Supply500" createVehicle [0,0,0];
+	_cargo attachTo [_box3, [0,0,0.85]];
 
 	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box3];
 

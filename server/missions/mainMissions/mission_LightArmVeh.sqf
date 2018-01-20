@@ -21,8 +21,13 @@ _setupVars =
 		"O_MRAP_02_gmg_F",
 		"I_MRAP_03_hmg_F",
 		"I_MRAP_03_gmg_F",
-		"CUP_B_HMMWV_M2_USA",
-		"CUP_B_HMMWV_SOV_M2_USA"
+		ST_HUMVEE_ARMED1,
+		ST_HUMVEE_ARMED2,
+		ST_M113A1,
+		ST_M113A2,
+		ST_M113A3,
+		ST_M1117,
+		ST_M1220_CROWS
 	] call BIS_fnc_selectRandom;
 
 	_missionType = "Light Armed Vehicle";

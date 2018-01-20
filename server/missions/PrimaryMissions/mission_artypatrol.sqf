@@ -24,14 +24,15 @@ _setupObjects =
 	_convoyVeh =
 	[
 		//NATO Patrols
-		["B_APC_Wheeled_01_cannon_F", "B_Heli_Attack_01_F", "B_MBT_01_TUSK_F", "B_APC_Tracked_01_AA_F", "B_Heli_Light_01_armed_F", "B_MBT_01_mlrs_F", "B_APC_Tracked_01_AA_F", "B_Heli_Light_01_armed_F", "B_MBT_01_TUSK_F", "B_APC_Tracked_01_CRV_F"], // Light Patrol
+		["B_APC_Wheeled_01_cannon_F", ST_APACHE, ST_BRADLEY, "B_APC_Tracked_01_AA_F", "B_Heli_Light_01_armed_F", "B_MBT_01_mlrs_F", "B_APC_Tracked_01_AA_F", "B_Heli_Light_01_armed_F", "B_MBT_01_TUSK_F", "B_APC_Tracked_01_CRV_F"], // Light Patrol
 
 		//CSAT Patrols
-		["O_APC_Wheeled_02_rcws_F", "O_Heli_Attack_02_F", "O_MBT_02_cannon_F", "O_APC_Tracked_02_AA_F", "O_Heli_Light_02_F", "B_MBT_01_arty_F", "O_APC_Tracked_02_AA_F", "O_Heli_Light_02_F", "O_MBT_02_cannon_F", "O_APC_Tracked_02_cannon_F"],
+		[ST_BRADLEY, "O_Heli_Attack_02_F", ST_ABRAMSM1, "O_APC_Tracked_02_AA_F", "O_Heli_Light_02_F", "B_MBT_01_arty_F", "O_APC_Tracked_02_AA_F", "O_Heli_Light_02_F", "O_MBT_02_cannon_F", "O_APC_Tracked_02_cannon_F"],
 
 		//AAF Patrols
-		["I_APC_Wheeled_03_cannon_F", "B_Heli_Attack_01_F", "I_MBT_03_cannon_F", "O_APC_Tracked_02_AA_F", "I_Heli_light_03_F", "B_MBT_01_arty_F", "O_APC_Tracked_02_AA_F", "I_Heli_light_03_F", "I_MBT_03_cannon_F", "O_APC_Tracked_02_cannon_F"],
-		["I_APC_Wheeled_03_cannon_F", "B_Heli_Attack_01_F", "I_MBT_03_cannon_F", "O_APC_Tracked_02_AA_F", "CUP_B_AH6M_USA", "B_MBT_01_arty_F", "O_APC_Tracked_02_AA_F", "CUP_B_AH6M_USA", "I_MBT_03_cannon_F", "O_APC_Tracked_02_cannon_F"]
+		[ST_LINEBACKER, "B_Heli_Attack_01_F", ST_ABRAMSM2, "O_APC_Tracked_02_AA_F", ST_LITTLE_BIRD, "B_MBT_01_arty_F", "O_APC_Tracked_02_AA_F", ST_LITTLE_BIRD, "I_MBT_03_cannon_F", "O_APC_Tracked_02_cannon_F"],
+		["I_APC_Wheeled_03_cannon_F", ST_COBRA, ST_ABRAMSM1_TUSK, "O_APC_Tracked_02_AA_F", ST_LITTLE_BIRD, "B_MBT_01_arty_F", "O_APC_Tracked_02_AA_F", ST_LITTLE_BIRD, "I_MBT_03_cannon_F", "O_APC_Tracked_02_cannon_F"],
+		[ST_LINEBACKER, ST_APACHE, "I_MBT_03_cannon_F", "O_APC_Tracked_02_AA_F", ST_LITTLE_BIRD, ST_HOWITZER, "O_APC_Tracked_02_AA_F", ST_LITTLE_BIRD, "I_MBT_03_cannon_F", "O_APC_Tracked_02_cannon_F"]
 
 	] call BIS_fnc_selectRandom;
 

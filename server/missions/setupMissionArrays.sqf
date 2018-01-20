@@ -10,33 +10,33 @@ MainMissions =
 [
 	// Mission filename, weight
 	["mission_ArmedDiversquad", 1],
-	["mission_Coastal_Convoy", 1],
-	["mission_Convoy", 1],
+	["mission_Coastal_Convoy", .5],
+	["mission_Convoy", .5],
 	["mission_VTOL", 0.5],
 	["mission_APC", 1],
 	["mission_MBT", 1],
 	["mission_LightArmVeh", 1],
 	["mission_ArmedHeli", 1],
 	["mission_AbandonedJet", 0.75],
-	["mission_CivHeli", 1]
+	["mission_CivHeli", .5]
 ];
 
 SideMissions =
 [
 	["mission_MiniConvoy", 1],
 	["mission_SunkenSupplies", 1],
-	["mission_Truck", 1],
+	["mission_Truck", .75],
 	["mission_ConvoyCSATSF", 1],
 	["mission_ConvoyNATOSF", 1],
-	["mission_GeoCache",1],
+	["mission_GeoCache", .5],
 	["mission_SupplyDrop", 1]
 ];
 
 MoneyMissions =
 [
 	["mission_SunkenTreasure", 1],
-	["mission_militaryPatrol", 1],
-	["mission_altisPatrol", 1],
+	["mission_militaryPatrol", .75],
+	["mission_altisPatrol", .75],
 	["mission_MoneyShipment", 1]
 ];
 PrimaryMissions =
@@ -45,13 +45,13 @@ PrimaryMissions =
 ];
 AirMissions =
 [
-	["mission_Gunship", 1],
+	["mission_Gunship", .75],
   ["mission_HostileJet", 1],
 	["mission_HostileVTOL", 1],
-	["mission_SmugglerPlane", 1],
+	["mission_SmugglerPlane", .75],
 	["mission_HostileHelicopter", 1],
-	["mission_HostileHeliFormation",1],
-	["mission_HostileJetFormation", 1],
+	["mission_HostileHeliFormation", .8],
+	["mission_HostileJetFormation", .8],
 	["mission_CargoContainer", 1]
 ];
 AssaultMissions =
@@ -59,9 +59,9 @@ AssaultMissions =
 	["mission_Roadblock", 1],
 	["mission_Sniper", 1],
 	["mission_Outpost", 1],
-	["mission_Smugglers", 1],
+	["mission_Smugglers", .75],
 	["mission_TownInvasion", 1],
-	["mission_HostageRescue", 1]
+	["mission_HostageRescue", .75]
 ];
 
 MissionSpawnMarkers = (allMapMarkers select {["Mission_", _x] call fn_startsWith}) apply {[_x, false]};

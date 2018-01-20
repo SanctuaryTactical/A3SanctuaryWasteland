@@ -20,7 +20,19 @@ _setupObjects =
 	_town = (call cityList) call BIS_fnc_selectRandom;
 	_missionPos = markerPos (_town select 0);
 
-	_convoyVeh = ["I_MRAP_03_hmg_F","I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_MRAP_03_gmg_F", "CUP_B_M1A1_DES_US_Army"];
+	//_convoyVeh = ["I_MRAP_03_hmg_F","I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_MRAP_03_gmg_F", "I_MBT_03_cannon_F"];
+
+	_convoyVeh =
+	[
+		["I_MRAP_03_hmg_F",ST_ABRAMSM1,"O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F",ST_BRADLEY1, "I_MBT_03_cannon_F"],
+		["I_MRAP_03_hmg_F","I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F", "I_MBT_03_cannon_F",ST_LINEBACKER, "I_MBT_03_cannon_F"],
+		[ST_BRADLEY1,ST_ABRAMSM2_TUSK,ST_LINEBACKER,"I_MBT_03_cannon_F","I_MRAP_03_gmg_F", "I_MBT_03_cannon_F"],
+		[ST_BRADLEY1,"I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F",ST_BRADLEY1, "I_MBT_03_cannon_F"],
+		["I_MRAP_03_hmg_F","I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_MRAP_03_gmg_F", "I_MBT_03_cannon_F"],
+		[ST_BRADLEY2,"I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F",ST_LINEBACKER, "I_MBT_03_cannon_F"],
+		[ST_BRADLEY2,"I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F", "I_MBT_03_cannon_F"],
+		["I_MRAP_03_hmg_F","I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F",ST_BRADLEY2, "I_MBT_03_cannon_F"]
+	] call BIS_fnc_selectRandom;
 
 	_veh1 = _convoyVeh select 0;
 	_veh2 = _convoyVeh select 1;

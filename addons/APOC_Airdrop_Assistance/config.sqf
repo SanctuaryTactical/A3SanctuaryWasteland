@@ -1,13 +1,14 @@
 //Configuration for Airdrop Assistance
 //Author: Apoc
+#include "..\..\STConstants.h"
 
 APOC_AA_VehOptions =
 [
   // ["Menu Text", ItemClassname,	Price,"Drop Type"]
   ["Quadbike (Civilian)", "C_Quadbike_01_F", 2000, "vehicle"],
   ["Strider",  "I_MRAP_03_F", 16000, "vehicle"],
-  ["Humvee Unarmed", "CUP_B_HMMWV_Unarmed_USA", 20000, "vehicle"],
-  ["Humvee MG", "CUP_B_HMMWV_M2_USA", 36000, "vehicle"],
+  ["Humvee Unarmed", ST_HUMVEE_UNARMED, 20000, "vehicle"],
+  ["Humvee MG", ST_HUMVEE_ARMED1, 36000, "vehicle"],
   ["Hummingbird", "B_Heli_Light_01_F", 10000, "vehicle"],
   ["AH-9 Pawnee", "B_Heli_Light_01_armed_F", 70000, "vehicle"]
 ];

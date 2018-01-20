@@ -22,24 +22,29 @@ _setupObjects =
 	_planeChoices =
 	[
 		["I_C_Plane_Civil_01_F"],
-		["I_C_Heli_Light_01_civil_F"],
-		["CUP_B_C47_USA"]
+		["I_C_Heli_Light_01_civil_F"]
 	];
 	_heloChoices1 =
 	[
-		["CUP_B_AH64D_DL_USA"],
-		["CUP_B_UH1Y_Gunship_Dynamic_USMC"],
-		["CUP_B_AH1Z_Dynamic_USMC"],
-		["CUP_B_Mi35_Dynamic_CZ_Des"],
-		["CUP_B_MH60L_DAP_4x_USN"]
+		[ST_APACHE],
+		[ST_APACHE_NORADAR],
+		[ST_VENOM1],
+		[ST_VENOM2],
+		[ST_COBRA],
+		[ST_BLACKHAWK],
+		[ST_BLACKHAWK2X],
+		[ST_BLACKHAWK4X]
 	];
 	_heloChoices2 =
 	[
-		["CUP_B_AH64D_DL_USA"],
-		["CUP_B_UH1Y_Gunship_Dynamic_USMC"],
-		["CUP_B_AH1Z_Dynamic_USMC"],
-		["CUP_B_Mi35_Dynamic_CZ_Des"],
-		["CUP_B_MH60L_DAP_4x_USN"]
+		[ST_APACHE],
+		[ST_APACHE_NORADAR],
+		[ST_VENOM1],
+		[ST_VENOM2],
+		[ST_COBRA],
+		[ST_BLACKHAWK],
+		[ST_BLACKHAWK2X],
+		[ST_BLACKHAWK4X]
 	];
 
 	_convoyVeh = _planeChoices call BIS_fnc_selectRandom;
@@ -79,7 +84,7 @@ _setupObjects =
 		_soldier moveInDriver _vehicle;
 		_soldier triggerDynamicSimulation true;
 
-		if( _type isKindOf "I_C_Plane_Civil_01_F" && _type isKindOf "I_C_Heli_Light_01_civil_F" && _type isKindOf "CUP_B_C47_USA") then {
+		if( _type isKindOf "I_C_Plane_Civil_01_F" || _type isKindOf "I_C_Heli_Light_01_civil_F") then {
 
 
 
@@ -90,6 +95,8 @@ _setupObjects =
 			_soldier moveInGunner _vehicle;
 
 		};
+
+		[_vehicle] call vehicleSetup;
 
 		// lock the vehicle untill the mission is finished and initialize cleanup on it
 		[_vehicle, _aiGroup] spawn checkMissionVehicleLock;
