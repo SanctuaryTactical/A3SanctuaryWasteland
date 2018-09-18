@@ -11,7 +11,7 @@
 MF_ITEMS_JERRYCAN_EMPTY = "jerrycanempty";
 MF_ITEMS_JERRYCAN_FULL = "jerrycanfull";
 MF_ITEMS_SYPHON_HOSE = "syphonhose";
-MF_ITEMS_JERRYCAN_MAX = ["config_items_jerrycans_max", 1] call getPublicVar;
+MF_ITEMS_JERRYCAN_MAX = ["config_items_jerrycans_max", 2] call getPublicVar;
 MF_ITEMS_SYHON_HOSE_MAX = ["config_items_syphon_hose_max", 1] call getPublicVar;
 #define build(file) format["%1\%2", _path, file] call mf_compile;
 
@@ -68,7 +68,6 @@ _condition2 = format["[] call %1 == ''", mf_jerrycan_can_refuel];
 _action2 = [_label2, _execute2, [], 1, false, false, "", _condition2];
 ["jerrycan-refuel", _action2] call mf_player_actions_set;
 
-
 // setting up syphon action
 private ["_label3", "_execute3", "_condition3", "_action3"];
 _label3 = format["<img image='%1'/> Syphon Fuel", _iconSyphon];
@@ -76,3 +75,27 @@ _execute3 = {MF_ITEMS_SYPHON_HOSE call mf_inventory_use};
 _condition3 = format["[] call %1 == ''", mf_jerrycan_can_syphon];
 _action3= [_label3, _execute3, [], 1, false, false, "", _condition3];
 ["syphon-hose", _action3] call mf_player_actions_set;
+
+//ST: Setting up Oil Barrels Action
+private ["_label4", "_execute4", "_condition4", "_action4"];
+_label4 = format["<img image='%1'/> Get Full Jerry Can", _iconJerry];
+_condition4 = "{_x getVariable ['jerrycanfull', 0] >= 1} count nearestObjects [player, ['CargoNet_01_barrels_F'], 5] > 0 && !('jerrycanfull' call mf_inventory_is_full)";
+_action4 = {
+
+	_objs = nearestObjects [player, ["CargoNet_01_barrels_F"], 5];
+
+	if (count _objs > 0) then {
+
+		player playActionNow "PutDown";
+
+		_obj = _objs select 0;
+
+		_obj setVariable ["jerrycanfull", (_obj getVariable ["jerrycanfull", 0]) - 1, true];
+		["jerrycanfull", 1] call mf_inventory_add;
+
+		[format ["Fuel left: %1)", _obj getVariable "jerrycanfull"], 5] call mf_notify_client;
+
+	};
+};
+
+["fuel-get", [_label4, _action4, [], 0, true, true, "", _condition4]] call mf_player_actions_set;

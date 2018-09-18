@@ -7,7 +7,7 @@
 if (!isServer) exitwith {};
 #include "PrimaryMissionDefines.sqf";
 
-private ["_convoyVeh","_veh1","_veh2","_veh3","_veh4","_veh5","_veh6","_veh7","_veh8","_veh9","_veh10","_createVehicle1","_createVehicle2","_createVehicle3","_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_cash", "_box1", "_box2", "_box3", "_randomBox1", "_randomBox2", "_randomBox3", "_Case1", "_Case2", "_Case3"];
+private ["_convoyVeh", "_veh1","_veh2","_veh3","_veh4","_veh5","_veh6","_veh7","_veh8","_veh9","_veh0", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints"];
 
 _setupVars =
 {
@@ -15,362 +15,39 @@ _setupVars =
 	_locationsArray = artyConvoyPaths;
 };
 
-_setupObjects =
-{
+_setupObjects = {
+
 	private ["_starts", "_startDirs", "_waypoints"];
+
 	call compile preprocessFileLineNumbers format ["mapConfig\convoys\%1.sqf", _missionLocation];
 
-	// Pick the vehicles for the patrol. Only one set at the moment. Will add more later.
-	_convoyVeh =
-	[
-		//NATO Patrols
-		["B_APC_Wheeled_01_cannon_F", ST_APACHE, ST_BRADLEY, "B_APC_Tracked_01_AA_F", "B_Heli_Light_01_armed_F", "B_MBT_01_mlrs_F", "B_APC_Tracked_01_AA_F", "B_Heli_Light_01_armed_F", "B_MBT_01_TUSK_F", "B_APC_Tracked_01_CRV_F"], // Light Patrol
-
-		//CSAT Patrols
-		[ST_BRADLEY, "O_Heli_Attack_02_F", ST_ABRAMSM1, "O_APC_Tracked_02_AA_F", "O_Heli_Light_02_F", "B_MBT_01_arty_F", "O_APC_Tracked_02_AA_F", "O_Heli_Light_02_F", "O_MBT_02_cannon_F", "O_APC_Tracked_02_cannon_F"],
-
-		//AAF Patrols
-		[ST_LINEBACKER, "B_Heli_Attack_01_F", ST_ABRAMSM2, "O_APC_Tracked_02_AA_F", ST_LITTLE_BIRD, "B_MBT_01_arty_F", "O_APC_Tracked_02_AA_F", ST_LITTLE_BIRD, "I_MBT_03_cannon_F", "O_APC_Tracked_02_cannon_F"],
-		["I_APC_Wheeled_03_cannon_F", ST_COBRA, ST_ABRAMSM1_TUSK, "O_APC_Tracked_02_AA_F", ST_LITTLE_BIRD, "B_MBT_01_arty_F", "O_APC_Tracked_02_AA_F", ST_LITTLE_BIRD, "I_MBT_03_cannon_F", "O_APC_Tracked_02_cannon_F"],
-		[ST_LINEBACKER, ST_APACHE, "I_MBT_03_cannon_F", "O_APC_Tracked_02_AA_F", ST_LITTLE_BIRD, ST_HOWITZER, "O_APC_Tracked_02_AA_F", ST_LITTLE_BIRD, "I_MBT_03_cannon_F", "O_APC_Tracked_02_cannon_F"]
-
-	] call BIS_fnc_selectRandom;
-
-	_veh1 = _convoyVeh select 0;
-	_veh2 = _convoyVeh select 1;
-	_veh3 = _convoyVeh select 2;
-	_veh4 = _convoyVeh select 3;
-	_veh5 = _convoyVeh select 4;
-	_veh6 = _convoyVeh select 5;
-	_veh7 = _convoyVeh select 6;
-	_veh8 = _convoyVeh select 7;
-	_veh9 = _convoyVeh select 8;
-	_veh10 = _convoyVeh select 9;
-
-
-	_createVehicle1 = {
-		private ["_type","_position","_direction","_vehicle","_soldier"];
-
-		_type = _this select 0;
-		_position = _this select 1;
-		_direction = _this select 2;
-
-		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
-		_vehicle setVehicleReportRemoteTargets true;
-		_vehicle setVehicleReceiveRemoteTargets true;
-		_vehicle setVehicleRadar 1;
-		_vehicle confirmSensorTarget [west, true];
-		_vehicle confirmSensorTarget [east, true];
-		_vehicle confirmSensorTarget [resistance, true];
-		[_vehicle] call vehicleSetup;
-
-		_vehicle setDir _direction;
-		_aiGroup addVehicle _vehicle;
-
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInDriver _vehicle;
-		_soldier triggerDynamicSimulation true;
-		_soldier triggerDynamicSimulation true;
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInCommander _vehicle;
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInCargo [_vehicle, 0];
-		_vehicle setVehicleLock "UNLOCKED";  // force vehicles to be unlocked
-		_vehicle setVariable ["R3F_LOG_disabled", false, true]; // force vehicles to be unlocked
-		_vehicle
-	};
-
-	_createVehicle2 = {
-		private ["_type","_position","_direction","_vehicle","_soldier"];
-
-		_type = _this select 0;
-		_position = _this select 1;
-		_direction = _this select 2;
-
-		_vehicle = createVehicle [_type, _position, [], 0, "FLY"];
-		_vehicle setVehicleReportRemoteTargets true;
-		_vehicle setVehicleReceiveRemoteTargets true;
-		_vehicle setVehicleRadar 1;
-		_vehicle confirmSensorTarget [west, true];
-		_vehicle confirmSensorTarget [east, true];
-		_vehicle confirmSensorTarget [resistance, true];
-		[_vehicle] call vehicleSetup;
-
-		_vel = [velocity _vehicle, -(_direction)] call BIS_fnc_rotateVector2D; // Added to make it fly
-		_vehicle setDir _direction;
-		_vehicle setVelocity _vel; // Added to make it fly
-		_aiGroup addVehicle _vehicle;
-
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInDriver _vehicle;
-		_soldier triggerDynamicSimulation true;
-		_soldier triggerDynamicSimulation true;
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInGunner _vehicle;
-		_vehicle setVehicleLock "UNLOCKED";  // force vehicles to be unlocked
-		_vehicle setVariable ["R3F_LOG_disabled", false, true]; // force vehicles to be unlocked
-		_vehicle
-	};
-
-		_createVehicle3 = {
-		private ["_type","_position","_direction","_vehicle","_soldier"];
-
-		_type = _this select 0;
-		_position = _this select 1;
-		_direction = _this select 2;
-
-		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
-		_vehicle setVehicleReportRemoteTargets true;
-		_vehicle setVehicleReceiveRemoteTargets true;
-		_vehicle setVehicleRadar 1;
-		_vehicle confirmSensorTarget [west, true];
-		_vehicle confirmSensorTarget [east, true];
-		_vehicle confirmSensorTarget [resistance, true];
-		[_vehicle] call vehicleSetup;
-
-		_vehicle setDir _direction;
-		_aiGroup addVehicle _vehicle;
-
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInDriver _vehicle;
-		_soldier triggerDynamicSimulation true;
-		_soldier triggerDynamicSimulation true;
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInCargo [_vehicle, 0];
-		_vehicle setVehicleLock "UNLOCKED";  // force vehicles to be unlocked
-		_vehicle setVariable ["R3F_LOG_disabled", false, true]; // force vehicles to be unlocked
-		_vehicle
-	};
-
-    	_createVehicle4 = {
-		private ["_type","_position","_direction","_vehicle","_soldier"];
-
-		_type = _this select 0;
-		_position = _this select 1;
-		_direction = _this select 2;
-
-		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
-		_vehicle setVehicleReportRemoteTargets true;
-		_vehicle setVehicleReceiveRemoteTargets true;
-		_vehicle setVehicleRadar 1;
-		_vehicle confirmSensorTarget [west, true];
-		_vehicle confirmSensorTarget [east, true];
-		_vehicle confirmSensorTarget [resistance, true];
-		[_vehicle] call vehicleSetup;
-
-		_vehicle setDir _direction;
-		_aiGroup addVehicle _vehicle;
-
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInDriver _vehicle;
-		_soldier triggerDynamicSimulation true;
-		_soldier triggerDynamicSimulation true;
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInCargo [_vehicle, 0];
-		_vehicle setVehicleLock "UNLOCKED";  // force vehicles to be unlocked
-		_vehicle setVariable ["R3F_LOG_disabled", false, true]; // force vehicles to be unlocked
-		_vehicle
-	};
-
-		_createVehicle5 = {
-		private ["_type","_position","_direction","_vehicle","_soldier"];
-
-		_type = _this select 0;
-		_position = _this select 1;
-		_direction = _this select 2;
-
-		_vehicle = createVehicle [_type, _position, [], 0, "FLY"];
-		_vehicle setVehicleReportRemoteTargets true;
-		_vehicle setVehicleReceiveRemoteTargets true;
-		_vehicle setVehicleRadar 1;
-		_vehicle confirmSensorTarget [west, true];
-		_vehicle confirmSensorTarget [east, true];
-		_vehicle confirmSensorTarget [resistance, true];
-		[_vehicle] call vehicleSetup;
-
-		_vel = [velocity _vehicle, -(_direction)] call BIS_fnc_rotateVector2D; // Added to make it fly
-		_vehicle setDir _direction;
-		_vehicle setVelocity _vel; // Added to make it fly
-		_aiGroup addVehicle _vehicle;
-
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInDriver _vehicle;
-		_soldier triggerDynamicSimulation true;
-		_soldier triggerDynamicSimulation true;
-		_vehicle setVehicleLock "UNLOCKED";  // force vehicles to be unlocked
-		_vehicle setVariable ["R3F_LOG_disabled", false, true]; // force vehicles to be unlocked
-		_vehicle
-	};
-
-		_createVehicle6 = {
-		private ["_type","_position","_direction","_vehicle","_soldier"];
-
-		_type = _this select 0;
-		_position = _this select 1;
-		_direction = _this select 2;
-
-		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
-		_vehicle setVehicleReportRemoteTargets true;
-		_vehicle setVehicleReceiveRemoteTargets true;
-		_vehicle setVehicleRadar 1;
-		_vehicle confirmSensorTarget [west, true];
-		_vehicle confirmSensorTarget [east, true];
-		_vehicle confirmSensorTarget [resistance, true];
-		[_vehicle] call vehicleSetup;
-
-		_vehicle setDir _direction;
-		_aiGroup addVehicle _vehicle;
-
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInDriver _vehicle;
-		_soldier triggerDynamicSimulation true;
-		_soldier triggerDynamicSimulation true;
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInCargo [_vehicle, 0];
-		_vehicle setVehicleLock "UNLOCKED";  // force vehicles to be unlocked
-		_vehicle setVariable ["R3F_LOG_disabled", false, true]; // force vehicles to be unlocked
-		_vehicle
-	};
-
-		_createVehicle7 = {
-		private ["_type","_position","_direction","_vehicle","_soldier"];
-
-		_type = _this select 0;
-		_position = _this select 1;
-		_direction = _this select 2;
-
-		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
-		_vehicle setVehicleReportRemoteTargets true;
-		_vehicle setVehicleReceiveRemoteTargets true;
-		_vehicle setVehicleRadar 1;
-		_vehicle confirmSensorTarget [west, true];
-		_vehicle confirmSensorTarget [east, true];
-		_vehicle confirmSensorTarget [resistance, true];
-		[_vehicle] call vehicleSetup;
-
-		_vehicle setDir _direction;
-		_aiGroup addVehicle _vehicle;
-
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInDriver _vehicle;
-		_soldier triggerDynamicSimulation true;
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInCargo [_vehicle, 0];
-		_vehicle setVehicleLock "UNLOCKED";  // force vehicles to be unlocked
-		_vehicle setVariable ["R3F_LOG_disabled", false, true]; // force vehicles to be unlocked
-		_vehicle
-	};
-		_createVehicle8 = {
-		private ["_type","_position","_direction","_vehicle","_soldier"];
-
-		_type = _this select 0;
-		_position = _this select 1;
-		_direction = _this select 2;
-
-		_vehicle = createVehicle [_type, _position, [], 0, "FLY"];
-		_vehicle setVehicleReportRemoteTargets true;
-		_vehicle setVehicleReceiveRemoteTargets true;
-		_vehicle setVehicleRadar 1;
-		_vehicle confirmSensorTarget [west, true];
-		_vehicle confirmSensorTarget [east, true];
-		_vehicle confirmSensorTarget [resistance, true];
-		[_vehicle] call vehicleSetup;
-
-		_vel = [velocity _vehicle, -(_direction)] call BIS_fnc_rotateVector2D; // Added to make it fly
-		_vehicle setDir _direction;
-		_vehicle setVelocity _vel; // Added to make it fly
-		_aiGroup addVehicle _vehicle;
-
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInDriver _vehicle;
-		_soldier triggerDynamicSimulation true;
-		_vehicle setVehicleLock "UNLOCKED";  // force vehicles to be unlocked
-		_vehicle setVariable ["R3F_LOG_disabled", false, true]; // force vehicles to be unlocked
-		_vehicle
-	};
-
-	_createVehicle9 = {
-		private ["_type","_position","_direction","_vehicle","_soldier"];
-
-		_type = _this select 0;
-		_position = _this select 1;
-		_direction = _this select 2;
-
-		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
-		_vehicle setVehicleReportRemoteTargets true;
-		_vehicle setVehicleReceiveRemoteTargets true;
-		_vehicle setVehicleRadar 1;
-		_vehicle confirmSensorTarget [west, true];
-		_vehicle confirmSensorTarget [east, true];
-		_vehicle confirmSensorTarget [resistance, true];
-		[_vehicle] call vehicleSetup;
-
-		_vehicle setDir _direction;
-		_aiGroup addVehicle _vehicle;
-
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInDriver _vehicle;
-		_soldier triggerDynamicSimulation true;
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInCargo [_vehicle, 0];
-		_vehicle setVehicleLock "UNLOCKED";  // force vehicles to be unlocked
-		_vehicle setVariable ["R3F_LOG_disabled", false, true]; // force vehicles to be unlocked
-		_vehicle
-	};
-
-	_createVehicle10 = {
-		private ["_type","_position","_direction","_vehicle","_soldier"];
-
-		_type = _this select 0;
-		_position = _this select 1;
-		_direction = _this select 2;
-
-		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
-		_vehicle setVehicleReportRemoteTargets true;
-		_vehicle setVehicleReceiveRemoteTargets true;
-		_vehicle setVehicleRadar 1;
-		_vehicle confirmSensorTarget [west, true];
-		_vehicle confirmSensorTarget [east, true];
-		_vehicle confirmSensorTarget [resistance, true];
-		[_vehicle] call vehicleSetup;
-
-		_vehicle setDir _direction;
-		_aiGroup addVehicle _vehicle;
-
-		// add a driver/pilot/captain to the vehicle
-		// the little bird, orca, and hellcat do not require gunners and should not have any passengers
-		_soldier = [_aiGroup, _position] call createRandomSoldierC;
-		_soldier moveInDriver _vehicle;
-		_soldier triggerDynamicSimulation true;
-
-
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInDriver _vehicle;
- 		_soldier triggerDynamicSimulation true;
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInCargo [_vehicle, 0];
-		_vehicle setVehicleLock "UNLOCKED";  // force vehicles to be unlocked
-		_vehicle setVariable ["R3F_LOG_disabled", false, true]; // force vehicles to be unlocked
-		_vehicle
-	};
+	// Pick the vehicles for the patrol.
+	//Ten Vehicles
+	_veh1 = ["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_AA_F", "O_APC_Tracked_02_AA_F", "O_APC_Tracked_02_cannon_F", ST_BRADLEY, ST_LINEBACKER, ST_AWC_NYX_AT, ST_AWC_NYX_AUTOCANNON, ST_MGS_RHINO, ST_MGS_RHINO_UP ] call BIS_fnc_selectRandom; //MRAP
+	_veh2 = [ST_BLACKFOOT, ST_APACHE, ST_APACHE_NORADAR, ST_APACHE_GREY, ST_COBRA ] call BIS_fnc_selectRandom;
+	_veh3 = ["I_MBT_03_cannon_F", "B_MBT_01_cannon_F", "O_MBT_02_cannon_F", ST_ABRAMSM1, ST_ABRAMSM2, ST_T140_ANGARA, ST_T140_ANGARA_COMMANDER ] call BIS_fnc_selectRandom; //Tank
+	_veh4 = ["B_APC_Tracked_01_AA_F", "O_APC_Tracked_02_AA_F", ST_AWC_NYX_AA] call BIS_fnc_selectRandom; //MRAP (AA)
+	_veh5 = [ST_PAWNEE, ST_HELLCAT, ST_LITTLE_BIRD, ST_LITTLE_BIRD, ST_LITTLE_BIRD, ST_LITTLE_BIRD, ST_VENOM1, ST_APACHE_GREY] call BIS_fnc_selectRandom;
+	_veh6 = ["B_MBT_01_mlrs_F", "B_MBT_01_arty_F", ST_HOWITZER] call BIS_fnc_selectRandom; //Arty Unit
+	_veh7 = ["B_APC_Tracked_01_AA_F", "O_APC_Tracked_02_AA_F", ST_AWC_NYX_AA] call BIS_fnc_selectRandom; //MRAP (AA)
+	_veh8 = _veh5;
+	_veh9 = ["I_MBT_03_cannon_F", "B_MBT_01_cannon_F", "O_MBT_02_cannon_F", ST_ABRAMSM1, ST_ABRAMSM2, ST_T140_ANGARA, ST_T140_ANGARA_COMMANDER ] call BIS_fnc_selectRandom; //Tank
+	_veh0 = ["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_AA_F", "O_APC_Tracked_02_AA_F", "O_APC_Tracked_02_cannon_F", ST_BRADLEY, ST_LINEBACKER, ST_AWC_NYX_AT, ST_AWC_NYX_AUTOCANNON, ST_MGS_RHINO, ST_MGS_RHINO_UP ] call BIS_fnc_selectRandom; //MRAP
 
 	_aiGroup = createGroup CIVILIAN;
 
-	_vehicles =
-	[
-		[_veh1, _starts select 0, _startDirs select 0] call _createVehicle2,
-		[_veh2, _starts select 1, _startDirs select 1] call _createVehicle2,
-		[_veh3, _starts select 2, _startDirs select 2] call _createVehicle2,
-		[_veh4, _starts select 3, _startDirs select 3] call _createVehicle2,
-		[_veh5, _starts select 4, _startDirs select 4] call _createVehicle2,
-		[_veh6, _starts select 5, _startDirs select 5] call _createVehicle2,
-		[_veh7, _starts select 6, _startDirs select 6] call _createVehicle2,
-		[_veh8, _starts select 7, _startDirs select 7] call _createVehicle2,
-		[_veh9, _starts select 8, _startDirs select 8] call _createVehicle2,
-		[_veh10, _starts select 9, _startDirs select 9] call _createVehicle2
+	_vehicles = [
+		[_veh1, _starts select 0, _startDirs select 0, _aiGroup] call STCreateVehicle,
+		[_veh2, _starts select 1, _startDirs select 1, _aiGroup] call STCreateVehicle,
+		[_veh3, _starts select 2, _startDirs select 2, _aiGroup] call STCreateVehicle,
+		[_veh4, _starts select 3, _startDirs select 3, _aiGroup] call STCreateVehicle,
+		[_veh5, _starts select 4, _startDirs select 4, _aiGroup] call STCreateVehicle,
+		[_veh6, _starts select 5, _startDirs select 5, _aiGroup] call STCreateVehicle,
+		[_veh7, _starts select 6, _startDirs select 6, _aiGroup] call STCreateVehicle,
+		[_veh8, _starts select 7, _startDirs select 7, _aiGroup] call STCreateVehicle,
+		[_veh9, _starts select 8, _startDirs select 8, _aiGroup] call STCreateVehicle,
+		[_veh0, _starts select 9, _startDirs select 9, _aiGroup] call STCreateVehicle
 	];
-
-
 
 	_leader = effectiveCommander (_vehicles select 0);
 	_aiGroup selectLeader _leader;
@@ -412,41 +89,13 @@ _failedExec = nil;
 
 // _vehicles are automatically deleted or unlocked in missionProcessor depending on the outcome
 
+_successExec = {
 
-_moneyAmount = 40000;
+	//Create FN: STRandomCashReward
+	[_marker, [20000,30000,40000,50000,60000]] call STRandomCashReward;
 
-_successExec =
-{
-
-	_box1 = "Box_East_Wps_F" createVehicle getMarkerPos _marker;
-	//[_box1,"mission_USLaunchers"] call fn_refillbox;
-	[_box1,"mission_USLaunchers"] call randomCrateLoadOut;
-	_box1 allowDamage false;
-
-	_box2 = "Box_NATO_Wps_F" createVehicle getMarkerPos _marker;
-	//[_box2,"mission_USSpecial2"] call fn_refillbox;
-	[_box2,"mission_USSpecial2"] call randomCrateLoadOut;
-	_box2 allowDamage false;
-
-	_box3 = "Box_NATO_Support_F" createVehicle getMarkerPos _marker;
-	//[_box3,"mission_Main_A3snipers"] call fn_refillbox;
-	[_box3,"mission_Main_A3snipers"] call randomCrateLoadOut;
-	_box3 allowDamage false;
-
-	_box4 = "Box_East_Wps_F" createVehicle getMarkerPos _marker;
-	//[_box4,"mission_USLaunchers"] call fn_refillbox;
-	[_box4,"mission_USLaunchers"] call randomCrateLoadOut;
-	_box4 allowDamage false;
-
-
-	for "_x" from 1 to 10 do
-	{
-		_cash = "Land_Money_F" createVehicle markerPos _marker;
-		_cash setPos ((markerPos _marker) vectorAdd ([[2 + random 2,0,0], random 360] call BIS_fnc_rotateVector2D));
-		_cash setDir random 360;
-		_cash setVariable ["cmoney", _moneyAmount / 10, true];
-		_cash setVariable["owner","world",true];
-	};
+	//Random Number of Crates
+	[_marker, [2, 6]] call STRandomCratesReward;
 
 	_successHintMessage = "The patrol has been stopped, the money, crates and vehicles are yours to take.";
 };

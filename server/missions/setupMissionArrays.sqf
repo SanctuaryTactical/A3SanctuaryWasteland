@@ -41,7 +41,9 @@ MoneyMissions =
 ];
 PrimaryMissions =
 [
-	["mission_artypatrol", 1]
+	["mission_artypatrol", .75],
+	["mission_tankRush", .75],
+	["mission_ChopperStrike", 1]
 ];
 AirMissions =
 [
@@ -140,6 +142,7 @@ ArtyConvoyPaths = [];
 {
 	ArtyConvoyPaths pushBack [_x, false];
 } forEach (call compile preprocessFileLineNumbers "mapConfig\convoys\artyConvoysList.sqf");
+
 SFConvoyPaths = [];
 {
 SFConvoyPaths pushBack [_x, false];

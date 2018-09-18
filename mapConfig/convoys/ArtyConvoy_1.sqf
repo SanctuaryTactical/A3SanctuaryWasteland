@@ -2,7 +2,7 @@
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
 // ******************************************************************************************
 //	@file Version: 1.0
-//	@file Name: PatrolConvoy_1.sqf
+//	@file Name: ArtyConvoy_1.sqf
 //	@file Author: [GoT] JoSchaap, [404] Del1te, AgentRev, LouD
 //	@file Created: 13/02/2014 22:52
 
@@ -19,7 +19,7 @@ _starts =
 	[14833,16769,50.09],
 	[14824,16779,0],
 	[14811.8,16789.2]
-	
+
 ];
 
 // starting directions in which the vehicles are spawned on this route

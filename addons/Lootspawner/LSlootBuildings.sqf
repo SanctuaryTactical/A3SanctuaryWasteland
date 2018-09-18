@@ -32,6 +32,7 @@ Buildingstoloot_list =
 	//["Land_TBox_F", 0],                   //no positions
 	//["Land_TTowerBig_1_F", 2],            //no positions
 	//["Land_TTowerBig_2_F", 2],            //no positions
+	["Land_FuelStation_01_workshop_F", 0],
 	["Land_Airport_left_F", 0],
 	["Land_Airport_right_F", 0],
 	["Land_Airport_Tower_dam_F", 2],

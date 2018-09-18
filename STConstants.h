@@ -1,4 +1,7 @@
 //Armed Forces of the United States
+//Special Crates
+#define ST_ATCONVENIENCEKIT "O_CargoNet_01_ammo_F"
+#define ST_AACONVENIENCEKIT "I_CargoNet_01_ammo_F"
 
 //Tanks
 #define ST_ABRAMSM1 "rhsusf_m1a1aimd_usarmy"
@@ -6,21 +9,51 @@
 #define ST_ABRAMSM1_TUSK "rhsusf_m1a1aim_tuski_d"
 #define ST_ABRAMSM2_TUSK "rhsusf_m1a2sep1tuskiid_usarmy"
 #define ST_HOWITZER "rhsusf_m109d_usarmy"
+#define ST_ABRAMS_MC "rhsusf_m1a1fep_d"
+#define ST_KUMA "I_MBT_03_cannon_F"
+#define ST_VARSUK "O_MBT_02_cannon_F"
+#define ST_SLAMMER "B_MBT_01_cannon_F"
+#define ST_SLAMMER_UP "B_MBT_01_TUSK_F"
+
+//AA
+#define ST_CHEETAH "B_APC_Tracked_01_AA_F"
+#define ST_TIGRIS "O_APC_Tracked_02_AA_F"
+
+#define ST_KAMYSH "O_APC_Tracked_02_cannon_F"
+#define ST_MARSHALL "B_APC_Wheeled_01_cannon_F"
+#define ST_GORGON "I_APC_Wheeled_03_cannon_F"
+#define ST_MORA "I_APC_tracked_03_cannon_F"
+
+//MRAP
+#define ST_HUNTER_GMG "B_MRAP_01_gmg_F"
+#define ST_HUNTER_HMG "B_MRAP_01_hmg_F"
+#define ST_STRIDER_GMG "I_MRAP_03_gmg_F"
+#define ST_STRIDER_HMG "I_MRAP_03_hmg_F"
+#define ST_IFRIT_GMG "O_MRAP_02_gmg_F"
+#define ST_IFRIT_HMG "O_MRAP_02_hmg_F"
+
+#define ST_TECHNICAL "I_G_Offroad_01_armed_F"
 
 //Helos
 #define ST_BLACKHAWK "RHS_UH60M_d"
-#define ST_BLACKHAWK2XB "RHS_UH60M_ESSS2"
-#define ST_BLACKHAWK2X "RHS_UH60M_ESSS2_d"
-#define ST_BLACKHAWK4X "RHS_UH60M_ESSS_d"
 #define ST_LITTLE_BIRD "RHS_MELB_AH6M"
 #define ST_LITTLE_BIRD_UNARMED "RHS_MELB_MH6M"
 #define ST_APACHE "RHS_AH64D"
 #define ST_APACHE_NORADAR "RHS_AH64D_noradar"
+#define ST_APACHE_GREY "RHS_AH64DGrey"
 #define ST_SUPER_STALION "rhsusf_CH53E_USMC_D"
 #define ST_VENOM1 "RHS_UH1Y_FFAR_d"
 #define ST_VENOM2 "RHS_UH1Y_d"
 #define ST_VENOM_UNARMED "RHS_UH1Y_UNARMED_d"
 #define ST_COBRA "RHS_AH1Z"
+#define ST_CHINOOK "RHS_CH_47F_light"
+
+#define ST_BLACKFOOT "B_Heli_Attack_01_dynamicLoadout_F"
+#define ST_KAJMAN "O_Heli_Attack_02_dynamicLoadout_black_F"
+
+#define ST_PAWNEE "B_Heli_Light_01_armed_F"
+#define ST_ORCA "O_Heli_Light_02_v2_F"
+#define ST_HELLCAT "I_Heli_light_03_dynamicLoadout_F"
 
 //Planes
 #define ST_A10 "RHS_A10"
@@ -34,6 +67,11 @@
 #define ST_HUMVEE_HALF "rhsusf_m998_d_2dr_halftop"
 #define ST_HUMVEE_OPEN2D "rhsusf_m998_d_2dr"
 #define ST_HUMVEE_OPEN4D "rhsusf_m998_d_4dr"
+
+#define ST_HUMVEE_MC_ARMED "rhsusf_m1025_d_s_Mk19"
+#define ST_HUMVEE_MC_FULLTOP2D "rhsusf_m998_d_s_2dr_fulltop"
+#define ST_HUMVEE_MC_FULLTOP4D "rhsusf_m998_d_s_4dr_fulltop"
+
 #define ST_QUADMRZR "rhsusf_mrzr4_d"
 #define ST_RG33_UNARMED "rhsusf_rg33_usmc_d"
 #define ST_RG33MG "rhsusf_rg33_m2_usmc_d"
@@ -56,6 +94,29 @@
 #define ST_M113_UNARMED "rhsusf_m113d_usarmy_unarmed"
 #define ST_M1117 "rhsusf_M1117_D"
 #define ST_M1220_CROWS "rhsusf_M1220_M153_M2_usarmy_d"
+#define ST_M1230_HEAVY "rhsusf_M1230_MK19_usarmy_wd"
+
+//Tanks DLC
+#define ST_T140_ANGARA "O_T_MBT_04_cannon_F"
+#define ST_T140_ANGARA_COMMANDER "O_T_MBT_04_command_F"
+#define ST_AWC_NYX_AA "I_LT_01_AA_F"
+#define ST_AWC_NYX_AT "I_LT_01_AT_F"
+#define ST_AWC_NYX_RECON "I_LT_01_scout_F"
+#define ST_AWC_NYX_AUTOCANNON "I_LT_01_cannon_F"
+#define ST_MGS_RHINO "B_AFV_Wheeled_01_cannon_F"
+#define ST_MGS_RHINO_UP "B_AFV_Wheeled_01_up_cannon_F"
+
+#define ST_QLIN_AT "O_T_LSV_02_AT_F"
+#define ST_PROWLER_AT "B_T_LSV_01_AT_F"
+
+//Repair Depot
+#define ST_REPAIR_DEPOT "Land_RepairDepot_01_green_F"
+
+//SAM
+#define ST_SAM_SYSTEM "B_SAM_System_03_F"
+#define ST_RADAR_SYSTEM "B_Radar_System_01_F"
+
+#define ST_POWER_GENERATOR "Land_PowerGenerator_F"
 
 //Boats
 //ST_ATTACK_BOAT = "rhsusf_mkvsoc";

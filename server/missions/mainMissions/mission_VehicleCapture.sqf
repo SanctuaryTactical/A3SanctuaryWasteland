@@ -13,14 +13,12 @@ private ["_vehicle", "_vehicleName", "_vehDeterminer", "_variant"];
 
 // setupVars must be defined in the top mission file
 
-_setupObjects =
-{
+_setupObjects = {
+
 	_missionPos = markerPos _missionLocation;
 
 	// Class, Position, Fuel, Ammo, Damage, Special
 	_vehicle = [_vehicleClass, _missionPos] call createMissionVehicle;
-
-	[_vehicle] call vehicleSetup;
 
 	if (_vehicleClass isEqualType []) then
 	{

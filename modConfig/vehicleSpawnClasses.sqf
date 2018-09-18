@@ -25,7 +25,7 @@ civilianVehicles =
 //Light Military Vehicle List - Random Spawns
 lightMilitaryVehicles =
 [
-	["I_G_Offroad_01_F", "I_G_Offroad_01_armed_F", ST_HUMVEE_UNARMED, ST_HUMVEE_OPEN2D]
+	["I_G_Offroad_01_F", "I_G_Offroad_01_armed_F", ST_HUMVEE_UNARMED, ST_HUMVEE_OPEN2D, ST_HUMVEE_MC_FULLTOP2D]
 ];
 
 //Medium Military Vehicle List - Random Spawns

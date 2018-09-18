@@ -125,38 +125,10 @@ _successExec =
 	// Mission completed
 
 	//Money
-	for "_i" from 1 to 10 do
-	{
-		_cash = createVehicle ["Land_Money_F", _lastPos, [], 5, "NONE"];
-		_cash setPos ([_lastPos, [[2 + random 3,0,0], random 360] call BIS_fnc_rotateVector2D] call BIS_fnc_vectorAdd);
-		_cash setDir random 360;
-		_cash setVariable ["cmoney", 5000, true];
-		_cash setVariable ["owner", "world", true];
-	};
-
-	_Boxes1 = ["Box_IND_Wps_F","Box_East_Wps_F","Box_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Grenades_F","Box_East_WpsLaunch_F","Box_NATO_WpsLaunch_F","Box_East_WpsSpecial_F","Box_NATO_WpsSpecial_F"];
-	_currBox1 = _Boxes1 call BIS_fnc_selectRandom;
-	_box1 = createVehicle [_currBox1, _lastPos, [], 2, "NONE"];
-	_box1 setDir random 360;
-	_box1 allowDamage false;
-
-	_Boxes2 = ["Box_IND_Wps_F","Box_East_Wps_F","Box_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Grenades_F","Box_East_WpsLaunch_F","Box_NATO_WpsLaunch_F","Box_East_WpsSpecial_F","Box_NATO_WpsSpecial_F"];
-	_currBox2 = _Boxes2 call BIS_fnc_selectRandom;
-	_box2 = createVehicle [_currBox2, _lastPos, [], 2, "NONE"];
-	_box2 setDir random 360;
-	_box2 allowDamage false;
-
-	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box1, _box2];
+	[_marker, [50000, 60000, 80000]] call STRandomCashReward;
+	[_marker, [2, 5], true] call STRandomCratesReward;
 
 	_successHintMessage = "The sky is clear again, the enemy patrol was taken out! Ammo crates and some money have fallen near the pilot.";
-
-	[_box2] spawn STPopCrateSmoke;
-
-	/*//Scotsman - Pop Smoke
-	_smoke1= "SmokeShellGreen" createVehicle getPos _box2;
-	_smoke1 attachto [_box2,[0,0,-0.5]];
-	_flare1= "F_40mm_Green" createVehicle getPos _box2;
-	_flare1 attachto [_box2,[0,0,-0.5]];*/
 
 };
 

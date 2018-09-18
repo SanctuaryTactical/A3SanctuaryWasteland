@@ -50,8 +50,6 @@ _radius=16;
 
 }foreach _locations;
 
-[] execVM "1st\STConstants.sqf";
-
 //init Wasteland Core
 [] execVM "config.sqf";
 [] execVM "storeConfig.sqf"; // Separated as its now v large
@@ -97,8 +95,7 @@ if (isServer) then
 	[] execVM "server\init.sqf";
 };
 
-if (hasInterface || isServer) then
-{
+if (hasInterface || isServer) then {
 
 	//init 3rd Party Scripts
 	[] execVM "addons\scripts\intro.sqf";                 // Welcome intro by Firsty
@@ -113,6 +110,8 @@ if (hasInterface || isServer) then
 	[] execVM "addons\stickyCharges\init.sqf";
 	[] execVM "addons\APOC_Airdrop_Assistance\init.sqf";
 	[] execVM "addons\AF_Keypad\AF_KP_vars.sqf";          // Keypad for base locking
+	[] execVM "addons\LV\init.sqf";          							// AI Spawn Script
+
 	//Load Sanctuary Tactical
 	[] execVM "1st\init.sqf";
 

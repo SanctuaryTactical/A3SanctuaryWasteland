@@ -10,12 +10,8 @@
 */
 if (!isServer) exitWith {};
 
+params ["_crate", ["_minutes",5]];
 private ["_crate", "_minutes", "_smoke", "_flare"];
-
-_crate = _this select 0;
-_minutes = _this select 1;
-
-if( isNil "_minutes" ) then { _minutes = 5; };
 
 for "_i" from 1 to _minutes do {
 

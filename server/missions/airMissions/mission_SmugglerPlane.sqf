@@ -7,108 +7,27 @@
 if (!isServer) exitwith {};
 #include "airMissionDefines.sqf";
 
-private ["_planeChoices", "_heloChoices1", "_heloChoices2", "_convoyVeh", "_helo1", "_helo2", "_veh1", "_veh2", "_veh3", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_cash", "_boxes1", "_boxes2", "_boxes3", "_boxes4","_boxes5","_boxes6", "_boxes7", "_boxes8", "_boxes9", "_box1", "_box2", "_box3", "_box4", "_box5", "_box6", "_box7", "_box8", "_box9", "_currBox1", "_currBox2", "_currBox3"];
+private ["_plane", "_helo1", "_helo2", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_boxes1", "_boxes2", "_boxes3", "_boxes4","_boxes5","_boxes6", "_boxes7", "_boxes8", "_boxes9", "_box1", "_box2", "_box3", "_box4", "_box5", "_box6", "_box7", "_box8", "_box9", "_currBox1", "_currBox2", "_currBox3"];
 
-_setupVars =
-{
+_setupVars = {
 	_missionType = "Smuggler";
 	_locationsArray = nil; // locations are generated on the fly from towns
 };
 
-_setupObjects =
-{
+_setupObjects = {
+
 	_missionPos = markerPos (((call cityList) call BIS_fnc_selectRandom) select 0);
 
-	_planeChoices =
-	[
-		["I_C_Plane_Civil_01_F"],
-		["I_C_Heli_Light_01_civil_F"]
-	];
-	_heloChoices1 =
-	[
-		[ST_APACHE],
-		[ST_APACHE_NORADAR],
-		[ST_VENOM1],
-		[ST_VENOM2],
-		[ST_COBRA],
-		[ST_BLACKHAWK],
-		[ST_BLACKHAWK2X],
-		[ST_BLACKHAWK4X]
-	];
-	_heloChoices2 =
-	[
-		[ST_APACHE],
-		[ST_APACHE_NORADAR],
-		[ST_VENOM1],
-		[ST_VENOM2],
-		[ST_COBRA],
-		[ST_BLACKHAWK],
-		[ST_BLACKHAWK2X],
-		[ST_BLACKHAWK4X]
-	];
-
-	_convoyVeh = _planeChoices call BIS_fnc_selectRandom;
-	_helo1 = _heloChoices1 call BIS_fnc_selectRandom;
-	_helo2 = _heloChoices2 call BIS_fnc_selectRandom;
-
-	_veh1 = _convoyVeh select 0;
-	_veh2 = _helo1 select 0;
-	_veh3 = _helo2 select 0;
+	_plane = ["I_C_Plane_Civil_01_F","I_C_Heli_Light_01_civil_F"] call BIS_fnc_selectRandom;
+	_helo1 = [ST_APACHE, ST_APACHE_NORADAR, ST_APACHE_GREY, ST_VENOM1, ST_VENOM2, ST_COBRA, ST_BLACKHAWK] call BIS_fnc_selectRandom;
+	_helo2 = [ST_APACHE, ST_APACHE_NORADAR, ST_APACHE_GREY, ST_VENOM1, ST_VENOM2, ST_COBRA, ST_BLACKHAWK] call BIS_fnc_selectRandom;
 
 	_aiGroup = createGroup CIVILIAN;
 
-	_createVehicle =
-	{
-		private ["_type","_position","_direction","_vehicle","_soldier"];
-
-		_type = _this select 0;
-		_position = _this select 1;
-		_direction = _this select 2;
-
-		_vehicle = createVehicle [_type, _position, [], 0, "FLY"]; // Added to make it fly
-		_vehicle setVehicleReportRemoteTargets true;
-		_vehicle setVehicleReceiveRemoteTargets true;
-		_vehicle setVehicleRadar 1;
-		_vehicle confirmSensorTarget [west, true];
-		_vehicle confirmSensorTarget [east, true];
-		_vehicle confirmSensorTarget [resistance, true];
-		_vehicle setVariable ["R3F_LOG_disabled", true, true];
-		_vel = [velocity _vehicle, -(_direction)] call BIS_fnc_rotateVector2D; // Added to make it fly
-		_vehicle setDir _direction;
-		_vehicle setVelocity _vel; // Added to make it fly
-		_vehicle setVariable [call vChecksum, true, false];
-		_aiGroup addVehicle _vehicle;
-
-		// add pilot
-		_soldier = [_aiGroup, _position] call createRandomPilot;
-		_soldier moveInDriver _vehicle;
-		_soldier triggerDynamicSimulation true;
-
-		if( _type isKindOf "I_C_Plane_Civil_01_F" || _type isKindOf "I_C_Heli_Light_01_civil_F") then {
-
-
-
-		} else {
-
-			// these choppers need 1 gunner
-			_soldier = [_aiGroup, _position] call createRandomPilot;
-			_soldier moveInGunner _vehicle;
-
-		};
-
-		[_vehicle] call vehicleSetup;
-
-		// lock the vehicle untill the mission is finished and initialize cleanup on it
-		[_vehicle, _aiGroup] spawn checkMissionVehicleLock;
-		_vehicle
-
-	};
-
-	_vehicles =
-	[
-		[_veh1, _missionPos vectorAdd ([[random 50, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0] call _createVehicle,
-		[_veh2, _missionPos vectorAdd ([[random 250, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0] call _createVehicle,
-		[_veh3, _missionPos vectorAdd ([[random 350, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0] call _createVehicle
+	_vehicles = [
+		[_plane, _missionPos vectorAdd ([[random 50, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0, _aiGroup] call STCreateVehicle,
+		[_helo1, _missionPos vectorAdd ([[random 250, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0, _aiGroup] call STCreateVehicle,
+		[_helo2, _missionPos vectorAdd ([[random 350, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0, _aiGroup] call STCreateVehicle
 	];
 
 	_aiGroup setCombatMode "RED";
@@ -136,8 +55,8 @@ _setupObjects =
 
 	_missionPos = getPosATL leader _aiGroup;
 
-	_missionPicture = getText (configFile >> "CfgVehicles" >> _veh1 >> "picture");
-	_vehicleName = getText (configFile >> "CfgVehicles" >> _veh1 >> "displayName");
+	_missionPicture = getText (configFile >> "CfgVehicles" >> _plane >> "picture");
+	_vehicleName = getText (configFile >> "CfgVehicles" >> _plane >> "displayName");
 	_missionHintText = format ["A <t color='%2'>%1</t> is transporting stolen weapons and cash. Shoot it down and kill the pilot to recover the money and weapons!", _vehicleName, airMissionColor];
 
 	_numWaypoints = count waypoints _aiGroup;
@@ -150,42 +69,35 @@ _waitUntilCondition = {currentWaypoint _aiGroup >= _numWaypoints};
 _failedExec = nil;
 
 // _vehicles are automatically deleted or unlocked in missionProcessor depending on the outcome
-_successExec =
-{
+_successExec = {
+
 	// Mission completed
 
-	//Money
-	for "_i" from 1 to 10 do
-	{
-		_cash = createVehicle ["Land_Money_F", _lastPos, [], 5, "NONE"];
-		_cash setPos ([_lastPos, [[2 + random 3,0,0], random 360] call BIS_fnc_rotateVector2D] call BIS_fnc_vectorAdd);
-		_cash setDir random 360;
-		_cash setVariable ["cmoney", 2500, true];
-		_cash setVariable ["owner", "world", true];
-	};
+	//Create FN: STRandomCashReward
+	[_marker, [25000,30000,35000,40000]] call STRandomCashReward;
 
-	_Boxes1 = ["Box_Syndicate_WpsLaunch_F","Box_Syndicate_Wps_F","","Box_NATO_Equip_F"];
+	_Boxes1 = ["Box_Syndicate_WpsLaunch_F","Box_Syndicate_Wps_F","", "Box_NATO_Equip_F"];
 	_currBox1 = _Boxes1 call BIS_fnc_selectRandom;
 	_box1 = createVehicle [_currBox1, _lastPos, [], 2, "NONE"];
 	_box1 setDir random 360;
 	_box1 setVariable ["moveable", true, true];
 	_box1 allowDamage false;
 
-	_Boxes2 = ["Box_Syndicate_WpsLaunch_F","Box_Syndicate_Wps_F","","Box_NATO_Equip_F"];
+	_Boxes2 = ["Box_Syndicate_WpsLaunch_F","Box_Syndicate_Wps_F","", "Box_NATO_Equip_F"];
 	_currBox2 = _Boxes2 call BIS_fnc_selectRandom;
 	_box2 = createVehicle [_currBox2, _lastPos, [], 2, "NONE"];
 	_box2 setDir random 360;
 	_box2 setVariable ["moveable", true, true];
 	_box2 allowDamage false;
 
-	_Boxes3 = ["Box_Syndicate_WpsLaunch_F","Box_Syndicate_Wps_F","","Box_NATO_Equip_F"];
+	_Boxes3 = ["Box_Syndicate_WpsLaunch_F","Box_Syndicate_Wps_F","", "Box_NATO_Equip_F"];
 	_currBox3 = _Boxes1 call BIS_fnc_selectRandom;
 	_box3 = createVehicle [_currBox3, _lastPos, [], 2, "NONE"];
 	_box3 setDir random 360;
 	_box3 setVariable ["moveable", true, true];
 	_box3 allowDamage false;
 
-	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box1, _box2];
+	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box1, _box2, _box3];
 
 	[_box1] spawn STPopCrateSmoke;
 

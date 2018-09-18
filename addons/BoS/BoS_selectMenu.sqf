@@ -11,8 +11,8 @@
 #define OBJECT_CONDITION "{cursorTarget getVariable ['objectLocked', false]}"
 #define NONOWNED_CONDITION "{'ToolKit' in (items player)} && {cursorTarget getVariable ['ownerUID',''] != getPlayerUID player}"
 
-BoS_open = 
-{
+BoS_open = {
+
 	private ["_ownersuid","_coownersuid,","_owner"];
 	_uid = getPlayerUID player;
 	_objects = nearestObjects [player, ["Land_Device_assembled_F"], 5];
@@ -20,11 +20,11 @@ BoS_open =
 
 	if (!isNull (uiNamespace getVariable ["BoS_Menu", displayNull]) && !(player call A3W_fnc_isUnconscious)) exitWith {};
 
-	switch (true) do
-	{
+		switch (true) do {
 		case (_uid == _owner):
 		{
 			execVM "addons\BoS\BoS_ownerMenu.sqf";
+
 			hint "Welcome Owner";
 		};
 		case (_uid != _owner):
@@ -40,6 +40,7 @@ BoS_open =
 		{
 		hint "An unknown error occurred. This could be because your Base Locker is not locked."
 		};
+
 	};
 };
 
@@ -47,8 +48,7 @@ BoS_Actions =
 {
 	{ [player, _x] call fn_addManagedAction } forEach
 	[
-		["<t color='#FFE496'><img image='client\icons\keypad.paa'/> Open Base Menu</t>", BoS_open, [cursorTarget], -97, false, false, "", PLAYER_CONDITION + " && " + ITEM_CONDITION + " && " + OBJECT_CONDITION],
-		["<t color='#FFE496'><img image='client\icons\take.paa'/> Hack Base</t>", "addons\BoS\BoS_hackBase.sqf", [cursorTarget], -97, false, false, "", PLAYER_CONDITION + " && " + ITEM_CONDITION + " && " + OBJECT_CONDITION + " && " + NONOWNED_CONDITION]
+		["<t color='#FFE496'><img image='client\icons\keypad.paa'/> Open Base Menu</t>", BoS_open, [cursorTarget], -97, false, false, "", PLAYER_CONDITION + " && " + ITEM_CONDITION + " && " + OBJECT_CONDITION]
 	];
 };
 

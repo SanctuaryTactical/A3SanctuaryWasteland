@@ -9,17 +9,17 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf"
 
-private ["_nbUnits", "_wreckPos", "_wreck", "_box1", "_box2"];
+private ["_nbUnits", "_wreckPos", "_wreck", "_box1", "_box2", "_sam", "_type", "_vehicles"];
 
 _setupVars =
 {
 	_missionType = "Aircraft Wreck";
 	_locationsArray = [ForestMissionMarkers, MissionSpawnMarkers] select (ForestMissionMarkers isEqualTo []);
-	_nbUnits = if (missionDifficultyHard) then { AI_GROUP_LARGE } else { AI_GROUP_MEDIUM };
+	_nbUnits = if (missionDifficultyHard) then { 30 } else { 20 };
 };
 
-_setupObjects =
-{
+_setupObjects = {
+
 	_missionPos = markerPos _missionLocation;
 	_wreckPos = _missionPos vectorAdd ([[25 + random 20, 0, 0], random 360] call BIS_fnc_rotateVector2D);
 
@@ -34,10 +34,22 @@ _setupObjects =
 	_box2 setDir random 360;
 	[_box2, "mission_USLaunchers"] call fn_refillbox;
 
-	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach [_box1, _box2];
+	_sam = createVehicle [ST_SAM_SYSTEM, _missionPos, [], 0, "NONE"];
+
+	[_sam] call vehicleSetup;
+
+	{ _x setVariable ["R3F_LOG_disabled", true, true] } forEach [_box1, _box2, _sam];
 
 	_aiGroup = createGroup CIVILIAN;
 	[_aiGroup, _missionPos, _nbUnits] call createCustomGroup;
+
+	_type = [ST_TECHNICAL, ST_HUNTER_GMG, ST_STRIDER_HMG, ST_IFRIT_HMG, ST_IFRIT_GMG] call BIS_fnc_selectRandom;
+
+	//Give them a couple of technicals, maybe some heavier enemy?
+	_vehicles = [
+		[_type, _missionPos vectorAdd ([[random 150, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0, _aiGroup] call STCreateVehicle,
+		[_type, _missionPos vectorAdd ([[random 250, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0, _aiGroup] call STCreateVehicle
+	];
 
 	_missionPicture = getText (configFile >> "CfgVehicles" >> typeOf _wreck >> "picture");
 	_missionHintText = "A helicopter has come down under enemy fire!";
@@ -53,11 +65,14 @@ _failedExec =
 	{ deleteVehicle _x } forEach [_box1, _box2, _wreck];
 };
 
-_successExec =
-{
+_successExec = {
+
 	// Mission completed
-	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box1, _box2];
+	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box1, _box2, _sam];
 	deleteVehicle _wreck;
+
+	// Mission completed
+	[_sam, 1] call A3W_fnc_setLockState; // Unlock
 
 	_successHintMessage = "The airwreck supplies have been collected, well done.";
 };

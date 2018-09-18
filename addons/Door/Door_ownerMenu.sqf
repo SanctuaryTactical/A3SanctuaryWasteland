@@ -24,7 +24,9 @@ if (!isNil "_uid") then {
 		"Open Roof",
 		"Close Roof",
 		"Change PIN",
-		"Close All"
+		"Set As Interior",
+		"Set As Exterior",
+		"Secure All Doors"
 	];
 
 	{

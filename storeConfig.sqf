@@ -27,7 +27,8 @@ pistolArray = compileFinal str
 
 smgArray = compileFinal str
 [
-	["Sting SMG", "SMG_02_F", 125]
+	["Sting SMG", "SMG_02_F", 125],
+	["MP7A2", "rhsusf_weap_MP7A2", 750]
 
 ];
 
@@ -49,11 +50,13 @@ rifleArray = compileFinal str
 	["AKS-74U Carbine", "arifle_AKS_F", 150],
 	["M-16 M4", "rhs_weap_m16a4", 500],
 	["M4", "rhs_weap_m4", 500],
-	["MP7", "rhsusf_acc_rotex_mp7", 500],
+	["MK 18", "rhs_weap_mk18", 500],
+	["HK 416", "rhs_weap_hk416d10", 500],
 
 	// Marksman Rifles
 	["MXM Rifle (Black)", "arifle_MXM_Black_F", 300],
 	["Mk18 ABR Rifle", "srifle_EBR_F", 450],
+	["M107", "rhs_weap_M107", 750],
 
 	// DLC
 	["CMR-76 Rifle", "srifle_DMR_07_blk_F", 400],
@@ -67,6 +70,7 @@ rifleArray = compileFinal str
 	["M320 LRR Sniper (Camo)", "srifle_LRR_camo_LRPS_F", 1200],
 	["GM6 Lynx Sniper (Camo)", "srifle_GM6_camo_LRPS_F", 1500],
 	["ASP-1 Kir Rifle (Tan)", "srifle_DMR_04_tan_F", 2000]
+
 ];
 
 lmgArray = compileFinal str
@@ -180,7 +184,8 @@ otherFirearms = compileFinal str
 	["Titan MPRL AA (Hex)", "launch_O_Titan_F", 600],
 	["Titan MPRL AA (Digi)", "launch_I_Titan_F", 600],
 	["Titan MPRL AA (Tropic)", "launch_B_Titan_tna_F", 600, "noDLC"],
-	["Titan MPRL AA (G Hex)", "launch_O_Titan_ghex_F", 600, "noDLC"]
+	["Titan MPRL AA (G Hex)", "launch_O_Titan_ghex_F", 600, "noDLC"],
+	["FIM-92F Stinger", "Rhs_weap_stinger_Launcher", 1000]
 
 ];
 
@@ -189,6 +194,12 @@ allGunStoreFirearms = compileFinal str (call pistolArray + call smgArray + call 
 staticGunsArray = compileFinal str
 [
 	// ["Vehicle Ammo Crate", "Box_NATO_AmmoVeh_F", 2500],
+	["SAM System", ST_SAM_SYSTEM, 50000, "HIDDEN"],
+	["Radar System", ST_RADAR_SYSTEM, 50000, "HIDDEN"],
+	["SAM2", "B_SAM_System_02_F", 100000, "HIDDEN"],
+	["SAM1", "B_SAM_System_01_F", 100000, "HIDDEN"],
+	["GUN1", "B_Ship_Gun_01_F", 100000, "HIDDEN"],
+	["MRLS", "B_Ship_MRLS_01_F", 100000, "HIDDEN"],
 	["Static Titan AT 4Rnd", "B_static_AT_F", 2500], // Static launchers only have 4 ammo, hence the low price
 	["Static Titan AT 4Rnd", "O_static_AT_F", 2500],
 	["Static Titan AT 4Rnd", "I_static_AT_F", 2500],
@@ -239,6 +250,7 @@ ammoArray = compileFinal str
 	[".45 ACP 11Rnd Mag", "11Rnd_45ACP_Mag", 15],
 	[".45 ACP 30Rnd Vermin Mag", "30Rnd_45ACP_MAG_SMG_01", 20],
 	[".45 ACP 30Rnd Tracer (Green) Mag", "30Rnd_45ACP_Mag_SMG_01_tracer_green", 15],
+	["4.6mm 40Rnd AP SX Magazine", "rhs_ammo_46x30_AP", 20],
 	["5.45mm 30Rnd Mag", "30Rnd_545x39_Mag_F", 20],
 	["5.45mm 30Rnd Tracer (Yellow) Mag", "30Rnd_545x39_Mag_Tracer_F", 15],
 	["5.45mm 30Rnd Tracer (Green) Mag", "30Rnd_545x39_Mag_Tracer_Green_F", 15],
@@ -284,6 +296,8 @@ ammoArray = compileFinal str
 	["12.7mm 5Rnd Armor-Piercing Mag", "5Rnd_127x108_APDS_Mag", 60],
 	["12.7mm 10Rnd Subsonic Mag", "10Rnd_127x54_Mag", 75],
 	[".50 BW 10Rnd Mag", "10Rnd_50BW_Mag_F", 50],
+	[".50 BMG (12.7x99)", "rhsusf_mag_10Rnd_STD_50BMG_M33", 50],
+	[".300 Winmag", "rhsusf_B_300winmag", 50],
 	["PG-7VM HEAT Grenade", "RPG7_F", 200],                   // Direct damage: medium    | Splash damage: low    | Guidance: none
 	["RPG-42 Anti-Tank Rocket", "RPG32_F", 250],              // Direct damage: high      | Splash damage: low    | Guidance: none
 	["RPG-42 High-Explosive Rocket", "RPG32_HE_F", 250],      // Direct damage: medium    | Splash damage: medium | Guidance: none
@@ -291,6 +305,7 @@ ammoArray = compileFinal str
 	["Titan Anti-Tank Missile", "Titan_AT", 350],             // Direct damage: high      | Splash damage: low    | Guidance: mouse, laser, ground vehicles
 	["Titan Anti-Personnel Missile", "Titan_AP", 350],        // Direct damage: low       | Splash damage: high   | Guidance: mouse, laser
 	["Titan Anti-Air Missile", "Titan_AA", 350],              // Direct damage: low       | Splash damage: medium | Guidance: aircraft
+	["Stinger Missile", "Rhs_mag_4Rnd_stinger", 400],
 	["40mm HE Grenade Round", "1Rnd_HE_Grenade_shell", 125],
 	["40mm 3Rnd HE Grenades", "3Rnd_HE_Grenade_shell", 250],
 	["40mm Smoke Round (White)", "1Rnd_Smoke_Grenade_shell", 50],
@@ -431,6 +446,8 @@ uniformArray = compileFinal str
 	["Full Ghillie (Semi-Arid)", "U_B_FullGhillie_sard", 2000, "uni"],
 	["Full Ghillie (Jungle)", "U_B_T_FullGhillie_tna_F", 2000, "uni"],
 	["CTRG Stealth Uniform", "U_B_CTRG_Soldier_F", 1000, "uni"],
+	["Combat Uniform OCP (101st Airborne Div.)", "rhs_uniform_cu_ocp_101st", 1000, "uni"],
+	["Combat Uniform UCP (82nd Airborne)", "rhs_uniform_cu_ocp_82nd", 1000, "uni"],
 	["Survival Fatigues (NATO)", "U_B_survival_uniform", 200, "uni"],
 	["Recon Fatigues (MTP)", "U_B_CombatUniform_mcam_vest", 25, "uni"],
 	["Combat Fatigues (Tee)", "U_B_CombatUniform_mcam_tshirt", 25, "uni"],
@@ -467,6 +484,8 @@ uniformArray = compileFinal str
 	["Pilot Coveralls", "U_O_PilotCoveralls", 25, "uni"],
 	["Pilot Coveralls", "U_I_pilotCoveralls", 25, "uni"],
 	["Heli Pilot Coveralls", "U_I_HeliPilotCoveralls", 25, "uni"],
+	["G3 Uniform (Black)", "rhs_uniform_g3_blk", 100, "uni"],
+	["G3 Uniform (Tan)", "rhs_uniform_g3_tan", 100, "uni"],
 	["Guerilla Garment", "U_BG_Guerilla1_1", 25, "uni"],  // BLUFOR
 	["Guerilla Outfit (Plain, Dark)", "U_BG_Guerilla2_1", 25, "uni"],
 	["Guerilla Outfit (Pattern)", "U_BG_Guerilla2_2", 25, "uni"],
@@ -488,8 +507,8 @@ uniformArray = compileFinal str
 	["Guerilla Smocks", "U_IG_Guerilla3_1", 25, "uni"],
 	["Guerilla Apparel", "U_IG_Guerrilla_6_1", 25, "uni"],
 	["Guerilla Uniform", "U_IG_leader", 25, "uni"],
-	["Tron Light Suit (Red)", "U_O_Protagonist_VR", 5000, "uni", "HIDDEN"],
-	["Tron Light Suit (Green)", "U_I_Protagonist_VR", 5000, "uni", "HIDDEN"]
+	["Tron Light Suit (Red)", "U_O_Protagonist_VR", 5000, "uni"],
+	["Tron Light Suit (Green)", "U_I_Protagonist_VR", 5000, "uni"]
 ];
 
 vestArray = compileFinal str
@@ -783,131 +802,148 @@ genObjectsArray = compileFinal str
 [
 	["Camo Net", "CamoNet_INDP_open_F", 500, "object", "HIDDEN"], // unlisted, only for object saving
 	["Cargo Container", "Land_Cargo20_military_green_F", 20000, "object", "HIDDEN"], //Unlisted.  Reward from Cargo Container Mission
+	["Building Permit", "Land_Document_01_F", 1000000, "object", "HIDDEN"], //Player must purchase a building permit to buy base parts
 	["Vehicle Pin Generating Station", "Land_DataTerminal_01_F", 150000, "object"],
 	["Base Door (Vehicle)", "Land_Bunker_01_blocks_3_F", 50000, "object"],
-	["Base Door (Man)", "Land_Bunker_01_blocks_1_F", 20000, "object"],
-	["Base Door key (PIN: 0000) (beta)", "Land_Noticeboard_F", 15000, "object"],  // LouD
+	["Base Door (Man)", "Land_Bunker_01_blocks_1_F", 25000, "object"],
+	["Base Door key (PIN: 0000) (beta)", "Land_Noticeboard_F", 20000, "object"],  // LouD
 	["Base Roof (Retractable)", "ContainmentArea_01_forest_F", 75000, "object"],
-	["Base locker (PIN: 0000)", "Land_Device_assembled_F", 100000, "object"],  //Cael817, SNAFU,Used for base operations <-- Destroyable
-	["Building (Aircraft Hangar)", "Land_Hangar_F", 100000, "object"],
+	["Base locker (PIN: 0000)", "Land_Device_assembled_F", 250000, "object"],  //Cael817, SNAFU,Used for base operations <-- Destroyable
+	["Building (Aircraft Hangar)", "Land_Hangar_F", 150000, "object"],
+	["Building (Aircraft Hangar Large)", "Land_Airport_01_hangar_F", 250000, "object"],
+	["Building (Guard House)", "Land_GuardHouse_01_F", 75000, "object"],
 	["Safe (PIN: 0000)", "Box_NATO_AmmoVeh_F", 50000, "ammocrate"],
 	["Supplies (Food Sacks)", "Land_Sacks_goods_F", 5000, "object"], // Added on player request
-	["Supplies (Food Crates)", "Land_CratesWooden_F", 25000, "object"],
+	["Supplies (Food Crates)", "Land_FoodSacks_01_large_brown_idap_F", 25000, "object"],
 	["Supplies (Water Barrel)", "Land_BarrelWater_F", 5000, "object"], // Added on player request
 	["Supplies (Water Tank)", "Land_WaterTank_F", 25000, "object"],
-	["Supplies (Fuel Barrel)", "Land_MetalBarrel_F", 5000, "object"],
-	["Empty Ammo Crate", "Box_NATO_Ammo_F", 200, "ammocrate"],
-	["Bag Fence (Corner)", "Land_BagFence_Corner_F", 150, "object"],
-	["Bag Fence (End)", "Land_BagFence_End_F", 150, "object"],
-	["Bag Fence (Long)", "Land_BagFence_Long_F", 200, "object"],
-	["Bag Fence (Round)", "Land_BagFence_Round_F", 150, "object"],
-	["Bag Fence (Short)", "Land_BagFence_Short_F", 150, "object"],
-	["Bag Bunker (Small)", "Land_BagBunker_Small_F", 250, "object"],
-	["Bag Bunker (Large)", "Land_BagBunker_Large_F", 500, "object"],
-	["Bag Bunker Tower", "Land_BagBunker_Tower_F", 1000, "object"],
-	["Boom Gate", "Land_BarGate_F", 150, "object"],
+	["Supplies (Fuel Barrels)", "CargoNet_01_barrels_F", 50000, "object"],
+	["Empty Ammo Crate", "Box_NATO_Ammo_F", 500, "ammocrate"],
+	["Bag Fence (Corner)", "Land_BagFence_Corner_F", 250, "object"],
+	["Bag Fence (End)", "Land_BagFence_End_F", 250, "object"],
+	["Bag Fence (Long)", "Land_BagFence_Long_F", 250, "object"],
+	["Bag Fence (Round)", "Land_BagFence_Round_F", 250, "object"],
+	["Bag Fence (Short)", "Land_BagFence_Short_F", 250, "object"],
+	["Bag Bunker (Small)", "Land_BagBunker_Small_F", 500, "object"],
+	["Bag Bunker (Large)", "Land_BagBunker_Large_F", 1000, "object"],
+	["Bag Bunker Tower", "Land_BagBunker_Tower_F", 1500, "object"],
+	["Boom Gate", "Land_BarGate_F", 500, "object"],
 	["Bunker (Large)", "Land_Bunker_01_big_F", 100000, "object"],
 	["Bunker (Small)", "Land_Bunker_01_small_F", 50000, "object"],
 	["Bunker (Tall)", "Land_Bunker_01_tall_F", 125000, "object"],
-	["Pipes", "Land_Pipes_Large_F", 200, "object"],
-	["Highway Guardrail", "Land_Crash_barrier_F", 200, "object"],
-	["Canal Wall (Small)", "Land_Canal_WallSmall_10m_F", 500, "object"],
-	["Canal Wall (Large)", "Land_Canal_Wall_10m_F", 1000, "object"],
-	["Canal Wall (Ruins Right)", "Land_Canal_Wall_D_right_F", 500, "object"],
-	["Canal Wall (Ruins Left)", "Land_Canal_Wall_D_left_F", 500, "object"],
-	["Canal Stairs", "Land_Canal_Wall_Stairs_F", 1000, "object"],
-	["Concrete Barrier", "Land_CncBarrier_F", 200, "object"],
-	["Concrete Barrier (Medium)", "Land_CncBarrierMedium_F", 350, "object"],
-	["Concrete Barrier (Long)", "Land_CncBarrierMedium4_F", 500, "object"],
-	["Concrete Wall (1 Section)", "Land_CncWall1_F", 400, "object"],
-	["Concrete Wall (4 Section)", "Land_CncWall4_F", 600, "object"],
-	["Concrete Military Wall", "Land_Mil_ConcreteWall_F", 400, "object"],
-	["Concrete Block", "BlockConcrete_F", 500, "object"],
-	["Concrete Panel (4M)", "Land_ConcreteWall_01_l_4m_F", 300, "object"],
-	["Concrete Panel (8M)", "Land_ConcreteWall_01_l_8m_F", 600, "object"],
-	["Concrete Panel Low (4M)", "Land_ConcreteWall_01_m_4m_F", 250, "object"],
-	["Concrete Panel Low (8M)", "Land_ConcreteWall_01_m_8m_F", 500, "object"],
-	["Concrete Post", "Land_ConcreteWall_01_l_pole_F", 200, "object"],
+	["Pipes", "Land_Pipes_Large_F", 250, "object"],
+	["Highway Guardrail", "Land_Crash_barrier_F", 250, "object"],
+	["Canal Wall (Small)", "Land_Canal_WallSmall_10m_F", 1500, "object"],
+	["Canal Wall (Large)", "Land_Canal_Wall_10m_F", 2500, "object"],
+	["Canal Wall (Ruins Right)", "Land_Canal_Wall_D_right_F", 750, "object"],
+	["Canal Wall (Ruins Left)", "Land_Canal_Wall_D_left_F", 750, "object"],
+	["Canal Stairs", "Land_Canal_Wall_Stairs_F", 3000, "object"],
+	["Concrete Barrier", "Land_CncBarrier_F", 500, "object"],
+	["Concrete Barrier (Medium)", "Land_CncBarrierMedium_F", 500, "object"],
+	["Concrete Barrier (Long)", "Land_CncBarrierMedium4_F", 750, "object"],
+	["Concrete Wall (1 Section)", "Land_CncWall1_F", 500, "object"],
+	["Concrete Wall (4 Section)", "Land_CncWall4_F", 1000, "object"],
+	["Concrete Military Wall", "Land_Mil_ConcreteWall_F", 1500, "object"],
+	["Concrete Block", "BlockConcrete_F", 2500, "object"],
+	["Concrete Panel (4M)", "Land_ConcreteWall_01_l_4m_F", 500, "object"],
+	["Concrete Panel (8M)", "Land_ConcreteWall_01_l_8m_F", 750, "object"],
+	["Concrete Panel Low (4M)", "Land_ConcreteWall_01_m_4m_F", 400, "object"],
+	["Concrete Panel Low (8M)", "Land_ConcreteWall_01_m_8m_F", 650, "object"],
+	["Concrete Post", "Land_ConcreteWall_01_l_pole_F", 400, "object"],
 	["Concrete Gate", "Land_ConcreteWall_01_l_gate_F", 1000, "object"],
-	["Concrete Archway", "Land_ConcreteWall_02_m_gate_F", 250, "object"],
-	["Concrete Pipe", "Land_ConcretePipe_F", 250, "object"],
-	["Concrete Ramp (Low)", "Land_RampConcrete_F", 350, "object"],
-	["Concrete Ramp (High)", "Land_RampConcreteHigh_F", 500, "object"],
-	["Concrete Frame", "Land_CncShelter_F", 200, "object"],
-	["Control Tower", "Land_Airport_01_controlTower_F", 65000, "object"],
-	["Control Tower (Large)", "Land_Airport_02_controlTower_F", 100000, "object"],
-	["Curb (2M)", "Land_ConcreteKerb_02_2m_F", 200, "object"],
-	["Curb (4M)", "Land_ConcreteKerb_02_4m_F", 400, "object"],
-	["Curb (8M)", "Land_ConcreteKerb_02_8m_F", 800, "object"],
-	["Curb (Decorative B/Y Short)", "Land_ConcreteKerb_03_BY_short_F", 500, "object"],
-	["Curb (Decorative B/Y Long)", "Land_ConcreteKerb_03_BY_long_F", 1000, "object"],
-	["Dome (Small)", "Land_Dome_Small_F", 150000, "object"],
-	["Fence (Short)", "Land_PipeFence_02_s_4m_F", 200, "object"],
-	["Fence (Long)", "Land_PipeFence_02_s_8m_F", 250, "object"],
-	["Garbage Container", "Land_GarbageContainer_closed_F", 50, "object"],
-	["HBarrier (1 block)", "Land_HBarrier_1_F", 150, "object"],
-	["HBarrier (3 blocks)", "Land_HBarrier_3_F", 200, "object"],
-	["HBarrier (5 blocks)", "Land_HBarrier_5_F", 250, "object"],
-	["HBarrier Big", "Land_HBarrierBig_F", 500, "object"],
-	["HBarrier Wall (4 blocks)", "Land_HBarrierWall4_F", 400, "object"],
-	["HBarrier Wall (6 blocks)", "Land_HBarrierWall6_F", 500, "object"],
-	["HBarrier Watchtower", "Land_HBarrierTower_F", 600, "object"],
-	["Landscaping (Rock)", "Land_BluntStone_02", 1000, "object"],
-	["Lamp Post (Harbour)", "Land_LampHarbour_F", 100, "object"],
-	["Lamp Post (Shabby)", "Land_LampShabby_F", 100, "object"],
-	["Lamp (Small)", "Land_LampStreet_small_F", 250, "object"],
-	["Lamp (Halogen)","Land_LampHalogen_F", 500, "object"],
-	["Lamp (Airport)", "Land_LampAirport_F", 2000, "object"],
-	["Landing Platform (Extra Large)", "Land_AirstripPlatform_01_F", 100000, "object"],
-	["Landing Platform Fence (Short)", "Land_NetFence_01_m_4m_F", 2500, "object"],
-	["Landing Platform Fence (Long)", "Land_NetFence_01_m_8m_F", 4000, "object"],
-	["Luxury Item (Arm Chair)", "Land_ArmChair_01_F", 60000, "object"],
-	["Luxury Item (Bed)", "Land_WoodenBed_01_F", 75000, "object"],
-	["Luxury Item (Sofa)", "Land_Sofa_01_F", 75000, "object"],
-	["Luxury Item (Coffee Table)", "Land_TableSmall_01_F", 45000, "object"],
-	["Luxury Item (Bench)", "Land_Bench_F", 40000, "object"],
-	["Luxury Item (Flower Pot)", "Land_FlowerPot_01_Flower_F", 60000, "object"],
-	["Luxury Item (Refridgerator)", "Fridge_01_closed_F", 50000, "object"],
-	["Military Wall (Big)", "Land_Mil_WallBig_4m_F", 600, "object"],
-	["Military Cargo Post", "Land_Cargo_Patrol_V1_F", 800, "object"],
-	["Military Cargo Tower", "Land_Cargo_Tower_V1_F", 10000, "object"],
-	["Parking Barrier", "Land_CncBarrier_stripes_F", 50, "object"],
+	["Concrete Archway", "Land_ConcreteWall_02_m_gate_F", 500, "object"],
+	["Concrete Pipe", "Land_ConcretePipe_F", 500, "object"],
+	["Concrete Ramp (Low)", "Land_RampConcrete_F", 1000, "object"],
+	["Concrete Ramp (High)", "Land_RampConcreteHigh_F", 1000, "object"],
+	["Concrete Frame", "Land_CncShelter_F", 750, "object"],
+	["Control Tower", "Land_Airport_01_controlTower_F", 75000, "object"],
+	["Control Tower (Large)", "Land_Airport_02_controlTower_F", 150000, "object"],
+	["Curb (1M)", "Land_ConcreteKerb_02_1m_F", 250, "object"],
+	["Curb (2M)", "Land_ConcreteKerb_02_2m_F", 250, "object"],
+	["Curb (4M)", "Land_ConcreteKerb_02_4m_F", 500, "object"],
+	["Curb (8M)", "Land_ConcreteKerb_02_8m_F", 750, "object"],
+	["Curb (Decorative B/Y Short)", "Land_ConcreteKerb_03_BY_short_F", 1500, "object"],
+	["Curb (Decorative B/Y Long)", "Land_ConcreteKerb_03_BY_long_F", 2500, "object"],
+	["Curb High (8M)", "Land_ConcreteKerb_01_8m_F", 1000, "object"],
+	["Dome (Small)", "Land_Dome_Small_F", 250000, "object"],
+	["Fence (Short)", "Land_PipeFence_02_s_4m_F", 500, "object"],
+	["Fence (Long)", "Land_PipeFence_02_s_8m_F", 750, "object"],
+	["Flag (Canada)", "Flag_White_F", 10000, "object"],
+	["Flag (USA)", "Flag_US_F", 10000, "object"],
+	["Garbage Container", "Land_GarbageContainer_closed_F", 5000, "object"],
+	["HBarrier (1 block)", "Land_HBarrier_1_F", 500, "object"],
+	["HBarrier (3 blocks)", "Land_HBarrier_3_F", 500, "object"],
+	["HBarrier (5 blocks)", "Land_HBarrier_5_F", 750, "object"],
+	["HBarrier Big", "Land_HBarrierBig_F", 750, "object"],
+	["HBarrier Wall (Short)", "Land_HBarrierWall4_F", 500, "object"],
+	["HBarrier Wall (Long)", "Land_HBarrierWall6_F", 750, "object"],
+	["HBarrier Watchtower", "Land_HBarrierTower_F", 1500, "object"],
+	["HBarrier Green (1 Block)", "Land_HBarrier_01_line_1_green_F", 500],
+	["HBarrier Green (3 Block)", "Land_HBarrier_01_line_3_green_F", 500],
+	["HBarrier Green (5 Block)", "Land_HBarrier_01_line_5_green_F", 500],
+	["HBarrier Green (Tower)", "Land_HBarrier_01_tower_green_F", 1500],
+	["HBarrier Green Wall (Short)", "Land_HBarrier_01_wall_4_green_F", 450],
+	["HBarrier Green Wall (Long)", "Land_HBarrier_01_wall_6_green_F", 550],
+	["HBarrier Green Corner", "Land_HBarrier_01_wall_corner_green_F", 550],
+	["HBarrier Green Corridor", "Land_HBarrier_01_wall_corridor_green_F", 1500],
+	["Landscaping (Rock)", "Land_BluntStone_02", 5000, "object"],
+	["Lamp Post (Harbour)", "Land_LampHarbour_F", 500, "object"],
+	["Lamp Post (Shabby)", "Land_LampShabby_F", 500, "object"],
+	["Lamp (Small)", "Land_LampStreet_small_F", 500, "object"],
+	["Lamp (Halogen)","Land_LampHalogen_F", 1500, "object"],
+	["Lamp (Airport)", "Land_LampAirport_F", 2500, "object"],
+	["Light Flush Landing Edgelight", "Land_Flush_Light_green_F", 5000, "object"],
+	["Landing Platform (Extra Large)", "Land_AirstripPlatform_01_F", 150000, "object"],
+	["Landing Platform (Concrete)", "Land_Pier_Box_F", 200000, "object"],
+	["Landing Platform Fence (Short)", "Land_NetFence_01_m_4m_F", 2500, "object", "HIDDEN"],
+	["Landing Platform Fence (Long)", "Land_NetFence_01_m_8m_F", 4000, "object", "HIDDEN"],
+	["Military Wall (Big)", "Land_Mil_WallBig_4m_F", 5000, "object"],
+	["Military Cargo Post", "Land_Cargo_Patrol_V1_F", 25000, "object"],
+	["Military Cargo Tower", "Land_Cargo_Tower_V1_F", 100000, "object"],
+	["Parking Barrier", "Land_CncBarrier_stripes_F", 500, "object"],
 	["Pillbox (Hex)", "Land_PillboxBunker_01_hex_F", 25000, "object"],
 	["Pillbox (Large)", "Land_PillboxBunker_01_big_F", 25000, "object"],
 	["Pillbox (Rectangle)", "Land_PillboxBunker_01_rectangle_F", 25000, "object"],
-	["Pillbox Wall (3M)", "Land_PillboxWall_01_3m_F", 250, "object"],
-	["Pillbox Wall (6M)", "Land_PillboxWall_01_6m_F", 500, "object"],
-	["Platform Sidewalk (Wide 4M)", "Land_Sidewalk_01_4m_F", 100, "object"],
-	["Platform Sidewalk (Wide 8M)", "Land_Sidewalk_01_8m_F", 150, "object"],
-	["Platform Sidewalk (Narror 4M)", "Land_Sidewalk_01_narrow_4m_F", 100, "object"],
-	["Platform Sidewalk (Narrow 8M)", "Land_Sidewalk_01_narrow_8m_F", 150, "object"],
-	["Platform (Hotel)", "Land_GH_Platform_F", 250, "object"],
-	["Power Generator", "Land_PowerGenerator_F", 100, "object"],
-	["Recycle Bin", "Land_WheelieBin_01_F", 25, "object"],
-	["Road Cone", "RoadCone_F", 25, "object"],
-	["Road Barrier (Small)", "RoadBarrier_small_F", 250, "object"],
+	["Pillbox Wall (3M)", "Land_PillboxWall_01_3m_F", 750, "object"],
+	["Pillbox Wall (6M)", "Land_PillboxWall_01_6m_F", 1200, "object"],
+	["Platform (Hotel)", "Land_GH_Platform_F", 500, "object"],
+	["Platform Sidewalk (Wide 4M)", "Land_Sidewalk_01_4m_F", 500, "object"],
+	["Platform Sidewalk (Wide 8M)", "Land_Sidewalk_01_8m_F", 750, "object"],
+	["Platform Sidewalk (Narrow 4M)", "Land_Sidewalk_01_narrow_4m_F", 500, "object"],
+	["Platform Sidewalk (Narrow 8M)", "Land_Sidewalk_01_narrow_8m_F", 750, "object"],
+	["Platform Ceiling (Wide 4M)", "Land_Sidewalk_02_4m_F", 100, "HIDDEN"],
+	["Platform Ceiling (Wide 8M)", "Land_Sidewalk_02_8m_F", 150, "HIDDEN"],
+	["Platform Ceiling (Narrow 4M)", "Land_Sidewalk_02_narrow_4m_F", 100, "HIDDEN"],
+	["Platform Ceiling (Narrow 8M)", "Land_Sidewalk_02_narrow_8m_F", 150, "HIDDEN"],
+	["Power Generator - Required for Base Locker, Doors etc", "Land_PowerGenerator_F", 200000, "object"],
+	["Recycle Bin", "Land_WheelieBin_01_F", 5000, "object"],
+	["Road Cone", "RoadCone_F", 250, "object"],
+	["Road Barrier (Small)", "RoadBarrier_small_F", 400, "object"],
 	["Road Pole", "Pole_F", 500, "object"],
-	["Parking Bollard", "Land_Bollard_01_F", 150, "object"],
-	["Scafolding (Mobile)", "Land_MobileScafolding_01_F", 250, "object"],
-	["Scaffolding (Tall)", "Land_Scaffolding_F", 250, "object"],
-	["Shoot House Wall", "Land_Shoot_House_Wall_F", 150, "object"],
-	["Stairs", "Land_GH_Stairs_F", 2500, "object"],
-	["Stairs (Walk Over)", "Land_Walkover_01_F", 1000, "object"],
-	["Stairs (Fire Escape)", "Land_FireEscape_01_short_F", 15000, "object"],
-	["Stairs (Fire Escape - Tall)", "Land_FireEscape_01_tall_F", 17500, "object"],
-	["Shed (Industrial)", "Land_i_Shed_Ind_F", 100000, "object"],
-	["Shed (Large Vehicle)", "Land_Shed_Small_F", 50000, "object"],
+	["Parking Bollard", "Land_Bollard_01_F", 250, "object"],
+	["Scafolding (Mobile)", "Land_MobileScafolding_01_F", 1000, "object"],
+	["Scaffolding (Tall)", "Land_Scaffolding_F", 1500, "object"],
+	["Shoot House Wall", "Land_Shoot_House_Wall_F", 150, "object", "HIDDEN"],
+	["Stairs", "Land_GH_Stairs_F", 5000, "object"],
+	["Stairs (Walk Over)", "Land_Walkover_01_F", 6000, "object"],
+	["Stairs (Fire Escape)", "Land_FireEscape_01_short_F", 25000, "object"],
+	["Stairs (Fire Escape - Tall)", "Land_FireEscape_01_tall_F", 35000, "object"],
+	["Shed (Industrial)", "Land_i_Shed_Ind_F", 200000, "object"],
+	["Shed (Large Vehicle)", "Land_Shed_Small_F", 100000, "object"],
 	["Shed (Large Shelter)", "Land_Shed_Big_F", 80000, "object"],
-	["Shed (Huge)", "Land_SCF_01_shed_F", 100000, "object"],
+	["Shed (Huge)", "Land_SCF_01_shed_F", 250000, "object"],
 	["Tourist Shelter", "Land_TouristShelter_01_F", 10000, "object"],
-	["Tin Wall (4M)", "Land_Wall_Tin_4", 100, "object"],
-	["Toilet Box", "Land_ToiletBox_F", 25, "object"],
-	["Tool Trolly", "Land_ToolTrolley_01_F", 250, "object"],
-	["Tool Cart", "Land_ToolTrolley_02_F", 250, "object"],
-	["Workbench", "Land_Workbench_01_F", 500, "object"],
+	["Tin Wall (4M)", "Land_Wall_Tin_4", 500, "object"],
+	["Toilet Box", "Land_ToiletBox_F", 250, "object"],
+	["Tool Trolly", "Land_ToolTrolley_01_F", 50000, "object"],
+	["Tool Cart", "Land_ToolTrolley_02_F", 50000, "object"],
+	["Workbench", "Land_Workbench_01_F", 50000, "object"],
+	["Hedgehog", "Land_CzechHedgehog_01_new_F", 1500, "object"],
+	["Repair Depot (Use at own Risk)", "Land_RepairDepot_01_green_F", 150000, "object"],
 	["Hangar (Large Left)", "Land_Airport_02_hangar_left_F", 0, "object", "HIDDEN"],
-	["Light (Flood)", "Land_FloodLight_F", 0, "object", "HIDDEN"]
-
+	["Light (Portable - Single)", "Land_PortableLight_single_F", 2500, "object"],
+	["Light (Portable - Double)", "Land_PortableLight_double_F", 5000, "object"],
+	["Breakwater (Large)", "Land_Breakwater_01_F", 75000, "HIDDEN"]
 ];
 
 allGenStoreVanillaItems = compileFinal str (call genItemArray + call genObjectsArray + call allStoreGear);
@@ -929,6 +965,8 @@ landArray = compileFinal str
 	["Zamak Covered", "I_Truck_02_covered_F", 20000, "vehicle"],
 	["UGV Stomper (NATO)", "B_UGV_01_F", 15000, "vehicle"],
 	["UGV Stomper (AAF)", "I_UGV_01_F", 15000, "vehicle"],
+	["UGV Stomper RCWS (NATO)", "B_UGV_01_rcws_F", 15000, "vehicle"],
+	["UGV Stomper RCWS (AAF)", "I_UGV_01_rcws_F", 15000, "vehicle"],
 	["UGV Saif (CSAT)", "O_UGV_01_F", 15000, "vehicle"],
 	["UGV Saif RCWS (CSAT)", "O_UGV_01_rcws_F", 15000, "vehicle"],
 
@@ -937,16 +975,21 @@ landArray = compileFinal str
 	["Humvee Half Open",ST_HUMVEE_HALF, 11000, "vehicle"],
 	["Humvee Open (2 Door)", ST_HUMVEE_OPEN2D, 11000, "vehicle"],
 	["Humvee Open (4 Door)", ST_HUMVEE_OPEN4D, 11000, "vehicle"],
+	["Humvee Full Top (2 Door/Snorkel)", ST_HUMVEE_MC_FULLTOP2D, 11000, "vehicle"],
+	["Humvee Full Top (4 Door/Snorkel)", ST_HUMVEE_MC_FULLTOP4D, 11000, "vehicle"],
 	["M10 Covered", ST_M10_COVERED, 25000, "vehicle"],
 	["M977 (Repair)", ST_M977REPAIR, 75000, "vehicle"],
 	["Quad MRZR", ST_QUADMRZR, 10000, "vehicle"],
 	["RG33", ST_RG33_UNARMED, 15000, "vehicle", "HIDDEN"]
+
 ];
 
 armoredArray = compileFinal str
 [
 	["Prowler HMG", "B_T_LSV_01_armed_F", 12000, "vehicle"],
+	["Prowler Anti-Tank", ST_PROWLER_AT, 18000, "vehicle"],
 	["Qilin Minigun", "O_T_LSV_02_armed_F", 15000, "vehicle"],
+	["Qilin Anti-Tank", ST_QLIN_AT, 21000, "vehicle"],
 	["Hunter HMG", "B_MRAP_01_hmg_F", 15000, "vehicle"],
 	["Hunter GMG", "B_MRAP_01_gmg_F", 17500, "vehicle"],
 	["Ifrit HMG", "O_MRAP_02_hmg_F", 15000, "vehicle"],
@@ -957,9 +1000,11 @@ armoredArray = compileFinal str
 
 	//RHS
 	["Humvee Armed (M2)", ST_HUMVEE_ARMED1, 15000, "vehicle"],
+	["Humvee Armed (Snorkel)", ST_HUMVEE_MC_ARMED, 15000, "vehicle"],
 	["Humvee Armed (MK19)", ST_HUMVEE_ARMED2, 18000, "vehicle"],
 	["RG33 Armed", ST_RG33MG, 20000, "vehicle"],
 	["M108", ST_FLATBED_ARMED, 15000, "vehicle"],
+	["M1230 (MK19)", ST_M1230_HEAVY, 25000, "vehicle"],
 
 	["Bradley", ST_BRADLEY, 45000, "vehicle", "HIDDEN"],
 	["Bradley 0", ST_BRADLEY0, 50000, "vehicle", "HIDDEN"],
@@ -972,7 +1017,12 @@ armoredArray = compileFinal str
 	["M113 3", ST_M113A3, 60000, "vehicle", "HIDDEN"],
 	["M113 Unarmed", ST_M113_UNARMED, 45000, "vehicle", "HIDDEN"],
 	["M1117", ST_M1117, 45000, "vehicle", "HIDDEN"],
-	["M117 Crows", ST_M1220_CROWS, 50000, "vehicle", "HIDDEN"]
+	["M117 Crows", ST_M1220_CROWS, 50000, "vehicle", "HIDDEN"],
+
+	["AWC Nyx Anti-Air", ST_AWC_NYX_AA, 50000, "vehicle", "HIDDEN"],
+	["AWC Nyx Anti-Tank", ST_AWC_NYX_AT, 50000, "vehicle", "HIDDEN"],
+	["AWC Nyx Recon", ST_AWC_NYX_RECON, 50000, "vehicle"],
+	["AWC Nyx Auto-Cannon", ST_AWC_NYX_AUTOCANNON, 50000, "vehicle"]
 ];
 
 tanksArray = compileFinal str
@@ -993,7 +1043,15 @@ tanksArray = compileFinal str
 	["M1A2", ST_ABRAMSM2, 100000, "vehicle", "HIDDEN"],
 	["M1A1TUSK", ST_ABRAMSM1_TUSK, 85000, "vehicle", "HIDDEN"],
 	["M1A2TUSK", ST_ABRAMSM2_TUSK, 100000, "vehicle", "HIDDEN"],
-	["M109 Howitzer", ST_HOWITZER, 140000, "vehicle", "HIDDEN"]
+	["M1 SNORKEL", ST_ABRAMS_MC, 100000, "vehicle", "HIDDEN"],
+	["M109 Howitzer", ST_HOWITZER, 140000, "vehicle", "HIDDEN"],
+
+	//Tanks DLC
+	["T-140 Angara", ST_T140_ANGARA, 80000, "vehicle", "HIDDEN"],
+	["T-140 Angara COMMANDER", ST_T140_ANGARA_COMMANDER, 85000, "vehicle", "HIDDEN"],
+	["MGS Rhino", ST_MGS_RHINO, 60000, "vehicle", "HIDDEN"],
+	["MGS Rhino UP", ST_MGS_RHINO_UP, 65000, "vehicle", "HIDDEN"]
+
 ];
 
 helicoptersArray = compileFinal str
@@ -1001,34 +1059,32 @@ helicoptersArray = compileFinal str
 	["Hexacopter Demining UAV", "C_IDAP_UAV_06_antimine_F", (call genItemArray) select {_x select 1 == "C_IDAP_UAV_06_antimine_backpack_F"} select 0 select 2, "vehicle", "HIDDEN"], // for resupply price
 	["MH-9 Hummingbird", "B_Heli_Light_01_F", 10000, "vehicle"], // MH-6
 
-
+	["Boeing CH-47 Chinook", ST_CHINOOK, 30000, "vehicle"],
 	["CH-49 Mohawk", "I_Heli_Transport_02_F", 25000, "vehicle"], // AW101
 	["Mi-290 Taru (Resupply)", "O_Heli_Transport_04_ammo_F", 100000, "vehicle"],
 	["Mi-290 Taru (Transport)", "O_Heli_Transport_04_covered_F", 25000, "vehicle"],
 	["CH-67 Huron (Unarmed)", "B_Heli_Transport_03_unarmed_F", 25000, "vehicle"], // CH-47
-	["AH-9 Pawnee", "B_Heli_Light_01_dynamicLoadout_F", 40000, "vehicle", "variant_pawneeNormal"], // Armed AH-6
-	["PO-30 Orca (DAGR)", "O_Heli_Light_02_dynamicLoadout_F", 50000, "vehicle", "variant_orcaDAGR"], // Armed Ka-60, add "HIDDEN" if you don't want it, but don't remove the line!
-	["WY-55 Hellcat (Armed)", "I_Heli_light_03_dynamicLoadout_F", 50000, "vehicle"], // Armed AW159
-	["AH-99 Blackfoot", "B_Heli_Attack_01_dynamicLoadout_F", 70000, "vehicle"], // RAH-66 with gunner
+	["AH-9 Pawnee", "B_Heli_Light_01_dynamicLoadout_F", 35000, "vehicle", "variant_pawneeNormal"], // Armed AH-6
+	["PO-30 Orca (DAGR)", "O_Heli_Light_02_dynamicLoadout_F", 40000, "vehicle", "variant_orcaDAGR"], // Armed Ka-60, add "HIDDEN" if you don't want it, but don't remove the line!
+	["WY-55 Hellcat (Armed)", "I_Heli_light_03_dynamicLoadout_F", 40000, "vehicle"], // Armed AW159
+	["AH-99 Blackfoot", "B_Heli_Attack_01_dynamicLoadout_F", 65000, "vehicle"], // RAH-66 with gunner
 	["MQ-12 Falcon UAV", "B_T_UAV_03_F", 100000, "vehicle"], // Do NOT use "B_T_UAV_03_dynamicLoadout_F" (doesn't support ASRAAM pylons)
+	["AH-60 Blackhawk", ST_BLACKHAWK, 50000, "vehicle"],
 
 	["Little Bird (Unarmed)", ST_LITTLE_BIRD_UNARMED, 15000, "vehicle"],
-	["Little Bird (Armed)", ST_LITTLE_BIRD, 50000, "vehicle"],
-	["Blackhawk", ST_BLACKHAWK2XB, 100000, "vehicle"],
-	["Venom (Unarmed)", ST_VENOM_UNARMED, 60000, "vehicle"],
-	["Super Stalion (Unarmed)", ST_SUPER_STALION, 65000, "vehicle"],
+	["Little Bird (Armed)", ST_LITTLE_BIRD, 40000, "vehicle"],
+	["Venom (Armed)", ST_VENOM2, 50000, "vehicle"],
 
+	["Venom (Unarmed)", ST_VENOM_UNARMED, 20000, "vehicle"],
+	["Super Stalion (Unarmed)", ST_SUPER_STALION, 45000, "vehicle"],
 	["Mi-48 Kajman", "O_Heli_Attack_02_dynamicLoadout_F", 60000, "vehicle", "HIDDEN"], // Mi-28 with gunner
 
 	//RHS (HIDDEN)
-	["Blackhawk 2 pylons", ST_BLACKHAWK2X, 120000, "vehicle", "HIDDEN"],
-	["Blackhawk 4 pylon", ST_BLACKHAWK4X, 140000, "vehicle", "HIDDEN"],
-	["Apache", ST_APACHE, 140000, "vehicle", "HIDDEN"],
-	["Apache (No Radar)", ST_APACHE_NORADAR, 120000, "vehicle", "HIDDEN"],
-	["Venom", ST_VENOM1, 85000, "vehicle", "HIDDEN"],
-	["Venom (missile)", ST_VENOM2, 95000, "vehicle", "HIDDEN"],
-	["Cobra", ST_COBRA, 110000, "vehicle", "HIDDEN"]
-
+	["Apache", ST_APACHE, 95000, "vehicle", "HIDDEN"],
+	["Apache Grey", ST_APACHE_GREY, 95000, "vehicle", "HIDDEN"],
+	["Apache (No Radar)", ST_APACHE_NORADAR, 90000, "vehicle", "HIDDEN"],
+	["Venom", ST_VENOM1, 50000, "vehicle", "HIDDEN"],
+	["Cobra", ST_COBRA, 85000, "vehicle", "HIDDEN"]
 ];
 
 planesArray = compileFinal str
@@ -1146,9 +1202,8 @@ otherVehicles = compileFinal str
 	["Zamak Transport", "I_Truck_02_transport_F", 4500, "vehicle"],
 	["Zamak Fuel", "I_Truck_02_fuel_F", 6000, "vehicle"],
 	["Zamak Medical", "I_Truck_02_medical_F", 7000, "vehicle"],
-	["Zamak Repair", "I_Truck_02_box_F", 8000, "vehicle"],
-	["UGV Stomper RCWS (NATO)", "B_UGV_01_rcws_F", 15000, "vehicle"],
-	["UGV Stomper RCWS (AAF)", "I_UGV_01_rcws_F", 15000, "vehicle"]
+	["Zamak Repair", "I_Truck_02_box_F", 8000, "vehicle"]
+
 
 ];
 
@@ -1531,6 +1586,7 @@ colorsArray = compileFinal str
 // ["Medical Kit", "medkits", localize "STR_WL_ShopDescriptions_MedKit", "client\icons\medkit.paa", 400, 200],  // not needed since there are First Ait Kits
 customPlayerItems = compileFinal str
 [
+	["Artillery Strike", "artillery", "", "client\icons\tablet.paa", 500000, 100000, "HIDDEN"],
 	["Water Bottle", "water", localize "STR_WL_ShopDescriptions_Water", "client\icons\waterbottle.paa", 30, 15],
 	["Canned Food", "cannedfood", localize "STR_WL_ShopDescriptions_CanFood", "client\icons\cannedfood.paa", 30, 15],
 	["Repair Kit", "repairkit", localize "STR_WL_ShopDescriptions_RepairKit", "client\icons\briefcase.paa", 500, 250],
@@ -1540,10 +1596,11 @@ customPlayerItems = compileFinal str
 	["Camo Net", "camonet", localize "STR_WL_ShopDescriptions_Camo", "client\icons\camonet.paa", 200, 100],
 	["Syphon Hose", "syphonhose", localize "STR_WL_ShopDescriptions_SyphonHose", "client\icons\syphonhose.paa", 200, 100],
 	["Energy Drink", "energydrink", localize "STR_WL_ShopDescriptions_Energy_Drink", "client\icons\energydrink.paa", 100, 50],
-	["Vehicle Pinlock", "pinlock", localize "STR_WL_ShopDescriptions_Pinlock", "client\icons\keypad.paa", 1000, 500]
-
+	["Vehicle Pinlock", "pinlock", localize "STR_WL_ShopDescriptions_Pinlock", "client\icons\keypad.paa", 1000, 500],
+	["Fire Extinguisher", "extinguisher", localize "STR_WL_ShopDescriptions_Extinguisher", "client\icons\inv_extinguisher.paa", 500, 500],
+	["Base Remote Controller", "baseremote", localize "STR_WL_ShopDescriptions_Tablet", "client\icons\tablet.paa", 0, 0, "HIDDEN"]
 ];
-
+//Land_Tablet_02_F
 call compile preprocessFileLineNumbers "mapConfig\storeOwners.sqf";
 
 storeConfigDone = compileFinal "true";

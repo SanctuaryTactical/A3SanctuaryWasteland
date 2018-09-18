@@ -10,7 +10,7 @@
 if (!isServer) exitWith {};
 
 scopeName "spawnStoreObject";
-private ["_isGenStore", "_isGunStore", "_isVehStore", "_timeoutKey", "_objectID", "_playerSide", "_objectsArray", "_results", "_itemEntry", "_itemPrice", "_safePos", "_object"];
+private ["_isGenStore", "_isGunStore", "_isVehStore", "_permit", "_timeoutKey", "_objectID", "_playerSide", "_objectsArray", "_results", "_itemEntry", "_itemPrice", "_safePos", "_object"];
 
 params [["_player",objNull,[objNull]], ["_itemEntrySent",[],[[]]], ["_npcName","",[""]], ["_key","",[""]]];
 
@@ -31,8 +31,8 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 	private _playerGroup = group _player;
 	_playerSide = side _playerGroup;
 
-	if (_isGenStore || _isGunStore) then
-	{
+	if (_isGenStore || _isGunStore) then {
+
 		_npcName = _npcName + "_objSpawn";
 
 		switch (true) do
@@ -52,6 +52,23 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 				_marker = _marker + "_objSpawn";
 			};
 		};
+
+
+		/* //Don't allow creation of objects unless the player has a building Permit
+		if( _isGenStore && (typeOf _vehicle in _objectsArray) && !(_object isKindOf "Land_Document_01_F")) then {
+
+			_permit = _player getVariable ["permit", false];
+
+			if( !_permit ) exitWith {
+
+				//ERROR!
+				hint "We're sorry, you must purchase a building permit before you may purchase building parts";
+				playSound3d [MISSION_ROOT + "media\error.ogg", _player, true, getPosASL _player, 1];
+
+			};
+
+		}; */
+
 	};
 
 	if (_isVehStore) then
@@ -75,7 +92,8 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 			if (count _results > 0) then
 			{
 				_itemEntry = _results select 0;
-				_marker = _marker + "_seaSpawn";
+				//_marker = _marker + "_seaSpawn";
+				_marker = _marker + (["_seaSpawn","_landSpawn"] select (markerType (_marker + "_seaSpawn") isEqualTo "")); // allow boat on landSpawn if no seaSpawn
 				_seaSpawn = true;
 			};
 		};
@@ -137,9 +155,10 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 			}
 			else // normal spawn
 			{
-				_safePos = _markerPos findEmptyPosition [0, 50, _class];
+				_safePos = _markerPos findEmptyPosition [0, 50, [_class, "B_Truck_01_transport_F"] select (!surfaceIsWater _markerPos && _seaSpawn)]; // use HEMTT in findEmptyPosition for boats on lands
 				if (count _safePos == 0) then { _safePos = _markerPos };
 				_spawnPosAGL = _safePos;
+				if (_seaSpawn) then { _safePos vectorAdd [0,0,0.05] };
 			};
 
 			// delete wrecks near spawn
@@ -242,9 +261,13 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 			_object setVariable ["allowDamage", _isDamageable, true];
 
 			//Controls Object Default content/code
-			switch(true) do
-			{
+			switch(true) do {
+				case ( _object isKindOf "Land_Document_01_F" ):
+				{
 
+					_player setVariable ["permit", true, true];
+
+				};
 				case ({_object isKindOf _x} count ["Land_Noticeboard_F"] > 0):
 				{
 					_object setVariable ["password", "0000", true];
@@ -261,7 +284,7 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 					_object setVariable ["food", 50, true];
 				};
 				// Add food to bought food sacks.
-				case ({_object isKindOf _x} count ["Land_CratesWooden_F"] > 0):
+				case ({_object isKindOf _x} count ["Land_FoodSacks_01_large_brown_idap_F"] > 0):
 				{
 					_object setVariable ["food", 500, true];
 				};
@@ -283,7 +306,6 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 				{
 					_object enableSimulationGlobal false;
 				};
-
 				case ({_object isKindOf _x} count ["Land_CargoBox_V1_F"] > 0):
 				{
 					[_object, [["Land_Canal_Wall_Stairs_F", 2],["Land_BarGate_F", 2],["Land_Cargo_Patrol_V1_F", 2],["Land_HBarrier_3_F", 4],["Land_Canal_WallSmall_10m_F", 6],["Land_LampShabby_F", 10], ["Land_RampConcrete_F",1],["Land_Crash_barrier_F",4],["B_HMG_01_high_F",1]] ] execVM "addons\R3F_LOG\auto_load_in_vehicle.sqf";
@@ -296,9 +318,9 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 				{
 					_object setVectorUp [0,0,-1];
 				};
-				case ({_object isKindOf _x} count ["Land_NetFence_01_m_4m_F", "Land_NetFence_01_m_8m_F"] > 0):
+				case ({_object isKindOf _x} count ["Flag_White_F"] > 0):
 				{
-					_object setVectorDirAndUp [[0,.25,.75],[0,-.25,.75]];
+					_object setFlagTexture "media\ca-flag.paa";
 				};
 				case ({_object isKindOf _x} count ["Land_Cargo40_white_F"] > 0):
 				{
@@ -308,6 +330,12 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 				{
 					_object setVariable ["keypads", 75, true];
 				};
+				case ({_object isKindOf _x} count ["Lamps_base_F", "Land_PortableLight_single_F", "Land_PortableLight_double_F"] > 0):
+				{
+					_object switchLight "OFF";
+					_object setHit ["light_1_hitpoint", 0.97];
+					_object setHit ["light_2_hitpoint", 0.97];
+				};
 				case ({_object isKindOf _x} count ["Box_NATO_AmmoVeh_F", "Box_East_AmmoVeh_F", "Box_IND_AmmoVeh_F"] > 0):
 				{
 					_object setAmmoCargo 5;
@@ -316,9 +344,13 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 				{
 					_object setAmmoCargo 10;
 				};
-				case (_object isKindOf "rhsusf_M977A4_REPAIR_BKIT_M2_usarmy_d"):
+				case ({_object isKindOf _x} count ["Land_RepairDepot_01_green_F"] > 0):
 				{
-						_object setVariable ["kits", 75, true];
+						_object setVariable ["kits", 100, true];
+				};
+				case ({_object isKindOf _x} count ["CargoNet_01_barrels_F"] > 0):
+				{
+						_object setVariable ["jerrycanfull", 50, true];
 				};
 				case ({_object isKindOf _x} count ["B_Truck_01_ammo_F", "O_Truck_02_Ammo_F", "O_Truck_03_ammo_F", "I_Truck_02_ammo_F"] > 0):
 				{
@@ -355,11 +387,11 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 				};
 				case ({_object isKindOf _x} count ["I_CargoNet_01_ammo_F"] > 0):
 				{
-					[_object, "AA"] call STCreateConvenienceKit;
+					[_object] call STCreateConvenienceKit;
 				};
 				case ({_object isKindOf _x} count ["O_CargoNet_01_ammo_F"] > 0):
 				{
-					[_object, "AT"] call STCreateConvenienceKit;
+					[_object] call STCreateConvenienceKit;
 				};
 
 			};

@@ -18,8 +18,10 @@ with missionNamespace do
 
 		if (isNull _feedDisp) then
 		{
-			"A3W_killFeed" cutRsc ["A3W_killFeed","PLAIN"];
+			A3W_killFeed_IDD cutRsc ["A3W_killFeed","PLAIN"];
 			_feedDisp = uiNamespace getVariable ["A3W_killFeed", displayNull];
+
+
 		};
 
 		private _maxKills = ([profileNamespace getVariable "A3W_killFeed_maxKills"] param [0,A3W_killFeed_maxKills_defaultVal,[A3W_killFeed_maxKills_defaultVal]]) max 0 min 100;

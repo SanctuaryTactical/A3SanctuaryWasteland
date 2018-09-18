@@ -11,8 +11,10 @@ _uid = getPlayerUID player;
 if (!isNil "_uid") then
 {
 	_panelType = _this select 0;
-
 	_displayBoS = uiNamespace getVariable ["BoS_Menu", displayNull];
+
+	//Must have power generator nearby
+	//if( count (nearestObjects [_keypad, ["Land_PowerGenerator_F"], 200) == 0 ) then { hint "No Power Generator could be found, go to the General Store and buy one!"; };
 
 	switch (true) do
 	{

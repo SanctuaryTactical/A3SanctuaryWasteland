@@ -9,7 +9,7 @@
 if (!isServer) exitwith {};
 #include "mainMissionDefines.sqf";
 
-private ["_convoyVeh", "_veh1", "_veh2", "_veh3", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_box1", "_box2"];
+private ["_convoyVeh", "_veh1", "_veh2", "_veh3", "_truck", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_box1", "_box2"];
 
 _setupVars =
 {
@@ -25,11 +25,16 @@ _setupObjects =
 	// pick the vehicles for the convoy
 	_convoyVeh =
 	[
-		["B_MRAP_01_hmg_F", ST_M10_COVERED, ST_HUMVEE_ARMED1],
-		["O_MRAP_02_hmg_F", "O_Truck_03_covered_F", "O_MRAP_02_hmg_F"],
-		["B_MRAP_01_hmg_F", ST_M10_COVERED, ST_HUMVEE_ARMED1],
+		[ST_LINEBACKER, ST_M10_COVERED, ST_HUMVEE_ARMED1],
+		["O_MRAP_02_hmg_F", "O_Truck_03_covered_F", "O_APC_Tracked_02_AA_F"],
+		["B_MRAP_01_hmg_F", ST_M10_COVERED, ST_LINEBACKER],
 		[ST_BRADLEY, ST_M10_COVERED, ST_HUMVEE_ARMED2],
-		[ST_BRADLEY, ST_M10_COVERED, ST_HUMVEE_ARMED1]
+		[ST_BRADLEY, ST_M10_COVERED, ST_HUMVEE_ARMED1],
+		[ST_ABRAMSM2, "O_Truck_03_covered_F", ST_ABRAMS_MC],
+		[ST_BRADLEY, ST_M10_COVERED,"O_MRAP_02_hmg_F"],
+		[ST_LINEBACKER, "I_Truck_02_transport_F", ST_HUMVEE_ARMED1],
+		[ST_BRADLEY, "I_Truck_02_transport_F", "O_MRAP_02_hmg_F"],
+		[ST_BRADLEY, ST_M10_COVERED, "O_APC_Tracked_02_AA_F"]
 	] call BIS_fnc_selectRandom;
 
 	_veh1 = _convoyVeh select 0;
@@ -88,6 +93,9 @@ _setupObjects =
 		[_veh2, _starts select 1, _startDirs select 1] call _createVehicle,
 		[_veh3, _starts select 2, _startDirs select 2] call _createVehicle
 	];
+
+	_truck = _vehicles select 1;
+	_truck call fn_refilltruck;
 
 	_leader = effectiveCommander (_vehicles select 0);
 	_aiGroup selectLeader _leader;

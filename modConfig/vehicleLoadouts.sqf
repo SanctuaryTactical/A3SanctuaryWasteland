@@ -18,23 +18,11 @@
 switch (true) do
 {
 
-	case( _class isKindOf ST_BLACKHAWK4X ):
-	{
-		_plyons = ["rhs_mag_DAGR_16","rhs_mag_M229_19","rhs_mag_M229_19","rhs_mag_DAGR_16"];
-	};
-	case( _class isKindOf ST_BLACKHAWK2X ):
-	{
-		_pylons = ["rhs_mag_DAGR_16","rhs_mag_DAGR_16"];
-	};
 	case( _class isKindOf ST_LITTLE_BIRD ):
 	{
 		_pylons = ["rhs_mag_M151_19","rhs_mag_m134_pylon_3000","rhs_mag_m134_pylon_3000","rhs_mag_M151_19"];
 	};
 
-	case( _class isKindOf ST_BLACKHAWK2XB ):
-	{
-		_pylons = ["rhs_mag_m134_pylon_3000", "rhs_mag_M151_19"];
-	};
 	// AH-9 Pawnee
 	case (_class isKindOf "B_Heli_Light_01_dynamicLoadout_F"):
 	{
@@ -213,6 +201,30 @@ switch (true) do
 				};
 			};
 		};
+	};
+
+
+	// SDV SDAR turret
+	case (_class isKindOf "SDV_01_base_F"):
+	{
+		_mags =
+		[
+			["20Rnd_556x45_UW_mag", [0]],
+			["20Rnd_556x45_UW_mag", [0]],
+			["20Rnd_556x45_UW_mag", [0]],
+			["20Rnd_556x45_UW_mag", [0]],
+			["20Rnd_556x45_UW_mag", [0]],
+			["20Rnd_556x45_UW_mag", [0]],
+			["30Rnd_556x45_Stanag", [0]],
+			["30Rnd_556x45_Stanag", [0]],
+			["30Rnd_556x45_Stanag", [0]],
+			["Laserbatteries", [0]]
+		];
+		_weapons =
+		[
+			["arifle_SDAR_F", [0]],
+			["Laserdesignator_mounted", [0]]
+		];
 	};
 
 	// KH-3A Fenghuang UAV

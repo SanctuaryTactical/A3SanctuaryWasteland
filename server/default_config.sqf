@@ -28,6 +28,14 @@ A3W_bleedingTime = 60;             // Time in seconds for which to allow revive 
 A3W_headshotNoRevive = 0;          // Instant death on fatal headshot by enemy player with non-explosive ammo (0 = no, 1 = yes)
 A3W_customDeathMessages = 1;       // If difficulty option deathMessages=0, display custom messages related to causes of death, as defined in fn_deathMessage.sqf (0 = no, 1 = yes)
 
+// Artillery settings
+A3W_artilleryStrike = 1;           // Availability of Artillery Strike item (0 = no, 1 = yes)
+A3W_artilleryShells = 15;          // Number of shells per strike
+A3W_artilleryRadius = 50;          // Strike radius in meters within which the shells will randomly hit
+A3W_artilleryCooldown = 60*60;     // Cooldown in seconds between strike uses per individual player - resets on server restart
+A3W_artilleryCrateOdds = 1/10;     // Odds of finding one Artillery Strike in a mission crate (0.0 to 1.0)
+A3W_artilleryAmmo = "ModuleOrdnanceHowitzer_F_ammo"; // CfgAmmo class of fired shells, also available for example are the more powerful "R_230mm_fly" and less powerful "ModuleOrdnanceMortar_F_ammo"
+
 // Spawn settings
 A3W_townSpawnCooldown = 5*60;      // Number of seconds to wait between each spawn on a specific town (0 = disabled)
 A3W_spawnBeaconCooldown = 5*60;    // Number of seconds to wait between each use of a specific spawn beacon (0 = disabled)

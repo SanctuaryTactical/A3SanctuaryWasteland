@@ -18,6 +18,11 @@
 [_this, "drugs"] call mf_init;
 [_this, "vpin"] call mf_init;
 
+if (["A3W_artilleryStrike"] call isConfigOn) then
+{
+	[_this, "artillery"] call mf_init;
+};
+
 if (["A3W_atmEnabled"] call isConfigOn) then
 {
 	[_this, "atm"] call mf_init;

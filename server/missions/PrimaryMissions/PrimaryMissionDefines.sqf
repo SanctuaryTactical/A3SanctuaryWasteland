@@ -16,3 +16,5 @@
 #define failMissionColor "#FF0000"
 #define successMissionColor "#00CC00"
 #define subTextColor "#FFFFFF"
+
+#define missionDifficultyHard (["A3W_missionsDifficulty", 0] call getPublicVar >= 1)

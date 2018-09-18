@@ -23,23 +23,21 @@ _setupObjects =
 	[
 		[ST_APACHE],
 		[ST_APACHE_NORADAR],
+		[ST_APACHE_GREY],
 		[ST_VENOM1],
 		[ST_VENOM2],
 		[ST_COBRA],
-		[ST_BLACKHAWK],
-		[ST_BLACKHAWK2X],
-		[ST_BLACKHAWK4X]
+		[ST_BLACKHAWK]
 	];
 	_heloChoices2 =
 	[
 		[ST_APACHE],
 		[ST_APACHE_NORADAR],
+		[ST_APACHE_GREY],
 		[ST_VENOM1],
 		[ST_VENOM2],
 		[ST_COBRA],
-		[ST_BLACKHAWK],
-		[ST_BLACKHAWK2X],
-		[ST_BLACKHAWK4X]
+		[ST_BLACKHAWK]
 	];
 
 	_helo1 = _heloChoices1 call BIS_fnc_selectRandom;
@@ -160,8 +158,8 @@ _successExec =
 	_box3 allowDamage false;
 	_box3 setAmmoCargo 100;
 
-	_cargo = "Supply500" createVehicle [0,0,0];
-	_cargo attachTo [_box3, [0,0,0.85]];
+	/* _cargo = "Supply500" createVehicle [0,0,0];
+	_cargo attachTo [_box3, [0,0,0.85]]; */
 
 	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box3];
 

@@ -9,35 +9,31 @@
 * crate = The crate to load
 * type = AA OR AT?
 */
+#include "..\STConstants.h"
+
 if (!isServer) exitWith {};
 
-private ["_object", "_type"];
+params ["_crate"];
 
-_object = _this select 0;
-_type = _this select 1;
+_crate setAmmoCargo 10;
+_crate allowDamage false; //Prevents destruction of crates
+_crate setVariable ["allowDamage", false, true];
+_crate setVariable ["A3W_inventoryLockR3F", true, true];
 
-_object setAmmoCargo 10;
-_object allowDamage false; //Prevents destruction of crates
-_object setVariable ["allowDamage", false, true];
-_object setVariable ["A3W_inventoryLockR3F", true, true];
+clearMagazineCargoGlobal _crate;
+clearWeaponCargoGlobal _crate;
+clearItemCargoGlobal _crate;
 
-clearMagazineCargoGlobal _object;
-clearWeaponCargoGlobal _object;
-clearItemCargoGlobal _object;
+if( _crate isKindOf ST_AACONVENIENCEKIT ) then {
 
-switch _type do {
-  case "AA": {
+  _crate addMagazineCargoGlobal ["Titan_AA", 25];
+  _crate addWeaponCargoGlobal ["launch_B_Titan_F", 2];
 
-    _object addMagazineCargoGlobal ["Titan_AA", 30];
-    _object addWeaponCargoGlobal ["launch_B_Titan_F", 1];
+};
 
-  };
-  case "AT": {
+if( _crate isKindOf ST_ATCONVENIENCEKIT ) then {
 
-    _object addMagazineCargoGlobal ["Titan_AT", 28];
-    _object addMagazineCargoGlobal ["Titan_AP", 5];
-    _object addWeaponCargoGlobal ["launch_I_Titan_short_F", 1];
-
-  };
+  _crate addMagazineCargoGlobal ["Titan_AT", 25];
+  _crate addWeaponCargoGlobal ["launch_I_Titan_short_F", 2];
 
 };

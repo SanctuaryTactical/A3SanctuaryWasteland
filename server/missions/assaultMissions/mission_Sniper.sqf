@@ -7,7 +7,9 @@
 if (!isServer) exitwith {};
 #include "assaultMissionDefines.sqf";
 
-private ["_positions", "_boxes1", "_currBox1", "_box1", "_box2"];
+#define reward 25000
+
+private ["_positions", "_boxes1", "_currBox1", "_box1", "_box2", "_box3", "_cash"];
 
 _setupVars =
 {
@@ -50,6 +52,12 @@ _successExec =
 	_box2 setDir random 360;
 	//[_box2, "mission_USSpecial2"] call fn_refillbox;
 	[_box2, "mission_USSpecial2"] call randomCrateLoadOut;
+
+	_box3 = createVehicle ["Box_NATO_WpsSpecial_F", _missionPos, [], 5, "NONE"];
+	_box3 setDir random 360;
+	//[_box2, "mission_USSpecial2"] call fn_refillbox;
+	[_box3, "mission_USSpecial2"] call randomCrateLoadOut;
+
 /*
 	_boxes1 = ["Box_East_WpsSpecial_F","Box_IND_WpsSpecial_F"];
 	_currBox1 = _boxes1 call BIS_fnc_selectRandom;
@@ -58,6 +66,16 @@ _successExec =
 */
 	_box1 setVariable ["R3F_LOG_disabled", false, true];
 	_box2 setVariable ["R3F_LOG_disabled", false, true];
+	_box3 setVariable ["R3F_LOG_disabled", false, true];
+
+	for "_x" from 1 to 10 do
+	{
+		_cash = "Land_Money_F" createVehicle markerPos _marker;
+		_cash setPos ((markerPos _marker) vectorAdd ([[2 + random 2,0,0], random 360] call BIS_fnc_rotateVector2D));
+		_cash setDir random 360;
+		_cash setVariable ["cmoney", reward / 10, true];
+		_cash setVariable["owner","world",true];
+	};
 
 	_successHintMessage = format ["The snipers are dead! Well Done!"];
 };

@@ -15,6 +15,7 @@ class BIS_fnc_objectVar {};
 
 // A3W vanilla
 class A3W_fnc_adminMenuLog { allowedTargets = 2; };
+class A3W_fnc_artilleryStrike { allowedTargets = 2; };
 class A3W_fnc_chatBroadcast {};
 class A3W_fnc_checkHackedVehicles { allowedTargets = 2; };
 class A3W_fnc_checkPlayerFlag { allowedTargets = 2; };
@@ -27,6 +28,7 @@ class A3W_fnc_getInFast {};
 class A3W_fnc_initPlayerServer { allowedTargets = 2; };
 class A3W_fnc_killBroadcast { allowedTargets = 2; };
 class A3W_fnc_logMemAnomaly { allowedTargets = 2; };
+class A3W_fnc_playerRespawnServer { allowedTargets = 2; };
 class A3W_fnc_pushVehicle {};
 //class A3W_fnc_registerKillScore { allowedTargets = 2; }; // only needed for injury kill points, not currently enabled due to point farming concerns
 class A3W_fnc_requestPlayerData { allowedTargets = 2; };
@@ -37,6 +39,7 @@ class A3W_fnc_setItemCleanup { allowedTargets = 2; };
 class A3W_fnc_setLockState {};
 class A3W_fnc_setName { jip = 1; };
 class A3W_fnc_setVarServer { allowedTargets = 2; };
+class A3W_fnc_takeArtilleryStrike { allowedTargets = 2; };
 class A3W_fnc_takeOwnership { allowedTargets = 2; };
 class A3W_fnc_titleTextMessage {};
 class A3W_fnc_towingHelper {};
@@ -45,6 +48,7 @@ class FAR_fnc_headshotHitPartEH {};
 class FAR_fnc_public_EH {};
 class mf_remote_refuel {};
 class mf_remote_repair {};
+class mf_remote_extinguish {};
 class mf_remote_syphon {};
 
 // Third-party

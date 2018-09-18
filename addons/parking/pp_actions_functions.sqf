@@ -116,7 +116,7 @@ pp_create_terminals = {
     _marker_pos = markerPos _marker;
     //if (isARRAY(pp_cities_whitelist) && {count(pp_cities_whitelist) > 0 && {not(_town_name in pp_cities_whitelist)}}) exitWith {};
 
-    _garage = (nearestObjects [_marker_pos, ["Land_i_Shed_Ind_F", "Land_Carrier_01_base_F"], 50]) select 0;
+    _garage = (nearestObjects [_marker_pos, ["Land_FuelStation_01_workshop_F", "Land_i_Shed_Ind_F", "Land_Carrier_01_base_F"], 50]) select 0;
     if (!isOBJECT(_garage)) exitWith {
       diag_log format["No garage near %1", _marker];
     };

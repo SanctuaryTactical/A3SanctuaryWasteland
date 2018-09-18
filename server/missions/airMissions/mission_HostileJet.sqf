@@ -133,12 +133,6 @@ _successExec =
 
 	[_box2] spawn STPopCrateSmoke;
 
-	/*//Scotsman - Pop Smoke
-	_smoke1= "SmokeShellGreen" createVehicle getPos _box2;
-	_smoke1 attachto [_box2,[0,0,-0.5]];
-	_flare1= "F_40mm_Green" createVehicle getPos _box2;
-	_flare1 attachto [_box2,[0,0,-0.5]];*/
-
 };
 
 _this call airMissionProcessor;

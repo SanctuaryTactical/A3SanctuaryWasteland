@@ -63,11 +63,11 @@ if (!isNil "_owner") then
 				{
 					_planeButton ctrlEnable false;
 				};
-				case "boats":
+				/*case "boats":
 				{
 					_boatButton ctrlEnable false;
 				};
-				/*case "submarines":
+				case "submarines":
 				{
 					_subButton	ctrlShow false;
 				};*/

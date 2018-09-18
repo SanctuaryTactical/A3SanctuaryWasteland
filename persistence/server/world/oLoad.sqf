@@ -75,42 +75,28 @@ _exclObjectIDs = [];
 		_obj setVariable ["baseSaving_spawningTime", diag_tickTime];
 		_obj setVariable ["objectLocked", true, true]; // force lock
 
-		//The Scotsman - Restore resupply crate
+		//ST: Restore resupply crate behaviour
 		if(_obj isKindOf "B_CargoNet_01_ammo_F") then {
 
 			_obj setVariable ["A3W_purchasedVehicle", true];
 			_obj setVariable ["A3W_resupplyTruck", true];
 
 			[_obj] remoteExecCall ["A3W_fnc_setupResupplyTruck", 0, _obj];
-		};
-
-		if( _obj isKindOf "Land_Cargo20_military_green_F" ) then {
-
-			_cargo = "ContainerSupply" createVehicle [0,0,0];
-			_cargo attachTo [_obj];
-			//_cargo hideObject true;
-
 
 		};
 
-		if (_allowDamage > 0) then
-		{
+		//ST: HACK - Don't allow damage on base parts
+		if (_allowDamage > 0) then {
 			_obj allowDamage false;
 			_obj setDamage _damage;
-			//_obj setVariable ["allowDamage", true, true];
 			_obj setVariable ["allowDamage", false, true];
-		}
-		else
-		{
+		} else {
 			_obj setVariable ["allowDamage", false, true];
 			_obj allowDamage false;
 			_obj setDamage 0;
 		};
 
-		if (!isNil "_owner") then
-		{
-			_obj setVariable ["ownerUID", _owner, true];
-		};
+		if (!isNil "_owner") then { _obj setVariable ["ownerUID", _owner, true] };
 
 		private _uavSide = if (isNil "_playerSide") then { sideUnknown } else { _playerSide };
 		private _uavAuto = true;
@@ -119,8 +105,22 @@ _exclObjectIDs = [];
 			_var = _x select 0;
 			_value = _x select 1;
 
-			switch (_var) do
-			{
+			//TODO: "objects" = [["kits", 0],["water", 0],["cannedfood",0]]
+			//TODO: Why do I need "Kits" FOODSACKS dont' require this?
+
+			//MF_ITEMS_JERRYCAN_EMPTY = "jerrycanempty";
+			//MF_ITEMS_JERRYCAN_FULL = "jerrycanfull";
+			//MF_ITEMS_SYPHON_HOSE = "syphonhose";
+			//repairkit
+			//spawnbeacon
+			//pinlock
+			//extinguisher
+			//artillery
+			//camonet
+
+			switch (_var) do {
+				case "kits": { _value };
+				case "jerrycanfull": { _value };
 				case "side": { _value = _value call _strToSide };
 				case "cmoney": { if (_value isEqualType "") then { _value = parseNumber _value } };
 				case "R3F_Side": { _value = _value call _strToSide };
@@ -132,17 +132,15 @@ _exclObjectIDs = [];
 				case "R3F_LOG_disabled": { _value }; // SAFE
 				case "ownerName":
 				{
-					switch (typeName _value) do
-					{
-						case "ARRAY": { _value = toString _value };
-						case "STRING":
+					switch (typeName _value) do {
+					case "ARRAY": { _value = toString _value };
+					case "STRING":
 						{
-							if (_savingMethod == "iniDB") then
-							{
+							if (_savingMethod == "iniDB") then {
 								_value = _value call iniDB_Base64Decode;
 							};
 						};
-						default { _value = "[Beacon]" };
+					default { _value = "[Beacon]" };
 					};
 				};
 				case "uavSide":
@@ -159,28 +157,36 @@ _exclObjectIDs = [];
 			};
 
 			_obj setVariable [_var, _value, true];
+
 		} forEach _variables;
 
 		//keypad
-		if( _obj isKindOf "Land_Noticeboard_F" ) then {
+		if( _obj isKindOf "Land_Noticeboard_F" ) then { _obj setObjectTextureGlobal [0, "media\keypad.paa"]; };
 
-				_obj setObjectTextureGlobal [0, "media\keypad.paa"];
+		//ST: Lighting
+		if( _obj getVariable ["lights","off"] == "off" || _obj isKindOf "Lamps_base_F" || _obj isKindOf "Land_PortableLight_single_F" || _obj isKindOf "Land_PortableLight_double_F" ) then {
 
-		};
-
-		if( _obj isKindOf "ContainmentArea_01_forest_F") then {
-			_obj setVectorUp [0,0,-1];
-		};
-
-		// Base locker lights
-		if (_obj getVariable ["lights",""] == "off") then
-		{
+			_obj setHit ["light_1_hitpoint", 0.97];
+			_obj setHit ["light_2_hitpoint", 0.97];
+			_obj setHit ["light_3_hitpoint", 0.97];
+			_obj setHit ["light_4_hitpoint", 0.97];
 			_obj setHit ["light_1_hit", 0.97];
+			_obj setHit ["light_2_hit", 0.97];
+			_obj setHit ["light_3_hit", 0.97];
+			_obj setHit ["light_4_hit", 0.97];
+			_obj switchLight "OFF";
+
 		};
 
-		if (unitIsUAV _obj) then {
+		//ST: Canadian Flag
+		if( _obj isKindOf "Flag_White_F") then { _obj setFlagTexture "media\ca-flag.paa"; };
+
+		//ST: Opening Roof Panel (This inverts the object so it looks better)
+		if( _obj isKindOf "ContainmentArea_01_forest_F") then { _obj setVectorUp [0,0,-1]; };
+
+		/* if (unitIsUAV _obj) then {
 			[_obj, _uavSide, false, _uavAuto] spawn fn_createCrewUAV;
-		};
+		}; */
 
 		clearWeaponCargoGlobal _obj;
 		clearMagazineCargoGlobal _obj;
@@ -200,12 +206,12 @@ _exclObjectIDs = [];
 			default { false };
 		};
 
-		if (_unlock) then
-		{
+		if (_unlock) then {
+
 			_obj setVariable ["objectLocked", false, true];
-		}
-		else
-		{
+
+		} else {
+
 			if (_boxSavingOn && {_class call _isBox}) then
 			{
 				if (!isNil "_weapons") then
@@ -265,14 +271,15 @@ _exclObjectIDs = [];
 	};
 } forEach _objects;
 
-if (_warchestMoneySavingOn) then
-{
+if (_warchestMoneySavingOn) then {
+
 	_amounts = call compile preprocessFileLineNumbers format ["%1\getWarchestMoney.sqf", _methodDir];
 
 	pvar_warchest_funds_west = (_amounts select 0) max 0;
 	publicVariable "pvar_warchest_funds_west";
 	pvar_warchest_funds_east = (_amounts select 1) max 0;
 	publicVariable "pvar_warchest_funds_east";
+
 };
 
 diag_log format ["A3Wasteland - world persistence loaded %1 objects from %2", _objCount, call A3W_savingMethodName];

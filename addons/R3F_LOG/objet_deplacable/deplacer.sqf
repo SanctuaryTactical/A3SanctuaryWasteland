@@ -309,6 +309,10 @@ else
 							_objet setVectorUp [0,0,-1];
 						};
 
+						if( _objet isKindOf "Land_NetFence_01_m_8m_F" || _objet isKindOf "Land_NetFence_01_m_4m_F" || _objet isKindOf "Land_NetFence_01_m_pole_F" ) then {
+							[_objet, 90,0] call BIS_fnc_setPitchBank;
+						};
+
 						// En fonction de la touche appuy�e (F/R), on fait avancer ou reculer l'objet
 						if (R3F_LOG_joueur_deplace_key_translation == "F" || R3F_LOG_joueur_deplace_key_translation == "R") then
 						{

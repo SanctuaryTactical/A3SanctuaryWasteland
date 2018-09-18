@@ -15,6 +15,9 @@ if ( count _keypads > 0 ) then {
 	_keypad = _keypads select 0;
 	_doors = (nearestObjects [_keypad, ["Land_Bunker_01_blocks_3_F", "Land_Bunker_01_blocks_1_F"], 10]);
 
+	//Must have power generator nearby
+	//if( count (nearestObjects [_keypad, ["Land_PowerGenerator_F"], 200) == 0 ) then { hint "No Power Generator could be found, go to the General Store and buy one!"; };
+
 	if( count _doors > 0 ) then {
 
 		//Close Door

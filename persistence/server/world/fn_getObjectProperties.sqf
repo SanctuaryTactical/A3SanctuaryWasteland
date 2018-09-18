@@ -19,6 +19,12 @@ _allowDamage = if (_obj getVariable ["allowDamage", false]) then { 1 } else { 0 
 
 _variables = [];
 
+private _artiCount = [_obj getVariable "artillery"] param [0,0,[0]];
+if (_artiCount >= 1) then
+{
+	_variables pushBack ["artillery", 1]; // capped at 1 for safety
+};
+
 switch (true) do
 {
 	case (_obj isKindOf "Land_Sacks_goods_F"):
@@ -33,11 +39,19 @@ switch (true) do
 	{
 		_variables pushBack ["water", _obj getVariable ["water", 500]];
 	};
+	case (_obj isKindOf "Land_RepairDepot_01_green_F"):
+	{
+		_variables pushBack ["kits", _obj getVariable ["kits", 100]];
+	};
+	case ( _obj isKindOf "CargoNet_01_barrels_F"):
+	{
+		_variables pushBack ["jerrycanfull", _obj getVariable ["jerrycanfull", 50]];
+	};
 	case (_obj isKindOf "Land_DataTerminal_01_F"):
 	{
 		_variables pushBack ["keypads", _obj getVariable ["keypads", 75]];
 	};
-	case (_obj isKindOf "Land_CratesWooden_F"):
+	case (_obj isKindOf "Land_FoodSacks_01_large_brown_idap_F"):
 	{
 		_variables pushBack ["food", _obj getVariable ["food", 500]];
 	};
@@ -113,6 +127,7 @@ switch (true) do
 	case ( _obj isKindOf "Land_Noticeboard_F"):
 	{
 		_variables pushBack ["password", _obj getVariable ["password", ""]];
+		_variables pushBack ["interior", _obj getVariable ["interior", false]];
 	};
 };
 //BASE - SAFE LOCKING End

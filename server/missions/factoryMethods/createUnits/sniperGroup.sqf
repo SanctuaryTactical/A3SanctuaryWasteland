@@ -6,7 +6,7 @@
 
 if (!isServer) exitWith {};
 
-private ["_group","_pos","_leader","_man2","_man3","_man4","_man5","_man6"];
+private ["_group","_pos","_leader","_man2","_man3","_man4","_man5","_man6", "_man7", "_man8", "_man9", "_man10", "_man11", "_man12", "_man13", "_man14"];
 
 _group = _this select 0;
 _pos = _this select 1;
@@ -101,6 +101,64 @@ _man8 addWeapon "launch_I_Titan_F";
 _man8 addMagazine "Titan_AA";
 _man8 addMagazine "Titan_AA";
 _man8 selectWeapon "launch_I_Titan_F";
+
+_man9 = _group createUnit ["C_man_polo_3_F", [_pos select 0, (_pos select 1) + 30, 0], [], 1, "Form"];
+_man9 addUniform "U_I_Ghilliesuit";
+_man9 addVest "V_HarnessOSpec_brn";
+_man9 addBackpack "B_Carryall_oli";
+_man9 addMagazine "10Rnd_762x51_Mag";
+_man9 addWeapon "srifle_DMR_01_F";
+_man9 addPrimaryWeaponItem "optic_Holosight";
+_man9 addMagazine "10Rnd_762x51_Mag";
+_man9 addMagazine "10Rnd_762x51_Mag";
+_man9 addMagazine "RPG32_F";
+_man9 addWeapon "launch_RPG32_F";
+_man9 addMagazine "RPG32_F";
+_man9 addMagazine "RPG32_F";
+_man9 addMagazine "RPG32_F";
+_man9 selectWeapon "launch_RPG32_F";
+
+_man10 = _group createUnit ["C_man_polo_2_F", [(_pos select 0) - 30, _pos select 1, 0], [], 1, "Form"];
+_man10 addUniform "U_I_Ghilliesuit";
+_man10 addVest "V_PlateCarrierIA1_dgtl";
+_man10 addMagazine "5Rnd_127x108_APDS_Mag";
+_man10 addWeapon "srifle_GM6_SOS_F";
+_man10 addMagazine "5Rnd_127x108_APDS_Mag";
+_man10 addMagazine "5Rnd_127x108_APDS_Mag";
+
+_man11 = _group createUnit ["C_man_polo_2_F", [(_pos select 0) - 30, _pos select 1, 0], [], 1, "Form"];
+_man11 addUniform "U_I_Ghilliesuit";
+_man11 addVest "V_PlateCarrierIA1_dgtl";
+_man11 addMagazine "5Rnd_127x108_APDS_Mag";
+_man11 addWeapon "srifle_GM6_SOS_F";
+_man11 addMagazine "5Rnd_127x108_APDS_Mag";
+_man11 addMagazine "5Rnd_127x108_APDS_Mag";
+
+_man12 = _group createUnit ["C_man_polo_3_F", [_pos select 0, (_pos select 1) + 30, 0], [], 1, "Form"];
+_man12 addUniform "U_I_Ghilliesuit";
+_man12 addVest "V_PlateCarrierIA1_dgtl";
+_man12 addMagazine "20Rnd_762x51_Mag";
+_man12 addWeapon "srifle_EBR_SOS_F";
+_man12 addMagazine "20Rnd_762x51_Mag";
+_man12 addMagazine "20Rnd_762x51_Mag";
+_man12 addItem "Rangefinder";
+
+_man13 = _group createUnit ["C_man_polo_3_F", [_pos select 0, (_pos select 1) + 30, 0], [], 1, "Form"];
+_man13 addUniform "U_I_Ghilliesuit";
+_man13 addVest "V_PlateCarrierIA1_dgtl";
+_man13 addMagazine "20Rnd_762x51_Mag";
+_man13 addWeapon "srifle_EBR_SOS_F";
+_man13 addMagazine "20Rnd_762x51_Mag";
+_man13 addMagazine "20Rnd_762x51_Mag";
+_man13 addItem "Rangefinder";
+
+_man14 = _group createUnit ["C_man_polo_2_F", [(_pos select 0) - 30, _pos select 1, 0], [], 1, "Form"];
+_man14 addUniform "U_I_Ghilliesuit";
+_man14 addVest "V_PlateCarrierIA1_dgtl";
+_man14 addMagazine "5Rnd_127x108_APDS_Mag";
+_man14 addWeapon "srifle_GM6_SOS_F";
+_man14 addMagazine "5Rnd_127x108_APDS_Mag";
+_man14 addMagazine "5Rnd_127x108_APDS_Mag";
 
 sleep 0.1; // Without this delay, headgear doesn't get removed properly
 

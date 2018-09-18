@@ -20,6 +20,7 @@
 #define OTHER_INDEX 6
 #define TRANSMITTER_INDEX 7
 #define PAYROLL_INDEX 8
+#define GLOBAL_BONUS 10000
 
 #define BLUEFOR_COLOR "#52bf90"
 #define OPFOR_COLOR "#52bf90"
@@ -31,6 +32,7 @@ _timeInterval = ["A3W_payrollInterval", 30*60] call getPublicVar;
 _moneyAmount = ["A3W_payrollAmount", 100] call getPublicVar;
 
 _territoryCapped = false;
+_all_territories = count currentTerritoryDetails;
 
 while {true} do
 {
@@ -141,6 +143,13 @@ while {true} do
 
 			_money = _money + (_money * _multiplier);
 			_bonus = format["<br/>Another %1%3 bonus was applied for holding all of the territories in (%2)", [(_multiplier * 100)] call fn_numbersText, _owned, "%"];
+
+		};
+
+		if( _count == _all_territories ) then {
+
+			_money = _money + GLOBAL_BONUS;
+			_bonus = format["<br/>And another bonus of %1 was added for holding all %2 territories!", [GLOBAL_BONUS] call fn_numbersText, _all_territories];
 
 		};
 

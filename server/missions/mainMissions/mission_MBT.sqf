@@ -18,14 +18,13 @@ _setupVars =
 		"B_MBT_01_cannon_F",
 		"O_MBT_02_cannon_F",
 		"I_MBT_03_cannon_F",
-		"B_MBT_01_cannon_F",
-		"O_MBT_02_cannon_F",
-		"I_MBT_03_cannon_F",
-		"I_MBT_03_cannon_F",
 		ST_ABRAMSM1,
 		ST_ABRAMSM2,
 		ST_ABRAMSM1_TUSK,
-		ST_ABRAMSM2_TUSK
+		ST_ABRAMSM2_TUSK,
+		ST_ABRAMS_MC,
+		ST_T140_ANGARA,
+		ST_T140_ANGARA_COMMANDER
 	] call BIS_fnc_selectRandom;
 
 	_missionType = "Main Battle Tank";

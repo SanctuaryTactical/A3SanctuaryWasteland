@@ -21,11 +21,11 @@ _setupObjects =
 
 	_vehicleClass = if (missionDifficultyHard) then
 	{
-		selectRandom ["B_Heli_Attack_01_dynamicLoadout_F", "O_Heli_Attack_02_dynamicLoadout_F", ST_APACHE, ST_APACHE_NORADAR, ST_VENOM1, ST_VENOM2, ST_COBRA, ST_BLACKHAWK, ST_BLACKHAWK2X ] ;
+		selectRandom ["B_Heli_Attack_01_dynamicLoadout_F", "O_Heli_Attack_02_dynamicLoadout_F", ST_APACHE, ST_APACHE_NORADAR, ST_APACHE_GREY, ST_VENOM1, ST_VENOM2, ST_COBRA, ST_BLACKHAWK ] ;
 	}
 	else
 	{
-		selectRandom [["B_Heli_Light_01_dynamicLoadout_F", "pawneeNormal"], ["O_Heli_Light_02_dynamicLoadout_F", "orcaDAGR"], "I_Heli_light_03_dynamicLoadout_F", ST_APACHE, ST_APACHE_NORADAR, ST_VENOM1, ST_VENOM2, ST_COBRA, ST_BLACKHAWK, ST_BLACKHAWK2X];
+		selectRandom [["B_Heli_Light_01_dynamicLoadout_F", "pawneeNormal"], ["O_Heli_Light_02_dynamicLoadout_F", "orcaDAGR"], "I_Heli_light_03_dynamicLoadout_F", ST_APACHE, ST_APACHE_NORADAR, ST_VENOM1, ST_VENOM2, ST_COBRA, ST_BLACKHAWK ];
 	};
 
 	_createVehicle =
@@ -164,13 +164,6 @@ _successExec =
 		[_box2, "mission_USLaunchers"] call fn_refillbox;
 
 		[_box2] spawn STPopCrateSmoke;
-
-		//Scotsman - Pop Smoke
-		/*_smoke1= "SmokeShellGreen" createVehicle getPos _box2;
-		_smoke1 attachto [_box2,[0,0,-0.5]];
-		_flare1= "F_40mm_Green" createVehicle getPos _box2;
-		_flare1 attachto [_box2,[0,0,-0.5]];*/
-
 
 	};
 

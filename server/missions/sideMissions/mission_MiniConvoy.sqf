@@ -22,18 +22,13 @@ _setupObjects =
 	private ["_starts", "_startDirs", "_waypoints"];
 	call compile preprocessFileLineNumbers format ["mapConfig\convoys\%1.sqf", _missionLocation];
 
-	// pick the vehicles for the convoy
-	_convoyVeh = if (missionDifficultyHard) then
-	{
-		["I_G_Offroad_01_armed_F", "I_Truck_02_transport_F", "I_G_Offroad_01_F"]
-	}
-	else
-	{
-		[
-			["B_Quadbike_01_F", "C_Van_01_box_F", "B_Quadbike_01_F"],
-			["I_G_Offroad_01_F", "I_Truck_02_transport_F", "I_G_Offroad_01_F"]
-		] call BIS_fnc_selectRandom;
-	};
+
+	_convoyVeh = [
+	[ST_ABRAMSM2, "O_Truck_03_covered_F", ST_ABRAMS_MC],
+	[ST_BRADLEY, ST_M10_COVERED,ST_ABRAMSM2],
+	[ST_LINEBACKER, "I_Truck_02_transport_F", ST_BRADLEY],
+	[ST_LINEBACKER, "I_Truck_02_transport_F", "O_APC_Tracked_02_AA_F"],
+	[ST_BRADLEY, ST_M10_COVERED, ST_BRADLEY]] call BIS_fnc_selectRandom;
 
 	_veh1 = _convoyVeh select 0;
 	_veh2 = _convoyVeh select 1;

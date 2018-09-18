@@ -67,10 +67,10 @@ _code =
 ["take-food-sack", [_label, _code, [], 0, true, true, "", _condition]] call mf_player_actions_set;
 
 _label = "<img image='client\icons\cannedfood.paa'/> Take Canned Food";
-_condition = "{_x getVariable ['food', 0] >= 1} count nearestObjects [player, ['Land_CratesWooden_F'], 3] > 0 && !(MF_ITEMS_CANNED_FOOD call mf_inventory_is_full)";
+_condition = "{_x getVariable ['food', 0] >= 1} count nearestObjects [player, ['Land_FoodSacks_01_large_brown_idap_F'], 3] > 0 && !(MF_ITEMS_CANNED_FOOD call mf_inventory_is_full)";
 _code =
 {
-	_objs = nearestObjects [player, ["Land_CratesWooden_F"], 5];
+	_objs = nearestObjects [player, ["Land_FoodSacks_01_large_brown_idap_F"], 5];
 
 	if (count _objs > 0) then
 	{
@@ -103,7 +103,6 @@ _code =
 
 
 // Take Water from White water container
-
 _label = "<img image='client\icons\water.paa'/> Fill Water Bottle";
 _condition = "{_x getVariable ['water', 0] >= 1} count nearestObjects [player, ['Land_BarrelWater_F'], 3] > 0 && !(MF_ITEMS_WATER call mf_inventory_is_full)";
 _code =
@@ -191,7 +190,6 @@ _code =
 ["take-water-tank", [_label, _code, [], 0, true, true, "", _condition]] call mf_player_actions_set;
 
 // Take Water from Well
-
 _label = "<img image='client\icons\water.paa'/> Fill Water Bottle";
 _condition = "player distance cursorObject <= 3 && {{(str cursorObject) find _x != -1} count [': stallwater_f',': water_source_f'] > 0 && !(MF_ITEMS_WATER call mf_inventory_is_full)}";
 _code =

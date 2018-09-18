@@ -26,13 +26,12 @@ _setupVars =
 		"O_Heli_Attack_02_dynamicLoadout_F",
 		"I_Heli_light_03_dynamicLoadout_F",
 		ST_APACHE,
+		ST_APACHE_GREY,
 		ST_APACHE_NORADAR,
 		ST_VENOM1,
 		ST_VENOM2,
 		ST_COBRA,
 		ST_BLACKHAWK,
-		ST_BLACKHAWK2X,
-		ST_BLACKHAWK4X,
 		ST_LITTLE_BIRD
 	];
 

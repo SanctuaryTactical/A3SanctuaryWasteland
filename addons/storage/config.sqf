@@ -11,7 +11,6 @@ ps_markers_enabled = true;
 //shape, type, color, size, text (for map markers, if enabled)
 ps_markers_properties = ["ICON", "mil_dot", "ColorUNKNOWN", [1,1], "Storage"];
 
-
 //Arma 3 Storage container class (see list below)
 /*
 	"Supply100" (maximumLoad = 100)

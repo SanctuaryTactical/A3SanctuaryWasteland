@@ -7,7 +7,7 @@
 if (!isServer) exitwith {};
 #include "moneyMissionDefines.sqf";
 
-private ["_convoyVeh","_veh1","_veh2","_veh3","_veh4","_veh5", "_veh6", "_createVehicle","_pos","_rad","_vehiclePosArray","_vPos1","_vPos2","_vPos3","_vehiclePos1","_vehiclePos2","_vehiclePos3","_vehiclePos4","_vehicles","_leader","_speedMode","_waypoint","_vehicleName","_numWaypoints","_cash","_box1","_box2","_box3"];
+private ["_convoyVeh","_veh1","_veh2","_veh3","_veh4","_veh5", "_veh6", "_veh7", "_veh8", "_tanks", "_support", "_aas", "_pos","_rad","_vehiclePosArray","_vPos1","_vPos2","_vPos3","_vehiclePos1","_vehiclePos2","_vehiclePos3","_vehiclePos4","_vehicles","_leader","_speedMode","_waypoint","_vehicleName","_numWaypoints"];
 
 _setupVars =
 {
@@ -15,81 +15,41 @@ _setupVars =
 	_locationsArray = nil;
 };
 
-_setupObjects =
-{
+_setupObjects = {
 	_town = (call cityList) call BIS_fnc_selectRandom;
 	_missionPos = markerPos (_town select 0);
 
-	//_convoyVeh = ["I_MRAP_03_hmg_F","I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_MRAP_03_gmg_F", "I_MBT_03_cannon_F"];
+	//Eight Vehicles in an Altis Patrol
+	//Three Tanks,
+	//Three Support (Bradly, HMG, GMG)
+	//Two AA
+	_tanks = [ST_KUMA, ST_VARSUK, ST_SLAMMER, ST_SLAMMER_UP, ST_ABRAMSM1, ST_ABRAMSM1_TUSK, ST_T140_ANGARA, ST_T140_ANGARA_COMMANDER];
+	_support = [ST_KAMYSH, ST_MARSHALL, ST_GORGON, ST_MORA,ST_HUNTER_GMG, ST_HUNTER_HMG, ST_STRIDER_GMG, ST_IFRIT_GMG, ST_IFRIT_HMG, ST_LINEBACKER, ST_MGS_RHINO, ST_MGS_RHINO_UP, ST_AWC_NYX_AT, ST_BRADLEY];
+	_aas = [ST_TIGRIS, ST_CHEETAH, ST_AWC_NYX_AA];
 
-	_convoyVeh =
-	[
-		["I_MRAP_03_hmg_F",ST_ABRAMSM1,"O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F",ST_BRADLEY1, "I_MBT_03_cannon_F"],
-		["I_MRAP_03_hmg_F","I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F", "I_MBT_03_cannon_F",ST_LINEBACKER, "I_MBT_03_cannon_F"],
-		[ST_BRADLEY1,ST_ABRAMSM2_TUSK,ST_LINEBACKER,"I_MBT_03_cannon_F","I_MRAP_03_gmg_F", "I_MBT_03_cannon_F"],
-		[ST_BRADLEY1,"I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F",ST_BRADLEY1, "I_MBT_03_cannon_F"],
-		["I_MRAP_03_hmg_F","I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","I_MRAP_03_gmg_F", "I_MBT_03_cannon_F"],
-		[ST_BRADLEY2,"I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F",ST_LINEBACKER, "I_MBT_03_cannon_F"],
-		[ST_BRADLEY2,"I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F", "I_MBT_03_cannon_F"],
-		["I_MRAP_03_hmg_F","I_MBT_03_cannon_F","O_APC_Tracked_02_AA_F","I_MBT_03_cannon_F",ST_BRADLEY2, "I_MBT_03_cannon_F"]
-	] call BIS_fnc_selectRandom;
-
-	_veh1 = _convoyVeh select 0;
-	_veh2 = _convoyVeh select 1;
-	_veh3 = _convoyVeh select 2;
-	_veh4 = _convoyVeh select 3;
-	_veh5 = _convoyVeh select 4;
-	_veh6 = _convoyVeh select 5;
-
-	_createVehicle = {
-		private ["_type","_position","_direction","_vehicle","_soldier"];
-
-		_type = _this select 0;
-		_position = _this select 1;
-		_direction = _this select 2;
-
-		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
-		[_vehicle] call vehicleSetup;
-
-		_vehicle setDir _direction;
-		_aiGroup addVehicle _vehicle;
-
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInDriver _vehicle;
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInCommander _vehicle;
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInGunner _vehicle;
-
-		//_vehicle setVehicleLock "UNLOCKED";  // force vehicles to be unlocked
-		//_vehicle setVariable ["R3F_LOG_disabled", false, true]; // force vehicles to be unlocked
-		_vehicle setVariable ["R3F_LOG_disabled", true, true]; // force vehicles to be locked
-		[_vehicle, _aiGroup] spawn checkMissionVehicleLock; // force vehicles to be locked
-
-		_vehicle
-	};
+	_veh1 = _support call BIS_fnc_selectRandom;
+	_veh2 = _support call BIS_fnc_selectRandom;
+	_veh3 = _tanks call BIS_fnc_selectRandom;
+	_veh4 = _tanks call BIS_fnc_selectRandom;
+	_veh5 = _tanks call BIS_fnc_selectRandom;
+	_veh6 = _aas call BIS_fnc_selectRandom;
+	_veh7 = _aas call BIS_fnc_selectRandom;
+	_veh8 = _support call BIS_fnc_selectRandom;
 
 	_aiGroup = createGroup CIVILIAN;
 
-	//_pos = getMarkerPos (_town select 0);
 	_rad = _town select 1;
-	_vehiclePosArray = [_missionPos,_rad,_rad + 50,6,0,0,0] call findSafePos;
-	/*_vPos1 = _vehiclePosArray select 0;
-	_vPos2 = _vehiclePosArray select 1;
-	_vPos3 = _vehiclePosArray select 2;
-	_vehiclePos1 = [_vPos1 + 5, _vPos2 + 5, _vPos3];
-	_vehiclePos2 = [_vPos1 + 10, _vPos2 + 10, _vPos3];
-	_vehiclePos3 = [_vPos1 + 15, _vPos2 + 15, _vPos3];
-	_vehiclePos4 = [_vPos1 + 20, _vPos2 + 20, _vPos3];*/
+	_vehiclePosArray = [_missionPos,_rad,_rad + 50,8,0,0,0] call findSafePos;
 
-	_vehicles =
-	[
-		[_veh1, _vehiclePosArray, 0] call _createVehicle,
-		[_veh2, _vehiclePosArray, 0] call _createVehicle,
-		[_veh3, _vehiclePosArray, 0] call _createVehicle,
-		[_veh4, _vehiclePosArray, 0] call _createVehicle,
-		[_veh5, _vehiclePosArray, 0] call _createVehicle,
-		[_veh6, _vehiclePosArray, 0] call _createVehicle
+	_vehicles = [
+		[_veh1, _vehiclePosArray, 0, _aiGroup] call STCreateVehicle,
+		[_veh2, _vehiclePosArray, 0, _aiGroup] call STCreateVehicle,
+		[_veh3, _vehiclePosArray, 0, _aiGroup] call STCreateVehicle,
+		[_veh4, _vehiclePosArray, 0, _aiGroup] call STCreateVehicle,
+		[_veh5, _vehiclePosArray, 0, _aiGroup] call STCreateVehicle,
+		[_veh6, _vehiclePosArray, 0, _aiGroup] call STCreateVehicle,
+		[_veh7, _vehiclePosArray, 0, _aiGroup] call STCreateVehicle,
+		[_veh8, _vehiclePosArray, 0, _aiGroup] call STCreateVehicle
 	];
 
 	_leader = effectiveCommander (_vehicles select 0);
@@ -151,37 +111,16 @@ _drop_item =
 	_obj setVariable ["mf_item_id", _id, true];
 };
 
-_successExec =
-{
+_successExec = {
 
-	// Mission completed
-	for "_x" from 1 to 5 do
-	{
-		_cash = "Land_Money_F" createVehicle markerPos _marker;
-		_cash setPos ((markerPos _marker) vectorAdd ([[2 + random 2,0,0], random 360] call BIS_fnc_rotateVector2D));
-		_cash setDir random 360;
-		_cash setVariable["cmoney",4000,true];
-		_cash setVariable["owner","world",true];
-	};
+	//A Fixed amount of cash
+	[_marker, 50000] call STFixedCashReward;
 
-	_box1 = "Box_East_Wps_F" createVehicle getMarkerPos _marker;
-    //[_box1,"mission_USLaunchers"] call fn_refillbox;
-    [_box1,"mission_USLaunchers"] call randomCrateLoadOut;
-	_box1 allowDamage false;
-
-	_box2 = "Box_NATO_Wps_F" createVehicle getMarkerPos _marker;
-	//[_box2,"mission_USSpecial2"] call fn_refillbox;
-	[_box2,"mission_USSpecial2"] call randomCrateLoadOut;
-	_box2 allowDamage false;
-
-	_box3 = "Box_NATO_Support_F" createVehicle getMarkerPos _marker;
-    //[_box3,"mission_Main_A3snipers"] call fn_refillbox;
-    [_box3,"mission_Main_A3snipers"] call randomCrateLoadOut;
-	_box3 allowDamage false;
-
-	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box1, _box2, _box3];
+	//Random Number of Crates
+	[_marker, [2,8]] call STRandomCratesReward;
 
 	_successHintMessage = "The patrol has been stopped, the money, crates and vehicles are yours to take.";
+
 };
 
 _this call moneyMissionProcessor;
