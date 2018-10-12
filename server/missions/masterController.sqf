@@ -9,7 +9,7 @@ _ctrlTypes =
 	"mainMission",
 	"moneyMission",
 	"sideMission",
-	"PrimaryMission",
+	"PatrolMission",
 	"airMission",
 	"assaultMission"
 ];

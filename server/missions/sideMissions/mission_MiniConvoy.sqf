@@ -9,79 +9,48 @@
 if (!isServer) exitwith {};
 #include "sideMissionDefines.sqf";
 
-private ["_convoyVeh", "_veh1", "_veh2", "_veh3", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_box1", "_box2"];
+private ["_pos", "_class", "_transport", "_escorts", "_vehicle", "_boxes", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints" ];
 
-_setupVars =
-{
+_setupVars = {
 	_missionType = "Truck Convoy";
 	_locationsArray = LandConvoyPaths;
 };
 
-_setupObjects =
-{
+_setupObjects = {
+
 	private ["_starts", "_startDirs", "_waypoints"];
 	call compile preprocessFileLineNumbers format ["mapConfig\convoys\%1.sqf", _missionLocation];
 
-
-	_convoyVeh = [
-	[ST_ABRAMSM2, "O_Truck_03_covered_F", ST_ABRAMS_MC],
-	[ST_BRADLEY, ST_M10_COVERED,ST_ABRAMSM2],
-	[ST_LINEBACKER, "I_Truck_02_transport_F", ST_BRADLEY],
-	[ST_LINEBACKER, "I_Truck_02_transport_F", "O_APC_Tracked_02_AA_F"],
-	[ST_BRADLEY, ST_M10_COVERED, ST_BRADLEY]] call BIS_fnc_selectRandom;
-
-	_veh1 = _convoyVeh select 0;
-	_veh2 = _convoyVeh select 1;
-	_veh3 = _convoyVeh select 2;
-
-	_createVehicle =
-	{
-		private ["_type", "_position", "_direction", "_vehicle", "_soldier"];
-
-		_type = _this select 0;
-		_position = _this select 1;
-		_direction = _this select 2;
-
-		_vehicle = createVehicle [_type, _position, [], 0, "NONE"];
-		_vehicle setVariable ["R3F_LOG_disabled", true, true];
-		_vehicle setVariable ["A3W_skipAutoSave", true, true];
-		[_vehicle] call vehicleSetup;
-
-		_vehicle setDir _direction;
-		_aiGroup addVehicle _vehicle;
-
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInDriver _vehicle;
-
-		_soldier = [_aiGroup, _position] call createRandomSoldier;
-		_soldier moveInCargo [_vehicle, 0];
-
-		switch (true) do
-		{
-			case (_type isKindOf "Offroad_01_armed_base_F"):
-			{
-				_soldier = [_aiGroup, _position] call createRandomSoldier;
-				_soldier moveInGunner _vehicle;
-			};
-			case (_type isKindOf "C_Van_01_box_F"):
-			{
-				[_vehicle, "\A3\Soft_F_Bootcamp\Van_01\Data\Van_01_ext_IG_01_CO.paa", [0]] call applyVehicleTexture; // Apply camo instead of civilian color
-			};
-		};
-
-		[_vehicle, _aiGroup] spawn checkMissionVehicleLock;
-
-		_vehicle
-	};
-
 	_aiGroup = createGroup CIVILIAN;
 
-	_vehicles =
-	[
-		[_veh1, _starts select 0, _startDirs select 0] call _createVehicle,
-		[_veh2, _starts select 1, _startDirs select 1] call _createVehicle,
-		[_veh3, _starts select 2, _startDirs select 2] call _createVehicle
-	];
+	_transport = [ST_M10_COVERED,ST_M10_FLATBED,ST_ZAMAK_FUEL,ST_ZAMAK_MEDICAL,ST_ZAMAK_BOX,ST_ZAMAK_TRANSPORT,ST_ZAMAK_COVERED,ST_HEMIT_TRANSPORT,ST_HEMIT_COVERED,ST_HEMIT_BOX,ST_HEMIT_REPAIR,ST_HEMIT_AMMO,ST_HEMIT_FUEL,ST_HEMIT_MEDICAL,ST_TEMPIST_TRANSPORT,ST_TEMPIST_REPAIR,ST_TEMPIST_AMMO,ST_TEMPIST_FUEL,ST_TEMPIST_MEDICAL,ST_TEMPIST_DEVICE] call BIS_fnc_selectRandom;
+	_escorts = [ST_ABRAMSM2, ST_BRADLEY, ST_LINEBACKER, ST_KUMA, ST_VARSUK, ST_SLAMMER, ST_CHEETAH, ST_TIGRIS, ST_KAMYSH, ST_T140_ANGARA, ST_T140_ANGARA_COMMANDER, ST_AWC_NYX_AA, ST_AWC_NYX_AT, ST_MGS_RHINO, ST_QLIN_AT];
+	_vehicles = [];
+
+	_vehicles set [0, ([_transport, _starts select 0, _startDirs select 0, _aiGroup] call STCreateVehicle)];
+	_count = [3,6] call BIS_fnc_randomInt;
+
+	//Extra infantry in transport to deal with
+	for "_x" from 0 to _count do {
+
+		_soldier = [_aiGroup, (_starts select 0)] call createRandomSoldier;
+	  _soldier triggerDynamicSimulation true;
+	  _soldier moveInAny (_vehicles select 0);
+
+	};
+
+	//Number of Escorts
+	_count = [2,5] call BIS_fnc_randomInt;
+	_pos = getPos (_vehicles select 0);
+
+	for "_x" from 0 to _count do {
+
+		_class = _escorts call BIS_fnc_selectRandom;
+
+		_vehicle = [_class, _pos vectorAdd ([[random 50, 0, 0], random 360] call BIS_fnc_rotateVector2D), _startDirs select 0, _aiGroup] call STCreateVehicle;
+		_vehicles set [_x + 1, _vehicle];
+
+	};
 
 	_leader = effectiveCommander (_vehicles select 0);
 	_aiGroup selectLeader _leader;
@@ -106,34 +75,38 @@ _setupObjects =
 
 	_missionPos = getPosATL leader _aiGroup;
 
-	_missionPicture = getText (configFile >> "CfgVehicles" >> _veh2 >> "picture");
-	_vehicleName = getText (configFile >> "CfgVehicles" >> _veh2 >> "displayName");
+	_missionPicture = getText (configFile >> "CfgVehicles" >> _transport >> "picture");
+	_vehicleName = getText (configFile >> "CfgVehicles" >> _transport >> "displayName");
 
-	_missionHintText = format ["A <t color='%2'>%1</t> transporting 2 weapon crates is being escorted. Stop the convoy!", _vehicleName, sideMissionColor];
+	_missionHintText = format ["A <t color='%2'>%1</t> transporting at least 2 weapon crates is being escorted. Stop the convoy, but don't destroy the transport!", _vehicleName, sideMissionColor];
 
 	_numWaypoints = count waypoints _aiGroup;
+
 };
 
 _waitUntilMarkerPos = {getPosATL _leader};
 _waitUntilExec = nil;
-_waitUntilCondition = {currentWaypoint _aiGroup >= _numWaypoints};
+_waitUntilCondition = {currentWaypoint _aiGroup >= _numWaypoints || !alive (_vehicles select 0)};
 
-_failedExec = nil;
+_failedExec = {
+
+	_failedHintMessage = format ["What the crap?  Did you destroy the transport containing the boxes?  What didn't you understand?"];
+
+};
 
 // _vehicles are automatically deleted or unlocked in missionProcessor depending on the outcome
 
-_successExec =
-{
-	// Mission completed
-	_box1 = createVehicle ["Box_NATO_Wps_F", _lastPos, [], 2, "NONE"];
-	_box1 setDir random 360;
-	[_box1, "mission_USSpecial2"] call fn_refillbox;
+// Mission completed
+_successExec = {
 
-	_box2 = createVehicle ["Box_East_WpsSpecial_F", _lastPos, [], 2, "NONE"];
-	_box2 setDir random 360;
-	[_box2, "mission_USLaunchers"] call fn_refillbox;
+	//Random Number of Crates
+	_boxes = [(getMarkerPos _marker), [2, 8]] call STRandomCratesReward;
+
+	//Load reward crates into vehicle.
+	nul = [(_vehicles select 0), _boxes] execVM "addons\R3F_LOG\auto_load_in_vehicle.sqf";
 
 	_successHintMessage = "The convoy has been stopped, the weapon crates and vehicles are now yours to take.";
+
 };
 
 _this call sideMissionProcessor;

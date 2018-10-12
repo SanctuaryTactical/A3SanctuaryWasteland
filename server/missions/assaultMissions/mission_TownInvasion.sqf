@@ -110,7 +110,7 @@ _successExec = {
 	{ _x setVariable ["R3F_LOG_disabled", false, true] } forEach [_box1, _box2, _box3];
 
 	//Add some cash
-	[_marker, _reward] call STFixedCashReward;
+	[(markerPos _marker), _reward] call STFixedCashReward;
 
 	_successHintMessage = format ["Nice work!<br/><br/><t color='%1'>%2</t><br/>is a safe place again!<br/>Their belongings and <t color='%1'>%3</t> in cash are now yours to take!", assaultMissionColor, _townName, _moneyText];
 

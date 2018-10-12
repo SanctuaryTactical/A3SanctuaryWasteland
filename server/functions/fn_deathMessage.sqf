@@ -49,13 +49,13 @@ params [["_killer",_killerName,[""]], ["_victim",_victimName,[""]]]; // custom n
 					switch (true) do
 					{
 						case (_killer == ""):                                { format ["%1 was injured", _victim] }; // injured by self or unknown sources
-						case (_aiKiller):                                    { format ["%1 was injured by AI", _victim] }; // injured by AI
+						case (_aiKiller):                                    { format ["%1 was injured by Gary...", _victim] }; // injured by AI
 						case (_friendlyFire && _victimCause == "roadkill"):  { format ["%1 injured %2 with vehicle (friendly fire)", _killer, _victim] }; // roadkill injury by friendly
 						default                                              { format ["%1 injured %2%3", _killer, _victim, [""," (friendly fire)"] select _friendlyFire] }; // injured by other player
 					};
 				};
-				case (_aiKiller):           { format ["%1 was killed by AI", _victim] }; // vehicle destroyed by AI
-				case (_killer != ""): 
+				case (_aiKiller):           { format ["%1 was killed by Gary", _victim] }; // vehicle destroyed by AI
+				case (_killer != ""):
 				{
 					if (_friendlyFire) then { format ["%1 teamkilled %2", _killer, _victim] } // destroyed friendly vehicle, crashed vehicle with friendlies on board
 					else                    { format ["%1 killed %2", _killer, _victim] } // destroyed enemy vehicle

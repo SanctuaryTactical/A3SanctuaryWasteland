@@ -35,7 +35,7 @@ switch (true) do
 	{
 		_variables pushBack ["water", _obj getVariable ["water", 20]];
 	};
-	case (_obj isKindOf "Land_WaterTank_F"):
+	case (_obj isKindOf "Land_WaterBottle_01_stack_F"):
 	{
 		_variables pushBack ["water", _obj getVariable ["water", 500]];
 	};

@@ -88,5 +88,24 @@ _action2 = {
 
 ["repair-kit-get", [_label2, _action2, [], 0, true, true, "", _condition2]] call mf_player_actions_set;
 
+
+//ST: Stand on guard for thee
+_label = "Stand on guard";
+_condition = "player distance cursorObject <= 5 && cursortarget iskindof 'Flag_White_F'";
+_code = {
+
+	//sound
+	playSound3d [MISSION_ROOT + "media\ohcanada.ogg", player, true, getPosASL player, 2];
+
+	player playActionNow "Salute";
+
+	sleep 15;
+
+	player playActionNow "saluteOff";
+
+};
+
+["stand-on-guard", [_label, _code, [], 0, true, true, "", _condition]] call mf_player_actions_set;
+
 //TODO: Can put stuff in here
 //Land_ToolTrolley_02_F

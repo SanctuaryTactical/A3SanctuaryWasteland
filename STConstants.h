@@ -60,6 +60,13 @@
 #define ST_C130 "RHS_C130J"
 #define ST_F22 "rhsusf_f22"
 
+#define ST_BLACK_WASP "B_Plane_Fighter_01_F"
+#define ST_WIPEOUT "B_Plane_CAS_01_dynamicLoadout_F"
+#define ST_NEOPHRON "O_Plane_CAS_02_dynamicLoadout_F"
+#define ST_SHIKRA "O_Plane_Fighter_02_F"
+#define ST_BUZZARD "I_Plane_Fighter_03_dynamicLoadout_F"
+#define ST_GRYPHON "I_Plane_Fighter_04_F"
+
 //Cars & Trucks
 #define ST_HUMVEE_UNARMED "rhsusf_m1025_d"
 #define ST_HUMVEE_ARMED1 "rhsusf_m1025_d_m2"
@@ -118,6 +125,45 @@
 
 #define ST_POWER_GENERATOR "Land_PowerGenerator_F"
 
+//ZAMAK
+#define ST_ZAMAK_FUEL "O_Truck_02_fuel_F"
+#define ST_ZAMAK_MEDICAL "O_Truck_02_medical_F"
+#define ST_ZAMAK_BOX "O_Truck_02_box_F"
+#define ST_ZAMAK_TRANSPORT "O_Truck_02_transport_F"
+#define ST_ZAMAK_COVERED "O_Truck_02_covered_F"
+
+//HEMIT
+#define ST_HEMIT_TRANSPORT "B_Truck_01_transport_F"
+#define ST_HEMIT_COVERED "B_Truck_01_covered_F"
+#define ST_HEMIT_BOX "B_Truck_01_box_F"
+#define ST_HEMIT_REPAIR "B_Truck_01_Repair_F"
+#define ST_HEMIT_AMMO "B_Truck_01_ammo_F"
+#define ST_HEMIT_FUEL "B_Truck_01_fuel_F"
+#define ST_HEMIT_MEDICAL "B_Truck_01_medical_F"
+
+//Tempist
+#define ST_TEMPIST_TRANSPORT "O_Truck_03_transport_F"
+#define ST_TEMPIST_REPAIR "O_Truck_03_repair_F"
+#define ST_TEMPIST_AMMO "O_Truck_03_ammo_F"
+#define ST_TEMPIST_FUEL "O_Truck_03_fuel_F"
+#define ST_TEMPIST_MEDICAL "O_Truck_03_medical_F"
+#define ST_TEMPIST_DEVICE "O_Truck_03_device_F"
+
+//NAVY
+#define ST_SHIP_FRIGATE "HAFM_MEKO_TN"
+#define ST_ATTACK_BOAT "HAFM_CB90_BLU"
+#define ST_SHIP_FREMM "HAFM_FREMM"
+#define ST_GUN_BOAT "HAFM_GunBoat_BLU"
+#define ST_SHIP_LAYFAYETTE "HAFM_MEKO_HN"
+#define ST_SHIP_SUPPLY "HAFM_Replenishment"
+#define ST_SHIP_ADMIRAL "HAFM_Admiral"
+#define ST_SHIP_CORVETTE "HAFM_BUYAN"
+
+//Submarines
+#define ST_VIRGINA "HAFM_Virginia"
+#define ST_TYPE214 "HAFM_214"
+#define ST_TYPE209 "HAFM_209"
+#define ST_YASEN "HAFM_Yasen"
 //Boats
 //ST_ATTACK_BOAT = "rhsusf_mkvsoc";
 

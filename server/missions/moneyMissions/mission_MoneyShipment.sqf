@@ -6,165 +6,133 @@
 //	@file Author: JoSchaap / routes by Del1te - (original idea by Sanjo), AgentRev
 //	@file Created: 31/08/2013 18:19
 
-if (!isServer) exitwith {};
 #include "moneyMissionDefines.sqf";
 
-private ["_MoneyShipment", "_reward", "_convoys", "_vehChoices", "_moneyText", "_vehClasses", "_vehicles", "_veh2", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_cash"];
+#define SHIPMENT_SMALL 30000
+#define SHIPMENT_MEDIUM 50000
+#define SHIPMENT_LARGE 80000
+#define SHIPMENT_HEAVY 100000
+
+if (!isServer) exitwith {};
+
+private ["_reward", "_helos", "_scouts", "_tanks", "_tank", "_support", "_aa", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints"];
 
 _setupVars = {
 
 	_locationsArray = LandConvoyPaths;
+	_missionType = "Money Shipment";
+	_reward = [SHIPMENT_SMALL, SHIPMENT_MEDIUM, SHIPMENT_LARGE, SHIPMENT_HEAVY] call BIS_fnc_selectRandom;
 
-	// Money Shipments settings
-	// Difficulties : Min = 1, Max = infinite
-	// Convoys per difficulty : Min = 1, Max = infinite
-	// Vehicles per convoy : Min = 1, Max = infinite
-	// Choices per vehicle : Min = 1, Max = infinite
+	_helos = [
+		ST_BLACKFOOT,
+		ST_KAJMAN,
+		ST_APACHE,
+		ST_APACHE_GREY,
+		ST_APACHE_NORADAR,
+		ST_COBRA
+	];
 
-	//Small - Three Vehicles, One chopper
-	//Medium - Four Vehicles, Two choppers
-	//Large - Five Vehicles, Three Choppers (Escort)
-	//Heavy - Eight Vehicles, Three Choppers (attack)
+	_scouts = [
+		ST_PAWNEE,
+		ST_ORCA,
+		ST_HELLCAT,
+		ST_LITTLE_BIRD
+	];
 
-//NATO, CSAT, AAF
-	_MoneyShipment =
-	[
-		// Easy
-		[
-			"Small Money Shipment", // Marker text
-			30000, // Money
-			[
-				[ // NATO convoy
-					["B_MRAP_01_hmg_F", "B_MRAP_01_gmg_F"], // Veh 1
-					["B_MRAP_01_hmg_F", ST_M113A1], // Veh 2
-					["O_Heli_Light_02_F", "I_Heli_light_03_F"] // Veh 3
-				],
-				[ // CSAT convoy
-					[ST_M113A1, "O_MRAP_02_gmg_F"], // Veh 1
-					[ST_BRADLEY, "O_MRAP_02_gmg_F"], // Veh 2
-					["O_Heli_Light_02_F", "I_Heli_light_03_F"] // Veh 3
-				],
-				[ // AAF convoy
-					["I_MRAP_03_hmg_F", ST_M113A1], // Veh 1
-					[ST_ABRAMS_MC, ST_BRADLEY], // Veh 2
-					["O_Heli_Light_02_F", "I_Heli_light_03_F"] // Veh 3
-				]
-			]
-		],
-		// Medium
-		[
-			"Medium Money Shipment", // Marker text
-			40000, // Money
-			[
-				[ // NATO convoy
-					["B_MRAP_01_hmg_F", "B_MRAP_01_gmg_F"], // Veh 1
-					["B_APC_Wheeled_01_cannon_F", ST_M113A1, "B_APC_Tracked_01_AA_F"], // Veh 2
-					["B_MRAP_01_hmg_F", "B_MRAP_01_gmg_F"], // Veh 3
-					["O_Heli_Light_02_F", "I_Heli_light_03_F"] // Veh 4
-				],
-				[ // CSAT convoy
-					["O_MRAP_02_hmg_F", "O_MRAP_02_gmg_F"], // Veh 1
-					["O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_cannon_F", "O_APC_Tracked_02_AA_F"], // Veh 2
-					[ST_ABRAMS_MC, "O_MRAP_02_gmg_F"], // Veh 3
-					["O_Heli_Light_02_F", "I_Heli_light_03_F"] // Veh 4
-				],
-				[ // AAF convoy
-					["I_MRAP_03_hmg_F", "I_MRAP_03_gmg_F"], // Veh 1
-					["I_APC_Wheeled_03_cannon_F", "I_APC_tracked_03_cannon_F"], // Veh 2
-					["I_MRAP_03_hmg_F", "I_MRAP_03_gmg_F"], // Veh 3
-					[ST_LITTLE_BIRD, ST_LITTLE_BIRD] // Veh 4
-				]
-			]
-		],
-		// Hard
-		[
-			"Large Money Shipment", // Marker text
-			50000, // Money
-			[
-				[ // NATO convoy
-					["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F", "B_APC_Tracked_01_AA_F"], // Veh 1
-					["B_MBT_01_cannon_F", ST_ABRAMSM1], // Veh 2
-					["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F", "B_APC_Tracked_01_AA_F"], // Veh 3
-					["O_Heli_Light_02_F", ST_LITTLE_BIRD], // Veh 4
-					["B_Heli_Attack_01_F", ST_LITTLE_BIRD] //Veh 5
-				],
-				[ // CSAT convoy
-					["O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_cannon_F", "O_APC_Tracked_02_AA_F"], // Veh 1
-					["O_MBT_02_cannon_F"], // Veh 2
-					["O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_cannon_F", "O_APC_Tracked_02_AA_F"], // Veh 3
-					[ST_LITTLE_BIRD, ST_LITTLE_BIRD], // Veh 4
-					["B_Heli_Attack_01_F", "O_Heli_Attack_02_F"] //Veh 5
-				],
-				[ // AAF convoy
-					["I_APC_Wheeled_03_cannon_F", ST_ABRAMS_MC], // Veh 1
-					["O_MBT_02_cannon_F"], // Veh 2
-					["I_APC_Wheeled_03_cannon_F", ST_M113A2], // Veh 3
-					["O_Heli_Light_02_F", "I_Heli_light_03_F"], // Veh 4
-					[ST_LITTLE_BIRD, "O_Heli_Attack_02_F"] //Veh 5
-				]
-			]
-		],
+	_tanks = [ST_KUMA, ST_VARSUK, ST_SLAMMER, ST_SLAMMER_UP, ST_ABRAMSM1, ST_ABRAMSM1_TUSK, ST_T140_ANGARA, ST_T140_ANGARA_COMMANDER];
+	_support = [ST_KAMYSH, ST_MARSHALL, ST_GORGON, ST_MORA, ST_HUNTER_GMG, ST_HUNTER_HMG, ST_STRIDER_GMG, ST_IFRIT_GMG, ST_IFRIT_HMG, ST_LINEBACKER, ST_MGS_RHINO, ST_MGS_RHINO_UP, ST_AWC_NYX_AT, ST_BRADLEY];
+	_aa = [ST_TIGRIS, ST_CHEETAH, ST_AWC_NYX_AA];
 
-		// Extreme
-		[
-			"Heavy Money Shipment", // Marker text
-			80000, // Money
-			[
-				[ // NATO convoy
-					[ST_ABRAMS_MC, "B_APC_Tracked_01_rcws_F", "B_APC_Tracked_01_AA_F", ST_ABRAMSM2_TUSK, "B_MBT_01_TUSK_F"], // Veh 1
-					["B_APC_Tracked_01_AA_F", "B_MBT_01_cannon_F", "B_MBT_01_TUSK_F"], // Veh 2
-					["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F", ST_BRADLEY, "B_MBT_01_cannon_F", ST_ABRAMSM1], // Veh 3
-					["B_APC_Wheeled_01_cannon_F", "B_APC_Tracked_01_rcws_F", "B_APC_Tracked_01_AA_F", "B_MBT_01_cannon_F", "O_MBT_02_cannon_F"], // Veh 4
-					["O_Heli_Light_02_F", "I_Heli_light_03_F"], // Veh 4
-					[ST_LITTLE_BIRD, ST_LITTLE_BIRD], // Veh 5
-					[ST_LITTLE_BIRD, "O_Heli_Attack_02_F"] //Veh 6
-				],
-				[ // CSAT convoy
-					["O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_cannon_F", "O_APC_Tracked_02_AA_F", ST_ABRAMSM1], // Veh 1
-					["O_APC_Tracked_02_AA_F", "O_MBT_02_cannon_F"], // Veh 2
-					["O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_cannon_F", "O_APC_Tracked_02_AA_F", ST_ABRAMSM1], // Veh 3
-					["O_APC_Wheeled_02_rcws_F", "O_APC_Tracked_02_cannon_F", "O_APC_Tracked_02_AA_F", ST_ABRAMS_MC], // Veh 4
-					["O_Heli_Light_02_F", "I_Heli_light_03_F"], // Veh 4
-					["O_Heli_Light_02_F", "I_Heli_light_03_F"], // Veh 5
-					[ST_APACHE, "O_Heli_Attack_02_F"] //Veh 6
-				],
-				[ // AAF convoy
-					["I_APC_Wheeled_03_cannon_F", "I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"], // Veh 1
-					["I_APC_tracked_03_cannon_F", "I_MBT_03_cannon_F"], // Veh 2
-					["I_APC_Wheeled_03_cannon_F", ST_BRADLEY, "O_MBT_02_cannon_F"], // Veh 3
-					[ST_ABRAMS_MC, "I_APC_tracked_03_cannon_F", ST_ABRAMSM2_TUSK], // Veh 4
-					["O_Heli_Light_02_F", "I_Heli_light_03_F"], // Veh 4
-					["O_Heli_Light_02_F", ST_LITTLE_BIRD], // Veh 5
-					["B_Heli_Attack_01_F", ST_LITTLE_BIRD] //Veh 6
-				]
-			]
-		]
-	]
-	call BIS_fnc_selectRandom;
-
-	_missionType = _MoneyShipment select 0;
-	_reward = _MoneyShipment select 1;
-	_convoys = _MoneyShipment select 2;
-	_vehChoices = _convoys call BIS_fnc_selectRandom;
-
-	_moneyText = format ["$%1", [_reward] call fn_numbersText];
-
-	_vehClasses = [];
-	{ _vehClasses pushBack (_x call BIS_fnc_selectRandom) } forEach _vehChoices;
 };
 
 _setupObjects = {
-	private ["_starts", "_startDirs", "_waypoints"];
+
+	private ["_starts", "_startDirs", "_waypoints", "_direction", "_position", "_count"];
 	call compile preprocessFileLineNumbers format ["mapConfig\convoys\%1.sqf", _missionLocation];
 
 	_aiGroup = createGroup CIVILIAN;
 
 	_vehicles = [];
-	{
-		_vehicles pushBack ([_x, _starts select 0, _startdirs select 0, _aiGroup] call STCreateVehicle);
-	} forEach _vehClasses;
 
-	_veh2 = _vehClasses select (1 min (count _vehClasses - 1));
+	//Always at least one tank
+	_tank = _tanks call BIS_fnc_selectRandom;
+	_direction = _startdirs select 0;
+	_position = _starts select 0;
+
+	_vehicles pushBack ([_tank, _position, _direction, _aiGroup] call STCreateVehicle);
+
+	//Small - Three Or Four Vehicles, One chopper
+	//Medium - Four To Six, One chopper
+	//Large - Five To Seven Vehicles, Two Choppers (Escort)
+	//Heavy - Eight To Ten Vehicles, Two Choppers (attack)
+	switch (_reward) do {
+	  case SHIPMENT_SMALL: {
+			_count = [1,2] call BIS_fnc_randomInt;
+			//Random support (2-3)
+
+			//Add Support Chopper
+			_vehicles pushBack ([(_scouts call BIS_fnc_selectRandom), ([_vehicles] call STNextPosition), _direction, _aiGroup] call STCreateVehicle);
+
+		};
+	  case SHIPMENT_MEDIUM: {
+
+			_count = [2,3] call BIS_fnc_randomInt;
+
+			//Add Extra Tank
+			_vehicles pushBack ([(_tanks call BIS_fnc_selectRandom), ([_vehicles] call STNextPosition), _direction, _aiGroup] call STCreateVehicle);
+
+			//Two Random Scout Choppers
+			_vehicles pushBack ([(_scouts call BIS_fnc_selectRandom), ([_vehicles] call STNextPosition), _direction, _aiGroup] call STCreateVehicle);
+			_vehicles pushBack ([(_scouts call BIS_fnc_selectRandom), ([_vehicles] call STNextPosition), _direction, _aiGroup] call STCreateVehicle);
+
+		};
+	 	case SHIPMENT_LARGE: {
+
+			_count = [2,3] call BIS_fnc_randomInt;
+
+			//Random Tanks (2,4)
+			for "_x" from 1 to _count do {
+
+				_vehicles pushBack ([(_tanks call BIS_fnc_selectRandom), ([_vehicles] call STNextPosition), _direction, _aiGroup] call STCreateVehicle);
+
+			};
+
+			//One Attack, One Support Chopper
+			_vehicles pushBack ([(_helos call BIS_fnc_selectRandom), ([_vehicles] call STNextPosition), _direction, _aiGroup] call STCreateVehicle);
+			_vehicles pushBack ([(_scouts call BIS_fnc_selectRandom), ([_vehicles] call STNextPosition), _direction, _aiGroup] call STCreateVehicle);
+
+		};
+		case SHIPMENT_HEAVY: {
+
+			_count = [3,5] call BIS_fnc_randomInt;
+
+			//Random _tanks (3,5)
+			for "_x" from 1 to _count do {
+
+				_vehicles pushBack ([(_tanks call BIS_fnc_selectRandom), ([_vehicles] call STNextPosition), _direction, _aiGroup] call STCreateVehicle);
+
+			};
+
+			//Two Attack Choppers
+			_vehicles pushBack ([(_helos call BIS_fnc_selectRandom), ([_vehicles] call STNextPosition), _direction, _aiGroup] call STCreateVehicle);
+			_vehicles pushBack ([(_helos call BIS_fnc_selectRandom), ([_vehicles] call STNextPosition), _direction, _aiGroup] call STCreateVehicle);
+
+		};
+	};
+
+	//Support Vehicles
+	for "_x" from 1 to _count do {
+
+		_vehicles pushBack ([(_support call BIS_fnc_selectRandom), ([_vehicles] call STNextPosition), _direction, _aiGroup] call STCreateVehicle);
+
+	};
+
+	//50% Chance of AA unit
+	if( 51 > random 100 ) then {
+
+		_vehicles pushBack ([(_aa call BIS_fnc_selectRandom), ([_vehicles] call STNextPosition), _direction, _aiGroup] call STCreateVehicle);
+
+	};
 
 	_leader = effectiveCommander (_vehicles select 0);
 	_aiGroup selectLeader _leader;
@@ -189,10 +157,10 @@ _setupObjects = {
 
 	_missionPos = getPosATL leader _aiGroup;
 
-	_missionPicture = getText (configFile >> "CfgVehicles" >> _veh2 >> "picture");
-	_vehicleName = getText (configFile >> "cfgVehicles" >> _veh2 >> "displayName");
+	_missionPicture = getText (configFile >> "CfgVehicles" >> _tank >> "picture");
+	_vehicleName = getText (configFile >> "cfgVehicles" >> _tank >> "displayName");
 
-	_missionHintText = format ["A convoy transporting <t color='%1'>%2</t> escorted by a <t color='%1'>%3</t> is en route to an unknown location.<br/>Stop them!", moneyMissionColor, _moneyText, _vehicleName];
+	_missionHintText = format ["A convoy transporting an unknown amount of money escorted by a <t color='%1'>%2</t> is en route to an unknown location.<br/>Stop them!", moneyMissionColor, _vehicleName];
 
 	_numWaypoints = count waypoints _aiGroup;
 };
@@ -204,11 +172,10 @@ _waitUntilCondition = {currentWaypoint _aiGroup >= _numWaypoints};
 _failedExec = nil;
 
 // _vehicles are automatically deleted or unlocked in missionProcessor depending on the outcome
-
 _successExec = {
 
 	// Mission completed
-	[_marker, _reward] call STFixedCashReward;
+	[_lastPos, _reward] call STFixedCashReward;
 
 	_successHintMessage = "The convoy has been stopped, the money and vehicles are now yours to take.";
 };

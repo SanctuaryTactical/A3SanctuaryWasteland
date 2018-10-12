@@ -76,7 +76,7 @@ _exclObjectIDs = [];
 		_obj setVariable ["objectLocked", true, true]; // force lock
 
 		//ST: Restore resupply crate behaviour
-		if(_obj isKindOf "B_CargoNet_01_ammo_F") then {
+		if(_obj isKindOf "B_CargoNet_01_ammo_F" || _obj isKindOf "Land_RepairDepot_01_green_F" ) then {
 
 			_obj setVariable ["A3W_purchasedVehicle", true];
 			_obj setVariable ["A3W_resupplyTruck", true];
@@ -180,6 +180,9 @@ _exclObjectIDs = [];
 
 		//ST: Canadian Flag
 		if( _obj isKindOf "Flag_White_F") then { _obj setFlagTexture "media\ca-flag.paa"; };
+
+		//ST: [1ST] Flag
+		if( _obj isKindOf "Flag_Green_F") then { _obj setFlagTexture "media\st-flag.paa"; };
 
 		//ST: Opening Roof Panel (This inverts the object so it looks better)
 		if( _obj isKindOf "ContainmentArea_01_forest_F") then { _obj setVectorUp [0,0,-1]; };

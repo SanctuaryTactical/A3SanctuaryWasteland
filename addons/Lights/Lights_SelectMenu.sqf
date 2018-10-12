@@ -9,7 +9,7 @@
 #define PLAYER_CONDITION "((vehicle player == player || vehicle player != player) && {!isNull cursorTarget})"
 #define ITEM_CONDITION "{cursortarget iskindof 'Land_PowerGenerator_F'} && {(player distance cursortarget) < 5}"
 #define OBJECT_CONDITION "{cursorTarget getVariable ['objectLocked', false]}"
-#define IS_LIGHT "{(typeof cursortarget) in ['Lamps_base_F','Land_PortableLight_single_F', 'Land_PortableLight_double_F']} && {(player distance cursortarget) < 5}"
+#define IS_LIGHT "{(typeof cursortarget) in ['Land_LampHarbour_F','Land_PortableLight_single_F', 'Land_PortableLight_double_F']} && {(player distance cursortarget) < 5}"
 
 Lights_on =  {
 
@@ -28,6 +28,8 @@ Light_on =  {
 		cursorTarget switchLight "ON";
 		cursorTarget setHit ["light_1_hitpoint", 0];
 		cursorTarget setHit ["light_2_hitpoint", 0];
+
+		//[_x, false] call BIS_fnc_switchLamp;
 
 	};
 

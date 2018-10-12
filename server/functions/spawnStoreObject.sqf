@@ -294,7 +294,7 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 					_object setVariable ["water", 50, true];
 				};
 				// Add water to bought water tanks.
-				case ({_object isKindOf _x} count ["Land_WaterTank_F"] > 0):
+				case ({_object isKindOf _x} count ["Land_WaterBottle_01_stack_F"] > 0):
 				{
 					_object setVariable ["water", 500, true];
 				};
@@ -322,6 +322,11 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 				{
 					_object setFlagTexture "media\ca-flag.paa";
 				};
+				case ({_object isKindOf _x} count ["Flag_Green_F"] > 0):
+				{
+					//ST: [1ST] Flag
+				 	_object setFlagTexture "media\st-flag.paa";
+				};
 				case ({_object isKindOf _x} count ["Land_Cargo40_white_F"] > 0):
 				{
 					[_object, [["Land_Cargo_Tower_V1_F",2],["Land_GH_Platform_F",10],["Land_Canal_Wall_Stairs_F", 10],["Land_BarGate_F", 4],["Land_Cargo_Patrol_V1_F", 4],["Land_HBarrierWall6_F", 10],["Land_Canal_WallSmall_10m_F", 20],["Land_LampHalogen_F", 10], ["Land_RampConcreteHigh_F",4], ["Land_RampConcrete_F", 4],["Land_Crash_barrier_F",6],["B_GMG_01_F",2],["B_static_AA_F",2],["B_static_AT_F",2],["B_Quadbike_01_F",4],["C_Heli_light_01_digital_F",1]] ] execVM "addons\R3F_LOG\auto_load_in_vehicle.sqf";
@@ -347,6 +352,22 @@ if (_key != "" && isPlayer _player && {_isGenStore || _isGunStore || _isVehStore
 				case ({_object isKindOf _x} count ["Land_RepairDepot_01_green_F"] > 0):
 				{
 						_object setVariable ["kits", 100, true];
+						_object setVariable ["A3W_purchasedVehicle", true];
+						_object setVariable ["A3W_resupplyTruck", true];
+
+						[_object] remoteExecCall ["A3W_fnc_setupResupplyTruck", 0, _object];
+
+				};
+				case ({_object isKindOf _x} count ["Land_Flush_Light_green_F", "Land_runway_edgelight_blue_F" ] > 0):
+				{
+
+					private _posSurf = getPos _object;
+					private _posASL = getPosASL _object;
+
+					if (_posSurf select 2 < 1) then{
+						_object setPosASL [_posSurf select 0, _posSurf select 1, (_posASL select 2) - (_posSurf select 2) + 1.05];
+					};
+
 				};
 				case ({_object isKindOf _x} count ["CargoNet_01_barrels_F"] > 0):
 				{

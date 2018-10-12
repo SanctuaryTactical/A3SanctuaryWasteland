@@ -114,10 +114,10 @@ _drop_item =
 _successExec = {
 
 	//A Fixed amount of cash
-	[_marker, 50000] call STFixedCashReward;
+	[(markerPos _marker), 50000] call STFixedCashReward;
 
 	//Random Number of Crates
-	[_marker, [2,8]] call STRandomCratesReward;
+	[(getMarkerPos _marker), [2,4]] call STRandomCratesReward;
 
 	_successHintMessage = "The patrol has been stopped, the money, crates and vehicles are yours to take.";
 

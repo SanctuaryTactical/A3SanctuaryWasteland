@@ -113,7 +113,7 @@ _successExec =
 	// Mission completed
 	[_marker, [50000, 100000]] call STRandomCashReward;
 
-	[_marker, [5, 10]] call STRandomCratesReward;
+	[(getMarkerPos _marker), [3, 7]] call STRandomCratesReward;
 
 	_successHintMessage = "The sky is clear again, the enemy supply drop was taken out! Cargo has fallen near the wreck, go find it!.";
 };

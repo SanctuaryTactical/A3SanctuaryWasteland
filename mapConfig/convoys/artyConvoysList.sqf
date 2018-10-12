@@ -7,6 +7,5 @@
 [
 	"artyConvoy_1",
 	"artyConvoy_2",
-	"artyConvoy_3",
-	"artyConvoy_4"
+	"artyConvoy_3"
 ]

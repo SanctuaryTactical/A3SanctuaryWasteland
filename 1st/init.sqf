@@ -12,3 +12,5 @@ STRandomCratesReward = ["1st", "STRandomCratesReward.sqf"] call mf_compile;
 STFillCrate = ["1st", "STFillCrate.sqf"] call mf_compile;
 STCreateVehicle = ["1st", "STCreateVehicle.sqf"] call mf_compile;
 STCreateSpecialCrate = ["1st", "STCreateSpecialCrate.sqf"] call mf_compile;
+STParaDropObject = ["1st", "STParaDropObject.sqf"] call mf_compile;
+STNextPosition = ["1st", "STNextPosition.sqf"] call mf_compile;

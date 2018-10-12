@@ -20,5 +20,5 @@ APOC_AA_SupOptions =
   ["Launchers", "airdrop_launchers", 12000, "supply"],
   ["Supplies", 	"airdrop_supplies", 10000, "supply"],
   ["Food", "Land_Sacks_goods_F",	3000, "picnic"],
-  ["Water", "Land_BarrelWater_F",	3000, "picnic"]
+  ["Water", "Land_WaterBottle_01_stack_F",	3000, "picnic"]
 ];

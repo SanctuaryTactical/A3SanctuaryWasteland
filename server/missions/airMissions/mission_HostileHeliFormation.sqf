@@ -7,118 +7,30 @@
 if (!isServer) exitwith {};
 #include "airMissionDefines.sqf"
 
-private ["_heliChoices", "_convoyVeh", "_veh1", "_veh2", "_veh3", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_vehicleName2", "_numWaypoints", "_box1", "_box2", "_box3"];
+private ["_type", "_leader", "_speedMode", "_waypoint", "_vehicle", "_vehicles", "_vehicleName", "_vehicleName2", "_numWaypoints", "_box1", "_box2", "_box3", "_count"];
 
-_setupVars =
-{
+_setupVars = {
 	_missionType = "Hostile Helicopters";
 	_locationsArray = nil; // locations are generated on the fly from towns
 };
 
-_setupObjects =
-{
+_setupObjects = {
+
 	_missionPos = markerPos (((call cityList) call BIS_fnc_selectRandom) select 0);
 
-	_heliChoices =
-	[
-		["B_Heli_Transport_01_F", ["B_Heli_Light_01_dynamicLoadout_F", "pawneeNormal"]],
-		["B_Heli_Transport_01_camo_F", ["O_Heli_Light_02_dynamicLoadout_F", "orcaDAGR"]],
-		["B_Heli_Transport_01_F", "I_Heli_light_03_dynamicLoadout_F"],
-		[ST_APACHE, ST_APACHE],
-		[ST_COBRA, ST_COBRA],
-		[ST_BLACKHAWK, ST_BLACKHAWK],
-		[ST_VENOM2, ST_VENOM2],
-		[ST_APACHE_GREY, ST_APACHE_GREY]
-	];
-
-	if (missionDifficultyHard) then
-	{
-		(_heliChoices select 0) set [0, "B_Heli_Attack_01_dynamicLoadout_F"];
-		(_heliChoices select 1) set [0, "O_Heli_Attack_02_dynamicLoadout_F"];
-		(_heliChoices select 2) set [0, "O_Heli_Attack_02_dynamicLoadout_F"];
-	};
-
-	_convoyVeh = _heliChoices call BIS_fnc_selectRandom;
-
-	_veh1 = _convoyVeh select 0;
-	_veh2 = _convoyVeh select 1;
-	_veh3 = _convoyVeh select 1;
-
-	_createVehicle =
-	{
-		private ["_type", "_position", "_direction", "_variant", "_vehicle", "_soldier"];
-
-		_type = _this select 0;
-		_position = _this select 1;
-		_direction = _this select 2;
-		_variant = _type param [1,"",[""]];
-
-		if (_type isEqualType []) then
-		{
-			_type = _type select 0;
-		};
-
-		_vehicle = createVehicle [_type, _position, [], 0, "FLY"];
-		_vehicle setVariable ["R3F_LOG_disabled", true, true];
-
-		if (_variant != "") then
-		{
-			_vehicle setVariable ["A3W_vehicleVariant", _variant, true];
-		};
-
-		[_vehicle] call vehicleSetup;
-
-		_vehicle setDir _direction;
-		_aiGroup addVehicle _vehicle;
-
-		// add a driver/pilot/captain to the vehicle
-		// the little bird, orca, and hellcat do not require gunners and should not have any passengers
-		_soldier = [_aiGroup, _position] call createRandomSoldierC;
-		_soldier moveInDriver _vehicle;
-
-		switch (true) do
-		{
-			case (_type isKindOf "Heli_Transport_01_base_F"):
-			{
-				// these choppers have 2 turrets so we need 2 gunners
-				_soldier = [_aiGroup, _position] call createRandomSoldierC;
-				_soldier moveInTurret [_vehicle, [1]];
-
-				_soldier = [_aiGroup, _position] call createRandomSoldierC;
-				_soldier moveInTurret [_vehicle, [2]];
-			};
-
-			case (_type isKindOf "Heli_Attack_01_base_F" || _type isKindOf "Heli_Attack_02_base_F"):
-			{
-				// these choppers need 1 gunner
-				_soldier = [_aiGroup, _position] call createRandomSoldierC;
-				_soldier moveInGunner _vehicle;
-			};
-		};
-
-		// remove flares because it overpowers AI choppers
-		if (_type isKindOf "Air") then
-		{
-			{
-				if (["CMFlare", _x] call fn_findString != -1) then
-				{
-					_vehicle removeMagazinesTurret [_x, [-1]];
-				};
-			} forEach getArray (configFile >> "CfgVehicles" >> _type >> "magazines");
-		};
-
-		[_vehicle, _aiGroup] spawn checkMissionVehicleLock;
-		_vehicle
-	};
+	_type = [ST_BLACKHAWK, ST_LITTLE_BIRD,ST_APACHE,ST_APACHE,ST_APACHE,ST_APACHE_GREY,ST_APACHE_GREY,ST_APACHE_GREY,ST_APACHE_GREY,ST_VENOM1,ST_VENOM1, ST_COBRA,ST_COBRA,ST_COBRA,ST_BLACKFOOT,ST_KAJMAN,ST_PAWNEE,ST_PAWNEE, ST_ORCA,ST_HELLCAT] call BIS_fnc_selectRandom;
+	_count = [2,4] call BIS_fnc_randomInt;
 
 	_aiGroup = createGroup CIVILIAN;
 
-	_vehicles =
-	[
-		[_veh1, _missionPos vectorAdd ([[random 50, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0] call _createVehicle,
-		[_veh2, _missionPos vectorAdd ([[random 50, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0] call _createVehicle,
-		[_veh3, _missionPos vectorAdd ([[random 50, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0] call _createVehicle
-	];
+	_vehicles = [];
+
+	for "_x" from 1 to _count do {
+
+		_vehicle = [_type, _missionPos vectorAdd ([[random 100, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0, _aiGroup] call STCreateVehicle;
+		_vehicles set [_x - 1, _vehicle];
+
+	};
 
 	_leader = effectiveCommander (_vehicles select 0);
 	_aiGroup selectLeader _leader;
@@ -148,7 +60,7 @@ _setupObjects =
 	_vehicleName = getText (configFile >> "CfgVehicles" >> (_veh1 param [0,""]) >> "displayName");
 	_vehicleName2 = getText (configFile >> "CfgVehicles" >> (_veh2 param [0,""]) >> "displayName");
 
-	_missionHintText = format ["A formation of armed helicopters containing a <t color='%3'>%1</t> and two <t color='%3'>%2</t> are patrolling the island. Destroy them and recover their cargo!", _vehicleName, _vehicleName2, airMissionColor];
+	_missionHintText = format ["A formation of at least two armed helicopters are patrolling the island. Destroy them and recover their cargo!", _vehicleName, _vehicleName2, airMissionColor];
 
 	_numWaypoints = count waypoints _aiGroup;
 };
@@ -161,25 +73,13 @@ _failedExec = nil;
 
 // _vehicles are automatically deleted or unlocked in missionProcessor depending on the outcome
 
-_successExec =
-{
+_successExec = {
+
 	// Mission completed
-
-	_box1 = createVehicle ["Box_NATO_Wps_F", _lastPos, [], 5, "NONE"];
-	_box1 setDir random 360;
-	[_box1, "mission_USSpecial"] call fn_refillbox;
-
-	_box2 = createVehicle ["Box_East_Wps_F", _lastPos, [], 5, "NONE"];
-	_box2 setDir random 360;
-	[_box2, "mission_USLaunchers"] call fn_refillbox;
-
-	_box3 = createVehicle ["Box_IND_WpsSpecial_F", _lastPos, [], 5, "NONE"];
-	_box3 setDir random 360;
-	[_box3, "mission_Main_A3snipers"] call fn_refillbox;
+	//Random Number of Crates
+	[(getMarkerPos _marker), [1, 3], true] call STRandomCratesReward;
 
 	_successHintMessage = "The sky is clear again, the enemy patrol was taken out! Ammo crates have fallen near the wreck.";
-
-	[_box3] spawn STPopCrateSmoke;
 
 };
 

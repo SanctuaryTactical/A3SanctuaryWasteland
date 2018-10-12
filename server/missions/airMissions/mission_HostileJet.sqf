@@ -21,11 +21,14 @@ _setupObjects =
 
 	_planeChoices =
 	[
-		["B_Plane_CAS_01_F"],
-		["O_Plane_CAS_02_F"],
-		["I_Plane_Fighter_03_CAS_F"],
-		["I_Plane_Fighter_04_F"],
-		["O_Plane_Fighter_02_F"]
+		[ST_A10],
+		[ST_F22],
+		[ST_BLACK_WASP],
+		[ST_WIPEOUT],
+		[ST_NEOPHRON],
+		[ST_SHIKRA],
+		[ST_BUZZARD],
+		[ST_GRYPHON]
 	];
 
 	_convoyVeh = _planeChoices call BIS_fnc_selectRandom;
@@ -52,9 +55,10 @@ _setupObjects =
 		// add pilot
 		_soldier = [_aiGroup, _position] call createRandomPilot;
 		_soldier moveInDriver _vehicle;
-		// lock the vehicle untill the mission is finished and initialize cleanup on it
 
+		// lock the vehicle untill the mission is finished and initialize cleanup on it
 		[_vehicle, _aiGroup] spawn checkMissionVehicleLock;
+
 		_vehicle
 	};
 

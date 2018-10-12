@@ -21,7 +21,7 @@ switch (true) do
 	{
 		_obj setVariable ["water", 50, true];
 	};
-	case (_objClass == "Land_WaterTank_F"):
+	case (_objClass == "Land_WaterBottle_01_stack_F"):
 	{
 		_obj setVariable ["water", 500, true];
 	};

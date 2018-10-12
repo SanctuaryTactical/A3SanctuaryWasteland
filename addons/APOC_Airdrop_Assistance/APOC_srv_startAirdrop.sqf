@@ -281,7 +281,7 @@ WaitUntil {((((position _object) select 2) < 1) || (isNil "_para"))};
 					_object2 setVariable ["R3F_LOG_Disabled", false, true];
 					_object2
 				}; //A very big picnic, no?
-				case "Land_BarrelWater_F": {
+				case "Land_WaterBottle_01_stack_F": {
 					_object2 = createVehicle [_selectionClass, _objectLandPos, [], 0, "NONE"];
 					_object2 setVariable ["water",50, true];
 					_object2 setVariable ["R3F_LOG_Disabled", false, true];

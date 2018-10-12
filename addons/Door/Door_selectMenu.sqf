@@ -6,8 +6,6 @@
 //	@file Author: LouD / Cael817 for original script
 //	@file Description: Door script
 
-//#define PLAYER_CONDITION "(vehicle player == player && {!isNull cursorTarget})"
-//#define PLAYER_CONDITION "({!isNull cursorTarget})"
 #define PLAYER_CONDITION "((vehicle player == player || vehicle player != player) && {!isNull cursorTarget})"
 #define ITEM_CONDITION "{cursortarget iskindof 'Land_Noticeboard_F'} && {(player distance cursortarget) < 10}"
 #define OBJECT_CONDITION "{cursorTarget getVariable ['objectLocked', false]}"

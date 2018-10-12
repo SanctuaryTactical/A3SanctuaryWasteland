@@ -405,10 +405,10 @@ accessoriesArray = compileFinal str
 	["LRPS", "optic_LRPS", 300, "item"],
 	["LRPS (G Hex)", "optic_LRPS_ghex_F", 300, "item"],
 	["LRPS (Tropic)", "optic_LRPS_tna_F", 300, "item"],
-	["NVS", "optic_NVS", 500, "item"],
-	["TWS", "optic_tws", 7500, "item"], // To hide from store list, add "HIDDEN" after "item", like "item", "HIDDEN"]
-	["TWS MG", "optic_tws_mg", 10000, "item"],
-	["Nightstalker", "optic_Nightstalker", 12000, "item"]
+	["NVS", "optic_NVS", 500, "item", "HIDDEN"],
+	["TWS", "optic_tws", 7500, "item", "HIDDEN"], // To hide from store list, add "HIDDEN" after "item", like "item", "HIDDEN"]
+	["TWS MG", "optic_tws_mg", 10000, "item", "HIDDEN"],
+	["Nightstalker", "optic_Nightstalker", 12000, "item", "HIDDEN"]
 ];
 
 // If commented, means the color/camo isn't implemented or is a duplicate of another hat
@@ -809,6 +809,7 @@ genObjectsArray = compileFinal str
 	["Base Door key (PIN: 0000) (beta)", "Land_Noticeboard_F", 20000, "object"],  // LouD
 	["Base Roof (Retractable)", "ContainmentArea_01_forest_F", 75000, "object"],
 	["Base locker (PIN: 0000)", "Land_Device_assembled_F", 250000, "object"],  //Cael817, SNAFU,Used for base operations <-- Destroyable
+	["Boat Rack", "Land_Destroyer_01_Boat_Rack_01_F", 12000, "object"],
 	["Building (Aircraft Hangar)", "Land_Hangar_F", 150000, "object"],
 	["Building (Aircraft Hangar Large)", "Land_Airport_01_hangar_F", 250000, "object"],
 	["Building (Guard House)", "Land_GuardHouse_01_F", 75000, "object"],
@@ -816,7 +817,7 @@ genObjectsArray = compileFinal str
 	["Supplies (Food Sacks)", "Land_Sacks_goods_F", 5000, "object"], // Added on player request
 	["Supplies (Food Crates)", "Land_FoodSacks_01_large_brown_idap_F", 25000, "object"],
 	["Supplies (Water Barrel)", "Land_BarrelWater_F", 5000, "object"], // Added on player request
-	["Supplies (Water Tank)", "Land_WaterTank_F", 25000, "object"],
+	["Supplies (Water Stack)", "Land_WaterBottle_01_stack_F", 25000, "object"],
 	["Supplies (Fuel Barrels)", "CargoNet_01_barrels_F", 50000, "object"],
 	["Empty Ammo Crate", "Box_NATO_Ammo_F", 500, "ammocrate"],
 	["Bag Fence (Corner)", "Land_BagFence_Corner_F", 250, "object"],
@@ -870,6 +871,7 @@ genObjectsArray = compileFinal str
 	["Fence (Long)", "Land_PipeFence_02_s_8m_F", 750, "object"],
 	["Flag (Canada)", "Flag_White_F", 10000, "object"],
 	["Flag (USA)", "Flag_US_F", 10000, "object"],
+	["Flag ([1ST])", "Flag_Green_F", 10000, "object"],
 	["Garbage Container", "Land_GarbageContainer_closed_F", 5000, "object"],
 	["HBarrier (1 block)", "Land_HBarrier_1_F", 500, "object"],
 	["HBarrier (3 blocks)", "Land_HBarrier_3_F", 500, "object"],
@@ -892,7 +894,9 @@ genObjectsArray = compileFinal str
 	["Lamp (Small)", "Land_LampStreet_small_F", 500, "object"],
 	["Lamp (Halogen)","Land_LampHalogen_F", 1500, "object"],
 	["Lamp (Airport)", "Land_LampAirport_F", 2500, "object"],
-	["Light Flush Landing Edgelight", "Land_Flush_Light_green_F", 5000, "object"],
+	["Light Runway edgelight", "Land_runway_edgelight_blue_F", 12000, "object", "HIDDEN"],
+	["Light Flush Landing Edgelight", "Land_Flush_Light_green_F", 15000, "object", "HIDDEN"],
+	["Light Portable Landing", "PortableHelipadLight_01_blue_F", 10000, "object"],
 	["Landing Platform (Extra Large)", "Land_AirstripPlatform_01_F", 150000, "object"],
 	["Landing Platform (Concrete)", "Land_Pier_Box_F", 200000, "object"],
 	["Landing Platform Fence (Short)", "Land_NetFence_01_m_4m_F", 2500, "object", "HIDDEN"],
@@ -938,8 +942,9 @@ genObjectsArray = compileFinal str
 	["Tool Trolly", "Land_ToolTrolley_01_F", 50000, "object"],
 	["Tool Cart", "Land_ToolTrolley_02_F", 50000, "object"],
 	["Workbench", "Land_Workbench_01_F", 50000, "object"],
+	["Windsock", "Windsock_01_F", 10000, "object"],
 	["Hedgehog", "Land_CzechHedgehog_01_new_F", 1500, "object"],
-	["Repair Depot (Use at own Risk)", "Land_RepairDepot_01_green_F", 150000, "object"],
+	["Repair Depot", "Land_RepairDepot_01_green_F", 200000, "object"],
 	["Hangar (Large Left)", "Land_Airport_02_hangar_left_F", 0, "object", "HIDDEN"],
 	["Light (Portable - Single)", "Land_PortableLight_single_F", 2500, "object"],
 	["Light (Portable - Double)", "Land_PortableLight_double_F", 5000, "object"],
@@ -1118,8 +1123,18 @@ boatsArray = compileFinal str
 	["Motorboat", "C_Boat_Civil_01_F", 20000, "boat"],
 	["RHIB", "I_C_Boat_Transport_02_F", 10000, "boat"],
 	["Speedboat Minigun (NATO)", "B_Boat_Armed_01_minigun_F", 15000, "boat"],
-	["SDV Submarine (AAF)", "I_SDV_01_F", 15000, "submarine"]
-	//["MKV", ST_ATTACK_BOAT, 250000, "boat"]
+	["SDV Submarine (AAF)", "I_SDV_01_F", 15000, "submarine"],
+	["Frigate", ST_SHIP_FRIGATE, 4000000, "boat"],
+	["Attack Boat", ST_ATTACK_BOAT, 750000, "boat"],
+	["Fremm", ST_SHIP_FREMM, 4000000, "boat", "HIDDEN"],
+	["Gun Boat", ST_GUN_BOAT, 1500000, "boat"],
+	["Layfayette", ST_SHIP_LAYFAYETTE, 3000000, "boat", "HIDDEN"],
+	["Supply Ship", ST_SHIP_SUPPLY, 1000000, "boat", "HIDDEN"],
+	["Admiral", ST_SHIP_ADMIRAL, 3500000, "boat", "HIDDEN"],
+	["Corvette", ST_SHIP_CORVETTE, 4000000, "boat", "HIDDEN"],
+	["Virginia Class Submarine", ST_VIRGINA, 2500000, "boat"],
+	["Type 214 Submarine", ST_TYPE214, 1750000, "boat", "HIDDEN"],
+	["Type 209 Submarine", ST_TYPE209, 1500000, "boat", "HIDDEN"]
 ];
 
 otherVehicles = compileFinal str

@@ -148,10 +148,10 @@ _code =
 // Take Water from Water Tank
 
 _label = "<img image='client\icons\water.paa'/> Fill Water Bottle";
-_condition = "{_x getVariable ['water', 0] >= 1} count nearestObjects [player, ['Land_WaterTank_F'], 3] > 0 && !(MF_ITEMS_WATER call mf_inventory_is_full)";
+_condition = "{_x getVariable ['water', 0] >= 1} count nearestObjects [player, ['Land_WaterBottle_01_stack_F'], 3] > 0 && !(MF_ITEMS_WATER call mf_inventory_is_full)";
 _code =
 {
-	_objs = nearestObjects [player, ["Land_WaterTank_F"], 5];
+	_objs = nearestObjects [player, ["Land_WaterBottle_01_stack_F"], 5];
 
 	if (count _objs > 0) then
 	{
@@ -171,7 +171,7 @@ _code =
 				_vecUp = vectorUp _this;
 				deleteVehicle _this;
 
-				_obj = createVehicle ["Land_WaterTank_F", _pos, [], 0, "CAN_COLLIDE"];
+				_obj = createVehicle ["Land_WaterBottle_01_stack_F", _pos, [], 0, "CAN_COLLIDE"];
 				_obj setVectorDirAndUp [_vecDir, _vecUp];
 				_obj setDamage 1;
 				sleep 5;

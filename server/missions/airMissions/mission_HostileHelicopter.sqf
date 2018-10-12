@@ -15,21 +15,18 @@ _setupVars =
 	_locationsArray = nil; // locations are generated on the fly from towns
 };
 
-_setupObjects =
-{
+_setupObjects = {
+
 	_missionPos = markerPos (((call cityList) call BIS_fnc_selectRandom) select 0);
 
-	_vehicleClass = if (missionDifficultyHard) then
-	{
+	_vehicleClass = if (missionDifficultyHard) then {
 		selectRandom ["B_Heli_Attack_01_dynamicLoadout_F", "O_Heli_Attack_02_dynamicLoadout_F", ST_APACHE, ST_APACHE_NORADAR, ST_APACHE_GREY, ST_VENOM1, ST_VENOM2, ST_COBRA, ST_BLACKHAWK ] ;
-	}
-	else
-	{
+	} else {
 		selectRandom [["B_Heli_Light_01_dynamicLoadout_F", "pawneeNormal"], ["O_Heli_Light_02_dynamicLoadout_F", "orcaDAGR"], "I_Heli_light_03_dynamicLoadout_F", ST_APACHE, ST_APACHE_NORADAR, ST_VENOM1, ST_VENOM2, ST_COBRA, ST_BLACKHAWK ];
 	};
 
-	_createVehicle =
-	{
+	_createVehicle = {
+
 		private ["_type", "_position", "_direction", "_variant", "_vehicle", "_soldier"];
 
 		_type = _this select 0;

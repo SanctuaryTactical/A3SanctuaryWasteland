@@ -7,35 +7,27 @@
 if (!isServer) exitwith {};
 #include "airMissionDefines.sqf";
 
-private ["_planeChoices", "_convoyVeh", "_veh1", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints", "_cash", "_boxes1","_boxes2","_boxes3","_boxes4","_boxes5","_boxes6", "_box1", "_box2", "_box3", "_box4", "_box5", "_box6", "_currBox1", "_currBox2", "_currBox3", "_currBox4", "_currBox5", "_currBox6"];
+private ["_gunship", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_numWaypoints"];
 
-_setupVars =
-{
+_setupVars = {
+
 	_missionType = "Gunship";
 	_locationsArray = nil; // locations are generated on the fly from towns
+
 };
 
-_setupObjects =
-{
+_setupObjects = {
+
 	_missionPos = markerPos (((call cityList) call BIS_fnc_selectRandom) select 0);
+	_gunship = "B_T_VTOL_01_armed_F";
 
-	_planeChoices =
-	[
-		["B_T_VTOL_01_armed_F"]
-	];
+	_createVehicle = {
 
-	_convoyVeh = _planeChoices call BIS_fnc_selectRandom;
-
-	_veh1 = _convoyVeh select 0;
-
-	_createVehicle =
-	{
 		private ["_type","_position","_direction","_vehicle","_soldier"];
 
 		_type = _this select 0;
 		_position = _this select 1;
 		_direction = _this select 2;
-
 
 		_vehicle = createVehicle [_type, _position, [], 0, "FLY"]; // Added to make it fly
 		_vehicle setVehicleReportRemoteTargets true;
@@ -63,7 +55,6 @@ _setupObjects =
 		_soldier moveInTurret [_vehicle, [2]];
 		// lock the vehicle untill the mission is finished and initialize cleanup on it
 
-
 		[_vehicle, _aiGroup] spawn checkMissionVehicleLock;
 		_vehicle
 	};
@@ -71,7 +62,7 @@ _setupObjects =
 	_aiGroup = createGroup CIVILIAN;
 
 	_vehicles = [];
-	_vehicles set [0, [_veh1,[14574.7,31859.3,0], 14, _aiGroup] call _createVehicle]; // static value update when porting to different maps
+	_vehicles set [0, [_gunship,[14574.7,31859.3,0], 14, _aiGroup] call _createVehicle]; // static value update when porting to different maps
 
 	_leader = effectiveCommander (_vehicles select 0);
 	_aiGroup selectLeader _leader;
@@ -96,8 +87,8 @@ _setupObjects =
 
 	_missionPos = getPosATL leader _aiGroup;
 
-	_missionPicture = getText (configFile >> "CfgVehicles" >> _veh1 >> "picture");
-	_vehicleName = getText (configFile >> "CfgVehicles" >> _veh1 >> "displayName");
+	_missionPicture = getText (configFile >> "CfgVehicles" >> _gunship >> "picture");
+	_vehicleName = getText (configFile >> "CfgVehicles" >> _gunship >> "displayName");
 	_missionHintText = format ["An armed <t color='%2'>%1</t> is patrolling the island. Shoot it down and kill the pilot to recover the money and weapons!", _vehicleName, airMissionColor];
 
 	_numWaypoints = count waypoints _aiGroup;
@@ -111,65 +102,30 @@ _failedExec = nil;
 
 // _vehicles are automatically deleted or unlocked in missionProcessor depending on the outcome
 
-_successExec =
-{
-	// Mission completed
+// Mission completed
+_successExec = {
 
-	//Money
-	/*for "_i" from 1 to 10 do
-	{
-		_cash = createVehicle ["Land_Money_F", _lastPos, [], 5, "NONE"];
-		_cash setPos ([_lastPos, [[2 + random 3,0,0], random 360] call BIS_fnc_rotateVector2D] call BIS_fnc_vectorAdd);
-		_cash setDir random 360;
-		_cash setVariable ["cmoney", 10000, true];
-		_cash setVariable ["owner", "world", true];
-	};*/
+	//Random cash at marker
+	[_marker, [20000,20000,25000,25000,30000,30000,40000,50000,50000,80000]] call STRandomCashReward;
 
-	_Boxes1 = ["Box_NATO_Ammo_F","Box_T_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Equip_F","Box_NATO_Grenades_F","Box_T_NATO_WpsSpecial_F","Box_NATO_WpsLaunch_F"];
-	_currBox1 = _Boxes1 call BIS_fnc_selectRandom;
-	_box1 = createVehicle [_currBox1, _lastPos, [], 2, "NONE"];
-	_box1 setDir random 360;
-	_box1 setVariable ["moveable", true, true];
-	_box1 allowDamage false;
+	//Create FN: STRandomCashReward
+	//[_marker, [20000,30000,30000,30000,30000,40000]] call STRandomCashReward;
 
-	_Boxes2 = ["Box_NATO_Ammo_F","Box_T_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Equip_F","Box_NATO_Grenades_F","Box_T_NATO_WpsSpecial_F","Box_NATO_WpsLaunch_F"];
-	_currBox2 = _Boxes2 call BIS_fnc_selectRandom;
-	_box2 = createVehicle [_currBox2, _lastPos, [], 2, "NONE"];
-	_box2 setDir random 360;
-	_box2 setVariable ["moveable", true, true];
-	_box2 allowDamage false;
+	/* //Random Number of Crates
+	[(getMarkerPos _marker), [2,4]] call STRandomCratesReward; */
 
-	_Boxes4 = ["Box_NATO_Ammo_F","Box_T_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Equip_F","Box_NATO_Grenades_F","Box_T_NATO_WpsSpecial_F","Box_NATO_WpsLaunch_F"];
-	_currBox4 = _Boxes4 call BIS_fnc_selectRandom;
-	_box4 = createVehicle [_currBox4, _lastPos, [], 2, "NONE"];
-	_box4 setDir random 360;
-	_box4 setVariable ["moveable", true, true];
-	_box4 allowDamage false;
+	/* _cash = "Land_Money_F" createVehicle markerPos _position;
+	_cash setPos ((mark>
+	20:57:52   Error position: <markerPos _position;
+	_cash setPos ((mark>
+	20:57:52   Error markerpos: Type Array, expected String
+	20:57:52 File mpmissions\__cur_mp.Altis\1st\STRandomCashReward.sqf, line 20
 
-	_Boxes5 = ["Box_NATO_Ammo_F","Box_T_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Equip_F","Box_NATO_Grenades_F","Box_T_NATO_WpsSpecial_F","Box_NATO_WpsLaunch_F"];
-	_currBox5 = _Boxes5 call BIS_fnc_selectRandom;
-	_box5 = createVehicle [_currBox5, _lastPos, [], 2, "NONE"];
-	_box5 setDir random 360;
-	_box5 setVariable ["moveable", true, true];
-	_box5 allowDamage false;
-
-	_Boxes6 = ["Box_NATO_Ammo_F","Box_T_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Equip_F","Box_NATO_Grenades_F","Box_T_NATO_WpsSpecial_F","Box_NATO_WpsLaunch_F"];
-	_currBox6 = _Boxes6 call BIS_fnc_selectRandom;
-	_box6 = createVehicle [_currBox6, _lastPos, [], 2, "NONE"];
-	_box6 setDir random 360;
-	_box6 setVariable ["moveable", true, true];
-	_box6 allowDamage false;
-
-	_Boxes3 = ["Box_NATO_Ammo_F","Box_T_NATO_Wps_F","Box_NATO_AmmoOrd_F","Box_NATO_Equip_F","Box_NATO_Grenades_F","Box_T_NATO_WpsSpecial_F","Box_NATO_WpsLaunch_F"];
-	_currBox3 = _Boxes3 call BIS_fnc_selectRandom;
-	_box3 = createVehicle [_currBox3, _lastPos, [], 2, "NONE"];
-	_box3 setDir random 360;
-	_box3 setVariable ["moveable", true, true];
-	_box3 allowDamage false;
+	//Random Number of Crates
+	[(getMarkerPos _marker), [2, 5], true] call STRandomCratesReward; */
 
 	_successHintMessage = "The sky is clear again, the enemy Gunship was taken out. Cargo has fallen from the Wreck go find it!.";
 
-	[_box3] spawn STPopCrateSmoke;
 };
 
 _this call airMissionProcessor;

@@ -64,7 +64,7 @@ _setupObjects = {
 
 	[_radar] call vehicleSetup; */
 
-	_boxes = [_missionLocation, [1,4], false, true] call STRandomCratesReward;
+	_boxes = [_missionPos, [1,4], false, true] call STRandomCratesReward;
 
 	_aiGroup = createGroup CIVILIAN;
 	[_aiGroup, _missionPos] spawn createsmugglerGroup;

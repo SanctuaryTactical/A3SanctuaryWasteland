@@ -6,8 +6,9 @@
 //	@file Author: [404] Deadbeat, [404] Costlyy, AgentRev
 //	@file Created: 08/12/2012 15:19
 
-if (!isServer) exitwith {};
 #include "mainMissionDefines.sqf";
+
+if (!isServer) exitwith {};
 
 private ["_vehicle", "_vehicleName", "_vehDeterminer", "_vehicleClass"];
 
@@ -15,21 +16,21 @@ _setupVars =
 {
 	_vehicleClass =
 	[
-		"I_Plane_Fighter_03_CAS_F",
-		"B_Plane_CAS_01_F",
-		"O_Plane_CAS_02_F",
-		"I_Plane_Fighter_04_F",
-		"O_Plane_Fighter_02_F",
+		ST_BLACK_WASP,
+		ST_WIPEOUT,
+		ST_NEOPHRON,
+		ST_SHIKRA,
+		ST_BUZZARD,
 		ST_A10,
-		ST_F22
+		ST_F22,
+		ST_GRYPHON
 	] call BIS_fnc_selectRandom;
 
 	_missionType = "Abandoned Jet";
 	_locationsArray = MissionSpawnMarkers;
 };
 
-_setupObjects =
-{
+_setupObjects = {
 	_missionPos = markerPos _missionLocation;
 
 	// Class, Position, Fuel, Ammo, Damage, Special

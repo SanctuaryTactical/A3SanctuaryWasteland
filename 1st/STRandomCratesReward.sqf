@@ -14,7 +14,7 @@ if (!isServer) exitWith {};
 
 params ["_position", "_range", ["_smoke", false], ["_disabled", false]];
 
-private ["_count", "_boxtype", "_boxtypes", "_types", "_box", "_pos", "_boxes"];
+private ["_count", "_boxtype", "_boxtypes", "_types", "_box", "_boxes"];
 
 //Random Number of Crates
 _count = _range call BIS_fnc_randomInt;
@@ -51,7 +51,6 @@ _types = [
   "Box_East_Support_F",
   "Box_East_WpsLaunch_F"];
 
-_pos = getMarkerPos _position;
 _boxes = [];
 
 for "_x" from 0 to _count do {
@@ -67,7 +66,7 @@ for "_x" from 0 to _count do {
 
   };
 
-  _box = _boxtype createVehicle _pos;
+  _box = _boxtype createVehicle _position;
   _box allowDamage false;
   _box setVariable ["R3F_LOG_disabled", _disabled, true];
 
@@ -80,6 +79,22 @@ for "_x" from 0 to _count do {
       _box setVariable ["artillery", 1, true];
     };
   };
+
+  /* if( 10 > random 100 ) then {
+
+    _box setVariable ["repairkit", ([1,3] call BIS_fnc_randomInt), true];
+
+  }; */
+
+  //TODO: Percentage chance of Repair kits of random count
+  //TODO: Percentage chance of fuel of random count
+  //TODO: Percentage chance of ONE spawn beacon
+  //TODO: Percentage chance of fire extinguisher of random count
+  //TODO: Percentage chance of food of random count
+  //TODO: Percentage chance of water of random count
+  //TODO: Percentage chance of Vehicle PIN of random count
+
+  //TODO: Arty handler to be enhanced to support the additional types
 
   _boxes set [_x, _box];
 

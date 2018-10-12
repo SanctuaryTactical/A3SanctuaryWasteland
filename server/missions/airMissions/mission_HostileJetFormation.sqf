@@ -4,10 +4,11 @@
 //	@file Name: mission_HostileJetFormation.sqf
 //	@file Author: JoSchaap, AgentRev, LouD
 
-if (!isServer) exitwith {};
 #include "airMissionDefines.sqf"
 
-private ["_planeChoices", "_convoyVeh", "_veh1", "_veh2", "_createVehicle", "_vehicles", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_vehicleName2", "_numWaypoints", "_cash", "_boxes1", "_currBox1", "_boxes2", "_currBox2", "_box1", "_box2"];
+if (!isServer) exitwith {};
+
+private ["_class", "_count", "_veh", "_vehicles", "_createVehicle", "_leader", "_speedMode", "_waypoint", "_vehicleName", "_vehicleName2", "_numWaypoints"];
 
 _setupVars =
 {
@@ -15,30 +16,20 @@ _setupVars =
 	_locationsArray = nil; // locations are generated on the fly from towns
 };
 
-_setupObjects =
-{
+_setupObjects = {
+
 	_missionPos = markerPos (((call cityList) call BIS_fnc_selectRandom) select 0);
 
-	_planeChoices =
-	[
-		["B_Plane_CAS_01_F", "B_Plane_CAS_01_F"],
-		["O_Plane_CAS_02_F", "O_Plane_CAS_02_F"],
-		["O_Plane_Fighter_02_F", "I_Plane_Fighter_04_F"]
-	];
+	_class = [ST_A10,ST_F22,ST_BLACK_WASP,ST_WIPEOUT,ST_NEOPHRON,ST_SHIKRA,ST_BUZZARD,ST_GRYPHON] call BIS_fnc_selectRandom;
+	_count = [2,4] call BIS_fnc_randomInt;
 
-	_convoyVeh = _planeChoices call BIS_fnc_selectRandom;
+	_createVehicle = {
 
-	_veh1 = _convoyVeh select 0;
-	_veh2 = _convoyVeh select 1;
-
-	_createVehicle =
-	{
 		private ["_type","_position","_direction","_vehicle","_soldier"];
 
 		_type = _this select 0;
 		_position = _this select 1;
 		_direction = _this select 2;
-
 
 		_vehicle = createVehicle [_type, _position, [], 0, "FLY"]; // Added to make it fly
 		_vehicle setVariable ["R3F_LOG_disabled", true, true];
@@ -51,32 +42,22 @@ _setupObjects =
 		// add pilot
 		_soldier = [_aiGroup, _position] call createRandomPilot;
 		_soldier moveInDriver _vehicle;
-		// lock the vehicle untill the mission is finished and initialize cleanup on it
-
-		// Reset all flares to 0
-		if (_type isKindOf "Air") then
-		{
-			{
-				if (["CMFlare", _x] call fn_findString != -1) then
-				{
-					_vehicle removeMagazinesTurret [_x, [-1]];
-				};
-			} forEach getArray (configFile >> "CfgVehicles" >> _type >> "magazines");
-
-			//_vehicle addMagazineTurret ["60Rnd_CMFlare_Chaff_Magazine", [-1]];
-		};
 
 		[_vehicle, _aiGroup] spawn checkMissionVehicleLock;
 		_vehicle
+
 	};
 
 	_aiGroup = createGroup CIVILIAN;
 
-	_vehicles =
-	[
-		[_veh1, _missionPos vectorAdd ([[random 50, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0] call _createVehicle,
-		[_veh2, _missionPos vectorAdd ([[random 50, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0] call _createVehicle
-	];
+	_vehicles = [];
+
+	for "_x" from 1 to _count do {
+
+		_veh = [_class, _missionPos vectorAdd ([[random 50, 0, 0], random 360] call BIS_fnc_rotateVector2D), 0] call _createVehicle;
+		_vehicles set [_x - 1, _veh];
+
+	};
 
 	_leader = effectiveCommander (_vehicles select 0);
 	_aiGroup selectLeader _leader;
@@ -103,11 +84,11 @@ _setupObjects =
 
 	_missionPos = getPosATL leader _aiGroup;
 
-	_missionPicture = getText (configFile >> "CfgVehicles" >> _veh1 >> "picture");
-	_vehicleName = getText (configFile >> "CfgVehicles" >> _veh1 >> "displayName");
-	_vehicleName2 = getText (configFile >> "CfgVehicles" >> _veh2 >> "displayName");
+	_missionPicture = getText (configFile >> "CfgVehicles" >> _class >> "picture");
+	_vehicleName = getText (configFile >> "CfgVehicles" >> _class >> "displayName");
+	_vehicleName2 = getText (configFile >> "CfgVehicles" >> _class >> "displayName");
 
-	_missionHintText = format ["A formation of Jets containing two <t color='%3'>%1</t> are patrolling the island. Destroy them and recover their cargo!", _vehicleName, _vehicleName2, airMissionColor];
+	_missionHintText = format ["A formation of Jets containing at least two <t color='%3'>%1</t> are patrolling the island. Destroy them and recover their cargo!", _vehicleName, _vehicleName2, airMissionColor];
 
 	_numWaypoints = count waypoints _aiGroup;
 };
@@ -119,14 +100,11 @@ _waitUntilCondition = {currentWaypoint _aiGroup >= _numWaypoints};
 _failedExec = nil;
 
 // _vehicles are automatically deleted or unlocked in missionProcessor depending on the outcome
-
-_successExec =
-{
-	// Mission completed
+_successExec = {
 
 	//Money
-	[_marker, [50000, 60000, 80000]] call STRandomCashReward;
-	[_marker, [2, 5], true] call STRandomCratesReward;
+	[_marker, [50000, 50000, 50000, 60000, 80000]] call STRandomCashReward;
+	[(getMarkerPos _marker), [2, 4], true] call STRandomCratesReward;
 
 	_successHintMessage = "The sky is clear again, the enemy patrol was taken out! Ammo crates and some money have fallen near the pilot.";
 

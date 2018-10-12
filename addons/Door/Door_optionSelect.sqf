@@ -7,68 +7,94 @@
 //	@file Description: Door script
 
 #define Door_Menu_option 17001
+
+#define DOOR_OPEN 0
+#define DOOR_CLOSE 1
+#define ROOF_OPEN 2
+#define ROOF_CLOSE 3
+#define CHANGE_PASSWORD 4
+#define SET_TYPE_INTERIOR 5
+#define SET_TYPE_EXTERIOR 6
+#define SECURE_ALL 7
+
 disableSerialization;
 
-private ["_panelType","_displayDoor","_Door_select","_money"];
-_uid = getPlayerUID player;
-if (!isNil "_uid") then
-{
-	_panelType = _this select 0;
+private ["_panelType","_displayDoor","_Door_select", "Door_switchType"];
 
+Door_switchType = {
+
+	params ["_int"];
+	private ["_keypads","_keypad"];
+
+	_keypads = (nearestObjects [player, ["Land_Noticeboard_F"], 10]);
+
+	if ( count _keypads > 0 ) then {
+
+	  _keypad = _keypads select 0;
+	  _keypad setVariable ["interior", _int, true];
+
+	};
+
+};
+
+_uid = getPlayerUID player;
+
+if (!isNil "_uid") then {
+
+	_panelType = _this select 0;
 	_displayDoor = uiNamespace getVariable ["Door_Menu", displayNull];
 
-	switch (true) do
-	{
+	switch (true) do {
 		case (!isNull _displayDoor): //Door panel
 		{
 			_Door_select = _displayDoor displayCtrl Door_Menu_option;
 
-			switch (lbCurSel _Door_select) do
-			{
-				case 0: //Lock Door
+			switch (lbCurSel _Door_select) do {
+				case DOOR_OPEN: //Lock Door
 				{
 					closeDialog 0;
-					execVM "addons\Door\Door_openDoor.sqf";
+					//execVM "addons\Door\Door_openDoor.sqf";
+					nul = [true] execVM "addons\Door\DoorController.sqf";
 				};
-				case 1: //Unlock Door
+				case DOOR_CLOSE: //Unlock Door
 				{
 					closeDialog 0;
-					execVM "addons\Door\Door_closeDoor.sqf";
+					//execVM "addons\Door\Door_closeDoor.sqf";
+					nul = [false] execVM "addons\Door\DoorController.sqf";
 				};
-				case 2: {
+				case ROOF_OPEN: {
 
 					//Open Roof
 					closeDialog 0;
-					execVM "addons\Door\Door_openRoof.sqf";
+				  nul = [true] execVM "addons\Door\RoofController.sqf";
 
 				};
-				case 3: {
+				case ROOF_CLOSE: { //Close Roof
 
-					//Close Roof
 					closeDialog 0;
-					execVM "addons\Door\Door_closeRoof.sqf";
+					nul = [false] execVM "addons\Door\RoofController.sqf";
 
 				};
-				case 4: //Change Password
+				case CHANGE_PASSWORD: //Change Password
 				{
 					closeDialog 0;
-					execVM "addons\Door\password_change.sqf";
+					execVM "addons\Door\ChangePassword.sqf";
 				};
-				case 5:
+				case SET_TYPE_INTERIOR:
 				{
 					closeDialog 0;
-					execVM "addons\Door\Door_setInterior.sqf";
+					[true] call Door_switchType;
 				};
-				case 6:
+				case SET_TYPE_EXTERIOR:
 				{
 					closeDialog 0;
-					execVM "addons\Door\Door_setExterior.sqf";
+					[false] call Door_switchType;
 				};
-				case 7: //Secure All Doors
+				case SECURE_ALL: //Secure All Doors
 				{
 					closeDialog 0;
-					execVM "addons\BoS\BoS_closeAllDoors.sqf";
-					hint "All doors have been secured";
+					nul = [true] execVM "addons\Door\SecureAll.sqf";
+
 				};
 			};
 		};

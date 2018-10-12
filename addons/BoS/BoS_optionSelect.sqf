@@ -68,8 +68,7 @@ if (!isNil "_uid") then
 				case 8: //Secure Doors
 				{
 					closeDialog 0;
-					execVM "addons\Bos\BoS_closeAllDoors.sqf";
-					hint "All doors have been secured";
+					nul = [true] execVM "addons\Door\SecureAll.sqf";
 				};
 				case 9: //Lock All Vehicles
 				{

@@ -7,7 +7,7 @@ if( !isNil "_lockers" ) then {
 
 	_locker = _lockers select 0;
 	_doors = (nearestObjects [_locker, ["Land_Bunker_01_blocks_3_F","Land_Bunker_01_blocks_1_F"], 200]);
-	_roofs = (nearestObjects [_locker, ["ContainmentArea_01_forest_F"], 200]);
+	_roofs = (nearestObjects [_locker, ["ContainmentArea_01_forest_F", "Land_Dome_Small_F"], 200]);
 
 	if (!isNil "_doors") then
 	{

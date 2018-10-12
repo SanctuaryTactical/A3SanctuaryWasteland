@@ -88,11 +88,16 @@ if (!isDedicated) then
 	};
 };
 
-if (isServer) then
-{
+if (isServer) then {
+
 	diag_log format ["############################# %1 #############################", missionName];
 	diag_log "WASTELAND SERVER - Initializing Server";
 	[] execVM "server\init.sqf";
+
+	//Traffic & Civilian Presence
+	//call compile preprocessFileLineNumbers "addons\Traffic\Init.sqf";
+	//call compile preprocessFileLineNumbers "addons\Civilians\Init.sqf";
+
 };
 
 if (hasInterface || isServer) then {
@@ -110,9 +115,9 @@ if (hasInterface || isServer) then {
 	[] execVM "addons\stickyCharges\init.sqf";
 	[] execVM "addons\APOC_Airdrop_Assistance\init.sqf";
 	[] execVM "addons\AF_Keypad\AF_KP_vars.sqf";          // Keypad for base locking
-	[] execVM "addons\LV\init.sqf";          							// AI Spawn Script
+	[] execVM "addons\LV\init.sqf";          							// AI Spawn Script: Does Not Work
 
-	//Load Sanctuary Tactical
+	//Load Sanctuary Tactical Functions
 	[] execVM "1st\init.sqf";
 
 	if (isNil "drn_DynamicWeather_MainThread") then { drn_DynamicWeather_MainThread = [] execVM "addons\scripts\DynamicWeatherEffects.sqf" };
@@ -121,6 +126,7 @@ if (hasInterface || isServer) then {
 	player setCustomAimCoef 0.15;
 	player enableStamina false;
 	player addEventHandler ["Respawn", {player enableStamina  false; player setCustomAimCoef 0.15;}];
+
 };
 
 // Remove line drawings from map

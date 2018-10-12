@@ -533,9 +533,6 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	"Heli_Transport_04_base_F",
 	"O_T_VTOL_02_vehicle_F",
 	"VTOL_base_F",
-	"I_CargoNet_01_ammo_F",
-	"O_CargoNet_01_ammo_F",
-  "B_CargoNet_01_ammo_F",
 	"B_T_VTOL_01_armed_F",
 	"O_Plane_CAS_02_dynamicLoadout_F",
 	"I_Plane_Fighter_03_dynamicLoadout_F",
@@ -602,7 +599,18 @@ R3F_LOG_CFG_can_be_lifted = R3F_LOG_CFG_can_be_lifted +
 	ST_M1230_HEAVY,
 	ST_CHINOOK,
 	ST_SAM_SYSTEM,
-	ST_RADAR_SYSTEM
+	ST_RADAR_SYSTEM,
+	ST_SHIP_FRIGATE,
+	ST_ATTACK_BOAT,
+	ST_SHIP_FREMM,
+	ST_GUN_BOAT,
+	ST_SHIP_LAYFAYETTE,
+	ST_SHIP_SUPPLY,
+	ST_SHIP_ADMIRAL,
+	ST_SHIP_CORVETTE,
+	ST_VIRGINA,
+	ST_TYPE214,
+	ST_TYPE209
 ];
 
 
@@ -735,7 +743,18 @@ R3F_LOG_CFG_can_transport_cargo = R3F_LOG_CFG_can_transport_cargo +
 	[ST_QLIN_AT, 35],
 	[ST_PROWLER_AT, 35],
 	[ST_SAM_SYSTEM, 20],
-	[ST_RADAR_SYSTEM, 15]
+	[ST_RADAR_SYSTEM, 15],
+	[ST_SHIP_FRIGATE, 1500],
+	[ST_ATTACK_BOAT, 500],
+	[ST_SHIP_FREMM, 1500],
+	[ST_GUN_BOAT,400],
+	[ST_SHIP_LAYFAYETTE,1500],
+	[ST_SHIP_SUPPLY,2500],
+	[ST_SHIP_ADMIRAL,1500],
+	[ST_SHIP_CORVETTE,1500],
+	[ST_VIRGINA,150],
+	[ST_TYPE214,150],
+	[ST_TYPE209,150]
 ];
 
 /**
@@ -806,7 +825,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
  	["Land_Shoot_House_Wall_F", 3],
  	["Land_Stone_8m_F", 5],
  	["Land_ToiletBox_F", 2],
- 	["Land_BarrelWater_F", 2],
+ 	["Land_WaterBottle_01_stack_F", 2],
 	["Land_PowerGenerator_F", 4],
 	["Land_WheelieBin_01_F", 2],
 	["Land_Walkover_01_F", 4],
@@ -841,7 +860,7 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["Land_Airport_01_hangar_F", 75],
 	["Land_Canal_Wall_10m_F", 15],
 	["Land_Noticeboard_F", 10],
-	["Land_WaterTank_F", 25],
+	["Land_WaterBottle_01_stack_F", 25],
 	["Land_Cargo20_yellow_F", 50],
 	["Land_Cargo40_white_F", 75],
 	["Land_Cargo40_military_green_F", 75],
@@ -917,6 +936,8 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["Land_HBarrier_01_wall_corridor_green_F",8],
 	["Land_Pier_Box_F", 50],
 	["Land_Flush_Light_green_F", 5],
+	["Land_runway_edgelight_blue_F", 5],
+	["PortableHelipadLight_01_blue_F", 5],
 	["Land_Cliff_boulder_F", 25],
 	["Land_Cliff_stone_big_F", 15],
 	["CargoNet_01_barrels_F", 10],
@@ -925,7 +946,10 @@ R3F_LOG_CFG_can_be_transported_cargo = R3F_LOG_CFG_can_be_transported_cargo +
 	["Land_PortableLight_single_F", 5],
 	["Land_PortableLight_double_F", 7],
 	["Flag_White_F", 8],
-	["Flag_US_F", 8]
+	["Flag_Green_F", 8],
+	["Flag_US_F", 8],
+	["Land_Destroyer_01_Boat_Rack_01_F", 15],
+	["Windsock_01_F", 10]
 ];
 
 /****** MOVABLE-BY-PLAYER OBJECTS / OBJETS DEPLACABLES PAR LE JOUEUR ******/
@@ -995,7 +1019,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
  	"Land_ToiletBox_F",
  	"Land_BarrelWater_F",
 	"Land_Stone_8m_F",
-	"Land_BarrelWater_F",
+	"Land_WaterBottle_01_stack_F",
 	"BlockConcrete_F",
 	"Land_PowerGenerator_F",
 	"Land_Cargo20_military_green_F",
@@ -1033,7 +1057,7 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Box_NATO_AmmoVeh_F",
 	"Box_NATO_Ammo_F",
 	"Land_Noticeboard_F",
-	"Land_WaterTank_F",
+	"Land_WaterBottle_01_stack_F",
 	"Land_CargoBox_V1_F",
 	"Land_Cargo40_military_green_F",
 	"Land_Canal_Wall_10m_F",
@@ -1109,6 +1133,8 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Land_HBarrier_01_wall_corridor_green_F",
 	"Land_Pier_Box_F",
 	"Land_Flush_Light_green_F",
+	"Land_runway_edgelight_blue_F",
+	"PortableHelipadLight_01_blue_F",
 	"Land_Cliff_boulder_F",
 	"Land_Cliff_stone_big_F",
 	"CargoNet_01_barrels_F",
@@ -1117,5 +1143,8 @@ R3F_LOG_CFG_can_be_moved_by_player = R3F_LOG_CFG_can_be_moved_by_player +
 	"Land_PortableLight_single_F",
 	"Land_PortableLight_double_F",
 	"Flag_White_F",
-	"Flag_US_F"
+	"Flag_Green_F",
+	"Flag_US_F",
+	"Land_Destroyer_01_Boat_Rack_01_F",
+	"Windsock_01_F"
 ];

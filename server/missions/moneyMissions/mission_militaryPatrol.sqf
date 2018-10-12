@@ -89,10 +89,10 @@ _failedExec = nil;
 _successExec = {
 
 	//Random cash at marker
-	[_marker, [20000,30000,40000,50000,60000,70000,80000]] call STRandomCashReward;
+	[_marker, [20000,20000,30000,40000,40000,40000,40000,40000,80000]] call STRandomCashReward;
 
 	//Random Number of Crates
-	[_marker, [2, 8]] call STRandomCratesReward;
+	[(getMarkerPos _marker), [2, 5]] call STRandomCratesReward;
 
 	_successHintMessage = "The patrol has been stopped, the money, crates and vehicles are yours to take.";
 
